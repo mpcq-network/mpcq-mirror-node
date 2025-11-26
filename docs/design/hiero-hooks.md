@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design document outlines the implementation plan for supporting HIP-1195 hooks in the Hiero mirror node. The
+This design document outlines the implementation plan for supporting HIP-1195 hooks in the MPCQ mirror node. The
 implementation will enable extraction, storage, and querying of hook data from consensus node transactions, supporting
 the
 new REST APIs for hooks and hook storage.
@@ -36,7 +36,7 @@ The implementation supports dual ingestion paths for hook storage updates:
 
 ## Background
 
-[HIP-1195](https://hips.hedera.com/hip/hip-1195) introduces programmable hooks to the Hiero network, allowing users to
+[HIP-1195](https://hips.hedera.com/hip/hip-1195) introduces programmable hooks to the MPCQ network, allowing users to
 customize behavior at specific
 extension points. Hooks can be attached to accounts and contracts via:
 

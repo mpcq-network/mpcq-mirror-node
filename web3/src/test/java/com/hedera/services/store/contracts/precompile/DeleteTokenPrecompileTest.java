@@ -10,13 +10,13 @@ import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.sender
 import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.senderAddress;
 import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.successResult;
 import static com.hedera.services.store.contracts.precompile.impl.DeleteTokenPrecompile.decodeDelete;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenDelete;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenDelete;
 import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import com.hedera.services.fees.FeeCalculator;
@@ -30,7 +30,7 @@ import com.hedera.services.store.models.Token;
 import com.hedera.services.txn.token.DeleteLogic;
 import com.hedera.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SubType;
 import com.hederahashgraph.api.proto.java.TokenDeleteTransactionBody;
 import com.hederahashgraph.api.proto.java.TransactionBody;
@@ -46,7 +46,7 @@ import org.hiero.mirror.common.domain.DomainBuilder;
 import org.hiero.mirror.web3.common.PrecompileContext;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.junit.jupiter.api.BeforeEach;
@@ -82,10 +82,10 @@ class DeleteTokenPrecompileTest {
     private ExchangeRate exchangeRate;
 
     @Mock
-    private HederaEvmContractAliases hederaEvmContractAliases;
+    private MPCQEvmContractAliases hederaEvmContractAliases;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
     private UsagePricesProvider resourceCosts;
@@ -134,8 +134,8 @@ class DeleteTokenPrecompileTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        final Map<HederaFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
-                new EnumMap<>(HederaFunctionality.class);
+        final Map<MPCQFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
+                new EnumMap<>(MPCQFunctionality.class);
         canonicalPrices.put(TokenDelete, Map.of(SubType.DEFAULT, BigDecimal.valueOf(0)));
         given(assetLoader.loadCanonicalPrices()).willReturn(canonicalPrices);
         final PrecompilePricingUtils precompilePricingUtils =

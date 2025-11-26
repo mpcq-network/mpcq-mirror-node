@@ -11,11 +11,11 @@ import org.hyperledger.besu.evm.operation.CallOperation;
 import org.hyperledger.besu.evm.operation.Operation;
 import org.jspecify.annotations.NonNull;
 
-public class HederaCustomCallOperation extends CallOperation {
+public class MPCQCustomCallOperation extends CallOperation {
     private static final Operation.OperationResult UNDERFLOW_RESPONSE =
             new Operation.OperationResult(0, ExceptionalHaltReason.INSUFFICIENT_STACK_ITEMS);
 
-    public HederaCustomCallOperation(@NonNull final GasCalculator gasCalculator) {
+    public MPCQCustomCallOperation(@NonNull final GasCalculator gasCalculator) {
         super(gasCalculator);
     }
 

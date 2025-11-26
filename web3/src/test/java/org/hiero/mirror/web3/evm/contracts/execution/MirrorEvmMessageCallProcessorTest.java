@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution;
 
-import static com.hedera.node.app.service.evm.contracts.operations.HederaExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATE;
+import static com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATE;
 import static com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract.EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.NOT_SUPPORTED;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
@@ -16,8 +16,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaBlockValues;
-import com.hedera.node.app.service.evm.contracts.operations.HederaExceptionalHaltReason;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQBlockValues;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
 import com.hedera.services.stream.proto.ContractActionType;
 import java.time.Instant;
 import java.util.Optional;
@@ -54,7 +54,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
 
     @BeforeEach
     void setUp() {
-        when(precompilesHolder.getHederaPrecompiles()).thenReturn(hederaPrecompileList);
+        when(precompilesHolder.getMPCQPrecompiles()).thenReturn(hederaPrecompileList);
         when(messageFrame.getWorldUpdater()).thenReturn(updater);
         opcodeTracer = Mockito.spy(new OpcodeTracer(precompilesHolder));
         subject = new MirrorEvmMessageCallProcessor(
@@ -63,7 +63,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
                 evm,
                 precompiles,
                 precompilesHolder,
-                gasCalculatorHederaV22,
+                gasCalculatorMPCQV22,
                 address -> false);
     }
 
@@ -72,7 +72,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
         when(updater.getStore()).thenReturn(store);
         when(autoCreationLogic.create(any(), any(), any(), any(), any())).thenReturn(Pair.of(NOT_SUPPORTED, 0L));
         when(messageFrame.getRecipientAddress()).thenReturn(NON_PRECOMPILE_ADDRESS);
-        when(messageFrame.getBlockValues()).thenReturn(new HederaBlockValues(0L, 0L, Instant.EPOCH));
+        when(messageFrame.getBlockValues()).thenReturn(new MPCQBlockValues(0L, 0L, Instant.EPOCH));
 
         subject.executeLazyCreate(messageFrame, operationTracer);
 
@@ -87,7 +87,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
         when(updater.getStore()).thenReturn(store);
         when(autoCreationLogic.create(any(), any(), any(), any(), any())).thenReturn(Pair.of(OK, 1000L));
         when(messageFrame.getRecipientAddress()).thenReturn(NON_PRECOMPILE_ADDRESS);
-        when(messageFrame.getBlockValues()).thenReturn(new HederaBlockValues(0L, 0L, Instant.EPOCH));
+        when(messageFrame.getBlockValues()).thenReturn(new MPCQBlockValues(0L, 0L, Instant.EPOCH));
         when(messageFrame.getRemainingGas()).thenReturn(0L);
         when(messageFrame.getGasPrice()).thenReturn(Wei.ONE);
 
@@ -107,7 +107,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
         when(messageFrame.getValue()).thenReturn(Wei.ZERO);
         when(messageFrame.getInputData()).thenReturn(Bytes.EMPTY);
         when(messageFrame.getState()).thenReturn(MessageFrame.State.COMPLETED_SUCCESS);
-        when(precompiles.get(contractAddress)).thenReturn(new ECRECPrecompiledContract(gasCalculatorHederaV22));
+        when(precompiles.get(contractAddress)).thenReturn(new ECRECPrecompiledContract(gasCalculatorMPCQV22));
 
         subject.start(messageFrame, opcodeTracer);
 
@@ -115,7 +115,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
     }
 
     @Test
-    void startWithHederaPrecompileTracesPrecompileResult() {
+    void startWithMPCQPrecompileTracesPrecompileResult() {
         var contractAddress = Address.fromHexString(EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS);
         when(messageFrame.getContractAddress()).thenReturn(contractAddress);
         when(messageFrame.getRecipientAddress()).thenReturn(contractAddress);
@@ -146,7 +146,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
                 evm,
                 precompiles,
                 precompilesHolder,
-                gasCalculatorHederaV22,
+                gasCalculatorMPCQV22,
                 address -> true);
         var contractAddress = Address.fromHexString("0x2EE");
         var recAddress = Address.fromHexString(EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS);
@@ -155,7 +155,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
         when(messageFrame.getSenderAddress()).thenReturn(recAddress);
         when(autoCreationLogic.create(any(), any(), any(), any(), any())).thenReturn(Pair.of(OK, 1000L));
         when(messageFrame.getValue()).thenReturn(Wei.of(5000L));
-        when(messageFrame.getBlockValues()).thenReturn(new HederaBlockValues(0L, 0L, Instant.EPOCH));
+        when(messageFrame.getBlockValues()).thenReturn(new MPCQBlockValues(0L, 0L, Instant.EPOCH));
         when(messageFrame.getGasPrice()).thenReturn(Wei.ONE);
 
         boolean isModularized = evmProperties.isModularizedServices();
@@ -166,7 +166,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
 
         subject.start(messageFrame, opcodeTracer);
 
-        verify(messageFrame).setExceptionalHaltReason(Optional.of(HederaExceptionalHaltReason.INVALID_FEE_SUBMITTED));
+        verify(messageFrame).setExceptionalHaltReason(Optional.of(MPCQExceptionalHaltReason.INVALID_FEE_SUBMITTED));
         inOrder(messageFrame).verify(messageFrame).setState(MessageFrame.State.EXCEPTIONAL_HALT);
     }
 
@@ -178,7 +178,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
                 evm,
                 precompiles,
                 precompilesHolder,
-                gasCalculatorHederaV22,
+                gasCalculatorMPCQV22,
                 address -> true);
         var contractAddress = Address.fromHexString(EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS);
         var recAddress = Address.fromHexString(EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS);
@@ -200,7 +200,7 @@ class MirrorEvmMessageCallProcessorTest extends MirrorEvmMessageCallProcessorBas
                 evm,
                 precompiles,
                 precompilesHolder,
-                gasCalculatorHederaV22,
+                gasCalculatorMPCQV22,
                 address -> true);
         var contractAddress = Address.fromHexString(EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS);
         var recAddress = Address.fromHexString(EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS);

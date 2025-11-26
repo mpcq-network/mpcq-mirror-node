@@ -44,7 +44,7 @@ import java.util.function.Supplier;
 /**
  * Copied model from hedera-services.
  * <p>
- * Encapsulates the state and operations of a Hedera token.
+ * Encapsulates the state and operations of a MPCQ token.
  *
  * <p>Operations are validated, and throw a {@link InvalidTransactionException} with response code
  * capturing the failure when one occurs.

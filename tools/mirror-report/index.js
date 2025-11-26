@@ -25,7 +25,7 @@ program
   )
   .requiredOption('-f, --from-date <YYYY-MM-DD>', 'The day the report should start (inclusive)', validateDate, today)
   .addOption(
-    new Option('-n, --network <network>', 'The Hedera network to connect to')
+    new Option('-n, --network <network>', 'The MPCQ network to connect to')
       .choices(['mainnet', 'testnet', 'previewnet'])
       .default('mainnet')
       .makeOptionMandatory()

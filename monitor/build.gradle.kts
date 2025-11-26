@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-description = "Hiero Mirror Node Monitor"
+description = "MPCQ Mirror Node Monitor"
 
 plugins {
     id("openapi-conventions")

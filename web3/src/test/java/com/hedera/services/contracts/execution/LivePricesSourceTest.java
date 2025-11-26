@@ -3,7 +3,7 @@
 package com.hedera.services.contracts.execution;
 
 import static com.hedera.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 

@@ -2,7 +2,7 @@
 
 package com.hedera.node.app.service.contract.impl.state;
 
-import static com.hedera.hapi.node.base.HederaFunctionality.CRYPTO_CREATE;
+import static com.hedera.hapi.node.base.MPCQFunctionality.CRYPTO_CREATE;
 import static com.hedera.hapi.node.base.ResponseCodeEnum.CONSENSUS_GAS_EXHAUSTED;
 import static com.hedera.node.app.service.token.HookDispatchUtils.HTS_HOOKS_CONTRACT_NUM;
 import static com.hedera.node.app.spi.workflows.HandleContext.DispatchMetadata.Type.EXPLICIT_WRITE_TRACING;
@@ -12,7 +12,7 @@ import static java.util.Objects.requireNonNull;
 import com.hedera.hapi.node.base.ContractID;
 import com.hedera.hapi.node.contract.ContractNonceInfo;
 import com.hedera.node.app.service.contract.impl.annotations.TransactionScope;
-import com.hedera.node.app.service.contract.impl.exec.scope.HandleHederaOperations;
+import com.hedera.node.app.service.contract.impl.exec.scope.HandleMPCQOperations;
 import com.hedera.node.app.service.contract.impl.infra.IterableStorageManager;
 import com.hedera.node.app.service.contract.impl.infra.RentCalculator;
 import com.hedera.node.app.service.contract.impl.infra.StorageSizeValidator;
@@ -27,8 +27,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A {@link ProxyWorldUpdater} that enforces several Hedera-specific checks and actions before making the final commit
- * in the "base" {@link HandleHederaOperations}. These include validating storage size limits, calculating and charging
+ * A {@link ProxyWorldUpdater} that enforces several MPCQ-specific checks and actions before making the final commit
+ * in the "base" {@link HandleMPCQOperations}. These include validating storage size limits, calculating and charging
  * rent, and preserving per-contract linked lists. See the {@link #commit()} implementation for more details.
  * <p>
  * Change from the original class - added getEvmFrameState() method. It is needed for the opcode storage tracer to work.
@@ -101,7 +101,7 @@ public class RootProxyWorldUpdater extends ProxyWorldUpdater {
                 enhancement.nativeOperations().writableEvmHookStore());
 
         // We now have an apparently valid change set, and want to capture some summary
-        // information for the Hedera record
+        // information for the MPCQ record
         final var contractChangeSummary = enhancement.operations().summarizeContractChanges();
         createdContractIds = contractChangeSummary.newContractIds();
 

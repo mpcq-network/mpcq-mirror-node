@@ -6,22 +6,22 @@ import com.hedera.services.fees.HbarCentExchange;
 import com.hedera.services.fees.calculation.UsagePricesProvider;
 import com.hedera.services.hapi.utils.fees.FeeBuilder;
 import com.hederahashgraph.api.proto.java.FeeData;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
  * Direct copy from hedera-services
  *
- * Utility methods used by Hedera adapted {@link
+ * Utility methods used by MPCQ adapted {@link
  * org.hyperledger.besu.evm.gascalculator.GasCalculator}
  */
-public final class GasCalculatorHederaUtil {
+public final class GasCalculatorMPCQUtil {
     private static final int LOG_CONTRACT_ID_SIZE = 24;
     private static final int LOG_TOPIC_SIZE = 32;
     private static final int LOG_BLOOM_SIZE = 256;
 
-    private GasCalculatorHederaUtil() {
+    private GasCalculatorMPCQUtil() {
         throw new UnsupportedOperationException("Utility Class");
     }
 
@@ -29,7 +29,7 @@ public final class GasCalculatorHederaUtil {
             final UsagePricesProvider usagePrices,
             final HbarCentExchange exchange,
             long consensusTime,
-            HederaFunctionality functionType) {
+            MPCQFunctionality functionType) {
         final var timestamp = Timestamp.newBuilder().setSeconds(consensusTime).build();
         FeeData prices = usagePrices.defaultPricesGiven(functionType, timestamp);
         long feeInTinyCents = prices.getServicedata().getRbh() / 1000;
@@ -48,9 +48,9 @@ public final class GasCalculatorHederaUtil {
         return Math.round((double) storageCostTinyBars / (double) gasPrice);
     }
 
-    public static HederaFunctionality getFunctionType(MessageFrame frame) {
+    public static MPCQFunctionality getFunctionType(MessageFrame frame) {
         MessageFrame rootFrame = frame.getMessageFrameStack().getLast();
-        return rootFrame.getContextVariable("HederaFunctionality");
+        return rootFrame.getContextVariable("MPCQFunctionality");
     }
 
     @SuppressWarnings("unused")
@@ -64,13 +64,13 @@ public final class GasCalculatorHederaUtil {
             final int numTopics) {
         long gasPrice = frame.getGasPrice().toLong();
         long timestamp = frame.getBlockValues().getTimestamp();
-        long logStorageTotalSize = GasCalculatorHederaUtil.calculateLogSize(numTopics, dataLength);
-        HederaFunctionality functionType = GasCalculatorHederaUtil.getFunctionType(frame);
+        long logStorageTotalSize = GasCalculatorMPCQUtil.calculateLogSize(numTopics, dataLength);
+        MPCQFunctionality functionType = GasCalculatorMPCQUtil.getFunctionType(frame);
 
-        return GasCalculatorHederaUtil.calculateStorageGasNeeded(
+        return GasCalculatorMPCQUtil.calculateStorageGasNeeded(
                 logStorageTotalSize,
                 storageDuration,
-                GasCalculatorHederaUtil.ramByteHoursTinyBarsGiven(usagePrices, exchange, timestamp, functionType),
+                GasCalculatorMPCQUtil.ramByteHoursTinyBarsGiven(usagePrices, exchange, timestamp, functionType),
                 gasPrice);
     }
 }

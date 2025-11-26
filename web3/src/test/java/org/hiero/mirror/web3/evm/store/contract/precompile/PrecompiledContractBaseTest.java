@@ -5,7 +5,7 @@ package org.hiero.mirror.web3.evm.store.contract.precompile;
 import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_REDIRECT_FOR_TOKEN;
 
 import com.esaulpaugh.headlong.util.Integers;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmWorldStateTokenAccount;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
 import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.RedirectViewExecutor;
 import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.ViewExecutor;
@@ -20,7 +20,7 @@ import org.hiero.mirror.web3.ContextExtension;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
 import org.hiero.mirror.web3.evm.store.accessor.DatabaseAccessor;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.frame.BlockValues;
 import org.hyperledger.besu.evm.frame.MessageFrame;
@@ -63,10 +63,10 @@ public abstract class PrecompiledContractBaseTest {
     RedirectViewExecutor redirectViewExecutor;
 
     @Mock
-    HederaEvmStackedWorldStateUpdater worldUpdater;
+    MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
-    HederaEvmWorldStateTokenAccount account;
+    MPCQEvmWorldStateTokenAccount account;
 
     @Mock
     PrecompilePricingUtils precompilePricingUtils;

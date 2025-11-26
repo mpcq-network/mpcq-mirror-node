@@ -1,7 +1,7 @@
 transfer(10){
   transfer{
-    transfer.network = {"network":"testnet", "blockchain":"Hedera"};
-    currency = {"symbol":"HBAR", "decimals":8, "metadata": {"issuer": "Hedera"}};
+    transfer.network = {"network":"testnet", "blockchain":"MPCQ"};
+    currency = {"symbol":"HBAR", "decimals":8, "metadata": {"issuer": "MPCQ"}};
 
     // at least 1000 hbars
     sender = find_balance({

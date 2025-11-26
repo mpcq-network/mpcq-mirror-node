@@ -12,7 +12,7 @@ import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.hyperledger.besu.evm.gascalculator.GasCalculator;
 import org.hyperledger.besu.evm.operation.AbstractOperation;
 
-public class HederaPrngSeedOperation extends AbstractOperation {
+public class MPCQPrngSeedOperation extends AbstractOperation {
 
     private final OperationResult successResponse;
     private final OperationResult oogResponse;
@@ -20,7 +20,7 @@ public class HederaPrngSeedOperation extends AbstractOperation {
 
     private final long gasCost;
 
-    public HederaPrngSeedOperation(GasCalculator gasCalculator, PrngLogic prngLogic) {
+    public MPCQPrngSeedOperation(GasCalculator gasCalculator, PrngLogic prngLogic) {
         super(0x44, "PRNGSEED", 0, 1, gasCalculator);
         this.prngLogic = prngLogic;
         this.gasCost = gasCalculator.getBaseTierGasCost();

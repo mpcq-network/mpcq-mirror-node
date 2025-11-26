@@ -6,7 +6,7 @@ import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.NO_REMAINING_AUTOMATIC_ASSOCIATIONS;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.store.models.HederaEvmAccount;
+import com.hedera.node.app.service.evm.store.models.MPCQEvmAccount;
 import com.hedera.services.jproto.JKey;
 import com.hedera.services.utils.EntityIdUtils;
 import com.hedera.services.utils.EntityNum;
@@ -31,7 +31,7 @@ import org.hyperledger.besu.datatypes.Address;
  * 6. Added isEmptyAccount() method
  */
 @Getter
-public class Account extends HederaEvmAccount {
+public class Account extends MPCQEvmAccount {
 
     public static final int UNLIMITED_AUTO_ASSOCIATIONS = -1;
 

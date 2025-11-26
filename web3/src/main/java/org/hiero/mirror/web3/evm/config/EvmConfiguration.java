@@ -6,25 +6,25 @@ import static org.hyperledger.besu.evm.internal.EvmConfiguration.WorldUpdaterMod
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.hedera.hapi.node.base.SemanticVersion;
-import com.hedera.node.app.service.evm.contracts.execution.traceability.HederaEvmOperationTracer;
+import com.hedera.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
 import com.hedera.node.app.service.evm.contracts.operations.CreateOperationExternalizer;
-import com.hedera.node.app.service.evm.contracts.operations.HederaBalanceOperation;
-import com.hedera.node.app.service.evm.contracts.operations.HederaBalanceOperationV038;
-import com.hedera.node.app.service.evm.contracts.operations.HederaDelegateCallOperation;
-import com.hedera.node.app.service.evm.contracts.operations.HederaEvmChainIdOperation;
-import com.hedera.node.app.service.evm.contracts.operations.HederaEvmCreate2Operation;
-import com.hedera.node.app.service.evm.contracts.operations.HederaEvmCreateOperation;
-import com.hedera.node.app.service.evm.contracts.operations.HederaEvmSLoadOperation;
-import com.hedera.node.app.service.evm.contracts.operations.HederaExtCodeCopyOperation;
-import com.hedera.node.app.service.evm.contracts.operations.HederaExtCodeHashOperation;
-import com.hedera.node.app.service.evm.contracts.operations.HederaExtCodeHashOperationV038;
-import com.hedera.node.app.service.evm.contracts.operations.HederaExtCodeSizeOperation;
-import com.hedera.services.contracts.gascalculator.GasCalculatorHederaV22;
-import com.hedera.services.evm.contracts.operations.HederaPrngSeedOperation;
-import com.hedera.services.evm.contracts.operations.HederaSelfDestructOperation;
-import com.hedera.services.evm.contracts.operations.HederaSelfDestructOperationV038;
-import com.hedera.services.evm.contracts.operations.HederaSelfDestructOperationV046;
-import com.hedera.services.evm.contracts.operations.HederaSelfDestructOperationV050;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQBalanceOperation;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQBalanceOperationV038;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQDelegateCallOperation;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQEvmChainIdOperation;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQEvmCreate2Operation;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQEvmCreateOperation;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQEvmSLoadOperation;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExtCodeCopyOperation;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExtCodeHashOperation;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExtCodeHashOperationV038;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExtCodeSizeOperation;
+import com.hedera.services.contracts.gascalculator.GasCalculatorMPCQV22;
+import com.hedera.services.evm.contracts.operations.MPCQPrngSeedOperation;
+import com.hedera.services.evm.contracts.operations.MPCQSelfDestructOperation;
+import com.hedera.services.evm.contracts.operations.MPCQSelfDestructOperationV038;
+import com.hedera.services.evm.contracts.operations.MPCQSelfDestructOperationV046;
+import com.hedera.services.evm.contracts.operations.MPCQSelfDestructOperationV050;
 import com.hedera.services.txns.crypto.AbstractAutoCreationLogic;
 import com.hedera.services.txns.util.PrngLogic;
 import jakarta.inject.Provider;
@@ -43,8 +43,8 @@ import org.hiero.mirror.web3.evm.contracts.execution.MirrorEvmMessageCallProcess
 import org.hiero.mirror.web3.evm.contracts.execution.traceability.MirrorOperationTracer;
 import org.hiero.mirror.web3.evm.contracts.execution.traceability.OpcodeTracer;
 import org.hiero.mirror.web3.evm.contracts.execution.traceability.TracerType;
-import org.hiero.mirror.web3.evm.contracts.operations.HederaBlockHashOperation;
-import org.hiero.mirror.web3.evm.contracts.operations.HederaCustomCallOperation;
+import org.hiero.mirror.web3.evm.contracts.operations.MPCQBlockHashOperation;
+import org.hiero.mirror.web3.evm.contracts.operations.MPCQCustomCallOperation;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.contract.EntityAddressSequencer;
 import org.hiero.mirror.web3.repository.properties.CacheProperties;
@@ -114,10 +114,10 @@ public class EvmConfiguration {
     public static final SemanticVersion EVM_VERSION = EVM_VERSION_0_51;
     private final CacheProperties cacheProperties;
     private final MirrorNodeEvmProperties mirrorNodeEvmProperties;
-    private final GasCalculatorHederaV22 gasCalculator;
-    private final HederaBlockHashOperation hederaBlockHashOperation;
-    private final HederaExtCodeHashOperation hederaExtCodeHashOperation;
-    private final HederaExtCodeHashOperationV038 hederaExtCodeHashOperationV038;
+    private final GasCalculatorMPCQV22 gasCalculator;
+    private final MPCQBlockHashOperation hederaBlockHashOperation;
+    private final MPCQExtCodeHashOperation hederaExtCodeHashOperation;
+    private final MPCQExtCodeHashOperationV038 hederaExtCodeHashOperationV038;
     private final AbstractAutoCreationLogic autoCreationLogic;
     private final EntityAddressSequencer entityAddressSequencer;
     private final PrecompiledContractProvider precompilesHolder;
@@ -257,9 +257,9 @@ public class EvmConfiguration {
     }
 
     @Bean
-    Map<TracerType, Provider<HederaEvmOperationTracer>> monoTracerProvider(
+    Map<TracerType, Provider<MPCQEvmOperationTracer>> monoTracerProvider(
             final MirrorOperationTracer mirrorOperationTracer, final OpcodeTracer opcodeTracer) {
-        Map<TracerType, Provider<HederaEvmOperationTracer>> tracerMap = new EnumMap<>(TracerType.class);
+        Map<TracerType, Provider<MPCQEvmOperationTracer>> tracerMap = new EnumMap<>(TracerType.class);
         tracerMap.put(TracerType.OPCODE, () -> opcodeTracer);
         tracerMap.put(TracerType.OPERATION, () -> mirrorOperationTracer);
         return tracerMap;
@@ -322,9 +322,9 @@ public class EvmConfiguration {
 
     @Bean
     EVM evm030(
-            final HederaPrngSeedOperation prngSeedOperation,
-            final HederaSelfDestructOperation hederaSelfDestructOperation,
-            final HederaBalanceOperation hederaBalanceOperation) {
+            final MPCQPrngSeedOperation prngSeedOperation,
+            final MPCQSelfDestructOperation hederaSelfDestructOperation,
+            final MPCQBalanceOperation hederaBalanceOperation) {
         return evm(
                 gasCalculator,
                 mirrorNodeEvmProperties,
@@ -339,9 +339,9 @@ public class EvmConfiguration {
 
     @Bean
     EVM evm034(
-            final HederaPrngSeedOperation prngSeedOperation,
-            final HederaSelfDestructOperation hederaSelfDestructOperation,
-            final HederaBalanceOperation hederaBalanceOperation) {
+            final MPCQPrngSeedOperation prngSeedOperation,
+            final MPCQSelfDestructOperation hederaSelfDestructOperation,
+            final MPCQBalanceOperation hederaBalanceOperation) {
         return evm(
                 gasCalculator,
                 mirrorNodeEvmProperties,
@@ -356,9 +356,9 @@ public class EvmConfiguration {
 
     @Bean
     EVM evm038(
-            final HederaPrngSeedOperation prngSeedOperation,
-            final HederaSelfDestructOperationV038 hederaSelfDestructOperationV038,
-            final HederaBalanceOperationV038 hederaBalanceOperationV038) {
+            final MPCQPrngSeedOperation prngSeedOperation,
+            final MPCQSelfDestructOperationV038 hederaSelfDestructOperationV038,
+            final MPCQBalanceOperationV038 hederaBalanceOperationV038) {
         return evm(
                 gasCalculator,
                 mirrorNodeEvmProperties,
@@ -373,9 +373,9 @@ public class EvmConfiguration {
 
     @Bean
     EVM evm046(
-            final HederaPrngSeedOperation prngSeedOperation,
-            final HederaSelfDestructOperationV046 hederaSelfDestructOperationV046,
-            final HederaBalanceOperationV038 hederaBalanceOperationV038) {
+            final MPCQPrngSeedOperation prngSeedOperation,
+            final MPCQSelfDestructOperationV046 hederaSelfDestructOperationV046,
+            final MPCQBalanceOperationV038 hederaBalanceOperationV038) {
         return evm(
                 gasCalculator,
                 mirrorNodeEvmProperties,
@@ -390,9 +390,9 @@ public class EvmConfiguration {
 
     @Bean
     EVM evm050(
-            final HederaPrngSeedOperation prngSeedOperation,
-            final HederaSelfDestructOperationV050 hederaSelfDestructOperationV050,
-            final HederaBalanceOperationV038 hederaBalanceOperationV038) {
+            final MPCQPrngSeedOperation prngSeedOperation,
+            final MPCQSelfDestructOperationV050 hederaSelfDestructOperationV050,
+            final MPCQBalanceOperationV038 hederaBalanceOperationV038) {
         KZGPointEvalPrecompiledContract.init();
         return evm(
                 gasCalculator,
@@ -407,39 +407,39 @@ public class EvmConfiguration {
     }
 
     @Bean
-    HederaPrngSeedOperation hederaPrngSeedOperation(final GasCalculator gasCalculator, final PrngLogic prngLogic) {
-        return new HederaPrngSeedOperation(gasCalculator, prngLogic);
+    MPCQPrngSeedOperation hederaPrngSeedOperation(final GasCalculator gasCalculator, final PrngLogic prngLogic) {
+        return new MPCQPrngSeedOperation(gasCalculator, prngLogic);
     }
 
     @Bean
-    HederaSelfDestructOperation hederaSelfDestructOperation(final GasCalculator gasCalculator) {
-        return new HederaSelfDestructOperation(gasCalculator, addressValidator);
+    MPCQSelfDestructOperation hederaSelfDestructOperation(final GasCalculator gasCalculator) {
+        return new MPCQSelfDestructOperation(gasCalculator, addressValidator);
     }
 
     @Bean
-    HederaSelfDestructOperationV038 hederaSelfDestructOperationV038(final GasCalculator gasCalculator) {
-        return new HederaSelfDestructOperationV038(gasCalculator, addressValidator, systemAccountDetector);
+    MPCQSelfDestructOperationV038 hederaSelfDestructOperationV038(final GasCalculator gasCalculator) {
+        return new MPCQSelfDestructOperationV038(gasCalculator, addressValidator, systemAccountDetector);
     }
 
     @Bean
-    HederaBalanceOperation hederaBalanceOperation(final GasCalculator gasCalculator) {
-        return new HederaBalanceOperation(gasCalculator, addressValidator);
+    MPCQBalanceOperation hederaBalanceOperation(final GasCalculator gasCalculator) {
+        return new MPCQBalanceOperation(gasCalculator, addressValidator);
     }
 
     @Bean
-    HederaBalanceOperationV038 hederaBalanceOperationV038(final GasCalculator gasCalculator) {
-        return new HederaBalanceOperationV038(
+    MPCQBalanceOperationV038 hederaBalanceOperationV038(final GasCalculator gasCalculator) {
+        return new MPCQBalanceOperationV038(
                 gasCalculator, addressValidator, systemAccountDetector, mirrorNodeEvmProperties);
     }
 
     @Bean
-    HederaSelfDestructOperationV046 hederaSelfDestructOperationV046(final GasCalculator gasCalculator) {
-        return new HederaSelfDestructOperationV046(gasCalculator, addressValidator, systemAccountDetector, false);
+    MPCQSelfDestructOperationV046 hederaSelfDestructOperationV046(final GasCalculator gasCalculator) {
+        return new MPCQSelfDestructOperationV046(gasCalculator, addressValidator, systemAccountDetector, false);
     }
 
     @Bean
-    HederaSelfDestructOperationV050 hederaSelfDestructOperationV050(final GasCalculator gasCalculator) {
-        return new HederaSelfDestructOperationV050(gasCalculator, addressValidator, systemAccountDetector);
+    MPCQSelfDestructOperationV050 hederaSelfDestructOperationV050(final GasCalculator gasCalculator) {
+        return new MPCQSelfDestructOperationV050(gasCalculator, addressValidator, systemAccountDetector);
     }
 
     @Bean
@@ -491,8 +491,8 @@ public class EvmConfiguration {
     private EVM evm(
             final GasCalculator gasCalculator,
             final MirrorNodeEvmProperties mirrorNodeEvmProperties,
-            final HederaPrngSeedOperation prngSeedOperation,
-            final HederaBlockHashOperation hederaBlockHashOperation,
+            final MPCQPrngSeedOperation prngSeedOperation,
+            final MPCQBlockHashOperation hederaBlockHashOperation,
             final ExtCodeHashOperation extCodeHashOperation,
             final SelfDestructOperation selfDestructOperation,
             final BalanceOperation hederaBalanceOperation,
@@ -506,15 +506,15 @@ public class EvmConfiguration {
                 gasCalculator,
                 mirrorNodeEvmProperties.chainIdBytes32().toBigInteger());
         Set.of(
-                        new HederaDelegateCallOperation(gasCalculator, validator),
-                        new HederaEvmChainIdOperation(gasCalculator, mirrorNodeEvmProperties),
-                        new HederaEvmCreate2Operation(
+                        new MPCQDelegateCallOperation(gasCalculator, validator),
+                        new MPCQEvmChainIdOperation(gasCalculator, mirrorNodeEvmProperties),
+                        new MPCQEvmCreate2Operation(
                                 gasCalculator, mirrorNodeEvmProperties, createOperationExternalizer()),
-                        new HederaEvmCreateOperation(gasCalculator, createOperationExternalizer()),
-                        new HederaEvmSLoadOperation(gasCalculator),
-                        new HederaExtCodeCopyOperation(gasCalculator, validator),
-                        new HederaExtCodeSizeOperation(gasCalculator, validator),
-                        new HederaCustomCallOperation(gasCalculator),
+                        new MPCQEvmCreateOperation(gasCalculator, createOperationExternalizer()),
+                        new MPCQEvmSLoadOperation(gasCalculator),
+                        new MPCQExtCodeCopyOperation(gasCalculator, validator),
+                        new MPCQExtCodeSizeOperation(gasCalculator, validator),
+                        new MPCQCustomCallOperation(gasCalculator),
                         prngSeedOperation,
                         hederaBlockHashOperation,
                         extCodeHashOperation,

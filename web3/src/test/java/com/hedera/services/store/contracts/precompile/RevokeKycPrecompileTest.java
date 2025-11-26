@@ -24,7 +24,7 @@ import com.hedera.services.store.models.TokenRelationship;
 import com.hedera.services.txn.token.RevokeKycLogic;
 import com.hedera.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SubType;
 import com.hederahashgraph.api.proto.java.TokenRevokeKycTransactionBody;
 import com.hederahashgraph.api.proto.java.TransactionBody;
@@ -38,7 +38,7 @@ import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.common.PrecompileContext;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.junit.jupiter.api.BeforeEach;
@@ -86,7 +86,7 @@ class RevokeKycPrecompileTest {
     private HbarCentExchange exchange;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
     private MessageFrame frame;
@@ -123,10 +123,10 @@ class RevokeKycPrecompileTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        final Map<HederaFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
-                new EnumMap<>(HederaFunctionality.class);
+        final Map<MPCQFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
+                new EnumMap<>(MPCQFunctionality.class);
         canonicalPrices.put(
-                HederaFunctionality.TokenRevokeKycFromAccount, Map.of(SubType.DEFAULT, BigDecimal.valueOf(0)));
+                MPCQFunctionality.TokenRevokeKycFromAccount, Map.of(SubType.DEFAULT, BigDecimal.valueOf(0)));
         given(assetLoader.loadCanonicalPrices()).willReturn(canonicalPrices);
         final PrecompilePricingUtils precompilePricingUtils =
                 new PrecompilePricingUtils(assetLoader, exchange, feeCalculator, resourceCosts, accessorFactory);
@@ -150,7 +150,7 @@ class RevokeKycPrecompileTest {
                 .willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         given(worldUpdater.getStore()).willReturn(store);
         given(store.getTokenRelationship(any(), any())).willReturn(tokenRelationship);
-        given(feeCalculator.estimatedGasPriceInTinybars(HederaFunctionality.ContractCall, HTSTestsUtil.timestamp))
+        given(feeCalculator.estimatedGasPriceInTinybars(MPCQFunctionality.ContractCall, HTSTestsUtil.timestamp))
                 .willReturn(1L);
         given(feeCalculator.computeFee(any(), any(), any())).willReturn(mockFeeObject);
         given(frame.getWorldUpdater()).willReturn(worldUpdater);

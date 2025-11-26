@@ -56,7 +56,7 @@ class ImporterConfiguration {
         return configuration -> {
             Long timestamp = importerProperties.getTopicRunningHashV2AddedTimestamp();
             if (timestamp == null) {
-                if (ImporterProperties.HederaNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork())) {
+                if (ImporterProperties.MPCQNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork())) {
                     timestamp = 1592499600000000000L;
                 } else {
                     timestamp = 1588706343553042000L;

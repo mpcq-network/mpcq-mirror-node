@@ -1,4 +1,4 @@
-# Hedera Mirror Node Sample Smart Contract Project
+# MPCQ Mirror Node Sample Smart Contract Project
 
 This project demonstrates a basic smart contract use case using the [Hardhat](https://hardhat.org/) ethereum development
 environment. It comes with some sample contracts, test files for those contracts, a sample script that deploys that

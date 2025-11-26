@@ -7,7 +7,7 @@ import static org.hiero.mirror.restjava.mapper.CommonMapper.QUALIFIER_TIMESTAMP;
 import com.hederahashgraph.api.proto.java.CurrentAndNextFeeSchedule;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.ExchangeRateSet;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.TransactionFeeSchedule;
 import java.util.Comparator;
 import java.util.Map;
@@ -29,10 +29,10 @@ public interface FeeScheduleMapper {
             Comparator.comparing(NetworkFee::getTransactionType, String.CASE_INSENSITIVE_ORDER);
     Comparator<NetworkFee> DESC_COMPARATOR = ASC_COMPARATOR.reversed();
 
-    Map<HederaFunctionality, String> ENABLED_TRANSACTION_TYPES = Map.of(
-            HederaFunctionality.ContractCall, "ContractCall",
-            HederaFunctionality.ContractCreate, "ContractCreate",
-            HederaFunctionality.EthereumTransaction, "EthereumTransaction");
+    Map<MPCQFunctionality, String> ENABLED_TRANSACTION_TYPES = Map.of(
+            MPCQFunctionality.ContractCall, "ContractCall",
+            MPCQFunctionality.ContractCreate, "ContractCreate",
+            MPCQFunctionality.EthereumTransaction, "EthereumTransaction");
 
     @Mapping(target = "fees", expression = "java(mapFees(feeScheduleFile, exchangeRateFile, order))")
     @Mapping(
@@ -53,7 +53,7 @@ public interface FeeScheduleMapper {
         var rate = exchangeRateFile.protobuf().getCurrentRate();
 
         return schedule.getTransactionFeeScheduleList().stream()
-                .filter(s -> ENABLED_TRANSACTION_TYPES.containsKey(s.getHederaFunctionality()) && s.getFeesCount() > 0)
+                .filter(s -> ENABLED_TRANSACTION_TYPES.containsKey(s.getMPCQFunctionality()) && s.getFeesCount() > 0)
                 .map(s -> mapToNetworkFee(s, rate))
                 .filter(Objects::nonNull)
                 .sorted(getComparator(order))
@@ -68,7 +68,7 @@ public interface FeeScheduleMapper {
             return null;
         }
 
-        var type = ENABLED_TRANSACTION_TYPES.get(schedule.getHederaFunctionality());
+        var type = ENABLED_TRANSACTION_TYPES.get(schedule.getMPCQFunctionality());
         var gas = feeData.getServicedata().getGas();
         var tinyBars = convertGasPriceToTinyBars(gas, rate.getHbarEquiv(), rate.getCentEquiv());
 

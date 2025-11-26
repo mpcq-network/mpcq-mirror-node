@@ -69,7 +69,7 @@ public class DateRangeCalculator {
         if (startDate != null) {
             filterStartDate = max(startDate, lastFileInstant);
         } else {
-            if (!ImporterProperties.HederaNetwork.DEMO.equalsIgnoreCase(importerProperties.getNetwork())
+            if (!ImporterProperties.MPCQNetwork.DEMO.equalsIgnoreCase(importerProperties.getNetwork())
                     && lastFileInstant == null) {
                 filterStartDate = STARTUP_TIME;
             }
@@ -104,7 +104,7 @@ public class DateRangeCalculator {
             effectiveStartDate = max(startDate, hasStreamFile ? lastFileInstant : Instant.EPOCH);
         } else if (hasStreamFile) {
             effectiveStartDate = lastFileInstant;
-        } else if (ImporterProperties.HederaNetwork.DEMO.equalsIgnoreCase(importerProperties.getNetwork())) {
+        } else if (ImporterProperties.MPCQNetwork.DEMO.equalsIgnoreCase(importerProperties.getNetwork())) {
             effectiveStartDate = Instant.EPOCH; // Demo network contains only data in the past, so don't default to now
         }
 

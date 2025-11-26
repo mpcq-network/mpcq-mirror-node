@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	NilHederaTransaction *hiero.TransferTransaction
+	NilMPCQTransaction *hiero.TransferTransaction
 	NilOperations        types.OperationSlice
 	NilSigners           []types.AccountId
 )

@@ -3,15 +3,15 @@
 package org.hiero.mirror.web3.evm.store.contract;
 
 import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmMutableWorldState;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.account.Account;
 import org.hyperledger.besu.evm.account.MutableAccount;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
-public class MockLedgerWorldUpdater extends AbstractLedgerWorldUpdater<HederaEvmMutableWorldState, Account> {
+public class MockLedgerWorldUpdater extends AbstractLedgerWorldUpdater<MPCQEvmMutableWorldState, Account> {
 
-    public MockLedgerWorldUpdater(final HederaEvmWorldState world, final AccountAccessor accountAccessor) {
+    public MockLedgerWorldUpdater(final MPCQEvmWorldState world, final AccountAccessor accountAccessor) {
         super(world, accountAccessor, null);
     }
 

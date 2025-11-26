@@ -4,6 +4,6 @@ export const currencyHbar = {
   symbol: 'HBAR',
   decimals: 8,
   metadata: {
-    issuer: 'Hedera',
+    issuer: 'MPCQ',
   },
 };

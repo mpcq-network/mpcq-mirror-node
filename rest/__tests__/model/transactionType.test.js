@@ -86,9 +86,9 @@ describe('isValid', () => {
 });
 
 describe('transactionType constants are up to date', () => {
-  // There isn't a dedicated enum for TransactionBody values, so just check that no new HederaFunctionality exists. If
-  // this test fails, ensure that new transaction types are added and update this test with the new HederaFunctionality.
+  // There isn't a dedicated enum for TransactionBody values, so just check that no new MPCQFunctionality exists. If
+  // this test fails, ensure that new transaction types are added and update this test with the new MPCQFunctionality.
   test('transactionType have new values been added', () => {
-    expect(Object.keys(proto.HederaFunctionality).length).toEqual(hederaFunctionalityLength);
+    expect(Object.keys(proto.MPCQFunctionality).length).toEqual(hederaFunctionalityLength);
   });
 });

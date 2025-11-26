@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.pricing;
 
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hiero.mirror.common.domain.transaction.TransactionType.FILEAPPEND;
 import static org.hiero.mirror.common.domain.transaction.TransactionType.FILECREATE;
@@ -54,24 +54,24 @@ class RatesAndFeesLoaderIntegrationTest extends Web3IntegrationTest {
             .setCurrentFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(200L))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder().build())))
             .setNextFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(2_234_567_890L))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder().build())))
             .build();
     private static final CurrentAndNextFeeSchedule feeSchedules2 = CurrentAndNextFeeSchedule.newBuilder()
             .setCurrentFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(300L))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder().build())))
             .setNextFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(2_234_567_890L))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder().build())))
             .build();
 

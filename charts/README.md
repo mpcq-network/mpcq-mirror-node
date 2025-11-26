@@ -1,15 +1,15 @@
 # Helm Chart
 
-Installs the Hedera Mirror Node Helm wrapper chart. This chart will install the mirror node components:
+Installs the MPCQ Mirror Node Helm wrapper chart. This chart will install the mirror node components:
 
-- [Hedera Mirror GraphQL API](hedera-mirror-graphql)
-- [Hedera Mirror GRPC API](hedera-mirror-grpc)
-- [Hedera Mirror Importer](hedera-mirror-importer)
-- [Hedera Mirror Monitor](hedera-mirror-monitor)
-- [Hedera Mirror REST API](hedera-mirror-rest)
-- [Hedera Mirror Java REST API](hedera-mirror-rest-java)
-- [Hedera Mirror Rosetta API](hedera-mirror-rosetta)
-- [Hedera Mirror Web3 API](hedera-mirror-web3)
+- [MPCQ Mirror GraphQL API](hedera-mirror-graphql)
+- [MPCQ Mirror GRPC API](hedera-mirror-grpc)
+- [MPCQ Mirror Importer](hedera-mirror-importer)
+- [MPCQ Mirror Monitor](hedera-mirror-monitor)
+- [MPCQ Mirror REST API](hedera-mirror-rest)
+- [MPCQ Mirror Java REST API](hedera-mirror-rest-java)
+- [MPCQ Mirror Rosetta API](hedera-mirror-rosetta)
+- [MPCQ Mirror Web3 API](hedera-mirror-web3)
 
 ## Requirements
 

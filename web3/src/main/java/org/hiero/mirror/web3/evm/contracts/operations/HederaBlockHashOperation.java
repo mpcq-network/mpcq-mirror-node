@@ -22,13 +22,13 @@ import org.hyperledger.besu.evm.operation.BlockHashOperation;
  * block value can be returned as well.
  */
 @Named
-public class HederaBlockHashOperation extends BlockHashOperation {
+public class MPCQBlockHashOperation extends BlockHashOperation {
     /**
      * Instantiates a new Block hash operation.
      *
      * @param gasCalculator the gas calculator
      */
-    public HederaBlockHashOperation(GasCalculator gasCalculator) {
+    public MPCQBlockHashOperation(GasCalculator gasCalculator) {
         super(gasCalculator);
     }
 

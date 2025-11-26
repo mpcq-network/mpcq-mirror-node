@@ -4,16 +4,16 @@ package org.hiero.mirror.web3.evm.config;
 
 import static org.hiero.mirror.common.util.DomainUtils.fromEvmAddress;
 
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
 import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.app.service.evm.contracts.operations.HederaExtCodeHashOperation;
-import com.hedera.node.app.service.evm.contracts.operations.HederaExtCodeHashOperationV038;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExtCodeHashOperation;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExtCodeHashOperationV038;
 import com.hedera.node.app.service.evm.store.contracts.AbstractCodeCache;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
 import com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmEncodingFacade;
 import com.hedera.services.contracts.execution.LivePricesSource;
-import com.hedera.services.contracts.gascalculator.GasCalculatorHederaV22;
+import com.hedera.services.contracts.gascalculator.GasCalculatorMPCQV22;
 import com.hedera.services.fees.BasicHbarCentExchange;
 import com.hedera.services.fees.FeeCalculator;
 import com.hedera.services.fees.HbarCentExchange;
@@ -96,7 +96,7 @@ import com.hedera.services.txns.util.PrngLogic;
 import com.hedera.services.txns.validation.ContextOptionValidator;
 import com.hedera.services.txns.validation.OptionValidator;
 import com.hedera.services.utils.accessors.AccessorFactory;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import java.util.Base64;
 import java.util.EnumMap;
 import java.util.List;
@@ -149,9 +149,9 @@ public class ServicesConfiguration {
     }
 
     @Bean
-    GasCalculatorHederaV22 gasCalculatorHederaV22(
+    GasCalculatorMPCQV22 gasCalculatorMPCQV22(
             final BasicFcfsUsagePrices usagePricesProvider, final BasicHbarCentExchange hbarCentExchange) {
-        return new GasCalculatorHederaV22(usagePricesProvider, hbarCentExchange);
+        return new GasCalculatorMPCQV22(usagePricesProvider, hbarCentExchange);
     }
 
     @Bean
@@ -204,21 +204,21 @@ public class ServicesConfiguration {
             final PricedUsageCalculator pricedUsageCalculator,
             final Set<QueryResourceUsageEstimator> queryResourceUsageEstimators,
             final List<TxnResourceUsageEstimator> txnResourceUsageEstimators) {
-        final Map<HederaFunctionality, List<TxnResourceUsageEstimator>> txnUsageEstimators =
-                new EnumMap<>(HederaFunctionality.class);
+        final Map<MPCQFunctionality, List<TxnResourceUsageEstimator>> txnUsageEstimators =
+                new EnumMap<>(MPCQFunctionality.class);
 
         for (final var estimator : txnResourceUsageEstimators) {
             if (estimator.toString().contains("TokenAssociate")) {
-                txnUsageEstimators.put(HederaFunctionality.TokenAssociateToAccount, List.of(estimator));
+                txnUsageEstimators.put(MPCQFunctionality.TokenAssociateToAccount, List.of(estimator));
             }
             if (estimator.toString().contains("TokenDissociate")) {
-                txnUsageEstimators.put(HederaFunctionality.TokenDissociateFromAccount, List.of(estimator));
+                txnUsageEstimators.put(MPCQFunctionality.TokenDissociateFromAccount, List.of(estimator));
             }
             if (estimator.toString().contains("TokenDelete")) {
-                txnUsageEstimators.put(HederaFunctionality.TokenDelete, List.of(estimator));
+                txnUsageEstimators.put(MPCQFunctionality.TokenDelete, List.of(estimator));
             }
             if (estimator.toString().contains("TokenUpdate")) {
-                txnUsageEstimators.put(HederaFunctionality.TokenUpdate, List.of(estimator));
+                txnUsageEstimators.put(MPCQFunctionality.TokenUpdate, List.of(estimator));
             }
         }
 
@@ -539,7 +539,7 @@ public class ServicesConfiguration {
     }
 
     @Bean
-    OpUsageCtxHelper opUsageCtxHelper(final Store store, final HederaEvmContractAliases hederaEvmContractAliases) {
+    OpUsageCtxHelper opUsageCtxHelper(final Store store, final MPCQEvmContractAliases hederaEvmContractAliases) {
         return new OpUsageCtxHelper(store, hederaEvmContractAliases);
     }
 
@@ -773,24 +773,24 @@ public class ServicesConfiguration {
     }
 
     @Bean
-    HederaExtCodeHashOperationV038 hederaExtCodeHashOperationV038(
+    MPCQExtCodeHashOperationV038 hederaExtCodeHashOperationV038(
             final GasCalculator gasCalculator,
             final Predicate<Address> strictSystemAccountDetector,
             final BiPredicate<Address, MessageFrame> addressValidator,
             final MirrorNodeEvmProperties mirrorNodeEvmProperties) {
-        return new HederaExtCodeHashOperationV038(
+        return new MPCQExtCodeHashOperationV038(
                 gasCalculator, addressValidator, strictSystemAccountDetector, mirrorNodeEvmProperties);
     }
 
     @Bean
-    HederaExtCodeHashOperation hederaExtCodeHashOperation(
+    MPCQExtCodeHashOperation hederaExtCodeHashOperation(
             final GasCalculator gasCalculator, final BiPredicate<Address, MessageFrame> addressValidator) {
-        return new HederaExtCodeHashOperation(gasCalculator, addressValidator);
+        return new MPCQExtCodeHashOperation(gasCalculator, addressValidator);
     }
 
     @Bean
     BiPredicate<Address, MessageFrame> addressValidator(final PrecompilesHolder precompilesHolder) {
-        final var precompiles = precompilesHolder.getHederaPrecompiles().keySet().stream()
+        final var precompiles = precompilesHolder.getMPCQPrecompiles().keySet().stream()
                 .map(Address::fromHexString)
                 .collect(Collectors.toSet());
         return (address, frame) ->

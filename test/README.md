@@ -9,7 +9,7 @@ allow us to confirm functionality for core scenarios that span the main and mirr
 are submitted to the main network, the mirror node importer ingests these to the database, and the client subscribes to
 either the mirror node gRPC or REST API to receive results.
 
-To achieve this, the tests use the Hiero Java SDK under the hood. This E2E suite allows us to execute scenarios as
+To achieve this, the tests use the MPCQ Java SDK under the hood. This E2E suite allows us to execute scenarios as
 regular clients would and gain the required confidence during deployment.
 
 ## Cucumber
@@ -49,7 +49,7 @@ include:
 | `hiero.mirror.test.acceptance.maxTinyBarTransactionFee`          | 5000000000                                   | The maximum transaction fee the payer is willing to pay in tinybars.                                                                                   |
 | `hiero.mirror.test.acceptance.messageTimeout`                    | 20s                                          | The maximum amount of time to wait to receive topic messages from the mirror node.                                                                     |
 | `hiero.mirror.test.acceptance.mirrorNodeAddress`                 | testnet.mirrornode.hedera.com:443            | The mirror node gRPC server endpoint including IP address and port.                                                                                    |
-| `hiero.mirror.test.acceptance.network`                           | TESTNET                                      | Which Hedera network to use. Can be either `MAINNET`, `PREVIEWNET`, `TESTNET` or `OTHER`.                                                              |
+| `hiero.mirror.test.acceptance.network`                           | TESTNET                                      | Which MPCQ network to use. Can be either `MAINNET`, `PREVIEWNET`, `TESTNET` or `OTHER`.                                                              |
 | `hiero.mirror.test.acceptance.nodes[].accountId`                 | ""                                           | The consensus node's account ID                                                                                                                        |
 | `hiero.mirror.test.acceptance.nodes[].certHash`                  | ""                                           | The consensus node's certificate hash used for TLS certificate verification                                                                            |
 | `hiero.mirror.test.acceptance.nodes[].host`                      | ""                                           | The consensus node's hostname                                                                                                                          |

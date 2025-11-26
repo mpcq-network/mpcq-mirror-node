@@ -3,7 +3,7 @@
 import com.graphql_java_generator.plugin.conf.CustomScalarDefinition
 import com.graphql_java_generator.plugin.conf.PluginMode
 
-description = "Hiero Mirror Node GraphQL"
+description = "MPCQ Mirror Node GraphQL"
 
 plugins {
     id("com.graphql-java-generator.graphql-gradle-plugin3")

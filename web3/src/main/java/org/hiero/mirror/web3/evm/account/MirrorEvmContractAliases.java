@@ -4,7 +4,7 @@ package org.hiero.mirror.web3.evm.account;
 
 import static com.hedera.services.utils.MiscUtils.isRecoveredEvmAddress;
 
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
 import com.hedera.node.app.service.evm.utils.EthSigsUtils;
 import com.hedera.services.jproto.JECDSASecp256k1Key;
 import com.hedera.services.jproto.JKey;
@@ -18,7 +18,7 @@ import org.jspecify.annotations.Nullable;
 
 @RequiredArgsConstructor
 @Named
-public class MirrorEvmContractAliases extends HederaEvmContractAliases {
+public class MirrorEvmContractAliases extends MPCQEvmContractAliases {
 
     final Store store;
 

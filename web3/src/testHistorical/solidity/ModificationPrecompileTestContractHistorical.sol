@@ -3,16 +3,16 @@ pragma solidity >=0.5.0 <0.9.0;
 pragma experimental ABIEncoderV2;
 
 
-import "./HederaTokenService.sol";
-import "./HederaResponseCodes.sol";
+import "./MPCQTokenService.sol";
+import "./MPCQResponseCodes.sol";
 
-contract ModificationPrecompileTestContractHistorical is HederaTokenService {
+contract ModificationPrecompileTestContractHistorical is MPCQTokenService {
 
-    function cryptoTransferExternal(IHederaTokenService.TransferList memory transferList, IHederaTokenService.TokenTransferList[] memory tokenTransfers) external
+    function cryptoTransferExternal(IMPCQTokenService.TransferList memory transferList, IMPCQTokenService.TokenTransferList[] memory tokenTransfers) external
     returns (int responseCode)
     {
-        responseCode = HederaTokenService.cryptoTransfer(transferList, tokenTransfers);
-        if (responseCode != HederaResponseCodes.SUCCESS) {
+        responseCode = MPCQTokenService.cryptoTransfer(transferList, tokenTransfers);
+        if (responseCode != MPCQResponseCodes.SUCCESS) {
             revert();
         }
     }

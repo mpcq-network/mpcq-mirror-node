@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.time.DurationMin;
 import org.hiero.mirror.importer.ImporterProperties;
-import org.hiero.mirror.importer.ImporterProperties.HederaNetwork;
+import org.hiero.mirror.importer.ImporterProperties.MPCQNetwork;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
@@ -85,7 +85,7 @@ public class CommonDownloaderProperties {
     @PostConstruct
     public void init() {
         if (StringUtils.isBlank(bucketName)
-                && StringUtils.isBlank(HederaNetwork.getBucketName(importerProperties.getNetwork()))) {
+                && StringUtils.isBlank(MPCQNetwork.getBucketName(importerProperties.getNetwork()))) {
             throw new IllegalArgumentException(
                     "Must define bucketName for network named '%s'".formatted(importerProperties.getNetwork()));
         }
@@ -127,13 +127,13 @@ public class CommonDownloaderProperties {
     public String getBucketName() {
         return StringUtils.isNotBlank(bucketName)
                 ? bucketName
-                : HederaNetwork.getBucketName(importerProperties.getNetwork());
+                : MPCQNetwork.getBucketName(importerProperties.getNetwork());
     }
 
     public boolean isAnonymousCredentials() {
         return allowAnonymousAccess != null
                 ? allowAnonymousAccess
-                : HederaNetwork.isAllowAnonymousAccess(importerProperties.getNetwork());
+                : MPCQNetwork.isAllowAnonymousAccess(importerProperties.getNetwork());
     }
 
     public enum PathType {

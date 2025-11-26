@@ -47,7 +47,7 @@ func blockRequest() *rTypes.BlockRequest {
 
 	return &rTypes.BlockRequest{
 		NetworkIdentifier: &rTypes.NetworkIdentifier{
-			Blockchain:           "Hedera",
+			Blockchain:           "MPCQ",
 			Network:              "hhh",
 			SubNetworkIdentifier: nil,
 		},

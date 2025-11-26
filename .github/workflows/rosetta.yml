@@ -105,7 +105,7 @@ jobs:
         working-directory: ./rosetta/scripts/validation/${{ env.NETWORK }}
         run: |
           # set start index to genesis index + 1
-          body='{"network_identifier": {"blockchain": "Hedera", "network": "'${NETWORK}'"}}'
+          body='{"network_identifier": {"blockchain": "MPCQ", "network": "'${NETWORK}'"}}'
           startIndex=$(curl -sL -d "${body}" http://localhost:5700/network/status | jq '.genesis_block_identifier.index+1')
           echo "Setting data start_index to $startIndex"
           jq --argjson startIndex $startIndex '.data.start_index=$startIndex' validation.json > tmp.json && \

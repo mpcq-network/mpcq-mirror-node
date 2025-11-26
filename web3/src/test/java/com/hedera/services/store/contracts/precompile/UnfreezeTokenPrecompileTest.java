@@ -38,7 +38,7 @@ import org.hiero.mirror.common.domain.DomainBuilder;
 import org.hiero.mirror.web3.common.PrecompileContext;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.junit.jupiter.api.AfterEach;
@@ -74,7 +74,7 @@ class UnfreezeTokenPrecompileTest {
     private ExchangeRate exchangeRate;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
     private UnfreezeLogic unfreezeLogic;
@@ -128,9 +128,9 @@ class UnfreezeTokenPrecompileTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        final Map<HederaFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
-                new EnumMap<>(HederaFunctionality.class);
-        canonicalPrices.put(HederaFunctionality.TokenUnfreezeAccount, Map.of(SubType.DEFAULT, BigDecimal.valueOf(0)));
+        final Map<MPCQFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
+                new EnumMap<>(MPCQFunctionality.class);
+        canonicalPrices.put(MPCQFunctionality.TokenUnfreezeAccount, Map.of(SubType.DEFAULT, BigDecimal.valueOf(0)));
         given(assetLoader.loadCanonicalPrices()).willReturn(canonicalPrices);
         final PrecompilePricingUtils precompilePricingUtils =
                 new PrecompilePricingUtils(assetLoader, exchange, feeCalculator, resourceCosts, accessorFactory);

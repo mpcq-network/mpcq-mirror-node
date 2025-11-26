@@ -24,7 +24,7 @@ import org.hiero.mirror.common.CommonProperties;
 import org.hiero.mirror.common.domain.SystemEntity;
 import org.hiero.mirror.common.domain.transaction.RecordFile;
 import org.hiero.mirror.web3.common.ContractCallContext;
-import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.HederaNetwork;
+import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.MPCQNetwork;
 import org.hyperledger.besu.datatypes.Address;
 import org.junit.jupiter.api.AutoClose;
 import org.junit.jupiter.api.BeforeEach;
@@ -147,9 +147,9 @@ class MirrorNodeEvmPropertiesTest {
 
     @ParameterizedTest
     @MethodSource("blockNumberToEvmVersionProviderMainnet")
-    void getEvmVersionForBlockFromHederaNetwork(Long blockNumber, SemanticVersion expectedEvmVersion) {
+    void getEvmVersionForBlockFromMPCQNetwork(Long blockNumber, SemanticVersion expectedEvmVersion) {
         // given
-        properties.setNetwork(HederaNetwork.MAINNET);
+        properties.setNetwork(MPCQNetwork.MAINNET);
 
         var result = properties.getEvmVersionForBlock(blockNumber);
         assertThat(result).isEqualTo(expectedEvmVersion);

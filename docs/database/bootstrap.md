@@ -186,7 +186,7 @@ The Mirror Node database export data is available in a Google Cloud Storage (GCS
 **Important Notes:**
 
 - The bucket is **read-only** to the public.
-- It is configured as **Requester Pays**, meaning you need a GCP account with a valid billing account attached to download the data. For detailed instructions, refer to [Hedera's documentation on GCS](https://docs.hedera.com/hedera/core-concepts/mirror-nodes/run-your-own-beta-mirror-node/run-your-own-mirror-node-gcs#id-1.-obtain-google-cloud-platform-requester-pay-information).
+- It is configured as **Requester Pays**, meaning you need a GCP account with a valid billing account attached to download the data. For detailed instructions, refer to [MPCQ's documentation on GCS](https://docs.hedera.com/hedera/core-concepts/mirror-nodes/run-your-own-beta-mirror-node/run-your-own-mirror-node-gcs#id-1.-obtain-google-cloud-platform-requester-pay-information).
 - You will be billed for the data transfer fees incurred during the download.
 
 #### 3.1. Set Your Default GCP Project

@@ -17,7 +17,7 @@ import static org.mockito.BDDMockito.given;
 
 import com.esaulpaugh.headlong.util.Integers;
 import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmWorldStateTokenAccount;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
 import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.RedirectViewExecutor;
 import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.ViewExecutor;
@@ -47,7 +47,7 @@ import org.hiero.mirror.web3.evm.store.StackedStateFrames;
 import org.hiero.mirror.web3.evm.store.Store;
 import org.hiero.mirror.web3.evm.store.StoreImpl;
 import org.hiero.mirror.web3.evm.store.accessor.DatabaseAccessor;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.BlockValues;
@@ -103,10 +103,10 @@ class HTSPrecompiledContractTest {
     private RedirectViewExecutor redirectViewExecutor;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
-    private HederaEvmWorldStateTokenAccount account;
+    private MPCQEvmWorldStateTokenAccount account;
 
     @Mock
     private PrecompilePricingUtils precompilePricingUtils;

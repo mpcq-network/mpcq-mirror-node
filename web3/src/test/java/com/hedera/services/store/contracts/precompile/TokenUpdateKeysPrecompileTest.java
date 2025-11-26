@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import com.hedera.services.fees.FeeCalculator;
@@ -39,7 +39,7 @@ import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.common.PrecompileContext;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.junit.jupiter.api.BeforeEach;
@@ -60,13 +60,13 @@ class TokenUpdateKeysPrecompileTest {
     private TokenUpdateLogic updateLogic;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
     private FeeCalculator feeCalculator;
 
     @Mock
-    private HederaEvmContractAliases hederaEvmContractAliases;
+    private MPCQEvmContractAliases hederaEvmContractAliases;
 
     @Mock
     private UsagePricesProvider resourceCosts;

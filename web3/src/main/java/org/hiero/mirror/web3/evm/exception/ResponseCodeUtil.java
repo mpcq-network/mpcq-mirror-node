@@ -17,8 +17,8 @@ import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.MAX_STORAGE_IN
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.SUCCESS;
 import static java.util.stream.Collectors.toMap;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
-import com.hedera.node.app.service.evm.contracts.operations.HederaExceptionalHaltReason;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
 import com.hedera.node.app.service.evm.store.contracts.utils.BytesKey;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.util.Map;
@@ -49,7 +49,7 @@ public class ResponseCodeUtil {
                                     .toArrayUnsafe()),
                     status -> status));
 
-    public static ResponseCodeEnum getStatusOrDefault(final HederaEvmTransactionProcessingResult result) {
+    public static ResponseCodeEnum getStatusOrDefault(final MPCQEvmTransactionProcessingResult result) {
         if (result.isSuccessful()) {
             return SUCCESS;
         }
@@ -60,7 +60,7 @@ public class ResponseCodeUtil {
                 return ResponseCodeEnum.LOCAL_CALL_MODIFICATION_EXCEPTION;
             } else if (ExceptionalHaltReason.INSUFFICIENT_GAS == haltReason) {
                 return ResponseCodeEnum.INSUFFICIENT_GAS;
-            } else if (HederaExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS == haltReason) {
+            } else if (MPCQExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS == haltReason) {
                 return INVALID_SOLIDITY_ADDRESS;
             }
         }

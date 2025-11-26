@@ -4,7 +4,7 @@ package org.hiero.mirror.web3.exception;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.io.Serial;
 import java.nio.charset.StandardCharsets;
@@ -26,7 +26,7 @@ public class MirrorEvmTransactionException extends EvmException {
     private final String detail;
     private final String data;
     private final Boolean isCallModularized;
-    private final transient HederaEvmTransactionProcessingResult result;
+    private final transient MPCQEvmTransactionProcessingResult result;
     // needs to be initialized since some tests fail, opted for List.of() instead of LinkedList because
     // in one of the constructors we reassign it
     private SequencedCollection<String> childTransactionErrors = List.of();
@@ -53,7 +53,7 @@ public class MirrorEvmTransactionException extends EvmException {
             final String message,
             final String detail,
             final String hexData,
-            final HederaEvmTransactionProcessingResult result,
+            final MPCQEvmTransactionProcessingResult result,
             final Boolean isCallModularized) {
         super(message);
         this.detail = detail;
@@ -66,7 +66,7 @@ public class MirrorEvmTransactionException extends EvmException {
             final String message,
             final String detail,
             final String hexData,
-            final HederaEvmTransactionProcessingResult result,
+            final MPCQEvmTransactionProcessingResult result,
             final Boolean isCallModularized,
             final SequencedCollection<String> childTransactionErrors) {
         this(message, detail, hexData, result, isCallModularized);

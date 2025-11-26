@@ -6,7 +6,7 @@ import static com.hedera.services.hapi.utils.fees.FeeBuilder.FEE_DIVISOR_FACTOR;
 import static com.hedera.services.hapi.utils.fees.FeeBuilder.getFeeObject;
 import static com.hedera.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
 import static com.hedera.services.utils.IdUtils.asAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
 import static com.hederahashgraph.api.proto.java.ResponseType.ANSWER_ONLY;
 import static com.hederahashgraph.api.proto.java.SubType.DEFAULT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,7 +16,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.mock;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
 import com.hedera.services.fees.HbarCentExchange;
 import com.hedera.services.fees.calculation.token.txns.TokenDissociateResourceUsage;
 import com.hedera.services.fees.calculation.utils.PricedUsageCalculator;
@@ -28,7 +28,7 @@ import com.hederahashgraph.api.proto.java.Duration;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Query;
 import com.hederahashgraph.api.proto.java.SubType;
 import com.hederahashgraph.api.proto.java.Timestamp;
@@ -78,7 +78,7 @@ class UsageBasedFeeCalculatorTest {
     private TxnResourceUsageEstimator correctOpEstimator;
     private QueryResourceUsageEstimator correctQueryEstimator;
     private QueryResourceUsageEstimator incorrectQueryEstimator;
-    private Map<HederaFunctionality, List<TxnResourceUsageEstimator>> txnUsageEstimators;
+    private Map<MPCQFunctionality, List<TxnResourceUsageEstimator>> txnUsageEstimators;
 
     /* Has nine simple keys. */
     private JKey payerKey;
@@ -92,7 +92,7 @@ class UsageBasedFeeCalculatorTest {
     private Store store;
 
     @Mock
-    private HederaEvmContractAliases hederaEvmContractAliases;
+    private MPCQEvmContractAliases hederaEvmContractAliases;
 
     private UsageBasedFeeCalculator subject;
 
@@ -110,7 +110,7 @@ class UsageBasedFeeCalculatorTest {
         incorrectQueryEstimator = mock(QueryResourceUsageEstimator.class);
         pricedUsageCalculator = mock(PricedUsageCalculator.class);
 
-        txnUsageEstimators = (Map<HederaFunctionality, List<TxnResourceUsageEstimator>>) mock(Map.class);
+        txnUsageEstimators = (Map<MPCQFunctionality, List<TxnResourceUsageEstimator>>) mock(Map.class);
 
         subject = new UsageBasedFeeCalculator(
                 exchange,

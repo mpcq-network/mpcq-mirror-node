@@ -2,93 +2,93 @@
 pragma solidity ^0.8.0;
 pragma experimental ABIEncoderV2;
 
-import "./HederaTokenService.sol";
-import "./HederaResponseCodes.sol";
+import "./MPCQTokenService.sol";
+import "./MPCQResponseCodes.sol";
 
-contract PrecompileTestContractHistorical is HederaTokenService {
+contract PrecompileTestContractHistorical is MPCQTokenService {
 
 
     function isTokenAddress(address token) external returns (bool){
-        (int response,bool tokenFlag) = HederaTokenService.isToken(token);
+        (int response,bool tokenFlag) = MPCQTokenService.isToken(token);
 
-        if (response != HederaResponseCodes.SUCCESS) {
+        if (response != MPCQResponseCodes.SUCCESS) {
             revert ("Token isTokenAddress failed!");
         }
         return tokenFlag;
     }
 
     function isTokenFrozen(address token, address account) external returns (bool){
-        (int response,bool frozen) = HederaTokenService.isFrozen(token, account);
+        (int response,bool frozen) = MPCQTokenService.isFrozen(token, account);
 
-        if (response != HederaResponseCodes.SUCCESS) {
+        if (response != MPCQResponseCodes.SUCCESS) {
             revert ("Token isFrozen failed!");
         }
         return frozen;
     }
 
     function isKycGranted(address token, address account) external returns (bool){
-        (int response,bool kycGranted) = HederaTokenService.isKyc(token, account);
+        (int response,bool kycGranted) = MPCQTokenService.isKyc(token, account);
 
-        if (response != HederaResponseCodes.SUCCESS) {
+        if (response != MPCQResponseCodes.SUCCESS) {
             revert ("Token isKyc failed!");
         }
         return kycGranted;
     }
 
     function getTokenDefaultFreeze(address token) external returns (bool) {
-        (int response,bool frozen) = HederaTokenService.getTokenDefaultFreezeStatus(token);
+        (int response,bool frozen) = MPCQTokenService.getTokenDefaultFreezeStatus(token);
 
-        if (response != HederaResponseCodes.SUCCESS) {
+        if (response != MPCQResponseCodes.SUCCESS) {
             revert ("getTokenDefaultFreezeStatus failed!");
         }
         return frozen;
     }
 
     function getTokenDefaultKyc(address token) external returns (bool) {
-        (int response,bool kyc) = HederaTokenService.getTokenDefaultKycStatus(token);
+        (int response,bool kyc) = MPCQTokenService.getTokenDefaultKycStatus(token);
 
-        if (response != HederaResponseCodes.SUCCESS) {
+        if (response != MPCQResponseCodes.SUCCESS) {
             revert ("getTokenDefaultKycStatus failed!");
         }
         return kyc;
     }
 
     function getCustomFeesForToken(address token) external returns (
-        IHederaTokenService.FixedFee[] memory fixedFees,
-        IHederaTokenService.FractionalFee[] memory fractionalFees,
-        IHederaTokenService.RoyaltyFee[] memory royaltyFees) {
+        IMPCQTokenService.FixedFee[] memory fixedFees,
+        IMPCQTokenService.FractionalFee[] memory fractionalFees,
+        IMPCQTokenService.RoyaltyFee[] memory royaltyFees) {
         int responseCode;
-        (responseCode, fixedFees, fractionalFees, royaltyFees) = HederaTokenService.getTokenCustomFees(token);
+        (responseCode, fixedFees, fractionalFees, royaltyFees) = MPCQTokenService.getTokenCustomFees(token);
 
-        if (responseCode != HederaResponseCodes.SUCCESS) {
+        if (responseCode != MPCQResponseCodes.SUCCESS) {
             revert ();
         }
     }
 
-    function getInformationForToken(address token) external returns (IHederaTokenService.TokenInfo memory tokenInfo) {
-        (int responseCode, IHederaTokenService.TokenInfo memory retrievedTokenInfo) = HederaTokenService.getTokenInfo(token);
+    function getInformationForToken(address token) external returns (IMPCQTokenService.TokenInfo memory tokenInfo) {
+        (int responseCode, IMPCQTokenService.TokenInfo memory retrievedTokenInfo) = MPCQTokenService.getTokenInfo(token);
 
-        if (responseCode != HederaResponseCodes.SUCCESS) {
+        if (responseCode != MPCQResponseCodes.SUCCESS) {
             revert ();
         }
 
         tokenInfo = retrievedTokenInfo;
     }
 
-    function getInformationForFungibleToken(address token) external returns (IHederaTokenService.FungibleTokenInfo memory fungibleTokenInfo) {
-        (int responseCode, IHederaTokenService.FungibleTokenInfo memory retrievedTokenInfo) = HederaTokenService.getFungibleTokenInfo(token);
+    function getInformationForFungibleToken(address token) external returns (IMPCQTokenService.FungibleTokenInfo memory fungibleTokenInfo) {
+        (int responseCode, IMPCQTokenService.FungibleTokenInfo memory retrievedTokenInfo) = MPCQTokenService.getFungibleTokenInfo(token);
 
-        if (responseCode != HederaResponseCodes.SUCCESS) {
+        if (responseCode != MPCQResponseCodes.SUCCESS) {
             revert ();
         }
 
         fungibleTokenInfo = retrievedTokenInfo;
     }
 
-    function getInformationForNonFungibleToken(address token, int64 serialNumber) external returns (IHederaTokenService.NonFungibleTokenInfo memory nonFungibleTokenInfo) {
-        (int responseCode, IHederaTokenService.NonFungibleTokenInfo memory retrievedTokenInfo) = HederaTokenService.getNonFungibleTokenInfo(token, serialNumber);
+    function getInformationForNonFungibleToken(address token, int64 serialNumber) external returns (IMPCQTokenService.NonFungibleTokenInfo memory nonFungibleTokenInfo) {
+        (int responseCode, IMPCQTokenService.NonFungibleTokenInfo memory retrievedTokenInfo) = MPCQTokenService.getNonFungibleTokenInfo(token, serialNumber);
 
-        if (responseCode != HederaResponseCodes.SUCCESS) {
+        if (responseCode != MPCQResponseCodes.SUCCESS) {
             revert ();
         }
 
@@ -96,32 +96,32 @@ contract PrecompileTestContractHistorical is HederaTokenService {
     }
 
     function getType(address token) external returns (int) {
-        (int statusCode, int tokenType) = HederaTokenService.getTokenType(token);
+        (int statusCode, int tokenType) = MPCQTokenService.getTokenType(token);
 
-        if (statusCode != HederaResponseCodes.SUCCESS) {
+        if (statusCode != MPCQResponseCodes.SUCCESS) {
             revert ("Token type appraisal failed!");
         }
         return tokenType;
     }
 
     function getExpiryInfoForToken(address token) external returns (
-        IHederaTokenService.Expiry memory expiry) {
+        IMPCQTokenService.Expiry memory expiry) {
         (int responseCode,
-            IHederaTokenService.Expiry memory retrievedExpiry) = HederaTokenService.getTokenExpiryInfo(token);
+            IMPCQTokenService.Expiry memory retrievedExpiry) = MPCQTokenService.getTokenExpiryInfo(token);
 
-        if (responseCode != HederaResponseCodes.SUCCESS) {
+        if (responseCode != MPCQResponseCodes.SUCCESS) {
             revert ();
         }
 
         expiry = retrievedExpiry;
     }
 
-    function getTokenKeyPublic(address token, uint keyType) public returns (IHederaTokenService.KeyValue memory) {
-        (int responseCode, IHederaTokenService.KeyValue memory  key) = HederaTokenService.getTokenKey(token, keyType);
+    function getTokenKeyPublic(address token, uint keyType) public returns (IMPCQTokenService.KeyValue memory) {
+        (int responseCode, IMPCQTokenService.KeyValue memory  key) = MPCQTokenService.getTokenKey(token, keyType);
         //"(bool,address,bytes,bytes,address)";
 
 
-        if (responseCode != HederaResponseCodes.SUCCESS) {
+        if (responseCode != MPCQResponseCodes.SUCCESS) {
             revert();
         }
 
@@ -130,17 +130,17 @@ contract PrecompileTestContractHistorical is HederaTokenService {
 
     function htsGetApproved(address token, uint256 serialNumber) public returns (address approved) {
         int _responseCode;
-        (_responseCode, approved) = HederaTokenService.getApproved(token, serialNumber);
+        (_responseCode, approved) = MPCQTokenService.getApproved(token, serialNumber);
     }
 
     function htsAllowance(address token, address owner, address spender) public returns (uint256 amount){
         int _responseCode;
-        (_responseCode, amount) = HederaTokenService.allowance(token, owner, spender);
+        (_responseCode, amount) = MPCQTokenService.allowance(token, owner, spender);
     }
 
     function htsIsApprovedForAll(address token, address owner, address operator) public returns (bool approved) {
         int _responseCode;
-        (_responseCode, approved) = HederaTokenService.isApprovedForAll(token, owner, operator);
+        (_responseCode, approved) = MPCQTokenService.isApprovedForAll(token, owner, operator);
     }
 
     function callMissingPrecompile() public returns (bool success, bytes memory result) {

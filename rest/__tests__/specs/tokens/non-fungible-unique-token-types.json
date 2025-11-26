@@ -57,7 +57,7 @@
         "token_id": "0.0.45678",
         "symbol": "HEDERACOIN",
         "created_timestamp": "1234567890000000004",
-        "name": "Hedera",
+        "name": "MPCQ",
         "type": "NON_FUNGIBLE_UNIQUE"
       }
     ]
@@ -90,7 +90,7 @@
         },
         "decimals": 0,
         "metadata": "",
-        "name": "Hedera",
+        "name": "MPCQ",
         "type": "NON_FUNGIBLE_UNIQUE"
       }
     ],

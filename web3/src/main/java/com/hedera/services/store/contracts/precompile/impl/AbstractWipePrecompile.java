@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
@@ -47,7 +47,7 @@ public abstract class AbstractWipePrecompile extends AbstractWritePrecompile {
     @Override
     public RunResult run(MessageFrame frame, TransactionBody transactionBody) {
         Objects.requireNonNull(transactionBody, "`body` method should be called before `run`");
-        final var store = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
+        final var store = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
 
         final var wipeBody = transactionBody.getTokenWipe();
         final var tokenId = Id.fromGrpcToken(wipeBody.getToken());

@@ -9,7 +9,7 @@ import static com.hedera.services.txns.crypto.helpers.AllowanceHelpers.getNftApp
 import static com.hedera.services.utils.MiscUtils.asKeyUnchecked;
 import static org.hiero.mirror.common.util.DomainUtils.toEvmAddress;
 
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
 import com.hedera.services.fees.usage.token.meta.TokenMintMeta;
 import com.hedera.services.hapi.fees.usage.crypto.ExtantCryptoContext;
 import com.hedera.services.utils.accessors.TxnAccessor;
@@ -25,14 +25,14 @@ import org.hyperledger.besu.datatypes.Address;
  *  Copied Logic type from hedera-services. Differences with the original:
  *  1. Use abstraction for the state by introducing {@link Store} interface
  *  2. Remove FeeSchedule, UtilPrng, File logic
- *  3. Use HederaEvmContractAliases
+ *  3. Use MPCQEvmContractAliases
  */
 public class OpUsageCtxHelper {
 
     private final Store store;
-    private final HederaEvmContractAliases hederaEvmContractAliases;
+    private final MPCQEvmContractAliases hederaEvmContractAliases;
 
-    public OpUsageCtxHelper(final Store store, final HederaEvmContractAliases hederaEvmContractAliases) {
+    public OpUsageCtxHelper(final Store store, final MPCQEvmContractAliases hederaEvmContractAliases) {
         this.store = store;
         this.hederaEvmContractAliases = hederaEvmContractAliases;
     }

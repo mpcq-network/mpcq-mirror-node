@@ -7,7 +7,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.when;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
 import com.hedera.services.store.models.Account;
 import org.apache.tuweni.bytes.Bytes;
 import org.bouncycastle.util.encoders.Hex;
@@ -37,7 +37,7 @@ class AccountAccessorImplTest {
     public AccountAccessorImpl accountAccessor;
 
     @Mock
-    private HederaEvmEntityAccess mirrorEntityAccess;
+    private MPCQEvmEntityAccess mirrorEntityAccess;
 
     @Mock
     private Store store;

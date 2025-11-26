@@ -13,7 +13,7 @@ import com.hedera.services.store.contracts.precompile.TokenUpdateLogic;
 import com.hedera.services.store.contracts.precompile.codec.EmptyRunResult;
 import com.hedera.services.store.contracts.precompile.codec.RunResult;
 import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.store.tokens.HederaTokenStore;
+import com.hedera.services.store.tokens.MPCQTokenStore;
 import com.hedera.services.txns.validation.OptionValidator;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.Timestamp;
@@ -21,7 +21,7 @@ import com.hederahashgraph.api.proto.java.TransactionBody;
 import java.util.Objects;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
@@ -65,8 +65,8 @@ public abstract class AbstractTokenUpdatePrecompile extends AbstractWritePrecomp
         final var validity = tokenUpdateLogic.validate(transactionBody);
         validateTrue(validity == OK, validity);
 
-        final var store = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
-        final var hederaTokenStore = initializeHederaTokenStore(store);
+        final var store = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
+        final var hederaTokenStore = initializeMPCQTokenStore(store);
         final var functionId = frame.getInputData().getInt(0);
         switch (functionId) {
             case AbiConstants.ABI_ID_UPDATE_TOKEN_INFO,
@@ -86,7 +86,7 @@ public abstract class AbstractTokenUpdatePrecompile extends AbstractWritePrecomp
         return new EmptyRunResult();
     }
 
-    private HederaTokenStore initializeHederaTokenStore(Store store) {
-        return new HederaTokenStore(contextOptionValidator, mirrorNodeEvmProperties, store);
+    private MPCQTokenStore initializeMPCQTokenStore(Store store) {
+        return new MPCQTokenStore(contextOptionValidator, mirrorNodeEvmProperties, store);
     }
 }

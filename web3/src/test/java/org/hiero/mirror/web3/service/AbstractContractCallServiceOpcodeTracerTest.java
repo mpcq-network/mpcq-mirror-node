@@ -15,7 +15,7 @@ import static org.hiero.mirror.web3.utils.OpcodeTracerUtil.gasComparator;
 import static org.hiero.mirror.web3.utils.OpcodeTracerUtil.toHumanReadableMessage;
 import static org.mockito.Mockito.doAnswer;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import jakarta.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
@@ -64,7 +64,7 @@ abstract class AbstractContractCallServiceOpcodeTracerTest extends AbstractContr
     @Captor
     private ArgumentCaptor<Long> gasCaptor;
 
-    private HederaEvmTransactionProcessingResult resultCaptor;
+    private MPCQEvmTransactionProcessingResult resultCaptor;
     private ContractCallContext contextCaptor;
 
     @Resource
@@ -80,7 +80,7 @@ abstract class AbstractContractCallServiceOpcodeTracerTest extends AbstractContr
             mirrorNodeEvmProperties.setModularizedTrafficPercent(0.0);
             doAnswer(invocation -> {
                         final var transactionProcessingResult =
-                                (HederaEvmTransactionProcessingResult) invocation.callRealMethod();
+                                (MPCQEvmTransactionProcessingResult) invocation.callRealMethod();
                         resultCaptor = transactionProcessingResult;
                         contextCaptor = ContractCallContext.get();
                         return transactionProcessingResult;
@@ -91,7 +91,7 @@ abstract class AbstractContractCallServiceOpcodeTracerTest extends AbstractContr
             mirrorNodeEvmProperties.setModularizedTrafficPercent(1.0);
             doAnswer(invocation -> {
                         final var transactionProcessingResult =
-                                (HederaEvmTransactionProcessingResult) invocation.callRealMethod();
+                                (MPCQEvmTransactionProcessingResult) invocation.callRealMethod();
                         resultCaptor = transactionProcessingResult;
                         contextCaptor = ContractCallContext.get();
                         return transactionProcessingResult;
@@ -194,7 +194,7 @@ abstract class AbstractContractCallServiceOpcodeTracerTest extends AbstractContr
     }
 
     private OpcodesResponse expectedOpcodesResponse(
-            final HederaEvmTransactionProcessingResult result, final List<Opcode> opcodes) {
+            final MPCQEvmTransactionProcessingResult result, final List<Opcode> opcodes) {
         return new OpcodesResponse()
                 .address(result.getRecipient()
                         .flatMap(address -> entityDatabaseAccessor.get(address, Optional.empty()))

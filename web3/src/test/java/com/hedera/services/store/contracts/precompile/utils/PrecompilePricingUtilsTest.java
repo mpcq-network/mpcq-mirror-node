@@ -10,7 +10,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
 import com.hedera.services.fees.BasicHbarCentExchange;
 import com.hedera.services.fees.FeeCalculator;
 import com.hedera.services.fees.calculation.BasicFcfsUsagePrices;
@@ -60,7 +60,7 @@ class PrecompilePricingUtilsTest {
     private Store store;
 
     @Mock
-    private HederaEvmContractAliases hederaEvmContractAliases;
+    private MPCQEvmContractAliases hederaEvmContractAliases;
 
     @Mock
     private Precompile precompile;
@@ -82,7 +82,7 @@ class PrecompilePricingUtilsTest {
         given(exchange.rate(timestamp)).willReturn(exchangeRate);
         given(assetLoader.loadCanonicalPrices())
                 .willReturn(Map.of(
-                        HederaFunctionality.TokenAssociateToAccount,
+                        MPCQFunctionality.TokenAssociateToAccount,
                         Map.of(SubType.DEFAULT, BigDecimal.valueOf(COST))));
         given(exchangeRate.getCentEquiv()).willReturn(CENTS_RATE);
         given(exchangeRate.getHbarEquiv()).willReturn(HBAR_RATE);
@@ -105,7 +105,7 @@ class PrecompilePricingUtilsTest {
         FeeObject feeObject = new FeeObject(1, 2, 3);
         given(assetLoader.loadCanonicalPrices())
                 .willReturn(Map.of(
-                        HederaFunctionality.TokenAssociateToAccount,
+                        MPCQFunctionality.TokenAssociateToAccount,
                         Map.of(SubType.DEFAULT, BigDecimal.valueOf(COST))));
         given(feeCalculator.estimatePayment(any(), any(), any(), any(ResponseType.class)))
                 .willReturn(feeObject);
@@ -129,7 +129,7 @@ class PrecompilePricingUtilsTest {
         FeeObject feeObject = new FeeObject(nodeFee, networkFee, serviceFee);
         given(assetLoader.loadCanonicalPrices())
                 .willReturn(Map.of(
-                        HederaFunctionality.TokenAssociateToAccount,
+                        MPCQFunctionality.TokenAssociateToAccount,
                         Map.of(SubType.DEFAULT, BigDecimal.valueOf(COST))));
         given(feeCalculator.estimatePayment(any(), any(), any(), any(ResponseType.class)))
                 .willReturn(feeObject);
@@ -152,7 +152,7 @@ class PrecompilePricingUtilsTest {
         final Timestamp timestamp = Timestamp.newBuilder().setSeconds(123456789).build();
         given(assetLoader.loadCanonicalPrices())
                 .willReturn(Map.of(
-                        HederaFunctionality.TokenAssociateToAccount,
+                        MPCQFunctionality.TokenAssociateToAccount,
                         Map.of(SubType.DEFAULT, BigDecimal.valueOf(COST))));
         given(feeCalculator.estimatedGasPriceInTinybars(any(), any())).willReturn(GAS_PRICE);
         given(precompile.getMinimumFeeInTinybars(any(), any(), any())).willReturn(minimumFeeInTinybars);
@@ -178,7 +178,7 @@ class PrecompilePricingUtilsTest {
         final Timestamp timestamp = Timestamp.newBuilder().setSeconds(123456789).build();
         given(assetLoader.loadCanonicalPrices())
                 .willReturn(Map.of(
-                        HederaFunctionality.TokenAssociateToAccount,
+                        MPCQFunctionality.TokenAssociateToAccount,
                         Map.of(SubType.DEFAULT, BigDecimal.valueOf(COST))));
         given(feeCalculator.estimatedGasPriceInTinybars(any(), any())).willReturn(GAS_PRICE);
         given(precompile.getMinimumFeeInTinybars(any(), any(), any())).willReturn(minimumFeeInTinybars);

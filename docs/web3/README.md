@@ -27,8 +27,8 @@ _Note:_ Gas estimation only supports the `latest` block
 
 | Operation Type                                                | Mono Support | Modularized Support |
 | ------------------------------------------------------------- | ------------ | ------------------- |
-| operations for HederaAccountService system contract           | N            | Y                   |
-| operations for HederaScheduleService system contract          | N            | Y                   |
+| operations for MPCQAccountService system contract           | N            | Y                   |
+| operations for MPCQScheduleService system contract          | N            | Y                   |
 | token airdrop operations (airdropTokens, claimAirdrops, etc.) | N            | Y                   |
 | update token custom fees                                      | N            | Y                   |
 | HRC isAssociated()                                            | N            | Y                   |

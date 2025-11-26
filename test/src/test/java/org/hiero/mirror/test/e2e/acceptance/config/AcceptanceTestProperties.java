@@ -67,7 +67,7 @@ public final class AcceptanceTestProperties {
     private String mirrorNodeAddress;
 
     @NotNull
-    private HederaNetwork network = HederaNetwork.TESTNET;
+    private MPCQNetwork network = MPCQNetwork.TESTNET;
 
     @NotNull
     @Valid
@@ -116,7 +116,7 @@ public final class AcceptanceTestProperties {
 
     @Getter
     @RequiredArgsConstructor
-    public enum HederaNetwork {
+    public enum MPCQNetwork {
         MAINNET(295L, LedgerId.MAINNET),
         TESTNET(296L, LedgerId.TESTNET),
         PREVIEWNET(297L, LedgerId.PREVIEWNET),

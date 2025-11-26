@@ -13,9 +13,9 @@ class FeeScheduleViewModel {
   static currentLabel = 'current_';
   static nextLabel = 'next_';
   static enabledTxTypesMap = {
-    [proto.HederaFunctionality.ContractCall]: 'ContractCall',
-    [proto.HederaFunctionality.ContractCreate]: 'ContractCreate',
-    [proto.HederaFunctionality.EthereumTransaction]: 'EthereumTransaction',
+    [proto.MPCQFunctionality.ContractCall]: 'ContractCall',
+    [proto.MPCQFunctionality.ContractCreate]: 'ContractCreate',
+    [proto.MPCQFunctionality.EthereumTransaction]: 'EthereumTransaction',
   };
   /**
    * Constructs fee schedule view model

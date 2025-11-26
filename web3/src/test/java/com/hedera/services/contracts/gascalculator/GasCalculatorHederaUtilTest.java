@@ -7,13 +7,13 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaBlockValues;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQBlockValues;
 import com.hedera.services.fees.HbarCentExchange;
 import com.hedera.services.fees.calculation.UsagePricesProvider;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import java.time.Instant;
 import java.util.ArrayDeque;
@@ -25,7 +25,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class GasCalculatorHederaUtilTest {
+class GasCalculatorMPCQUtilTest {
     @Mock
     private HbarCentExchange hbarCentExchange;
 
@@ -43,7 +43,7 @@ class GasCalculatorHederaUtilTest {
         var exchangeRate = mock(ExchangeRate.class);
         given(feeData.getServicedata()).willReturn(mock(FeeComponents.class));
         given(feeData.getServicedata().getRbh()).willReturn(1000L);
-        given(usagePricesProvider.defaultPricesGiven(HederaFunctionality.ContractCall, timestamp))
+        given(usagePricesProvider.defaultPricesGiven(MPCQFunctionality.ContractCall, timestamp))
                 .willReturn(feeData);
         given(hbarCentExchange.rate(timestamp)).willReturn(exchangeRate);
         given(exchangeRate.getHbarEquiv()).willReturn(hbarEquiv);
@@ -51,17 +51,17 @@ class GasCalculatorHederaUtilTest {
 
         assertEquals(
                 expectedRamResult,
-                GasCalculatorHederaUtil.ramByteHoursTinyBarsGiven(
-                        usagePricesProvider, hbarCentExchange, consensusTime, HederaFunctionality.ContractCall));
+                GasCalculatorMPCQUtil.ramByteHoursTinyBarsGiven(
+                        usagePricesProvider, hbarCentExchange, consensusTime, MPCQFunctionality.ContractCall));
         verify(hbarCentExchange).rate(timestamp);
-        verify(usagePricesProvider).defaultPricesGiven(HederaFunctionality.ContractCall, timestamp);
+        verify(usagePricesProvider).defaultPricesGiven(MPCQFunctionality.ContractCall, timestamp);
     }
 
     @Test
     void assertCalculateLogSize() {
         var numberOfTopics = 3;
         var dataSize = 10L;
-        assertEquals(386, GasCalculatorHederaUtil.calculateLogSize(numberOfTopics, dataSize));
+        assertEquals(386, GasCalculatorMPCQUtil.calculateLogSize(numberOfTopics, dataSize));
     }
 
     @Test
@@ -73,7 +73,7 @@ class GasCalculatorHederaUtilTest {
         var expectedResult = Math.round((double) storageCostTinyBars / (double) gasPrice);
         assertEquals(
                 expectedResult,
-                GasCalculatorHederaUtil.calculateStorageGasNeeded(
+                GasCalculatorMPCQUtil.calculateStorageGasNeeded(
                         0, durationInSeconds, byteHourCostIntinybars, gasPrice));
     }
 
@@ -81,7 +81,7 @@ class GasCalculatorHederaUtilTest {
     void assertAndVerifyLogOperationGasCost() {
         final var messageFrame = mock(MessageFrame.class);
         final var consensusTime = 123L;
-        final var functionality = HederaFunctionality.ContractCreate;
+        final var functionality = MPCQFunctionality.ContractCreate;
         final var timestamp = Timestamp.newBuilder().setSeconds(consensusTime).build();
         final var returningDeque = new ArrayDeque<MessageFrame>() {};
         returningDeque.add(messageFrame);
@@ -93,8 +93,8 @@ class GasCalculatorHederaUtilTest {
         final var blockNo = 123L;
 
         given(messageFrame.getGasPrice()).willReturn(Wei.of(2000L));
-        given(messageFrame.getBlockValues()).willReturn(new HederaBlockValues(10L, blockNo, blockConsTime));
-        given(messageFrame.getContextVariable("HederaFunctionality")).willReturn(functionality);
+        given(messageFrame.getBlockValues()).willReturn(new MPCQBlockValues(10L, blockNo, blockConsTime));
+        given(messageFrame.getContextVariable("MPCQFunctionality")).willReturn(functionality);
         given(messageFrame.getMessageFrameStack()).willReturn(returningDeque);
 
         given(usagePricesProvider.defaultPricesGiven(functionality, timestamp)).willReturn(feeData);
@@ -106,11 +106,11 @@ class GasCalculatorHederaUtilTest {
 
         assertEquals(
                 28L,
-                GasCalculatorHederaUtil.logOperationGasCost(
+                GasCalculatorMPCQUtil.logOperationGasCost(
                         usagePricesProvider, hbarCentExchange, messageFrame, 1000000, 1L, 2L, 3));
         verify(messageFrame).getGasPrice();
         verify(messageFrame).getBlockValues();
-        verify(messageFrame).getContextVariable("HederaFunctionality");
+        verify(messageFrame).getContextVariable("MPCQFunctionality");
         verify(messageFrame).getMessageFrameStack();
         verify(usagePricesProvider).defaultPricesGiven(functionality, timestamp);
         verify(hbarCentExchange).rate(timestamp);

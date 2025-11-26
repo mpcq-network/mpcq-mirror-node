@@ -7,10 +7,10 @@ import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
 import com.hedera.node.app.service.evm.accounts.AccountAccessor;
 import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
 import com.hedera.node.app.service.evm.store.contracts.AbstractCodeCache;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmMutableWorldState;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmWorldStateTokenAccount;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmWorldUpdater;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldUpdater;
 import com.hedera.node.app.service.evm.store.contracts.WorldStateAccount;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import jakarta.inject.Named;
@@ -26,9 +26,9 @@ import org.hyperledger.besu.evm.worldstate.WorldUpdater;
 
 @SuppressWarnings("java:S107")
 @Named
-public class HederaEvmWorldState implements HederaEvmMutableWorldState {
+public class MPCQEvmWorldState implements MPCQEvmMutableWorldState {
 
-    private final HederaEvmEntityAccess hederaEvmEntityAccess;
+    private final MPCQEvmEntityAccess hederaEvmEntityAccess;
     private final EvmProperties evmProperties;
     private final AbstractCodeCache abstractCodeCache;
 
@@ -40,8 +40,8 @@ public class HederaEvmWorldState implements HederaEvmMutableWorldState {
     private final MirrorEvmContractAliases mirrorEvmContractAliases;
 
     @SuppressWarnings("java:S107")
-    public HederaEvmWorldState(
-            final HederaEvmEntityAccess hederaEvmEntityAccess,
+    public MPCQEvmWorldState(
+            final MPCQEvmEntityAccess hederaEvmEntityAccess,
             final EvmProperties evmProperties,
             final AbstractCodeCache abstractCodeCache,
             final AccountAccessor accountAccessor,
@@ -64,7 +64,7 @@ public class HederaEvmWorldState implements HederaEvmMutableWorldState {
             return null;
         }
         if (hederaEvmEntityAccess.isTokenAccount(address) && evmProperties.isRedirectTokenCallsEnabled()) {
-            return new HederaEvmWorldStateTokenAccount(address);
+            return new MPCQEvmWorldStateTokenAccount(address);
         }
         if (!hederaEvmEntityAccess.isUsable(address)) {
             return null;
@@ -89,7 +89,7 @@ public class HederaEvmWorldState implements HederaEvmMutableWorldState {
     }
 
     @Override
-    public HederaEvmWorldUpdater updater() {
+    public MPCQEvmWorldUpdater updater() {
         return new Updater(
                 this,
                 accountAccessor,
@@ -106,9 +106,9 @@ public class HederaEvmWorldState implements HederaEvmMutableWorldState {
         // default no-op
     }
 
-    public static class Updater extends AbstractLedgerWorldUpdater<HederaEvmMutableWorldState, Account>
-            implements HederaEvmWorldUpdater {
-        private final HederaEvmEntityAccess hederaEvmEntityAccess;
+    public static class Updater extends AbstractLedgerWorldUpdater<MPCQEvmMutableWorldState, Account>
+            implements MPCQEvmWorldUpdater {
+        private final MPCQEvmEntityAccess hederaEvmEntityAccess;
         private final TokenAccessor tokenAccessor;
         private final EvmProperties evmProperties;
         private final EntityAddressSequencer entityAddressSequencer;
@@ -116,9 +116,9 @@ public class HederaEvmWorldState implements HederaEvmMutableWorldState {
 
         @SuppressWarnings("java:S107")
         protected Updater(
-                final HederaEvmWorldState world,
+                final MPCQEvmWorldState world,
                 final AccountAccessor accountAccessor,
-                final HederaEvmEntityAccess hederaEvmEntityAccess,
+                final MPCQEvmEntityAccess hederaEvmEntityAccess,
                 final TokenAccessor tokenAccessor,
                 final EvmProperties evmProperties,
                 final EntityAddressSequencer contractAddressState,
@@ -144,13 +144,13 @@ public class HederaEvmWorldState implements HederaEvmMutableWorldState {
 
         @Override
         public Account getForMutation(final Address address) {
-            final HederaEvmWorldState wrapped = (HederaEvmWorldState) wrappedWorldView();
+            final MPCQEvmWorldState wrapped = (MPCQEvmWorldState) wrappedWorldView();
             return wrapped.get(address);
         }
 
         @Override
         public WorldUpdater updater() {
-            return new HederaEvmStackedWorldStateUpdater(
+            return new MPCQEvmStackedWorldStateUpdater(
                     this,
                     accountAccessor,
                     hederaEvmEntityAccess,

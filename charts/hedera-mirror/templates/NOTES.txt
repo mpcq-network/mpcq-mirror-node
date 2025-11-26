@@ -1,4 +1,4 @@
-Hedera Mirror Node {{ .Chart.AppVersion }} successfully installed.
+MPCQ Mirror Node {{ .Chart.AppVersion }} successfully installed.
 
 {{- if and .Values.graphql.enabled .Values.graphql.service }}
 To access the GraphQL API:

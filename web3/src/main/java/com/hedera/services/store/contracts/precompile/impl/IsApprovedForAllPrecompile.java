@@ -27,7 +27,7 @@ import com.hederahashgraph.api.proto.java.TransactionBody;
 import java.util.Set;
 import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.evm.store.Store.OnMissing;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
@@ -53,7 +53,7 @@ public class IsApprovedForAllPrecompile extends AbstractReadOnlyPrecompile {
 
     @Override
     public RunResult run(MessageFrame frame, TransactionBody transactionBody) {
-        final var updater = (HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater();
+        final var updater = (MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater();
         final var inputData = frame.getInputData();
         final var wrapper = decodeIsApprovedForAll(inputData);
         final var store = updater.getStore();

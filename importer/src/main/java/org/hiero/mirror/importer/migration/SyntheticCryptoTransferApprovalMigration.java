@@ -188,7 +188,7 @@ public class SyntheticCryptoTransferApprovalMigration extends AsyncJavaMigration
 
     @Override
     protected Optional<Long> migratePartial(Long lowerBound) {
-        if (!ImporterProperties.HederaNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork())) {
+        if (!ImporterProperties.MPCQNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork())) {
             log.info("Skipping migration since it only applies to mainnet");
             return Optional.empty();
         }

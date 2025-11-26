@@ -10,7 +10,7 @@ import com.hederahashgraph.api.proto.java.ExchangeRateSet;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;
 import com.hederahashgraph.api.proto.java.FeeSchedule;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.TimestampSeconds;
 import com.hederahashgraph.api.proto.java.TransactionFeeSchedule;
 import java.text.MessageFormat;
@@ -437,7 +437,7 @@ final class NetworkControllerTest extends ControllerTest {
             return CurrentAndNextFeeSchedule.newBuilder()
                     .setCurrentFeeSchedule(FeeSchedule.newBuilder()
                             .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                                    .setHederaFunctionality(HederaFunctionality.ContractCall)
+                                    .setMPCQFunctionality(MPCQFunctionality.ContractCall)
                                     .addFees(FeeData.newBuilder()
                                             .setServicedata(FeeComponents.newBuilder()
                                                     .setGas(852000L)
@@ -445,7 +445,7 @@ final class NetworkControllerTest extends ControllerTest {
                                             .build())
                                     .build())
                             .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                                    .setHederaFunctionality(HederaFunctionality.ContractCreate)
+                                    .setMPCQFunctionality(MPCQFunctionality.ContractCreate)
                                     .addFees(FeeData.newBuilder()
                                             .setServicedata(FeeComponents.newBuilder()
                                                     .setGas(1068000L)
@@ -453,7 +453,7 @@ final class NetworkControllerTest extends ControllerTest {
                                             .build())
                                     .build())
                             .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                                    .setHederaFunctionality(HederaFunctionality.EthereumTransaction)
+                                    .setMPCQFunctionality(MPCQFunctionality.EthereumTransaction)
                                     .addFees(FeeData.newBuilder()
                                             .setServicedata(FeeComponents.newBuilder()
                                                     .setGas(953000L)

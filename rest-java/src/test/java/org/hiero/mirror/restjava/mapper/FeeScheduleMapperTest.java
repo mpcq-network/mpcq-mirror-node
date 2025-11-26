@@ -10,7 +10,7 @@ import com.hederahashgraph.api.proto.java.ExchangeRateSet;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;
 import com.hederahashgraph.api.proto.java.FeeSchedule;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.TimestampSeconds;
 import com.hederahashgraph.api.proto.java.TransactionFeeSchedule;
 import java.util.List;
@@ -108,11 +108,11 @@ final class FeeScheduleMapperTest {
         final var fileData = domainBuilder.fileData().get();
         final var feeSchedule = CurrentAndNextFeeSchedule.newBuilder()
                 .setCurrentFeeSchedule(FeeSchedule.newBuilder()
-                        .addTransactionFeeSchedule(createTransactionFee(HederaFunctionality.ContractCall, 852000L))
-                        .addTransactionFeeSchedule(createTransactionFee(HederaFunctionality.CryptoTransfer, 100000L))
-                        .addTransactionFeeSchedule(createTransactionFee(HederaFunctionality.TokenCreate, 200000L))
+                        .addTransactionFeeSchedule(createTransactionFee(MPCQFunctionality.ContractCall, 852000L))
+                        .addTransactionFeeSchedule(createTransactionFee(MPCQFunctionality.CryptoTransfer, 100000L))
+                        .addTransactionFeeSchedule(createTransactionFee(MPCQFunctionality.TokenCreate, 200000L))
                         .addTransactionFeeSchedule(
-                                createTransactionFee(HederaFunctionality.EthereumTransaction, 953000L))
+                                createTransactionFee(MPCQFunctionality.EthereumTransaction, 953000L))
                         .build())
                 .build();
         final var feeScheduleFile = new SystemFile<>(fileData, feeSchedule);
@@ -135,12 +135,12 @@ final class FeeScheduleMapperTest {
         final var fileData = domainBuilder.fileData().get();
         final var feeSchedule = CurrentAndNextFeeSchedule.newBuilder()
                 .setCurrentFeeSchedule(FeeSchedule.newBuilder()
-                        .addTransactionFeeSchedule(createTransactionFee(HederaFunctionality.ContractCall, 852000L))
+                        .addTransactionFeeSchedule(createTransactionFee(MPCQFunctionality.ContractCall, 852000L))
                         .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                                .setHederaFunctionality(HederaFunctionality.ContractCreate)
+                                .setMPCQFunctionality(MPCQFunctionality.ContractCreate)
                                 .build())
                         .addTransactionFeeSchedule(
-                                createTransactionFee(HederaFunctionality.EthereumTransaction, 953000L))
+                                createTransactionFee(MPCQFunctionality.EthereumTransaction, 953000L))
                         .build())
                 .build();
         final var feeScheduleFile = new SystemFile<>(fileData, feeSchedule);
@@ -163,13 +163,13 @@ final class FeeScheduleMapperTest {
         final var fileData = domainBuilder.fileData().get();
         final var feeSchedule = CurrentAndNextFeeSchedule.newBuilder()
                 .setCurrentFeeSchedule(FeeSchedule.newBuilder()
-                        .addTransactionFeeSchedule(createTransactionFee(HederaFunctionality.ContractCall, 852000L))
+                        .addTransactionFeeSchedule(createTransactionFee(MPCQFunctionality.ContractCall, 852000L))
                         .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                                .setHederaFunctionality(HederaFunctionality.ContractCreate)
+                                .setMPCQFunctionality(MPCQFunctionality.ContractCreate)
                                 .addFees(FeeData.newBuilder().build())
                                 .build())
                         .addTransactionFeeSchedule(
-                                createTransactionFee(HederaFunctionality.EthereumTransaction, 953000L))
+                                createTransactionFee(MPCQFunctionality.EthereumTransaction, 953000L))
                         .build())
                 .build();
         final var feeScheduleFile = new SystemFile<>(fileData, feeSchedule);
@@ -208,17 +208,17 @@ final class FeeScheduleMapperTest {
     private CurrentAndNextFeeSchedule createFeeSchedule() {
         return CurrentAndNextFeeSchedule.newBuilder()
                 .setCurrentFeeSchedule(FeeSchedule.newBuilder()
-                        .addTransactionFeeSchedule(createTransactionFee(HederaFunctionality.ContractCall, 852000L))
-                        .addTransactionFeeSchedule(createTransactionFee(HederaFunctionality.ContractCreate, 1068000L))
+                        .addTransactionFeeSchedule(createTransactionFee(MPCQFunctionality.ContractCall, 852000L))
+                        .addTransactionFeeSchedule(createTransactionFee(MPCQFunctionality.ContractCreate, 1068000L))
                         .addTransactionFeeSchedule(
-                                createTransactionFee(HederaFunctionality.EthereumTransaction, 953000L))
+                                createTransactionFee(MPCQFunctionality.EthereumTransaction, 953000L))
                         .build())
                 .build();
     }
 
-    private static TransactionFeeSchedule createTransactionFee(HederaFunctionality functionality, long gas) {
+    private static TransactionFeeSchedule createTransactionFee(MPCQFunctionality functionality, long gas) {
         return TransactionFeeSchedule.newBuilder()
-                .setHederaFunctionality(functionality)
+                .setMPCQFunctionality(functionality)
                 .addFees(FeeData.newBuilder()
                         .setServicedata(FeeComponents.newBuilder().setGas(gas).build())
                         .build())

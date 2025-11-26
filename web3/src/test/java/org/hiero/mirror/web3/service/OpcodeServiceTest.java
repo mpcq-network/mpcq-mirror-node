@@ -43,7 +43,7 @@ import org.hiero.mirror.web3.exception.EntityNotFoundException;
 import org.hiero.mirror.web3.web3j.generated.DynamicEthCalls;
 import org.hiero.mirror.web3.web3j.generated.ExchangeRatePrecompile;
 import org.hiero.mirror.web3.web3j.generated.NestedCalls;
-import org.hiero.mirror.web3.web3j.generated.NestedCalls.HederaToken;
+import org.hiero.mirror.web3.web3j.generated.NestedCalls.MPCQToken;
 import org.hiero.mirror.web3.web3j.generated.NestedCalls.KeyValue;
 import org.hiero.mirror.web3.web3j.generated.NestedCalls.TokenKey;
 import org.hiero.mirror.web3.web3j.generated.StorageContract;
@@ -245,7 +245,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
         final var tokenEntityId = tokenWithAutoRenewPair.getLeft();
         final var tokenAddress = toAddress(tokenEntityId.getId());
         final var contract = testWeb3jService.deploy(NestedCalls::deploy);
-        final var tokenInfo = populateHederaToken(
+        final var tokenInfo = populateMPCQToken(
                 contract.getContractAddress(),
                 tokenType,
                 treasuryEntity.toEntityId(),
@@ -282,7 +282,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
         final var tokenEntityId = tokenWithAutoRenewPair.getLeft();
         final var tokenAddress = toAddress(tokenEntityId.getId());
         final var contract = testWeb3jService.deploy(NestedCalls::deploy);
-        final var tokenInfo = populateHederaToken(
+        final var tokenInfo = populateMPCQToken(
                 contract.getContractAddress(),
                 tokenType,
                 treasuryEntity.toEntityId(),
@@ -321,7 +321,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
         final var tokenEntityId = tokenWithAutoRenewPair.getLeft();
         final var tokenAddress = toAddress(tokenEntityId.getId());
         final var contract = testWeb3jService.deploy(NestedCalls::deploy);
-        final var tokenInfo = populateHederaToken(
+        final var tokenInfo = populateMPCQToken(
                 contract.getContractAddress(),
                 tokenType,
                 treasuryEntity.toEntityId(),
@@ -396,7 +396,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
         defaultKycStatus = calculateDefaultKycStatus(defaultKycStatus);
         final var treasuryEntity = accountEntityPersist();
         final var contract = testWeb3jService.deploy(NestedCalls::deploy);
-        final var tokenInfo = getHederaToken(
+        final var tokenInfo = getMPCQToken(
                 contract.getContractAddress(),
                 TokenTypeEnum.FUNGIBLE_COMMON,
                 withKeys,
@@ -441,7 +441,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
         defaultKycStatus = calculateDefaultKycStatus(defaultKycStatus);
         final var treasuryEntity = accountEntityPersist();
         final var contract = testWeb3jService.deploy(NestedCalls::deploy);
-        final var tokenInfo = getHederaToken(
+        final var tokenInfo = getMPCQToken(
                 contract.getContractAddress(),
                 TokenTypeEnum.NON_FUNGIBLE_UNIQUE,
                 withKeys,
@@ -632,7 +632,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
         final var treasuryEntity = accountEntityPersist();
         Pair<Entity, Entity> tokenWithAutoRenewPair =
                 persistTokenWithAutoRenewAndTreasuryAccounts(TokenTypeEnum.FUNGIBLE_COMMON, treasuryEntity);
-        final var tokenInfo = populateHederaToken(
+        final var tokenInfo = populateMPCQToken(
                 contract.getContractAddress(),
                 TokenTypeEnum.FUNGIBLE_COMMON,
                 treasuryEntity.toEntityId(),
@@ -934,7 +934,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
         return entity;
     }
 
-    private NestedCalls.HederaToken populateHederaToken(
+    private NestedCalls.MPCQToken populateMPCQToken(
             final String contractAddress,
             final TokenTypeEnum tokenType,
             final EntityId treasuryAccountId,
@@ -958,7 +958,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
         final var keys = new ArrayList<TokenKey>();
         keys.add(new NestedCalls.TokenKey(
                 AbstractContractCallServiceTest.KeyType.SUPPLY_KEY.getKeyTypeNumeric(), supplyKey));
-        return new NestedCalls.HederaToken(
+        return new NestedCalls.MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 getAddressFromEntityId(treasuryAccountId), // id of the account holding the initial token supply
@@ -973,7 +973,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
                         BigInteger.valueOf(8_000_000)));
     }
 
-    private HederaToken getHederaToken(
+    private MPCQToken getMPCQToken(
             final String contractAddress,
             final TokenTypeEnum tokenType,
             final boolean withKeys,
@@ -987,10 +987,10 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
             tokenKeys.add(new TokenKey(KeyType.FREEZE_KEY.getKeyTypeNumeric(), getKeyValueForType(keyType, null)));
         }
 
-        return populateHederaToken(contractAddress, tokenType, treasuryEntity.toEntityId(), freezeDefault, tokenKeys);
+        return populateMPCQToken(contractAddress, tokenType, treasuryEntity.toEntityId(), freezeDefault, tokenKeys);
     }
 
-    private NestedCalls.HederaToken populateHederaToken(
+    private NestedCalls.MPCQToken populateMPCQToken(
             final String contractAddress,
             final TokenTypeEnum tokenType,
             final EntityId treasuryAccountId,
@@ -1017,7 +1017,7 @@ class OpcodeServiceTest extends AbstractContractCallServiceOpcodeTracerTest {
         tokenKeys.add(new NestedCalls.TokenKey(
                 AbstractContractCallServiceTest.KeyType.SUPPLY_KEY.getKeyTypeNumeric(), supplyKey));
 
-        return new NestedCalls.HederaToken(
+        return new NestedCalls.MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 getAddressFromEntityId(treasuryAccountId), // id of the account holding the initial token supply

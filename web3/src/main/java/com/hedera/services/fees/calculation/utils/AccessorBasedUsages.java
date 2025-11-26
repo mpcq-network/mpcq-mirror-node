@@ -2,21 +2,21 @@
 
 package com.hedera.services.fees.calculation.utils;
 
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoApproveAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoDeleteAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoTransfer;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoUpdate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAccountWipe;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenBurn;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenFreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenGrantKycToAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenMint;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenPause;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenRevokeKycFromAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnfreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnpause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoApproveAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoDeleteAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoTransfer;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAccountWipe;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenBurn;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenFreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenGrantKycToAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenMint;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenPause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenRevokeKycFromAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnfreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnpause;
 
 import com.hedera.services.fees.usage.state.UsageAccumulator;
 import com.hedera.services.fees.usage.token.TokenOpsUsage;
@@ -24,7 +24,7 @@ import com.hedera.services.hapi.fees.usage.BaseTransactionMeta;
 import com.hedera.services.hapi.fees.usage.SigUsage;
 import com.hedera.services.hapi.fees.usage.crypto.CryptoOpsUsage;
 import com.hedera.services.utils.accessors.TxnAccessor;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import java.util.EnumSet;
@@ -37,7 +37,7 @@ import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 public class AccessorBasedUsages {
 
     public static final long THREE_MONTHS_IN_SECONDS = 7776000L;
-    private static final EnumSet<HederaFunctionality> supportedOps = EnumSet.of(
+    private static final EnumSet<MPCQFunctionality> supportedOps = EnumSet.of(
             CryptoTransfer,
             CryptoCreate,
             CryptoUpdate,
@@ -107,7 +107,7 @@ public class AccessorBasedUsages {
         }
     }
 
-    public boolean supports(HederaFunctionality function) {
+    public boolean supports(MPCQFunctionality function) {
         return supportedOps.contains(function);
     }
 

@@ -348,7 +348,7 @@ func getDefaultConfig() *Mirror {
 
 	if value, present := os.LookupEnv(realmEnvKey); present {
 		var err error
-		config.Hiero.Mirror.Common.Realm, err = strconv.ParseInt(value, 10, 64)
+		config.MPCQ.Mirror.Common.Realm, err = strconv.ParseInt(value, 10, 64)
 		if err != nil {
 			panic(err)
 		}
@@ -356,11 +356,11 @@ func getDefaultConfig() *Mirror {
 
 	if value, present := os.LookupEnv(shardEnvKey); present {
 		var err error
-		config.Hiero.Mirror.Common.Shard, err = strconv.ParseInt(value, 10, 64)
+		config.MPCQ.Mirror.Common.Shard, err = strconv.ParseInt(value, 10, 64)
 		if err != nil {
 			panic(err)
 		}
 	}
 
-	return &config.Hiero.Mirror
+	return &config.MPCQ.Mirror
 }

@@ -30,7 +30,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.UnaryOperator;
 import org.apache.tuweni.bytes.Bytes;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
@@ -79,7 +79,7 @@ public class DeleteTokenPrecompile extends AbstractWritePrecompile {
     @Override
     public RunResult run(MessageFrame frame, TransactionBody transactionBody) {
         Objects.requireNonNull(transactionBody);
-        final var store = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
+        final var store = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
         final var tokenId = transactionBody.getTokenDeletion().getToken();
 
         /* --- Build the necessary infrastructure to execute the transaction --- */

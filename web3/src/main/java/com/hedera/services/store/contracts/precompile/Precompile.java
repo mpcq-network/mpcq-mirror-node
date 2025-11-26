@@ -46,7 +46,7 @@ public interface Precompile {
 
     default void handleSentHbars(final MessageFrame frame, final TransactionBody.Builder transactionBody) {
         if (!Objects.equals(Wei.ZERO, frame.getValue())) {
-            final String INVALID_TRANSFER_MSG = "Transfer of Value to Hedera Precompile";
+            final String INVALID_TRANSFER_MSG = "Transfer of Value to MPCQ Precompile";
             frame.setRevertReason(Bytes.of(INVALID_TRANSFER_MSG.getBytes(StandardCharsets.UTF_8)));
             frame.setState(REVERT);
             throw new InvalidTransactionException(INVALID_FEE_SUBMITTED, true);

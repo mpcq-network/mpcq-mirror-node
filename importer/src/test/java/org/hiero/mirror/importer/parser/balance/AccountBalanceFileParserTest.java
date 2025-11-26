@@ -113,7 +113,7 @@ class AccountBalanceFileParserTest extends ImporterIntegrationTest {
     void errata() {
         // given
         var network = importerProperties.getNetwork();
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.MAINNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.MAINNET);
         AccountBalanceFile accountBalanceFile = accountBalanceFile(BAD_TIMESTAMP1);
         var items = accountBalanceFile.getItems();
 

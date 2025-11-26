@@ -26,7 +26,7 @@ import static com.hedera.services.store.contracts.precompile.codec.DecodingFacad
 import static com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType.INVALID_KEY;
 import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
 import static com.hedera.services.utils.EntityIdUtils.tokenIdFromEvmAddress;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INSUFFICIENT_TX_FEE;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TRANSACTION_BODY;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
@@ -72,7 +72,7 @@ import java.util.Set;
 import java.util.function.UnaryOperator;
 import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.evm.store.Store.OnMissing;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
@@ -268,7 +268,7 @@ public class TokenCreatePrecompile extends AbstractWritePrecompile {
 
     @Override
     public RunResult run(MessageFrame frame, TransactionBody transactionBody) {
-        final var updater = (HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater();
+        final var updater = (MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater();
         final var store = updater.getStore();
         final var tokenCreateOp = transactionBody.getTokenCreation();
         final var senderAddress = unalias(frame.getSenderAddress(), updater);
@@ -312,7 +312,7 @@ public class TokenCreatePrecompile extends AbstractWritePrecompile {
 
     @Override
     public void handleSentHbars(final MessageFrame frame, final TransactionBody.Builder transactionBody) {
-        final var updater = (HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater();
+        final var updater = (MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater();
         final var store = updater.getStore();
         final var senderAddress = unalias(frame.getSenderAddress(), updater);
         final var timestampSeconds = frame.getBlockValues().getTimestamp();
@@ -696,7 +696,7 @@ public class TokenCreatePrecompile extends AbstractWritePrecompile {
         }
 
         /*
-         * Check keys validity. The `TokenKey` struct in `IHederaTokenService.sol`
+         * Check keys validity. The `TokenKey` struct in `IMPCQTokenService.sol`
          * defines a `keyType` bit field, which smart contract developers will use to
          * set the type of key the `KeyValue` field will be used for. For example, if the
          * `keyType` field is set to `00000001`, then the key value will be used for adminKey.

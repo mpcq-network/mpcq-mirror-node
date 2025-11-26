@@ -88,9 +88,9 @@ import reactor.core.publisher.Mono;
 final class BlockStreamVerificationTest {
 
     private static final Map<String, String> BASE_URLS = Map.of(
-            ImporterProperties.HederaNetwork.MAINNET, baseUrlFor(ImporterProperties.HederaNetwork.MAINNET),
-            ImporterProperties.HederaNetwork.PREVIEWNET, baseUrlFor(ImporterProperties.HederaNetwork.PREVIEWNET),
-            ImporterProperties.HederaNetwork.TESTNET, baseUrlFor(ImporterProperties.HederaNetwork.TESTNET));
+            ImporterProperties.MPCQNetwork.MAINNET, baseUrlFor(ImporterProperties.MPCQNetwork.MAINNET),
+            ImporterProperties.MPCQNetwork.PREVIEWNET, baseUrlFor(ImporterProperties.MPCQNetwork.PREVIEWNET),
+            ImporterProperties.MPCQNetwork.TESTNET, baseUrlFor(ImporterProperties.MPCQNetwork.TESTNET));
     private static final String BLOCKS_URI = "/blocks?timestamp=gte:{timestamp}&limit=25&order=asc";
     // 4-byte shard + 8-byte realm, all 0s
     private static final ByteString DEFAULT_LONG_FORM_ADDRESS_PREFIX = ByteString.copyFrom(new byte[12]);

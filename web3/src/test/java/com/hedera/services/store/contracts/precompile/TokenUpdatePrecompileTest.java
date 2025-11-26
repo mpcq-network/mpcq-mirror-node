@@ -18,8 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
-import com.hedera.node.app.service.evm.contracts.execution.HederaBlockValues;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQBlockValues;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import com.hedera.services.fees.FeeCalculator;
@@ -42,7 +42,7 @@ import org.hiero.mirror.common.domain.DomainBuilder;
 import org.hiero.mirror.web3.common.PrecompileContext;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.junit.jupiter.api.AfterEach;
@@ -72,7 +72,7 @@ class TokenUpdatePrecompileTest {
     private static final int HBAR_RATE = 1;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
     private MessageFrame frame;
@@ -126,7 +126,7 @@ class TokenUpdatePrecompileTest {
     private TokenAccessor tokenAccessor;
 
     @Mock
-    private HederaEvmContractAliases hederaEvmContractAliases;
+    private MPCQEvmContractAliases hederaEvmContractAliases;
 
     @Mock
     private PrecompileContext precompileContext;
@@ -172,7 +172,7 @@ class TokenUpdatePrecompileTest {
         given(worldUpdater.permissivelyUnaliased(any()))
                 .willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         givenFrameContext();
-        given(frame.getBlockValues()).willReturn(new HederaBlockValues(10L, 123L, Instant.ofEpochSecond(123L)));
+        given(frame.getBlockValues()).willReturn(new MPCQBlockValues(10L, 123L, Instant.ofEpochSecond(123L)));
         given(frame.getInputData()).willReturn(UPDATE_FUNGIBLE_TOKEN_INPUT);
         givenMinimalContextForSuccessfulCall();
         givenPricingUtilsContext();
@@ -199,7 +199,7 @@ class TokenUpdatePrecompileTest {
         given(worldUpdater.permissivelyUnaliased(any()))
                 .willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         givenFrameContext();
-        given(frame.getBlockValues()).willReturn(new HederaBlockValues(10L, 123L, Instant.ofEpochSecond(123L)));
+        given(frame.getBlockValues()).willReturn(new MPCQBlockValues(10L, 123L, Instant.ofEpochSecond(123L)));
         given(frame.getInputData()).willReturn(UPDATE_FUNGIBLE_TOKEN_INPUT_V2);
         givenMinimalContextForSuccessfulCall();
         givenPricingUtilsContext();
@@ -226,7 +226,7 @@ class TokenUpdatePrecompileTest {
         given(worldUpdater.permissivelyUnaliased(any()))
                 .willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         givenFrameContext();
-        given(frame.getBlockValues()).willReturn(new HederaBlockValues(10L, 123L, Instant.ofEpochSecond(123L)));
+        given(frame.getBlockValues()).willReturn(new MPCQBlockValues(10L, 123L, Instant.ofEpochSecond(123L)));
         given(frame.getInputData()).willReturn(UPDATE_FUNGIBLE_TOKEN_INPUT_V3);
         givenMinimalContextForSuccessfulCall();
         givenPricingUtilsContext();

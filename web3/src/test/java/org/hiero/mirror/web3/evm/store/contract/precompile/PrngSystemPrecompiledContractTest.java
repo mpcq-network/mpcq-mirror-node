@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaBlockValues;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQBlockValues;
 import com.hedera.services.contracts.execution.LivePricesSource;
 import com.hedera.services.store.contracts.precompile.PrngSystemPrecompiledContract;
 import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
 import com.hedera.services.txns.util.PrngLogic;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.time.Instant;
 import java.util.Optional;
@@ -110,7 +110,7 @@ class PrngSystemPrecompiledContractTest {
     @Test
     void calculatesGasCorrectly() {
         given(pricingUtils.getCanonicalPriceInTinyCents(PRNG)).willReturn(100000000L);
-        given(livePricesSource.currentGasPriceInTinycents(consensusNow, HederaFunctionality.ContractCall))
+        given(livePricesSource.currentGasPriceInTinycents(consensusNow, MPCQFunctionality.ContractCall))
                 .willReturn(800L);
         assertEquals(100000000L / 800L, subject.calculateGas(consensusNow));
     }
@@ -120,7 +120,7 @@ class PrngSystemPrecompiledContractTest {
         final var input = random256BitGeneratorInput();
         initialSetUp();
 
-        given(frame.getBlockValues()).willReturn(new HederaBlockValues(10L, 123L, consensusNow));
+        given(frame.getBlockValues()).willReturn(new MPCQBlockValues(10L, 123L, consensusNow));
         given(frame.getValue()).willReturn(Wei.ZERO);
 
         final var response = subject.computePrngResult(10L, input, frame);
@@ -163,7 +163,7 @@ class PrngSystemPrecompiledContractTest {
 
     private void initialSetUp() {
         given(pricingUtils.getCanonicalPriceInTinyCents(PRNG)).willReturn(100000000L);
-        given(livePricesSource.currentGasPriceInTinycents(consensusNow, HederaFunctionality.ContractCall))
+        given(livePricesSource.currentGasPriceInTinycents(consensusNow, MPCQFunctionality.ContractCall))
                 .willReturn(830L);
         given(frame.getRemainingGas()).willReturn(400_000L);
     }

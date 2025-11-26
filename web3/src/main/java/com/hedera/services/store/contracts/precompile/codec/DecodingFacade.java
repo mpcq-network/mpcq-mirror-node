@@ -2,7 +2,7 @@
 
 package com.hedera.services.store.contracts.precompile.codec;
 
-import static com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases.isMirror;
+import static com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases.isMirror;
 import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ARRAY_BRACKETS;
 import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.EXPIRY;
 import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.TOKEN_KEY;

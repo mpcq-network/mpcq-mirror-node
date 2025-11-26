@@ -12,7 +12,7 @@ import org.hiero.mirror.common.util.DomainUtils;
 import org.hiero.mirror.importer.DisableRepeatableSqlMigration;
 import org.hiero.mirror.importer.EnabledIfV1;
 import org.hiero.mirror.importer.ImporterProperties;
-import org.hiero.mirror.importer.ImporterProperties.HederaNetwork;
+import org.hiero.mirror.importer.ImporterProperties.MPCQNetwork;
 import org.hiero.mirror.importer.TestUtils;
 import org.hiero.mirror.importer.util.Utility;
 import org.junit.jupiter.api.AfterEach;
@@ -37,7 +37,7 @@ class RecalculatePendingRewardMigrationTest extends AbstractStakingMigrationTest
 
     @AfterEach
     void teardown() {
-        importerProperties.setNetwork(HederaNetwork.TESTNET);
+        importerProperties.setNetwork(MPCQNetwork.TESTNET);
     }
 
     @Test
@@ -49,8 +49,8 @@ class RecalculatePendingRewardMigrationTest extends AbstractStakingMigrationTest
     @Test
     void otherNetwork() {
         // given
-        setupNodeStakeForNetwork(HederaNetwork.MAINNET);
-        importerProperties.setNetwork(HederaNetwork.OTHER);
+        setupNodeStakeForNetwork(MPCQNetwork.MAINNET);
+        importerProperties.setNetwork(MPCQNetwork.OTHER);
         var entity = domainBuilder
                 .entity()
                 .customize(e -> e.stakedNodeId(0L).stakePeriodStart(firstEpochDay))
@@ -71,7 +71,7 @@ class RecalculatePendingRewardMigrationTest extends AbstractStakingMigrationTest
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {HederaNetwork.MAINNET, HederaNetwork.TESTNET})
+    @ValueSource(strings = {MPCQNetwork.MAINNET, MPCQNetwork.TESTNET})
     void recalculate(String network) {
         // given
         setupNodeStakeForNetwork(network);
@@ -107,7 +107,7 @@ class RecalculatePendingRewardMigrationTest extends AbstractStakingMigrationTest
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {HederaNetwork.MAINNET, HederaNetwork.TESTNET})
+    @ValueSource(strings = {MPCQNetwork.MAINNET, MPCQNetwork.TESTNET})
     void recalculateWhenStakeStartPeriodAfterFirst(String network) {
         // given
         setupNodeStakeForNetwork(network);
@@ -144,7 +144,7 @@ class RecalculatePendingRewardMigrationTest extends AbstractStakingMigrationTest
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {HederaNetwork.MAINNET, HederaNetwork.TESTNET})
+    @ValueSource(strings = {MPCQNetwork.MAINNET, MPCQNetwork.TESTNET})
     void recalculateWithStakingRewardPayout(String network) {
         // given
         setupNodeStakeForNetwork(network);
@@ -210,7 +210,7 @@ class RecalculatePendingRewardMigrationTest extends AbstractStakingMigrationTest
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {HederaNetwork.MAINNET, HederaNetwork.TESTNET})
+    @ValueSource(strings = {MPCQNetwork.MAINNET, MPCQNetwork.TESTNET})
     void recalculateForDeletedEntity(String network) {
         // given
         setupNodeStakeForNetwork(network);
@@ -244,7 +244,7 @@ class RecalculatePendingRewardMigrationTest extends AbstractStakingMigrationTest
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {HederaNetwork.MAINNET, HederaNetwork.TESTNET})
+    @ValueSource(strings = {MPCQNetwork.MAINNET, MPCQNetwork.TESTNET})
     void recalculateWhenDeclineReward(String network) {
         // given
         setupNodeStakeForNetwork(network);
@@ -278,7 +278,7 @@ class RecalculatePendingRewardMigrationTest extends AbstractStakingMigrationTest
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {HederaNetwork.MAINNET, HederaNetwork.TESTNET})
+    @ValueSource(strings = {MPCQNetwork.MAINNET, MPCQNetwork.TESTNET})
     void recalculateWhenNotStakedToNode(String network) {
         // given
         setupNodeStakeForNetwork(network);
@@ -309,7 +309,7 @@ class RecalculatePendingRewardMigrationTest extends AbstractStakingMigrationTest
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {HederaNetwork.MAINNET, HederaNetwork.TESTNET})
+    @ValueSource(strings = {MPCQNetwork.MAINNET, MPCQNetwork.TESTNET})
     void recalculateWhenEntityStakeEmpty(String network) {
         // given pending reward is disabled, therefore the entity_stake table should be empty
         setupNodeStakeForNetwork(network);

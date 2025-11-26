@@ -15,7 +15,7 @@ import static org.hiero.mirror.web3.utils.ContractCallTestUtil.LEDGER_ID;
 import static org.hiero.mirror.web3.utils.ContractCallTestUtil.TRANSACTION_GAS_LIMIT;
 import static org.hiero.mirror.web3.utils.ContractCallTestUtil.ZERO_VALUE;
 import static org.hiero.mirror.web3.web3j.generated.PrecompileTestContract.Expiry;
-import static org.hiero.mirror.web3.web3j.generated.PrecompileTestContract.HederaToken;
+import static org.hiero.mirror.web3.web3j.generated.PrecompileTestContract.MPCQToken;
 import static org.hiero.mirror.web3.web3j.generated.PrecompileTestContract.TokenKey;
 
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -670,7 +670,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
                 BigInteger.valueOf(tokenEntity.getExpirationTimestamp()).divide(BigInteger.valueOf(1_000_000_000L)),
                 getAddressFromEntity(autoRenewAccount),
                 BigInteger.valueOf(tokenEntity.getAutoRenewPeriod()));
-        final var expectedHederaToken = new HederaToken(
+        final var expectedMPCQToken = new MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 mirrorNodeEvmProperties.isModularizedServices()
@@ -692,7 +692,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
         final var royaltyFees = new ArrayList<PrecompileTestContract.RoyaltyFee>();
 
         final var expectedTokenInfo = new TokenInfo(
-                expectedHederaToken,
+                expectedMPCQToken,
                 BigInteger.valueOf(token.getTotalSupply()),
                 tokenEntity.getDeleted(),
                 false,
@@ -740,7 +740,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
                 BigInteger.valueOf(tokenEntity.getExpirationTimestamp()).divide(BigInteger.valueOf(1_000_000_000L)),
                 Address.ZERO.toHexString(),
                 BigInteger.valueOf(tokenEntity.getAutoRenewPeriod()));
-        final var expectedHederaToken = new HederaToken(
+        final var expectedMPCQToken = new MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 mirrorNodeEvmProperties.isModularizedServices()
@@ -762,7 +762,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
         final var royaltyFees = new ArrayList<PrecompileTestContract.RoyaltyFee>();
 
         final var expectedTokenInfo = new TokenInfo(
-                expectedHederaToken,
+                expectedMPCQToken,
                 BigInteger.valueOf(token.getTotalSupply()),
                 tokenEntity.getDeleted(),
                 false,
@@ -819,7 +819,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
                 BigInteger.valueOf(tokenEntity.getExpirationTimestamp()).divide(BigInteger.valueOf(1_000_000_000L)),
                 getAddressFromEntity(autoRenewAccount),
                 BigInteger.valueOf(tokenEntity.getAutoRenewPeriod()));
-        final var expectedHederaToken = new HederaToken(
+        final var expectedMPCQToken = new MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 mirrorNodeEvmProperties.isModularizedServices()
@@ -841,7 +841,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
         royaltyFees.add(getRoyaltyFee(customFees.getRoyaltyFees().getFirst(), feeCollector));
 
         final var expectedTokenInfo = new TokenInfo(
-                expectedHederaToken,
+                expectedMPCQToken,
                 BigInteger.valueOf(token.getTotalSupply()),
                 tokenEntity.getDeleted(),
                 false,
@@ -902,7 +902,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
                 BigInteger.valueOf(tokenEntity.getExpirationTimestamp()).divide(BigInteger.valueOf(1_000_000_000L)),
                 Address.ZERO.toHexString(),
                 BigInteger.valueOf(tokenEntity.getAutoRenewPeriod()));
-        final var expectedHederaToken = new HederaToken(
+        final var expectedMPCQToken = new MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 mirrorNodeEvmProperties.isModularizedServices()
@@ -924,7 +924,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
         royaltyFees.add(getRoyaltyFee(customFees.getRoyaltyFees().getFirst(), feeCollector));
 
         final var expectedTokenInfo = new TokenInfo(
-                expectedHederaToken,
+                expectedMPCQToken,
                 BigInteger.valueOf(token.getTotalSupply()),
                 tokenEntity.getDeleted(),
                 false,
@@ -976,7 +976,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
                 BigInteger.valueOf(tokenEntity.getExpirationTimestamp()).divide(BigInteger.valueOf(1_000_000_000L)),
                 getAddressFromEntity(autoRenewAccount),
                 BigInteger.valueOf(tokenEntity.getAutoRenewPeriod()));
-        final var expectedHederaToken = new HederaToken(
+        final var expectedMPCQToken = new MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 mirrorNodeEvmProperties.isModularizedServices()
@@ -1003,7 +1003,7 @@ class ContractCallServicePrecompileReadonlyTest extends AbstractContractCallServ
         }
 
         final var expectedTokenInfo = new TokenInfo(
-                expectedHederaToken,
+                expectedMPCQToken,
                 BigInteger.valueOf(token.getTotalSupply()),
                 tokenEntity.getDeleted(),
                 false,

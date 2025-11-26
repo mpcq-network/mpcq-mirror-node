@@ -188,7 +188,7 @@ public abstract class ImporterIntegrationTest extends CommonIntegrationTest {
     protected void reset() {
         super.reset();
         dateRangeCalculator.clear();
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.TESTNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.TESTNET);
         importerProperties.setStartDate(Instant.EPOCH);
         parserContext.clear();
         retryRecorder.reset();

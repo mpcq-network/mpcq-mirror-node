@@ -14,13 +14,13 @@ import org.apache.tuweni.bytes.Bytes;
  */
 @Named
 @SuppressWarnings("java:S110")
-public class GasCalculatorHederaV22 extends GasCalculatorHederaV19 {
+public class GasCalculatorMPCQV22 extends GasCalculatorMPCQV19 {
 
     private static final long TX_DATA_ZERO_COST = 4L;
     private static final long ISTANBUL_TX_DATA_NON_ZERO_COST = 16L;
     private static final long TX_BASE_COST = 21_000L;
 
-    public GasCalculatorHederaV22(final UsagePricesProvider usagePrices, final HbarCentExchange exchange) {
+    public GasCalculatorMPCQV22(final UsagePricesProvider usagePrices, final HbarCentExchange exchange) {
         super(usagePrices, exchange);
     }
 

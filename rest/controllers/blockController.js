@@ -23,7 +23,7 @@ const acceptedBlockParameters = new Set([
 ]);
 
 const validateHashOrNumber = (hashOrNumber) => {
-  if (utils.isValidEthHashOrHederaHash(hashOrNumber)) {
+  if (utils.isValidEthHashOrMPCQHash(hashOrNumber)) {
     return {hash: hashOrNumber.replace('0x', ''), number: null};
   }
 

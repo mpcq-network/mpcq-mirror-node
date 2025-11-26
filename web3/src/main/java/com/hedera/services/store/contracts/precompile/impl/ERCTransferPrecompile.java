@@ -54,7 +54,7 @@ import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store.OnMissing;
 import org.hiero.mirror.web3.evm.store.contract.EntityAddressSequencer;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.hyperledger.besu.evm.log.Log;
@@ -138,7 +138,7 @@ public class ERCTransferPrecompile extends TransferPrecompile {
 
     @Override
     public RunResult run(MessageFrame frame, TransactionBody transactionBody) {
-        final var store = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
+        final var store = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
         final var cryptoTransfer = transactionBody.getCryptoTransfer();
         final var transfer = cryptoTransfer.getTokenTransfersList().get(0);
         final var tokenAddress = EntityIdUtils.asTypedEvmAddress(transfer.getToken());

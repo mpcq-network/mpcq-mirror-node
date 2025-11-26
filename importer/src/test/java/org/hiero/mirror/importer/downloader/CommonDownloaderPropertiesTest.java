@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.net.URI;
 import org.hiero.mirror.importer.ImporterProperties;
-import org.hiero.mirror.importer.ImporterProperties.HederaNetwork;
+import org.hiero.mirror.importer.ImporterProperties.MPCQNetwork;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -20,7 +20,7 @@ class CommonDownloaderPropertiesTest {
     void getBucketName() {
         var mirrorProperties = new ImporterProperties();
         var properties = new CommonDownloaderProperties(mirrorProperties);
-        assertThat(properties.getBucketName()).isEqualTo(HederaNetwork.getBucketName(mirrorProperties.getNetwork()));
+        assertThat(properties.getBucketName()).isEqualTo(MPCQNetwork.getBucketName(mirrorProperties.getNetwork()));
 
         var bucketName = "test";
         properties.setBucketName(bucketName);
@@ -32,7 +32,7 @@ class CommonDownloaderPropertiesTest {
         var mirrorProperties = new ImporterProperties();
         var properties = new CommonDownloaderProperties(mirrorProperties);
 
-        mirrorProperties.setNetwork(HederaNetwork.OTHER);
+        mirrorProperties.setNetwork(MPCQNetwork.OTHER);
         assertThrows(IllegalArgumentException.class, properties::init);
 
         mirrorProperties.setNetwork("mynetwork");
@@ -47,7 +47,7 @@ class CommonDownloaderPropertiesTest {
         // Default network is DEMO, which is the only network allowing anonymous access
         assertThat(properties.isAnonymousCredentials()).isTrue();
 
-        mirrorProperties.setNetwork(HederaNetwork.MAINNET);
+        mirrorProperties.setNetwork(MPCQNetwork.MAINNET);
         assertThat(properties.isAnonymousCredentials()).isFalse();
 
         mirrorProperties.setNetwork("mynetwork");

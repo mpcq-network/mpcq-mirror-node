@@ -24,7 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.hiero.mirror.common.exception.InvalidEntityException;
 
 /**
- * Common encapsulation for a Hedera entity identifier.
+ * Common encapsulation for a MPCQ entity identifier.
  */
 @Value
 public final class EntityId implements Serializable, Comparable<EntityId> {

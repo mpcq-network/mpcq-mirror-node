@@ -80,7 +80,7 @@ public class HistoricalAccountInfoMigration extends RepeatableMigration {
             return;
         }
 
-        if (!ImporterProperties.HederaNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork())) {
+        if (!ImporterProperties.MPCQNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork())) {
             log.info("Skipping migration since it only applies to mainnet");
             return;
         }

@@ -1,11 +1,11 @@
-# Monitoring a live deployment of Hedera Mirror Node
+# Monitoring a live deployment of MPCQ Mirror Node
 
-This code runs on an external server outside of the Hedera mirror node deployment, and periodically polls the REST APIs
-exposed by the Hedera mirror node to ensure that the deployed APIs are working.
+This code runs on an external server outside of the MPCQ mirror node deployment, and periodically polls the REST APIs
+exposed by the MPCQ mirror node to ensure that the deployed APIs are working.
 
 ## Monitoring APIs:
 
-A process runs that periodically polls the APIs exposed by the deployment of a Hedera mirror node.
+A process runs that periodically polls the APIs exposed by the deployment of a MPCQ mirror node.
 It then checks the responses using a few simple checks for those APIs.
 The results of these checks are exposed as a set of REST APIs by this monitoring service as follows:
 
@@ -21,8 +21,8 @@ The results of these checks are exposed as a set of REST APIs by this monitoring
 
 ### Requirements
 
-- [ ] List of addresses of Hedera mirror nodes that you want to monitor
-- [ ] An existing topic ID of the target Hedera Mirror node environment if you want to run topic message tests
+- [ ] List of addresses of MPCQ mirror nodes that you want to monitor
+- [ ] An existing topic ID of the target MPCQ Mirror node environment if you want to run topic message tests
 - [ ] An external server where you want to run this code to monitor the mirror node. You will need two TCP ports on the
       server.
 - [ ] npm
@@ -64,7 +64,7 @@ To run the monitor:
 PORT=3000 pm2 start server.js --node-args="--import=extensionless/register"
 ```
 
-The server will start polling Hedera mirror nodes specified in the config/serverlist.json file. The default interval to
+The server will start polling MPCQ mirror nodes specified in the config/serverlist.json file. The default interval to
 populate the data is 60 seconds. You can verify the output using `curl http://<host>:<port>/api/v1/status` command. By
 default, the response only includes the details of failed tests. You can pass `result=` query parameter to filter test
 result details by the result type, the accepted values are `all`, `failed`, and `passed`. For example, to show the

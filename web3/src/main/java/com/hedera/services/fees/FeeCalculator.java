@@ -17,7 +17,7 @@ public interface FeeCalculator {
 
     FeeObject estimatePayment(Query query, FeeData usagePrices, Timestamp at, ResponseType type);
 
-    long estimatedGasPriceInTinybars(HederaFunctionality function, Timestamp at);
+    long estimatedGasPriceInTinybars(MPCQFunctionality function, Timestamp at);
 
     FeeObject computeFee(TxnAccessor accessor, JKey payerKey, Timestamp at);
 }

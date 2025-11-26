@@ -21,9 +21,9 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- * Copied PBJ model from the Hedera Services with added Supplier fields for lazy loading. This model will be deleted as part of future enhancement.
+ * Copied PBJ model from the MPCQ Services with added Supplier fields for lazy loading. This model will be deleted as part of future enhancement.
  *
- * Representation of a Hedera Token Service account entity in the network Merkle tree.
+ * Representation of a MPCQ Token Service account entity in the network Merkle tree.
  * <p>
  * As with all network entities, account has a unique entity number represented as shard.realm.X.
  * X can be an alias public key or an EVM address or a number.

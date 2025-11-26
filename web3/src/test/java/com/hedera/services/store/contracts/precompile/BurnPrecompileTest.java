@@ -35,7 +35,7 @@ import com.hedera.services.txn.token.BurnLogic;
 import com.hedera.services.txns.validation.ContextOptionValidator;
 import com.hedera.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.SubType;
 import com.hederahashgraph.api.proto.java.TokenBurnTransactionBody;
@@ -58,7 +58,7 @@ import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
 import org.hiero.mirror.web3.evm.store.Store.OnMissing;
 import org.hiero.mirror.web3.evm.store.accessor.model.TokenRelationshipKey;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.junit.jupiter.api.BeforeEach;
@@ -184,7 +184,7 @@ class BurnPrecompileTest {
     private SyntheticTxnFactory syntheticTxnFactory;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
     private FeeCalculator feeCalculator;
@@ -226,10 +226,10 @@ class BurnPrecompileTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        final Map<HederaFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
-                new EnumMap<>(HederaFunctionality.class);
+        final Map<MPCQFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
+                new EnumMap<>(MPCQFunctionality.class);
         canonicalPrices.put(
-                HederaFunctionality.TokenBurn, Map.of(SubType.TOKEN_FUNGIBLE_COMMON, BigDecimal.valueOf(0)));
+                MPCQFunctionality.TokenBurn, Map.of(SubType.TOKEN_FUNGIBLE_COMMON, BigDecimal.valueOf(0)));
         given(assetLoader.loadCanonicalPrices()).willReturn(canonicalPrices);
         final PrecompilePricingUtils precompilePricingUtils =
                 new PrecompilePricingUtils(assetLoader, exchange, feeCalculator, resourceCosts, accessorFactory);
@@ -254,7 +254,7 @@ class BurnPrecompileTest {
 
         given(worldUpdater.permissivelyUnaliased(any()))
                 .willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        given(feeCalculator.estimatedGasPriceInTinybars(HederaFunctionality.ContractCall, timestamp))
+        given(feeCalculator.estimatedGasPriceInTinybars(MPCQFunctionality.ContractCall, timestamp))
                 .willReturn(1L);
         given(feeCalculator.computeFee(any(), any(), any())).willReturn(mockFeeObject);
         given(mockFeeObject.getServiceFee()).willReturn(1L);
@@ -284,7 +284,7 @@ class BurnPrecompileTest {
 
         given(worldUpdater.permissivelyUnaliased(any()))
                 .willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        given(feeCalculator.estimatedGasPriceInTinybars(HederaFunctionality.ContractCall, timestamp))
+        given(feeCalculator.estimatedGasPriceInTinybars(MPCQFunctionality.ContractCall, timestamp))
                 .willReturn(1L);
         given(feeCalculator.computeFee(any(), any(), any())).willReturn(mockFeeObject);
         given(mockFeeObject.getServiceFee()).willReturn(1L);

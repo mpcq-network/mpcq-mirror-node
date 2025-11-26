@@ -14,7 +14,7 @@ import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TransactionBody;
 import java.util.Objects;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
@@ -42,7 +42,7 @@ public abstract class AbstractFreezeUnfreezePrecompile extends AbstractWritePrec
         validateTrue(validity == OK, validity);
 
         /* --- Execute the transaction and capture its results --- */
-        final var store = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
+        final var store = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
         executeFreezeUnfreezeLogic(transactionBody, store);
 
         return new EmptyRunResult();

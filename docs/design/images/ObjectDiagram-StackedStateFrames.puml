@@ -15,7 +15,7 @@ object "Frame1 : RWCachingStackFrame" as Frame1 {
    am = //no such account//
 }
 
-object "Hedera state cache : ROCachingStackFrame" as ROCache {
+object "MPCQ state cache : ROCachingStackFrame" as ROCache {
    ap1 = <ref ap1>
    ap2 = <ref ap2>
    am = //no such account//

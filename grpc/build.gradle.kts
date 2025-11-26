@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-description = "Hiero Mirror Node gRPC API"
+description = "MPCQ Mirror Node gRPC API"
 
 plugins { id("spring-conventions") }
 

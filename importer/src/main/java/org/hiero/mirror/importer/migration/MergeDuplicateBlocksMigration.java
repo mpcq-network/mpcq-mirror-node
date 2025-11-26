@@ -52,7 +52,7 @@ class MergeDuplicateBlocksMigration extends RepeatableMigration {
 
     @Override
     protected void doMigrate() throws IOException {
-        if (!ImporterProperties.HederaNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork())) {
+        if (!ImporterProperties.MPCQNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork())) {
             return;
         }
 

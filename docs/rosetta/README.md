@@ -6,7 +6,7 @@ The Rosetta API is a REST API complying with
 the [Rosetta API Specification](https://www.rosetta-api.org/docs/welcome.html) with a focus on blockchain data
 integration. This server enables exchanges to be able to integrate and work with the network. The
 server is written in Golang and is largely based on the [rosetta-sdk-go](https://github.com/coinbase/rosetta-sdk-go).
-Its main job is to respond to Rosetta requests, to the extent allowed by Hiero, while fetching information from the
+Its main job is to respond to Rosetta requests, to the extent allowed by MPCQ, while fetching information from the
 mirror node database.
 
 ## Architecture
@@ -139,7 +139,7 @@ testnet accounts with the private keys and set `prefunded_accounts` in `testnet/
           "symbol": "HBAR",
           "decimals": 8,
           "metadata": {
-            "issuer": "Hedera"
+            "issuer": "MPCQ"
           }
         }
       },
@@ -153,7 +153,7 @@ testnet accounts with the private keys and set `prefunded_accounts` in `testnet/
           "symbol": "HBAR",
           "decimals": 8,
           "metadata": {
-            "issuer": "Hedera"
+            "issuer": "MPCQ"
           }
         }
       }

@@ -1,6 +1,6 @@
 # Overview
 
-This folder contains logic to support the development and deployment of the Hedera Mirror Node in a Kubernetes cluster
+This folder contains logic to support the development and deployment of the MPCQ Mirror Node in a Kubernetes cluster
 in [Google Cloud Platform Marketplace](https://console.cloud.google.com/marketplace). It takes in the wrapper
 `hedera-mirror` Helm chart and bundles it into the required deployer image which is built and pushed to Google Container
 Registry on deploy.

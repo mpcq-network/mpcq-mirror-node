@@ -2,10 +2,10 @@
 pragma solidity >=0.5.0 <0.9.0;
 pragma experimental ABIEncoderV2;
 
-import "./HederaResponseCodes.sol";
-import "./IHederaAccountService.sol";
+import "./MPCQResponseCodes.sol";
+import "./IMPCQAccountService.sol";
 
-abstract contract HederaAccountService {
+abstract contract MPCQAccountService {
     address constant precompileAddress = address(0x16a);
 
     // TODO: in case of the precompile call returning `!success` should we return some code OTHER
@@ -20,9 +20,9 @@ abstract contract HederaAccountService {
     function hbarAllowance(address owner, address spender) internal returns (int64 responseCode, int256 amount)
     {
         (bool success, bytes memory result) = precompileAddress.call(
-            abi.encodeWithSelector(IHederaAccountService.hbarAllowance.selector,
+            abi.encodeWithSelector(IMPCQAccountService.hbarAllowance.selector,
                 owner, spender));
-        (responseCode, amount) = success ? abi.decode(result, (int32, int256)) : (HederaResponseCodes.UNKNOWN, (int256)(0));
+        (responseCode, amount) = success ? abi.decode(result, (int32, int256)) : (MPCQResponseCodes.UNKNOWN, (int256)(0));
     }
 
 
@@ -35,38 +35,38 @@ abstract contract HederaAccountService {
     function hbarApprove(address owner, address spender, int256 amount) internal returns (int64 responseCode)
     {
         (bool success, bytes memory result) = precompileAddress.call(
-            abi.encodeWithSelector(IHederaAccountService.hbarApprove.selector,
+            abi.encodeWithSelector(IMPCQAccountService.hbarApprove.selector,
                 owner, spender, amount));
-        responseCode = success ? abi.decode(result, (int32)) : HederaResponseCodes.UNKNOWN;
+        responseCode = success ? abi.decode(result, (int32)) : MPCQResponseCodes.UNKNOWN;
     }
 
-    /// Returns the EVM address alias for the given Hedera account.
-    /// @param accountNumAlias The Hedera account to get the EVM address alias for.
+    /// Returns the EVM address alias for the given MPCQ account.
+    /// @param accountNumAlias The MPCQ account to get the EVM address alias for.
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
-    /// @return evmAddressAlias The EVM address alias for the given Hedera account.
+    /// @return evmAddressAlias The EVM address alias for the given MPCQ account.
     function getEvmAddressAlias(address accountNumAlias) internal returns (int64 responseCode, address evmAddressAlias) {
         (bool success, bytes memory result) = precompileAddress.call(
-            abi.encodeWithSelector(IHederaAccountService.getEvmAddressAlias.selector, accountNumAlias));
-        return success ? abi.decode(result, (int64, address)) : (int64(HederaResponseCodes.UNKNOWN), address(0));
+            abi.encodeWithSelector(IMPCQAccountService.getEvmAddressAlias.selector, accountNumAlias));
+        return success ? abi.decode(result, (int64, address)) : (int64(MPCQResponseCodes.UNKNOWN), address(0));
     }
 
-    /// Returns the Hedera Account ID (as account num alias) for the given EVM address alias
-    /// @param evmAddressAlias The EVM address alias to get the Hedera account for.
+    /// Returns the MPCQ Account ID (as account num alias) for the given EVM address alias
+    /// @param evmAddressAlias The EVM address alias to get the MPCQ account for.
     /// @return responseCode The response code for the status of the request.  SUCCESS is 22.
-    /// @return accountNumAlias The Hedera account's num for the given EVM address alias.
-    function getHederaAccountNumAlias(address evmAddressAlias) internal
+    /// @return accountNumAlias The MPCQ account's num for the given EVM address alias.
+    function getMPCQAccountNumAlias(address evmAddressAlias) internal
     returns (int64 responseCode, address accountNumAlias) {
         (bool success, bytes memory result) = precompileAddress.call(
-            abi.encodeWithSelector(IHederaAccountService.getHederaAccountNumAlias.selector, evmAddressAlias));
-        return success ? abi.decode(result, (int64, address)) : (int64(HederaResponseCodes.UNKNOWN), address(0));
+            abi.encodeWithSelector(IMPCQAccountService.getMPCQAccountNumAlias.selector, evmAddressAlias));
+        return success ? abi.decode(result, (int64, address)) : (int64(MPCQResponseCodes.UNKNOWN), address(0));
     }
 
-    /// Returns true iff a Hedera account num alias or EVM address alias.
+    /// Returns true iff a MPCQ account num alias or EVM address alias.
     /// @param addr Some 20-byte address.
-    /// @return response true iff addr is a Hedera account num alias or an EVM address alias (and false otherwise).
+    /// @return response true iff addr is a MPCQ account num alias or an EVM address alias (and false otherwise).
     function isValidAlias(address addr) internal returns (bool response) {
         (bool success, bytes memory result) = precompileAddress.call(
-            abi.encodeWithSelector(IHederaAccountService.isValidAlias.selector, addr));
+            abi.encodeWithSelector(IMPCQAccountService.isValidAlias.selector, addr));
         return success ? abi.decode(result, (bool)) : false;
     }
 
@@ -79,7 +79,7 @@ abstract contract HederaAccountService {
     function isAuthorizedRaw(address account, bytes memory messageHash, bytes memory signature) internal
     returns (bool response) {
         (, bytes memory result) = precompileAddress.call(
-            abi.encodeWithSelector(IHederaAccountService.isAuthorizedRaw.selector,
+            abi.encodeWithSelector(IMPCQAccountService.isAuthorizedRaw.selector,
                 account, messageHash, signature));
         // _not_ checking `success` allows this call to revert on error
         response = abi.decode(result, (bool));
@@ -95,8 +95,8 @@ abstract contract HederaAccountService {
     function isAuthorized(address account, bytes memory message, bytes memory signature) internal
     returns (int64 responseCode, bool response) {
         (bool success, bytes memory result) = precompileAddress.call(
-            abi.encodeWithSelector(IHederaAccountService.isAuthorized.selector,
+            abi.encodeWithSelector(IMPCQAccountService.isAuthorized.selector,
                 account, message, signature));
-        return success ? abi.decode(result, (int64, bool)) : (int64(HederaResponseCodes.UNKNOWN), false);
+        return success ? abi.decode(result, (int64, bool)) : (int64(MPCQResponseCodes.UNKNOWN), false);
     }
 }

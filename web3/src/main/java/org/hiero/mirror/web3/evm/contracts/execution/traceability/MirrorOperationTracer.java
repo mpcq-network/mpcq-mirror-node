@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution.traceability;
 
-import com.hedera.node.app.service.evm.contracts.execution.traceability.HederaEvmOperationTracer;
+import com.hedera.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
 import jakarta.inject.Named;
 import lombok.CustomLog;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import org.hyperledger.besu.evm.operation.Operation;
 @Named
 @CustomLog
 @RequiredArgsConstructor
-public class MirrorOperationTracer implements HederaEvmOperationTracer {
+public class MirrorOperationTracer implements MPCQEvmOperationTracer {
 
     private final TraceProperties traceProperties;
     private final MirrorEvmContractAliases mirrorEvmContractAliases;

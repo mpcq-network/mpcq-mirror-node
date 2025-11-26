@@ -12,7 +12,7 @@ import static org.mockito.ArgumentMatchers.longThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
 import com.hedera.services.fees.calc.OverflowCheckingCalc;
 import com.hedera.services.fees.usage.state.UsageAccumulator;
 import com.hedera.services.hapi.fees.usage.SigUsage;
@@ -22,7 +22,7 @@ import com.hedera.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.KeyList;
 import org.hiero.mirror.web3.evm.store.Store;
@@ -71,7 +71,7 @@ class PricedUsageCalculatorTest {
     private Store store;
 
     @Mock
-    private HederaEvmContractAliases hederaEvmContractAliases;
+    private MPCQEvmContractAliases hederaEvmContractAliases;
 
     private PricedUsageCalculator subject;
 
@@ -82,10 +82,10 @@ class PricedUsageCalculatorTest {
 
     @Test
     void delegatesSupports() {
-        given(accessorBasedUsages.supports(HederaFunctionality.CryptoTransfer)).willReturn(true);
+        given(accessorBasedUsages.supports(MPCQFunctionality.CryptoTransfer)).willReturn(true);
 
         // then:
-        Assertions.assertTrue(subject.supports(HederaFunctionality.CryptoTransfer));
+        Assertions.assertTrue(subject.supports(MPCQFunctionality.CryptoTransfer));
     }
 
     @Test

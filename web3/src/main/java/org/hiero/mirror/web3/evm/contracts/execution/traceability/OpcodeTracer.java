@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution.traceability;
 
-import com.hedera.node.app.service.mono.contracts.execution.traceability.HederaOperationTracer;
+import com.hedera.node.app.service.mono.contracts.execution.traceability.MPCQOperationTracer;
 import com.hedera.services.stream.proto.ContractActionType;
 import jakarta.inject.Named;
 import java.util.Collections;
@@ -27,12 +27,12 @@ import org.hyperledger.besu.evm.precompile.PrecompiledContract;
 @Named
 @CustomLog
 @Getter
-public class OpcodeTracer extends AbstractOpcodeTracer implements HederaOperationTracer {
+public class OpcodeTracer extends AbstractOpcodeTracer implements MPCQOperationTracer {
 
     private final Map<Address, PrecompiledContract> hederaPrecompiles;
 
     public OpcodeTracer(final PrecompiledContractProvider precompiledContractProvider) {
-        this.hederaPrecompiles = precompiledContractProvider.getHederaPrecompiles().entrySet().stream()
+        this.hederaPrecompiles = precompiledContractProvider.getMPCQPrecompiles().entrySet().stream()
                 .collect(Collectors.toMap(e -> Address.fromHexString(e.getKey()), Map.Entry::getValue));
     }
 
@@ -62,7 +62,7 @@ public class OpcodeTracer extends AbstractOpcodeTracer implements HederaOperatio
     @Override
     public void tracePrecompileCall(final MessageFrame frame, final long gasRequirement, final Bytes output) {
         final ContractCallContext context = ContractCallContext.get();
-        final Optional<Bytes> revertReason = isCallToHederaPrecompile(frame, hederaPrecompiles)
+        final Optional<Bytes> revertReason = isCallToMPCQPrecompile(frame, hederaPrecompiles)
                 ? getRevertReasonFromContractActions(context)
                 : frame.getRevertReason();
         final Opcode opcode = Opcode.builder()
@@ -109,7 +109,7 @@ public class OpcodeTracer extends AbstractOpcodeTracer implements HederaOperatio
         // Empty body
     }
 
-    private boolean isCallToHederaPrecompile(
+    private boolean isCallToMPCQPrecompile(
             final MessageFrame frame, final Map<Address, PrecompiledContract> hederaPrecompiles) {
         final var recipientAddress = frame.getRecipientAddress();
         return hederaPrecompiles.containsKey(recipientAddress);

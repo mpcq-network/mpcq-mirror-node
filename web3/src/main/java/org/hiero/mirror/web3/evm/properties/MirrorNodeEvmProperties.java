@@ -166,7 +166,7 @@ public class MirrorNodeEvmProperties implements EvmProperties {
 
     @Getter
     @NotNull
-    private HederaNetwork network = HederaNetwork.TESTNET;
+    private MPCQNetwork network = MPCQNetwork.TESTNET;
 
     // Contains the user defined properties to pass to the consensus node library
     @Getter
@@ -297,8 +297,8 @@ public class MirrorNodeEvmProperties implements EvmProperties {
     /**
      * Returns the most appropriate mapping of EVM versions The method operates in a hierarchical manner: 1. It
      * initially attempts to use EVM versions defined in a YAML configuration. 2. If no YAML configuration is available,
-     * it defaults to using EVM versions specified in the HederaNetwork enum. 3. If no versions are defined in
-     * HederaNetwork, it falls back to a default map with an entry (0L, EVM_VERSION).
+     * it defaults to using EVM versions specified in the MPCQNetwork enum. 3. If no versions are defined in
+     * MPCQNetwork, it falls back to a default map with an entry (0L, EVM_VERSION).
      *
      * @return A NavigableMap<Long, String> representing the EVM versions. The key is the block number, and the value is
      * the EVM version.
@@ -383,7 +383,7 @@ public class MirrorNodeEvmProperties implements EvmProperties {
 
     @Getter
     @RequiredArgsConstructor
-    public enum HederaNetwork {
+    public enum MPCQNetwork {
         MAINNET(unhex("00"), Bytes32.fromHexString("0x0127"), mainnetEvmVersionsMap()),
         TESTNET(unhex("01"), Bytes32.fromHexString("0x0128"), Collections.emptyNavigableMap()),
         PREVIEWNET(unhex("02"), Bytes32.fromHexString("0x0129"), Collections.emptyNavigableMap()),

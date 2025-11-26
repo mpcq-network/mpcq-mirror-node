@@ -60,7 +60,7 @@
         "created_timestamp": "1234567890000000004",
         "decimals": 4,
         "metadata": [1, 1],
-        "name": "Hedera",
+        "name": "MPCQ",
         "type": "FUNGIBLE_COMMON"
       }
     ],
@@ -99,7 +99,7 @@
             },
             "decimals": 4,
             "metadata": "AQE=",
-            "name": "Hedera",
+            "name": "MPCQ",
             "type": "FUNGIBLE_COMMON"
           },
           {
@@ -134,7 +134,7 @@
             },
             "decimals": 4,
             "metadata": "AQE=",
-            "name": "Hedera",
+            "name": "MPCQ",
             "type": "FUNGIBLE_COMMON"
           },
           {
@@ -169,7 +169,7 @@
             },
             "decimals": 4,
             "metadata": "AQE=",
-            "name": "Hedera",
+            "name": "MPCQ",
             "type": "FUNGIBLE_COMMON"
           },
           {
@@ -204,7 +204,7 @@
             },
             "decimals": 4,
             "metadata": "AQE=",
-            "name": "Hedera",
+            "name": "MPCQ",
             "type": "FUNGIBLE_COMMON"
           },
           {
@@ -249,7 +249,7 @@
             },
             "decimals": 4,
             "metadata": "AQE=",
-            "name": "Hedera",
+            "name": "MPCQ",
             "symbol": "HEDERACOIN",
             "token_id": "0.0.45678",
             "type": "FUNGIBLE_COMMON"

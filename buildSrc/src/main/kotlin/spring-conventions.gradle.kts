@@ -53,6 +53,6 @@ tasks.bootBuildImage {
             "BP_OCI_REF_NAME" to env.getOrDefault("GITHUB_REF_NAME", "main"),
             "BP_OCI_REVISION" to env.getOrDefault("GITHUB_SHA", ""),
             "BP_OCI_SOURCE" to "https://github.com/${repo}",
-            "BP_OCI_VENDOR" to "Hiero",
+            "BP_OCI_VENDOR" to "MPCQ",
         )
 }

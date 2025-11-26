@@ -2,20 +2,20 @@
 
 package com.hedera.services.fees.calculation.utils;
 
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoApproveAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoDeleteAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoTransfer;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoUpdate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAccountWipe;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenBurn;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenFreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenMint;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenPause;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnfreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnpause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoApproveAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoDeleteAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoTransfer;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAccountWipe;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenBurn;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenFreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenMint;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenPause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnfreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnpause;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;

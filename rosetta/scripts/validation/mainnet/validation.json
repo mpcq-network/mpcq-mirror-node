@@ -1,6 +1,6 @@
 {
   "network": {
-    "blockchain": "Hedera",
+    "blockchain": "MPCQ",
     "network": "mainnet"
   },
   "data_directory": "./data",

@@ -29,7 +29,7 @@ import com.hedera.node.app.service.contract.impl.exec.ActionSidecarContentTracer
 import com.hedera.node.app.service.contract.impl.exec.AddressChecks;
 import com.hedera.node.app.service.contract.impl.exec.FeatureFlags;
 import com.hedera.node.app.service.contract.impl.exec.metrics.ContractMetrics;
-import com.hedera.node.app.service.contract.impl.exec.systemcontracts.HederaSystemContract;
+import com.hedera.node.app.service.contract.impl.exec.systemcontracts.MPCQSystemContract;
 import com.hedera.node.app.service.contract.impl.exec.tracers.AddOnEvmActionTracer;
 import com.hedera.node.app.service.contract.impl.exec.utils.FrameUtils;
 import com.hedera.node.app.service.contract.impl.state.ProxyEvmContract;
@@ -56,8 +56,8 @@ import org.hyperledger.besu.evm.tracing.OperationTracer;
 /**
  * A {@link MessageCallProcessor} customized to,
  * <ol>
- *  <li>Call Hedera-specific precompiles.</li>
- *  <li>Impose Hedera restrictions in the system account range.</li>
+ *  <li>Call MPCQ-specific precompiles.</li>
+ *  <li>Impose MPCQ restrictions in the system account range.</li>
  *  <li>Do lazy creation when appropriate.</li>
  * </ol>
  * Note these only require changing {@link MessageCallProcessor#start(MessageFrame, OperationTracer)},
@@ -77,7 +77,7 @@ public class CustomMessageCallProcessor extends MessageCallProcessor {
     private final FeatureFlags featureFlags;
     private final AddressChecks addressChecks;
     private final PrecompileContractRegistry precompiles;
-    private final Map<Address, HederaSystemContract> systemContracts;
+    private final Map<Address, MPCQSystemContract> systemContracts;
     private final ContractMetrics contractMetrics;
 
     private enum ForLazyCreation {
@@ -90,15 +90,15 @@ public class CustomMessageCallProcessor extends MessageCallProcessor {
      * @param evm the evm to use in this call
      * @param featureFlags current evm module feature flags
      * @param precompiles the present precompiles
-     * @param addressChecks checks against addresses reserved for Hedera
-     * @param systemContracts the Hedera system contracts
+     * @param addressChecks checks against addresses reserved for MPCQ
+     * @param systemContracts the MPCQ system contracts
      */
     public CustomMessageCallProcessor(
             @NonNull final EVM evm,
             @NonNull final FeatureFlags featureFlags,
             @NonNull final PrecompileContractRegistry precompiles,
             @NonNull final AddressChecks addressChecks,
-            @NonNull final Map<Address, HederaSystemContract> systemContracts,
+            @NonNull final Map<Address, MPCQSystemContract> systemContracts,
             @NonNull final ContractMetrics contractMetrics) {
         super(evm, precompiles);
         this.featureFlags = Objects.requireNonNull(featureFlags);
@@ -114,9 +114,9 @@ public class CustomMessageCallProcessor extends MessageCallProcessor {
      *
      * <p>This contract address may reference,
      * <ol>
-     *     <li>A Hedera system contract.</li>
+     *     <li>A MPCQ system contract.</li>
      *     <li>A native EVM precompile.</li>
-     *     <li>A Hedera system account (up to {@code 0.0.750}).</li>
+     *     <li>A MPCQ system account (up to {@code 0.0.750}).</li>
      *     <li>A valid lazy-creation target address.</li>
      *     <li>An existing contract.</li>
      *     <li>An existing account.</li>
@@ -129,12 +129,12 @@ public class CustomMessageCallProcessor extends MessageCallProcessor {
     public void start(@NonNull final MessageFrame frame, @NonNull final OperationTracer tracer) {
         final var codeAddress = frame.getContractAddress();
         // This must be done first as the system contract address range overlaps with system
-        // accounts. Note that unlike EVM precompiles, we do allow sending value "to" Hedera
+        // accounts. Note that unlike EVM precompiles, we do allow sending value "to" MPCQ
         // system contracts because they sometimes require fees greater than be reasonably
         // paid using gas; for example, when creating a new token. But the system contract
         // only diverts this value to the network's fee collection accounts, instead of
         // actually receiving it.
-        // We do not allow sending value to Hedera system contracts except in the case of token creation.
+        // We do not allow sending value to MPCQ system contracts except in the case of token creation.
         if (systemContracts.containsKey(codeAddress)) {
             if (!isTokenCreation(frame)) {
                 doHaltIfInvalidSystemCall(frame, tracer);
@@ -280,7 +280,7 @@ public class CustomMessageCallProcessor extends MessageCallProcessor {
      * @param tracer the operation tracer
      */
     private void doExecuteSystemContract(
-            @NonNull final HederaSystemContract systemContract,
+            @NonNull final MPCQSystemContract systemContract,
             @NonNull final Address systemContractAddress,
             @NonNull final MessageFrame frame,
             @NonNull final OperationTracer tracer) {

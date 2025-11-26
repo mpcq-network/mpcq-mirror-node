@@ -16,8 +16,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class GasCalculatorHederaV22Test {
-    GasCalculatorHederaV22 subject;
+class GasCalculatorMPCQV22Test {
+    GasCalculatorMPCQV22 subject;
 
     @Mock
     MirrorNodeEvmProperties mirrorNodeEvmProperties;
@@ -30,7 +30,7 @@ class GasCalculatorHederaV22Test {
 
     @BeforeEach
     void setUp() {
-        subject = new GasCalculatorHederaV22(usagePricesProvider, hbarCentExchange);
+        subject = new GasCalculatorMPCQV22(usagePricesProvider, hbarCentExchange);
     }
 
     @Test

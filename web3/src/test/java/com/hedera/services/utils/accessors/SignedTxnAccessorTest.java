@@ -36,7 +36,7 @@ import com.hederahashgraph.api.proto.java.CryptoDeleteAllowanceTransactionBody;
 import com.hederahashgraph.api.proto.java.CryptoTransferTransactionBody;
 import com.hederahashgraph.api.proto.java.CryptoUpdateTransactionBody;
 import com.hederahashgraph.api.proto.java.Duration;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.NftAllowance;
 import com.hederahashgraph.api.proto.java.NftRemoveAllowance;
@@ -148,7 +148,7 @@ class SignedTxnAccessorTest {
         assertArrayEquals(body.toByteArray(), accessor.getTxnBytes());
         assertEquals(body.getTransactionID(), accessor.getTxnId());
         assertEquals(1234l, accessor.getPayer().getAccountNum());
-        assertEquals(HederaFunctionality.CryptoTransfer, accessor.getFunction());
+        assertEquals(MPCQFunctionality.CryptoTransfer, accessor.getFunction());
         assertArrayEquals(noThrowSha384HashOf(signedTransaction.toByteArray()), accessor.getHash());
         assertEquals(EXPECTED_MAP, accessor.getSigMap());
         assertArrayEquals(ZERO_BYTE_MEMO_UTF_8_BYTES, accessor.getMemoUtf8Bytes());
@@ -296,7 +296,7 @@ class SignedTxnAccessorTest {
         assertArrayEquals(body.toByteArray(), accessor.getTxnBytes());
         assertEquals(body.getTransactionID(), accessor.getTxnId());
         assertEquals(1234l, accessor.getPayer().getAccountNum());
-        assertEquals(HederaFunctionality.CryptoTransfer, accessor.getFunction());
+        assertEquals(MPCQFunctionality.CryptoTransfer, accessor.getFunction());
         assertArrayEquals(noThrowSha384HashOf(signedTransaction.toByteArray()), accessor.getHash());
         assertEquals(EXPECTED_MAP, accessor.getSigMap());
         assertArrayEquals(MEMO_UTF_8_BYTES, accessor.getMemoUtf8Bytes());
@@ -328,7 +328,7 @@ class SignedTxnAccessorTest {
 
         final var confusedAccessor = SignedTxnAccessor.uncheckedFrom(confusedTxn);
 
-        assertEquals(HederaFunctionality.NONE, confusedAccessor.getFunction());
+        assertEquals(MPCQFunctionality.NONE, confusedAccessor.getFunction());
     }
 
     @Test

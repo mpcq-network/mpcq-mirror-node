@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-description = "Hedera Mirror Node Common"
+description = "MPCQ Mirror Node Common"
 
 plugins { id("java-conventions") }
 

@@ -2,36 +2,36 @@
 
 package com.hedera.services.utils;
 
-import static com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases.EVM_ADDRESS_LEN;
+import static com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases.EVM_ADDRESS_LEN;
 import static com.hedera.services.jproto.JKey.mapJKey;
 import static com.hedera.services.jproto.JKey.mapKey;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractDelete;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractUpdate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoApproveAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoDelete;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoDeleteAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoTransfer;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoUpdate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.EthereumTransaction;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.Freeze;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.NONE;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAccountWipe;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAssociateToAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenBurn;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenDelete;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenDissociateFromAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenFreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenGrantKycToAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenMint;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenPause;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenRevokeKycFromAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnfreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnpause;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractDelete;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoApproveAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoDelete;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoDeleteAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoTransfer;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.EthereumTransaction;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.Freeze;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.NONE;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAccountWipe;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAssociateToAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenBurn;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenDelete;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenDissociateFromAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenFreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenGrantKycToAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenMint;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenPause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenRevokeKycFromAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnfreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnpause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUpdate;
 import static java.util.Objects.requireNonNull;
 
 import com.google.protobuf.ByteString;
@@ -39,7 +39,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.hedera.services.jproto.JKey;
 import com.hedera.services.utils.accessors.SignedTxnAccessor;
 import com.hedera.services.utils.accessors.TxnAccessor;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.SignatureMap;
 import com.hederahashgraph.api.proto.java.SignedTransaction;
@@ -54,7 +54,7 @@ import java.util.function.Function;
 
 public final class MiscUtils {
 
-    public static final Function<TransactionBody, HederaFunctionality> FUNCTION_EXTRACTOR = trans -> {
+    public static final Function<TransactionBody, MPCQFunctionality> FUNCTION_EXTRACTOR = trans -> {
         try {
             return functionOf(trans);
         } catch (Exception ignore) {
@@ -67,15 +67,15 @@ public final class MiscUtils {
     }
 
     /**
-     * check TransactionBody and return the HederaFunctionality. This method was moved from MiscUtils. NODE_STAKE_UPDATE
+     * check TransactionBody and return the MPCQFunctionality. This method was moved from MiscUtils. NODE_STAKE_UPDATE
      * is not checked in this method, since it is not a user transaction.
      *
      * @param txn the {@code TransactionBody}
-     * @return one of HederaFunctionality
+     * @return one of MPCQFunctionality
      * @throws Exception if all the check fails
      */
     @NonNull
-    public static HederaFunctionality functionOf(@NonNull final TransactionBody txn) throws Exception {
+    public static MPCQFunctionality functionOf(@NonNull final TransactionBody txn) throws Exception {
         requireNonNull(txn);
         DataCase dataCase = txn.getDataCase();
 
@@ -106,7 +106,7 @@ public final class MiscUtils {
             case TOKENDISSOCIATE -> TokenDissociateFromAccount;
             case TOKEN_PAUSE -> TokenPause;
             case TOKEN_UNPAUSE -> TokenUnpause;
-            default -> throw new IllegalArgumentException("Unknown HederaFunctionality for " + txn);
+            default -> throw new IllegalArgumentException("Unknown MPCQFunctionality for " + txn);
         };
     }
 

@@ -9,7 +9,7 @@ import (
 	"github.com/hiero-ledger/hiero-mirror-node/rosetta/app/tools"
 )
 
-// Block is domain level struct used to represent Block conceptual mapping in Hedera
+// Block is domain level struct used to represent Block conceptual mapping in MPCQ
 type Block struct {
 	ConsensusEndNanos   int64
 	ConsensusStartNanos int64

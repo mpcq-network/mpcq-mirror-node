@@ -13,7 +13,7 @@ import com.google.protobuf.ByteString;
 import com.hedera.node.app.service.evm.accounts.AccountAccessor;
 import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
 import com.hedera.node.app.service.evm.store.contracts.AbstractCodeCache;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import com.hedera.services.store.models.Id;
 import com.hedera.services.txns.validation.OptionValidator;
@@ -50,7 +50,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(ContextExtension.class)
 @ExtendWith(MockitoExtension.class)
-class HederaEvmWorldStateTest {
+class MPCQEvmWorldStateTest {
     final long balance = 1_234L;
     private final Address address = Address.fromHexString("0x000000000000000000000000000000000000077e");
 
@@ -67,7 +67,7 @@ class HederaEvmWorldStateTest {
     EntityAddressSequencer entityAddressSequencer;
 
     @Mock
-    private HederaEvmEntityAccess hederaEvmEntityAccess;
+    private MPCQEvmEntityAccess hederaEvmEntityAccess;
 
     @Mock
     private EvmProperties evmProperties;
@@ -101,7 +101,7 @@ class HederaEvmWorldStateTest {
 
     private StoreImpl store;
 
-    private HederaEvmWorldState subject;
+    private MPCQEvmWorldState subject;
 
     @BeforeEach
     void setUp() {
@@ -131,7 +131,7 @@ class HederaEvmWorldStateTest {
                 uniqueTokenDatabaseAccessor);
         final var stackedStateFrames = new StackedStateFrames(accessors);
         store = new StoreImpl(stackedStateFrames, validator);
-        subject = new HederaEvmWorldState(
+        subject = new MPCQEvmWorldState(
                 hederaEvmEntityAccess,
                 evmProperties,
                 abstractCodeCache,
@@ -184,7 +184,7 @@ class HederaEvmWorldStateTest {
     // There are incompatible changes between hedera-evm and latest besu version
     @Test
     @Disabled
-    void returnsHederaEvmWorldStateTokenAccount() {
+    void returnsMPCQEvmWorldStateTokenAccount() {
         final var ripemd160Address = Address.RIPEMD160;
         when(hederaEvmEntityAccess.isTokenAccount(ripemd160Address)).thenReturn(true);
         when(evmProperties.isRedirectTokenCallsEnabled()).thenReturn(true);

@@ -646,7 +646,7 @@ public abstract class AbstractDownloaderTest<T extends StreamFile<?>> {
         importerProperties = new ImporterProperties();
         importerProperties.setDataPath(dataPath);
         importerProperties.setStartBlockNumber(101L);
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.TESTNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.TESTNET);
 
         commonDownloaderProperties = new CommonDownloaderProperties(importerProperties);
         commonDownloaderProperties.setEndpointOverride("http://localhost:" + S3_PROXY_PORT);

@@ -64,7 +64,7 @@
         "symbol": "HEDERACOIN",
         "created_timestamp": "1234567890000000004",
         "metadata": [2, 2],
-        "name": "Hedera",
+        "name": "MPCQ",
         "type": "NON_FUNGIBLE_UNIQUE"
       }
     ]
@@ -122,7 +122,7 @@
         },
         "decimals": 0,
         "metadata": "AgI=",
-        "name": "Hedera",
+        "name": "MPCQ",
         "type": "NON_FUNGIBLE_UNIQUE"
       }
     ],

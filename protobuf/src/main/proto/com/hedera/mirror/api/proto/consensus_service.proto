@@ -41,7 +41,7 @@ message ConsensusTopicResponse {
 }
 
 //
-// The Mirror Service provides the ability to query a stream of Hedera Consensus Service (HCS) messages for an
+// The Mirror Service provides the ability to query a stream of MPCQ Consensus Service (HCS) messages for an
 // HCS Topic via a specific (possibly open-ended) time range.
 //
 service ConsensusService {

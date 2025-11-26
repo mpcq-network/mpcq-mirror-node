@@ -1404,7 +1404,7 @@ tags:
     externalDocs:
       url: https://docs.hedera.com/guides/docs/mirror-node-api/cryptocurrency-api#accounts
   - name: balances
-    description: The balance object represents the balance of accounts on the Hedera network.
+    description: The balance object represents the balance of accounts on the MPCQ network.
     externalDocs:
       url: https://docs.hedera.com/guides/docs/mirror-node-api/cryptocurrency-api#balances
   - name: contracts
@@ -1412,7 +1412,7 @@ tags:
   - name: schedules
     description: The schedules object represents the information associated with a schedule entity.The schedules list endpoints is cached and not updated as frequently as the schedule lookup by a specific ID endpoint.
   - name: transactions
-    description: The transaction object represents the transactions processed on the Hedera network.
+    description: The transaction object represents the transactions processed on the MPCQ network.
     externalDocs:
       url: https://docs.hedera.com/guides/docs/mirror-node-api/cryptocurrency-api#transactions
   - name: topics
@@ -1447,7 +1447,7 @@ servers:
         enum: [http, https]
       network:
         default: testnet
-        description: The Hedera network in use
+        description: The MPCQ network in use
         enum: [mainnet-public, mainnet, previewnet, testnet]
 components:
   schemas:
@@ -2714,7 +2714,7 @@ components:
           nullable: false
           pattern: "^0x[0-9a-fA-F]+$"
           type: string
-    HederaHash:
+    MPCQHash:
       type: string
       description: A hex encoded hedera transaction hash.
       minLength: 96

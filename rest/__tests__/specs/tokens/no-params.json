@@ -53,7 +53,7 @@
         "created_timestamp": "1234567890000000004",
         "decimals": 6,
         "metadata": [4, 4],
-        "name": "Hedera Coin",
+        "name": "MPCQ Coin",
         "type": "FUNGIBLE_COMMON"
       }
     ],
@@ -95,7 +95,7 @@
       {
         "token_id": "0.0.45678",
         "symbol": "HEDERACOIN",
-        "name": "Hedera Coin",
+        "name": "MPCQ Coin",
         "decimals": 6,
         "admin_key": null,
         "metadata": "BAQ=",

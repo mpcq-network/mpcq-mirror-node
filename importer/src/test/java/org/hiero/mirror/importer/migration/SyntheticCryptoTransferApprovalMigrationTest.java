@@ -3,8 +3,8 @@
 package org.hiero.mirror.importer.migration;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hiero.mirror.importer.ImporterProperties.HederaNetwork.MAINNET;
-import static org.hiero.mirror.importer.ImporterProperties.HederaNetwork.TESTNET;
+import static org.hiero.mirror.importer.ImporterProperties.MPCQNetwork.MAINNET;
+import static org.hiero.mirror.importer.ImporterProperties.MPCQNetwork.TESTNET;
 import static org.hiero.mirror.importer.migration.SyntheticCryptoTransferApprovalMigration.LOWER_BOUND_TIMESTAMP;
 import static org.hiero.mirror.importer.migration.SyntheticCryptoTransferApprovalMigration.UPPER_BOUND_TIMESTAMP;
 

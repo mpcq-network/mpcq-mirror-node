@@ -3,7 +3,7 @@
 import com.github.gradle.node.npm.task.NpmSetupTask
 import java.nio.file.Paths
 
-description = "Hedera Mirror Node imports data from consensus nodes and serves it via an API"
+description = "MPCQ Mirror Node imports data from consensus nodes and serves it via an API"
 
 plugins {
     id("com.diffplug.spotless")

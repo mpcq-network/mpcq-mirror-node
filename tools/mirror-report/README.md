@@ -63,7 +63,7 @@ Options:
   -a, --account <accountId...>  The accounts to include in the report
   -c, --combined                Whether a single combined report should be generated for all accounts. By default it produces separate reports
   -f, --from-date <YYYY-MM-DD>  The day the report should start (inclusive) (default: today)
-  -n, --network <network>       The Hedera network to connect to (choices: "mainnet", "testnet", "previewnet", default: "mainnet")
+  -n, --network <network>       The MPCQ network to connect to (choices: "mainnet", "testnet", "previewnet", default: "mainnet")
   -t, --to-date <YYYY-MM-DD>    The day the report should end (exclusive) (default: tomorrow)
   -h, --help                    display help for command
 ```

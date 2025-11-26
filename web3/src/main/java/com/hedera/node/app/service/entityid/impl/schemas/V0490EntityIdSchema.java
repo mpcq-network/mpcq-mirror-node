@@ -9,7 +9,7 @@ import com.hedera.hapi.node.base.SemanticVersion;
 import com.hedera.hapi.node.state.common.EntityNumber;
 import com.hedera.hapi.platform.state.SingletonType;
 import com.hedera.node.app.service.entityid.impl.EntityIdServiceImpl;
-import com.hedera.node.config.data.HederaConfig;
+import com.hedera.node.config.data.MPCQConfig;
 import com.swirlds.state.lifecycle.MigrationContext;
 import com.swirlds.state.lifecycle.Schema;
 import com.swirlds.state.lifecycle.StateDefinition;
@@ -62,7 +62,7 @@ public class V0490EntityIdSchema extends Schema<SemanticVersion> {
     public void migrate(@NonNull MigrationContext ctx) {
         final var entityIdState = ctx.newStates().getSingleton(ENTITY_ID_STATE_ID);
         if (entityIdState.get() == null) {
-            final var config = ctx.appConfig().getConfigData(HederaConfig.class);
+            final var config = ctx.appConfig().getConfigData(MPCQConfig.class);
             final var entityNum = config.firstUserEntity() - 1;
             log.info("Setting initial entity id to {}", entityNum);
             entityIdState.put(new EntityNumber(entityNum));

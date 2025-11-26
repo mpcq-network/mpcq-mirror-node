@@ -1,7 +1,7 @@
 # Contributing
 
-Hiero strives for decentralization and that includes in its development process. As such, outside contributions are
-welcomed and encouraged. For general guidelines on how to contribute to Hiero projects, please read the organization's
+MPCQ strives for decentralization and that includes in its development process. As such, outside contributions are
+welcomed and encouraged. For general guidelines on how to contribute to MPCQ projects, please read the organization's
 [contributing guide](https://github.com/hiero-ledger/.github/blob/main/CONTRIBUTING.md). This document outlines
 additional processes that the mirror node uses for its development.
 

@@ -18,13 +18,13 @@ import static org.mockito.Mockito.when;
 
 import com.google.protobuf.ByteString;
 import com.hedera.hapi.node.base.SemanticVersion;
-import com.hedera.node.app.service.contract.impl.hevm.HederaEvmBlocks;
-import com.hedera.node.app.service.evm.contracts.execution.HederaBlockValues;
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.contract.impl.hevm.MPCQEvmBlocks;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQBlockValues;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import com.hedera.node.app.service.evm.contracts.execution.PricesAndFeesProvider;
 import com.hedera.node.app.service.evm.store.contracts.AbstractCodeCache;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
-import com.hedera.node.app.service.evm.store.models.HederaEvmAccount;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.models.MPCQEvmAccount;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import com.hedera.services.store.models.Account;
 import jakarta.inject.Provider;
@@ -44,8 +44,8 @@ import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store.OnMissing;
 import org.hiero.mirror.web3.evm.store.StoreImpl;
 import org.hiero.mirror.web3.evm.store.contract.EntityAddressSequencer;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmWorldState;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmWorldState;
 import org.hiero.mirror.web3.exception.MirrorEvmTransactionException;
 import org.hiero.mirror.web3.service.model.ContractExecutionParameters;
 import org.hyperledger.besu.datatypes.Address;
@@ -84,20 +84,20 @@ class MirrorEvmTxProcessorTest {
     private static final String EVM_ADDRESS = "0x6b175474e89094c44da98b954eedeac495271d0f";
     private static final String FUNCTION_HASH = "0x8070450f";
     private final Address sender = Address.ALTBN128_ADD;
-    private final HederaEvmAccount receiver = new HederaEvmAccount(Address.ALTBN128_MUL);
+    private final MPCQEvmAccount receiver = new MPCQEvmAccount(Address.ALTBN128_MUL);
     private final Address receiverAddress = receiver.canonicalAddress();
     private final Address nativePrecompileAddress = Address.SHA256;
     private final Address invalidNativePrecompileAddress = Address.BLS12_G2ADD;
-    private HederaEvmAccount senderWithAlias;
+    private MPCQEvmAccount senderWithAlias;
 
     @Mock
     private PricesAndFeesProvider pricesAndFeesProvider;
 
     @Mock
-    private HederaEvmWorldState worldState;
+    private MPCQEvmWorldState worldState;
 
     @Mock
-    private HederaEvmEntityAccess hederaEvmEntityAccess;
+    private MPCQEvmEntityAccess hederaEvmEntityAccess;
 
     @Mock
     private MirrorNodeEvmProperties evmProperties;
@@ -109,19 +109,19 @@ class MirrorEvmTxProcessorTest {
     private Set<Operation> operations;
 
     @Mock
-    private HederaEvmWorldState.Updater updater;
+    private MPCQEvmWorldState.Updater updater;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater stackedUpdater;
+    private MPCQEvmStackedWorldStateUpdater stackedUpdater;
 
     @Mock
     private MirrorEvmContractAliases hederaEvmContractAliases;
 
     @Mock
-    private HederaBlockValues hederaBlockValues;
+    private MPCQBlockValues hederaBlockValues;
 
     @Mock
-    private HederaEvmBlocks blockMetaSource;
+    private MPCQEvmBlocks blockMetaSource;
 
     @Mock
     private MirrorOperationTracer mirrorOperationTracer;
@@ -221,7 +221,7 @@ class MirrorEvmTxProcessorTest {
 
         assertThat(result)
                 .isNotNull()
-                .returns(true, HederaEvmTransactionProcessingResult::isSuccessful)
+                .returns(true, MPCQEvmTransactionProcessingResult::isSuccessful)
                 .returns(receiver.canonicalAddress(), r -> r.getRecipient().orElseThrow());
     }
 
@@ -247,7 +247,7 @@ class MirrorEvmTxProcessorTest {
 
         assertThat(result)
                 .isNotNull()
-                .returns(true, HederaEvmTransactionProcessingResult::isSuccessful)
+                .returns(true, MPCQEvmTransactionProcessingResult::isSuccessful)
                 .returns(receiver.canonicalAddress(), r -> r.getRecipient().orElseThrow());
     }
 
@@ -400,7 +400,7 @@ class MirrorEvmTxProcessorTest {
     }
 
     private void setupSenderWithAlias() {
-        senderWithAlias = new HederaEvmAccount(Address.ALTBN128_ADD);
+        senderWithAlias = new MPCQEvmAccount(Address.ALTBN128_ADD);
         senderWithAlias.setAlias(ByteString.copyFrom(EVM_ADDRESS.getBytes()));
     }
 }

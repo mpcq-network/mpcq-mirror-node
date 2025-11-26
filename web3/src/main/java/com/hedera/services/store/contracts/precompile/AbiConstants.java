@@ -108,11 +108,11 @@ public class AbiConstants {
     public static final int ABI_ID_FREEZE = 0x5b8f8584;
     // unfreezeToken(address token, address account)
     public static final int ABI_ID_UNFREEZE = 0x52f91387;
-    // updateTokenInfo(address token, HederaToken tokenInfo)
+    // updateTokenInfo(address token, MPCQToken tokenInfo)
     public static final int ABI_ID_UPDATE_TOKEN_INFO = 0x2cccc36f;
-    // updateTokenInfo(address token, HederaToken tokenInfo)
+    // updateTokenInfo(address token, MPCQToken tokenInfo)
     public static final int ABI_ID_UPDATE_TOKEN_INFO_V2 = 0x18370d34;
-    // updateTokenInfo(address token, HederaToken tokenInfo)
+    // updateTokenInfo(address token, MPCQToken tokenInfo)
     public static final int ABI_ID_UPDATE_TOKEN_INFO_V3 = 0x7d305cfa;
     // updateTokenKeys(address token, TokenKey [])
     public static final int ABI_ID_UPDATE_TOKEN_KEYS = 0x6fc3cbaf;
@@ -130,53 +130,53 @@ public class AbiConstants {
     public static final Bytes APPROVAL_FOR_ALL_EVENT =
             Bytes.fromHexString("17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31");
     // **** HIP-358 function selectors ****
-    // createFungibleToken(HederaToken memory token, uint initialTotalSupply, uint decimals)
+    // createFungibleToken(MPCQToken memory token, uint initialTotalSupply, uint decimals)
     public static final int ABI_ID_CREATE_FUNGIBLE_TOKEN = 0x7812a04b;
-    // createFungibleToken(HederaToken memory token, uint64 initialTotalSupply, uint32 decimals)
+    // createFungibleToken(MPCQToken memory token, uint64 initialTotalSupply, uint32 decimals)
     public static final int ABI_ID_CREATE_FUNGIBLE_TOKEN_V2 = 0xc23baeb6;
-    // createFungibleToken(HederaToken memory token, int64 initialTotalSupply, int32 decimals)
+    // createFungibleToken(MPCQToken memory token, int64 initialTotalSupply, int32 decimals)
     public static final int ABI_ID_CREATE_FUNGIBLE_TOKEN_V3 = 0x0fb65bf3;
     // createFungibleTokenWithCustomFees(
-    //  HederaToken memory token,
+    //  MPCQToken memory token,
     //  uint initialTotalSupply,
     //  uint decimals,
     //  FixedFee[] memory fixedFees,
     //  FractionalFee[] memory fractionalFees)
     public static final int ABI_ID_CREATE_FUNGIBLE_TOKEN_WITH_FEES = 0x4c381ae7;
     // createFungibleTokenWithCustomFees(
-    //  HederaToken memory token,
+    //  MPCQToken memory token,
     //  uint64 initialTotalSupply,
     //  uint32 decimals,
     //  FixedFee[] memory fixedFees,
     //  FractionalFee[] memory fractionalFees)
     public static final int ABI_ID_CREATE_FUNGIBLE_TOKEN_WITH_FEES_V2 = 0xb937581a;
     // createFungibleTokenWithCustomFees(
-    //  HederaToken memory token,
+    //  MPCQToken memory token,
     //  int64 initialTotalSupply,
     //  int32 decimals,
     //  FixedFee[] memory fixedFees,
     //  FractionalFee[] memory fractionalFees)
     public static final int ABI_ID_CREATE_FUNGIBLE_TOKEN_WITH_FEES_V3 = 0x2af0c59a;
-    // createNonFungibleToken(HederaToken memory token)
+    // createNonFungibleToken(MPCQToken memory token)
     public static final int ABI_ID_CREATE_NON_FUNGIBLE_TOKEN = 0x9dc711e0;
-    // createNonFungibleToken(HederaToken memory token)
-    // HederaToken field maxSupply updated to int64
+    // createNonFungibleToken(MPCQToken memory token)
+    // MPCQToken field maxSupply updated to int64
     public static final int ABI_ID_CREATE_NON_FUNGIBLE_TOKEN_V2 = 0x9c89bb35;
-    // createNonFungibleToken(HederaToken memory token)
+    // createNonFungibleToken(MPCQToken memory token)
     public static final int ABI_ID_CREATE_NON_FUNGIBLE_TOKEN_V3 = 0xea83f293;
     // createNonFungibleTokenWithCustomFees(
-    //  HederaToken memory token,
+    //  MPCQToken memory token,
     //  FixedFee[] memory fixedFees,
     //  RoyaltyFee[] memory royaltyFees)
     public static final int ABI_ID_CREATE_NON_FUNGIBLE_TOKEN_WITH_FEES = 0x5bc7c0e6;
     // createNonFungibleTokenWithCustomFees(
-    //  HederaToken memory token,
+    //  MPCQToken memory token,
     //  FixedFee[] memory fixedFees,
     //  RoyaltyFee[] memory royaltyFees)
-    //  HederaToken field maxSupply updated to int64
+    //  MPCQToken field maxSupply updated to int64
     public static final int ABI_ID_CREATE_NON_FUNGIBLE_TOKEN_WITH_FEES_V2 = 0x45733969;
     // createNonFungibleTokenWithCustomFees(
-    //  HederaToken memory token,
+    //  MPCQToken memory token,
     //  FixedFee[] memory fixedFees,
     //  RoyaltyFee[] memory royaltyFees)
     public static final int ABI_ID_CREATE_NON_FUNGIBLE_TOKEN_WITH_FEES_V3 = 0xabb54eb5;

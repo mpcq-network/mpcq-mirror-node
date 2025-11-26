@@ -2,10 +2,10 @@
 
 package com.hedera.services.evm.contracts.operations;
 
-import com.hedera.node.app.service.evm.contracts.operations.HederaExceptionalHaltReason;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.EVM;
 import org.hyperledger.besu.evm.frame.ExceptionalHaltReason;
@@ -15,22 +15,22 @@ import org.hyperledger.besu.evm.internal.Words;
 import org.hyperledger.besu.evm.operation.SelfDestructOperation;
 
 /**
- * Hedera adapted version of the {@link SelfDestructOperation}.
+ * MPCQ adapted version of the {@link SelfDestructOperation}.
  *
  * <p>Performs an existence check on the beneficiary {@link Address} Halts the execution of the EVM
- * transaction with {@link HederaExceptionalHaltReason#INVALID_SOLIDITY_ADDRESS} if the account does not exist, or it is
+ * transaction with {@link MPCQExceptionalHaltReason#INVALID_SOLIDITY_ADDRESS} if the account does not exist, or it is
  * deleted.
  *
  * <p>Halts the execution of the EVM transaction with {@link
- * HederaExceptionalHaltReason#SELF_DESTRUCT_TO_SELF} if the beneficiary address is the same as the address being
- * destructed. This class is a copy of HederaSelfDestructOperationV046 from hedera-services mono
+ * MPCQExceptionalHaltReason#SELF_DESTRUCT_TO_SELF} if the beneficiary address is the same as the address being
+ * destructed. This class is a copy of MPCQSelfDestructOperationV046 from hedera-services mono
  */
-public class HederaSelfDestructOperationV046 extends HederaSelfDestructOperationBase {
+public class MPCQSelfDestructOperationV046 extends MPCQSelfDestructOperationBase {
 
     private final BiPredicate<Address, MessageFrame> addressValidator;
     private final Predicate<Address> systemAccountDetector;
 
-    public HederaSelfDestructOperationV046(
+    public MPCQSelfDestructOperationV046(
             final GasCalculator gasCalculator,
             final BiPredicate<Address, MessageFrame> addressValidator,
             final Predicate<Address> systemAccountDetector,
@@ -42,14 +42,14 @@ public class HederaSelfDestructOperationV046 extends HederaSelfDestructOperation
 
     @Override
     public OperationResult execute(final MessageFrame frame, final EVM evm) {
-        final var updater = (HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater();
+        final var updater = (MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater();
         final var beneficiaryAddress = Words.toAddress(frame.getStackItem(0));
         final var toBeDeleted = frame.getRecipientAddress();
         if (frame.isStatic()) {
             return reversionWith(null, ExceptionalHaltReason.ILLEGAL_STATE_CHANGE);
         }
         if (systemAccountDetector.test(beneficiaryAddress) || !addressValidator.test(beneficiaryAddress, frame)) {
-            return reversionWith(null, HederaExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS);
+            return reversionWith(null, MPCQExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS);
         }
         final var beneficiary = updater.get(beneficiaryAddress);
 

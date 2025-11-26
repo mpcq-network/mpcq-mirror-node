@@ -2,11 +2,11 @@
 
 package org.hiero.mirror.web3.evm.store.contract;
 
-import static com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases.isMirror;
+import static com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases.isMirror;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.entityIdNumFromEvmAddress;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
 import jakarta.inject.Named;
 import lombok.RequiredArgsConstructor;
 import org.apache.tuweni.bytes.Bytes;
@@ -19,7 +19,7 @@ import org.hyperledger.besu.datatypes.Address;
 
 @RequiredArgsConstructor
 @Named
-public class MirrorEntityAccess implements HederaEvmEntityAccess {
+public class MirrorEntityAccess implements MPCQEvmEntityAccess {
     private final ContractRepository contractRepository;
     private final ContractStateService contractStateService;
     private final Store store;

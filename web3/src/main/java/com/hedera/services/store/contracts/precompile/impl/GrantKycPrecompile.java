@@ -33,7 +33,7 @@ import com.hederahashgraph.api.proto.java.TransactionBody;
 import java.util.Set;
 import java.util.function.UnaryOperator;
 import org.apache.tuweni.bytes.Bytes;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
@@ -65,7 +65,7 @@ public class GrantKycPrecompile extends AbstractGrantRevokeKycPrecompile {
         // --- Init ---
         requireNonNull(transactionBody, "`body` method should be called before `run`");
 
-        final var store = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
+        final var store = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
         final var tokenId = Id.fromGrpcToken(transactionBody.getTokenGrantKyc().getToken());
         final var accountId =
                 Id.fromGrpcAccount(transactionBody.getTokenGrantKyc().getAccount());

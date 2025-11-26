@@ -5,7 +5,7 @@ package com.hedera.services.fees.calculation;
 import com.hedera.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.CurrentAndNextFeeSchedule;
 import com.hederahashgraph.api.proto.java.FeeData;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SubType;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import java.util.Map;
@@ -25,7 +25,7 @@ public interface UsagePricesProvider {
      * @return the estimated prices
      */
     Map<SubType, FeeData> pricesGiven(
-            HederaFunctionality function, Timestamp at, CurrentAndNextFeeSchedule feeSchedules);
+            MPCQFunctionality function, Timestamp at, CurrentAndNextFeeSchedule feeSchedules);
 
     /**
      * Returns the prices in a map SubType keys and FeeData values in 1/1000th of a tinyCent that
@@ -44,5 +44,5 @@ public interface UsagePricesProvider {
      * @param at       the expected consensus time for the operation
      * @return the estimated prices
      */
-    FeeData defaultPricesGiven(HederaFunctionality function, Timestamp at);
+    FeeData defaultPricesGiven(MPCQFunctionality function, Timestamp at);
 }

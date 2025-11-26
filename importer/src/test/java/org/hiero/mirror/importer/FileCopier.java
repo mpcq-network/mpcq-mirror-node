@@ -129,7 +129,7 @@ public class FileCopier {
      *                            specific account ID directory stream type, such as {@code accountBalances} or
      *                            {@code recordstreams} etc. Provide a function to adjust this prior to files being
      *                            copied. If no adjustment is required, provide {@link Function#identity()}
-     * @param network             Hiero or dev/test network name, typically found in mirror node properties.
+     * @param network             MPCQ or dev/test network name, typically found in mirror node properties.
      */
     @SneakyThrows
     public void copyAsNodeIdStructure(Function<Path, Path> destinationAdjuster, String network) {

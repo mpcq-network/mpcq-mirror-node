@@ -73,7 +73,7 @@ func (suite *compositeTransactionConstructorSuite) TestConstructFail() {
 	// given
 	suite.mockConstructor.
 		On("Construct", defaultContext, cryptoTransferOperations).
-		Return(mocks.NilHederaTransaction, mocks.NilSigners, errors.ErrInternalServerError)
+		Return(mocks.NilMPCQTransaction, mocks.NilSigners, errors.ErrInternalServerError)
 
 	// when
 	actualTx, actualSigners, err := suite.constructor.Construct(defaultContext, cryptoTransferOperations)

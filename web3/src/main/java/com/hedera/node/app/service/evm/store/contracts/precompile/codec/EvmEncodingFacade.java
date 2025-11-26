@@ -517,7 +517,7 @@ public class EvmEncodingFacade {
             }
 
             return Tuple.from(
-                    getHederaTokenTuple(),
+                    getMPCQTokenTuple(),
                     tokenInfo.getTotalSupply(),
                     tokenInfo.isDeleted(),
                     tokenInfo.getDefaultKycStatus(),
@@ -528,7 +528,7 @@ public class EvmEncodingFacade {
                     Bytes.wrap(tokenInfo.getLedgerId()).toString());
         }
 
-        private Tuple getHederaTokenTuple() {
+        private Tuple getMPCQTokenTuple() {
             final var expiry = tokenInfo.getExpiry();
             final var autoRenewPeriod = tokenInfo.getAutoRenewPeriod();
             final var expiryTuple = Tuple.of(

@@ -2,12 +2,12 @@
 
 package com.hedera.services.fees.pricing;
 
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoTransfer;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ScheduleCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAccountWipe;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenBurn;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenMint;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoTransfer;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ScheduleCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAccountWipe;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenBurn;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenMint;
 import static com.hederahashgraph.api.proto.java.SubType.DEFAULT;
 import static com.hederahashgraph.api.proto.java.SubType.SCHEDULE_CREATE_CONTRACT_CALL;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_FUNGIBLE_COMMON;
@@ -15,7 +15,7 @@ import static com.hederahashgraph.api.proto.java.SubType.TOKEN_FUNGIBLE_COMMON_W
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_NON_FUNGIBLE_UNIQUE;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_NON_FUNGIBLE_UNIQUE_WITH_CUSTOM_FEES;
 
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SubType;
 import java.util.EnumMap;
 import java.util.EnumSet;
@@ -27,7 +27,7 @@ import java.util.Set;
  * Temporary extracted class from services.
  * <p>
  * A helper class that publishes which price {@link SubType}s must be available for each {@link
- * HederaFunctionality}.
+ * MPCQFunctionality}.
  */
 public class RequiredPriceTypes {
     RequiredPriceTypes() {
@@ -35,10 +35,10 @@ public class RequiredPriceTypes {
     }
 
     private static final EnumSet<SubType> ONLY_DEFAULT = EnumSet.of(DEFAULT);
-    private static final Map<HederaFunctionality, EnumSet<SubType>> FUNCTIONS_WITH_REQUIRED_SUBTYPES;
+    private static final Map<MPCQFunctionality, EnumSet<SubType>> FUNCTIONS_WITH_REQUIRED_SUBTYPES;
 
     static {
-        FUNCTIONS_WITH_REQUIRED_SUBTYPES = new EnumMap<>(HederaFunctionality.class);
+        FUNCTIONS_WITH_REQUIRED_SUBTYPES = new EnumMap<>(MPCQFunctionality.class);
         /* The functions with non-DEFAULT prices in hapi-fees/src/main/resources/canonical-prices.json */
         List.of(TokenMint, TokenBurn, TokenAccountWipe)
                 .forEach(function -> FUNCTIONS_WITH_REQUIRED_SUBTYPES.put(
@@ -65,7 +65,7 @@ public class RequiredPriceTypes {
      * @param function the function of interest
      * @return the set of required price for the function
      */
-    public static Set<SubType> requiredTypesFor(final HederaFunctionality function) {
+    public static Set<SubType> requiredTypesFor(final MPCQFunctionality function) {
         return FUNCTIONS_WITH_REQUIRED_SUBTYPES.getOrDefault(function, ONLY_DEFAULT);
     }
 }

@@ -10,7 +10,7 @@ import com.hederahashgraph.api.proto.java.CurrentAndNextFeeSchedule;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;
 import com.hederahashgraph.api.proto.java.FeeSchedule;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SubType;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import com.hederahashgraph.api.proto.java.TimestampSeconds;
@@ -28,7 +28,7 @@ import org.hiero.mirror.web3.evm.pricing.RatesAndFeesLoader;
 /**
  * Temporary extracted class from services.
  * </p>
- * Loads the required fee schedules from the Hedera "file system".
+ * Loads the required fee schedules from the MPCQ "file system".
  *
  *  Copied Logic type from hedera-services. Differences with the original:
  *  1. Remove unused methods: loadPriceSchedules, activePricingSequence
@@ -68,7 +68,7 @@ public class BasicFcfsUsagePrices implements UsagePricesProvider {
     }
 
     @Override
-    public FeeData defaultPricesGiven(final HederaFunctionality function, final Timestamp at) {
+    public FeeData defaultPricesGiven(final MPCQFunctionality function, final Timestamp at) {
         final var feeSchedules = ratesAndFeesLoader.loadFeeSchedules(DomainUtils.timestampInNanosMax(at));
         return pricesGiven(function, at, feeSchedules).get(DEFAULT);
     }
@@ -95,9 +95,9 @@ public class BasicFcfsUsagePrices implements UsagePricesProvider {
 
     @Override
     public Map<SubType, FeeData> pricesGiven(
-            final HederaFunctionality function, final Timestamp at, final CurrentAndNextFeeSchedule feeSchedules) {
+            final MPCQFunctionality function, final Timestamp at, final CurrentAndNextFeeSchedule feeSchedules) {
         try {
-            final Map<HederaFunctionality, Map<SubType, FeeData>> functionUsagePrices =
+            final Map<MPCQFunctionality, Map<SubType, FeeData>> functionUsagePrices =
                     applicableUsagePrices(at, feeSchedules);
             final Map<SubType, FeeData> usagePrices = functionUsagePrices.get(function);
             Objects.requireNonNull(usagePrices);
@@ -111,7 +111,7 @@ public class BasicFcfsUsagePrices implements UsagePricesProvider {
         return DEFAULT_RESOURCE_PRICES;
     }
 
-    private Map<HederaFunctionality, Map<SubType, FeeData>> applicableUsagePrices(
+    private Map<MPCQFunctionality, Map<SubType, FeeData>> applicableUsagePrices(
             final Timestamp at, final CurrentAndNextFeeSchedule feeSchedules) {
         final var applicableSchedule = onlyNextScheduleApplies(at, feeSchedules)
                 ? feeSchedules.getNextFeeSchedule()
@@ -134,17 +134,17 @@ public class BasicFcfsUsagePrices implements UsagePricesProvider {
         return Timestamp.newBuilder().setSeconds(ts.getSeconds()).build();
     }
 
-    private EnumMap<HederaFunctionality, Map<SubType, FeeData>> functionUsagePricesFrom(final FeeSchedule feeSchedule) {
-        final EnumMap<HederaFunctionality, Map<SubType, FeeData>> allPrices = new EnumMap<>(HederaFunctionality.class);
+    private EnumMap<MPCQFunctionality, Map<SubType, FeeData>> functionUsagePricesFrom(final FeeSchedule feeSchedule) {
+        final EnumMap<MPCQFunctionality, Map<SubType, FeeData>> allPrices = new EnumMap<>(MPCQFunctionality.class);
         for (final var pricingData : feeSchedule.getTransactionFeeScheduleList()) {
-            final var function = pricingData.getHederaFunctionality();
+            final var function = pricingData.getMPCQFunctionality();
             Map<SubType, FeeData> pricesMap = allPrices.get(function);
             if (pricesMap == null) {
                 pricesMap = new EnumMap<>(SubType.class);
             }
             final Set<SubType> requiredTypes = RequiredPriceTypes.requiredTypesFor(function);
             ensurePricesMapHasRequiredTypes(pricingData, pricesMap, requiredTypes);
-            allPrices.put(pricingData.getHederaFunctionality(), pricesMap);
+            allPrices.put(pricingData.getMPCQFunctionality(), pricesMap);
         }
         return allPrices;
     }

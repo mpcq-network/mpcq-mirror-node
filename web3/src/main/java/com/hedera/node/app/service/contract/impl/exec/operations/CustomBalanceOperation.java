@@ -22,7 +22,7 @@ import org.hyperledger.besu.evm.internal.Words;
 import org.hyperledger.besu.evm.operation.BalanceOperation;
 
 /**
- * A Hedera customization of the Besu {@link org.hyperledger.besu.evm.operation.BalanceOperation}.
+ * A MPCQ customization of the Besu {@link org.hyperledger.besu.evm.operation.BalanceOperation}.
  */
 public class CustomBalanceOperation extends BalanceOperation {
     private final AddressChecks addressChecks;
@@ -31,7 +31,7 @@ public class CustomBalanceOperation extends BalanceOperation {
     /**
      * Constructor for custom balance operations.
      * @param gasCalculator the gas calculator to use
-     * @param addressChecks checks against addresses reserved for Hedera
+     * @param addressChecks checks against addresses reserved for MPCQ
      * @param featureFlags current evm module feature flags
      */
     public CustomBalanceOperation(

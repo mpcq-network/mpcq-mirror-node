@@ -291,7 +291,7 @@ public class CallFeature extends AbstractFeature {
 
     // ETHCALL-025
     @RetryAsserts
-    @Then("I call function with HederaTokenService isToken token FUNGIBLE")
+    @Then("I call function with MPCQTokenService isToken token FUNGIBLE")
     public void htsIsToken() {
         var data = encodeData(PRECOMPILE, HTS_IS_TOKEN_SELECTOR, fungibleTokenAddress);
         var response = callContract(data, precompileContractAddress);
@@ -301,7 +301,7 @@ public class CallFeature extends AbstractFeature {
 
     // ETHCALL-026
     @RetryAsserts
-    @Then("I call function with HederaTokenService isFrozen token FUNGIBLE, account")
+    @Then("I call function with MPCQTokenService isFrozen token FUNGIBLE, account")
     public void htsIsFrozen() {
         var data = encodeData(
                 PRECOMPILE, HTS_IS_FROZEN_SELECTOR, fungibleTokenAddress, asAddress(contractClient.getClientAddress()));
@@ -312,7 +312,7 @@ public class CallFeature extends AbstractFeature {
 
     // ETHCALL-027
     @RetryAsserts
-    @Then("I call function with HederaTokenService isKyc token FUNGIBLE, account")
+    @Then("I call function with MPCQTokenService isKyc token FUNGIBLE, account")
     public void htsIsKyc() {
         var data = encodeData(
                 PRECOMPILE,
@@ -326,7 +326,7 @@ public class CallFeature extends AbstractFeature {
 
     // ETHCALL-028
     @RetryAsserts
-    @Then("I call function with HederaTokenService getTokenDefaultFreezeStatus token FUNGIBLE")
+    @Then("I call function with MPCQTokenService getTokenDefaultFreezeStatus token FUNGIBLE")
     public void htsGetTokenDefaultFreezeStatus() {
         var data = encodeData(PRECOMPILE, HTS_GET_DEFAULT_FREEZE_STATUS_SELECTOR, fungibleTokenAddress);
         var response = callContract(data, precompileContractAddress);
@@ -336,7 +336,7 @@ public class CallFeature extends AbstractFeature {
 
     // ETHCALL-029
     @RetryAsserts
-    @Then("I call function with HederaTokenService getTokenDefaultKycStatus token FUNGIBLE")
+    @Then("I call function with MPCQTokenService getTokenDefaultKycStatus token FUNGIBLE")
     public void htsGetTokenDefaultKycStatus() {
         var data = encodeData(PRECOMPILE, HTS_GET_TOKEN_DEFAULT_KYC_STATUS_SELECTOR, fungibleTokenAddress);
         var response = callContract(data, precompileContractAddress);

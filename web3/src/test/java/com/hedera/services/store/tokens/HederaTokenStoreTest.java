@@ -84,7 +84,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class HederaTokenStoreTest {
+class MPCQTokenStoreTest {
     private static final Key KEY = Key.newBuilder()
             .setEd25519(ByteString.copyFromUtf8("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))
             .build();
@@ -123,7 +123,7 @@ class HederaTokenStoreTest {
     private static final EnumSet<KeyType> ALL_KEYS = EnumSet.complementOf(EnumSet.of(KeyType.EMPTY_ADMIN));
     private StoreImpl store;
     private MirrorNodeEvmProperties mirrorNodeEvmProperties;
-    private HederaTokenStore subject;
+    private MPCQTokenStore subject;
 
     @Mock
     private UnaryOperator<Token> change;
@@ -137,7 +137,7 @@ class HederaTokenStoreTest {
         mirrorNodeEvmProperties = mock(MirrorNodeEvmProperties.class);
         store = mock(StoreImpl.class);
         var validator = new ContextOptionValidator(mirrorNodeEvmProperties);
-        subject = new HederaTokenStore(validator, mirrorNodeEvmProperties, store);
+        subject = new MPCQTokenStore(validator, mirrorNodeEvmProperties, store);
     }
 
     @Test
@@ -149,10 +149,10 @@ class HederaTokenStoreTest {
 
     @Test
     void existenceCheckUnderstandsPendingIdOnlyAppliesIfCreationPending() {
-        given(store.getToken(asTypedEvmAddress(HederaTokenStore.NO_PENDING_ID), OnMissing.DONT_THROW))
+        given(store.getToken(asTypedEvmAddress(MPCQTokenStore.NO_PENDING_ID), OnMissing.DONT_THROW))
                 .willReturn(Token.getEmptyToken());
 
-        assertFalse(subject.exists(HederaTokenStore.NO_PENDING_ID));
+        assertFalse(subject.exists(MPCQTokenStore.NO_PENDING_ID));
     }
 
     @Test

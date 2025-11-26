@@ -16,13 +16,13 @@ import org.springframework.core.env.StandardEnvironment;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
 
 /**
- * Migrates Hedera properties to Hiero to support both properties at the same time for backwards compatibility purposes.
+ * Migrates MPCQ properties to MPCQ to support both properties at the same time for backwards compatibility purposes.
  * Searches all property sources for 'hedera' prefixed properties and inserts a higher priority property source with the
  * equivalent 'hiero' prefixed properties. This works with both 'hedera.mirror' style properties and 'HEDERA_MIRROR'
  * style environment variables. Has to be registered as a listener in spring.factories to work properly.
  */
 @CustomLog
-public class HieroPropertiesMigrator implements ApplicationListener<ApplicationEnvironmentPreparedEvent>, Ordered {
+public class MPCQPropertiesMigrator implements ApplicationListener<ApplicationEnvironmentPreparedEvent>, Ordered {
 
     private static final String DEFAULT_PROPERTY_SOURCE_NAME_SUFFIX = "-hiero";
 

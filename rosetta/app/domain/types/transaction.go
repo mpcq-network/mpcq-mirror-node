@@ -7,7 +7,7 @@ import (
 	"github.com/hiero-ledger/hiero-mirror-node/rosetta/app/persistence/domain"
 )
 
-// Transaction is domain level struct used to represent Transaction conceptual mapping in Hedera
+// Transaction is domain level struct used to represent Transaction conceptual mapping in MPCQ
 type Transaction struct {
 	EntityId   *domain.EntityId
 	Hash       string

@@ -184,13 +184,13 @@ const isValidEthHash = (hash) => {
   return ethHashPattern.test(hash);
 };
 
-const ethHashOrHederaHashPattern = /^(0x)?([0-9A-Fa-f]{64}|[0-9A-Fa-f]{96})$/;
-const isValidEthHashOrHederaHash = (hash) => {
+const ethHashOrMPCQHashPattern = /^(0x)?([0-9A-Fa-f]{64}|[0-9A-Fa-f]{96})$/;
+const isValidEthHashOrMPCQHash = (hash) => {
   if (hash === undefined) {
     return false;
   }
 
-  return ethHashOrHederaHashPattern.test(hash);
+  return ethHashOrMPCQHashPattern.test(hash);
 };
 
 const slotPattern = /^(0x)?[0-9A-Fa-f]{1,64}$/;
@@ -265,7 +265,7 @@ const filterValidityChecks = (param, op, val) => {
       ret = isValidBooleanOpAndValue(op, val);
       break;
     case constants.filterKeys.BLOCK_HASH:
-      ret = isValidEthHashOrHederaHash(val) && op === constants.queryParamOperators.eq;
+      ret = isValidEthHashOrMPCQHash(val) && op === constants.queryParamOperators.eq;
       break;
     case constants.filterKeys.BLOCK_NUMBER:
       ret = (isPositiveLong(val, true) || isHexPositiveInt(val, true)) && _.includes(basicOperators, op);
@@ -360,7 +360,7 @@ const filterValidityChecks = (param, op, val) => {
       ret = isValidBooleanOpAndValue(op, val);
       break;
     case constants.filterKeys.TRANSACTION_HASH:
-      ret = isValidEthHashOrHederaHash(val) && op === constants.queryParamOperators.eq;
+      ret = isValidEthHashOrMPCQHash(val) && op === constants.queryParamOperators.eq;
       break;
     default:
       // Every parameter should be included here. Otherwise, it will not be accepted.
@@ -1827,7 +1827,7 @@ export {
   isRepeatedQueryParameterValidLength,
   isTestEnv,
   isValidEthHash,
-  isValidEthHashOrHederaHash,
+  isValidEthHashOrMPCQHash,
   isValidUserFileId,
   isValidOperatorQuery,
   isValidPublicKeyQuery,

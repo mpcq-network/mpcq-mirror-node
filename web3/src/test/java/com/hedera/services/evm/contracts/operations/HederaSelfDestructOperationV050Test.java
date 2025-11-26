@@ -7,10 +7,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.node.app.service.evm.contracts.operations.HederaExceptionalHaltReason;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.EVM;
@@ -25,7 +25,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class HederaSelfDestructOperationV050Test {
+class MPCQSelfDestructOperationV050Test {
 
     static final Address BENEFICIARY = Address.fromHexString("0x0000000000000000000000000000000000000929");
     static final Address BENEFICIARY_SYSTEM_ACCOUNT =
@@ -34,7 +34,7 @@ class HederaSelfDestructOperationV050Test {
     static final Address EIP_1014_ETH_ADDRESS = Address.fromHexString(ETH_ADDRESS);
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
     private GasCalculator gasCalculator;
@@ -54,11 +54,11 @@ class HederaSelfDestructOperationV050Test {
     @Mock
     private Predicate<Address> systemAccountDetector;
 
-    private HederaSelfDestructOperationV050 subject;
+    private MPCQSelfDestructOperationV050 subject;
 
     @BeforeEach
     void setUp() {
-        subject = new HederaSelfDestructOperationV050(gasCalculator, addressValidator, systemAccountDetector);
+        subject = new MPCQSelfDestructOperationV050(gasCalculator, addressValidator, systemAccountDetector);
 
         given(frame.getWorldUpdater()).willReturn(worldUpdater);
         given(gasCalculator.selfDestructOperationGasCost(any(), eq(Wei.ONE))).willReturn(2L);
@@ -86,7 +86,7 @@ class HederaSelfDestructOperationV050Test {
 
         final var opResult = subject.execute(frame, evm);
 
-        assertEquals(HederaExceptionalHaltReason.SELF_DESTRUCT_TO_SELF, opResult.getHaltReason());
+        assertEquals(MPCQExceptionalHaltReason.SELF_DESTRUCT_TO_SELF, opResult.getHaltReason());
         assertEquals(2L, opResult.getGasCost());
     }
 
@@ -98,7 +98,7 @@ class HederaSelfDestructOperationV050Test {
 
         final var opResult = subject.execute(frame, evm);
 
-        assertEquals(HederaExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS, opResult.getHaltReason());
+        assertEquals(MPCQExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS, opResult.getHaltReason());
         assertEquals(2L, opResult.getGasCost());
     }
 
@@ -110,7 +110,7 @@ class HederaSelfDestructOperationV050Test {
         // when
         final var result = subject.execute(frame, evm);
         // then
-        assertEquals(HederaExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS, result.getHaltReason());
+        assertEquals(MPCQExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS, result.getHaltReason());
         assertEquals(2L, result.getGasCost());
     }
 
@@ -124,7 +124,7 @@ class HederaSelfDestructOperationV050Test {
 
         final var opResult = subject.execute(frame, evm);
 
-        assertEquals(HederaExceptionalHaltReason.CONTRACT_IS_TREASURY, opResult.getHaltReason());
+        assertEquals(MPCQExceptionalHaltReason.CONTRACT_IS_TREASURY, opResult.getHaltReason());
         assertEquals(2L, opResult.getGasCost());
     }
 
@@ -137,7 +137,7 @@ class HederaSelfDestructOperationV050Test {
 
         final var opResult = subject.execute(frame, evm);
 
-        assertEquals(HederaExceptionalHaltReason.TRANSACTION_REQUIRES_ZERO_TOKEN_BALANCES, opResult.getHaltReason());
+        assertEquals(MPCQExceptionalHaltReason.TRANSACTION_REQUIRES_ZERO_TOKEN_BALANCES, opResult.getHaltReason());
         assertEquals(2L, opResult.getGasCost());
     }
 
@@ -151,7 +151,7 @@ class HederaSelfDestructOperationV050Test {
 
         final var opResult = subject.execute(frame, evm);
 
-        assertEquals(HederaExceptionalHaltReason.CONTRACT_STILL_OWNS_NFTS, opResult.getHaltReason());
+        assertEquals(MPCQExceptionalHaltReason.CONTRACT_STILL_OWNS_NFTS, opResult.getHaltReason());
         assertEquals(2L, opResult.getGasCost());
     }
 

@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 
 @Getter
-public enum HederaNetwork {
+public enum MPCQNetwork {
     MAINNET("mainnet-public"),
     PREVIEWNET("previewnet"),
     TESTNET("testnet"),
@@ -20,7 +20,7 @@ public enum HederaNetwork {
 
     private final MirrorNodeProperties mirrorNode;
 
-    HederaNetwork(String network) {
+    MPCQNetwork(String network) {
         this.mirrorNode = mirrorNode(network);
     }
 

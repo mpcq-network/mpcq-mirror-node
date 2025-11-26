@@ -8,7 +8,7 @@ import {currencyHbar} from './constants.js';
 const baseUrl = __ENV['BASE_URL'];
 
 const getNetworkIdentifier = (network) => ({
-  blockchain: 'Hedera',
+  blockchain: 'MPCQ',
   network,
 });
 

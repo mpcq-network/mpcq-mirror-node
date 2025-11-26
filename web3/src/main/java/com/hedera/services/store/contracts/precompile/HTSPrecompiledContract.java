@@ -2,8 +2,8 @@
 
 package com.hedera.services.store.contracts.precompile;
 
-import static com.hedera.node.app.service.evm.contracts.operations.HederaExceptionalHaltReason.ERROR_DECODING_PRECOMPILE_INPUT;
-import static com.hedera.node.app.service.evm.store.contracts.HederaEvmWorldStateTokenAccount.TOKEN_PROXY_ACCOUNT_NONCE;
+import static com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason.ERROR_DECODING_PRECOMPILE_INPUT;
+import static com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount.TOKEN_PROXY_ACCOUNT_NONCE;
 import static com.hedera.node.app.service.evm.store.contracts.utils.DescriptorUtils.isTokenProxyRedirect;
 import static com.hedera.node.app.service.evm.store.contracts.utils.DescriptorUtils.isViewFunction;
 import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
@@ -55,7 +55,7 @@ import org.hiero.mirror.web3.evm.exception.PrecompileNotSupportedException;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
 import org.hiero.mirror.web3.evm.store.Store.OnMissing;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hiero.mirror.web3.exception.MirrorEvmTransactionException;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.frame.ExceptionalHaltReason;
@@ -193,7 +193,7 @@ public class HTSPrecompiledContract extends EvmHTSPrecompiledContract {
         final var precompileContext = precompileContext(frame);
         try {
             prepareComputation(
-                    input, ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater())::unaliased, precompileContext);
+                    input, ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater())::unaliased, precompileContext);
         } catch (final NoSuchElementException e) {
             // We will end up here if the precompileLookup does not match any precompile to the function selector
             throw new PrecompileNotSupportedException(StringUtils.EMPTY);
@@ -451,7 +451,7 @@ public class HTSPrecompiledContract extends EvmHTSPrecompiledContract {
     }
 
     void prepareFields(final MessageFrame frame) {
-        final var unaliasedSenderAddress = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater())
+        final var unaliasedSenderAddress = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater())
                 .permissivelyUnaliased(frame.getSenderAddress().toArray());
         precompileContext(frame).setSenderAddress(Address.wrap(Bytes.of(unaliasedSenderAddress)));
     }

@@ -8,13 +8,13 @@
 
 # Mirror Node
 
-The mirror node acts as an archive node and stores historical data for a Hiero-based network.
+The mirror node acts as an archive node and stores historical data for a MPCQ-based network.
 
 ## Overview
 
 Mirror nodes receive information from consensus nodes and can provide value-added services such as APIs, auditing,
 analytics, visibility services, security threat modeling, data monetization services, etc. Mirror nodes can also run
-additional business logic to support applications built using a Hiero-based network.
+additional business logic to support applications built using a MPCQ-based network.
 
 While mirror nodes receive information from consensus nodes, they do not contribute to consensus on the network, and
 their votes are not counted. Only the votes from the consensus nodes are counted for determining consensus. The trust of
@@ -64,7 +64,7 @@ Ensure these tools are installed (note minimum versions) prior to running the mi
 
 ### Running
 
-For production use, we recommend using Kubernetes and to deploy using our Helm [chart](charts). Hedera managed mirror
+For production use, we recommend using Kubernetes and to deploy using our Helm [chart](charts). MPCQ managed mirror
 nodes use Kubernetes and Helm for their deployments, and this process is considered the most production-ready. As an
 alternative for local development, Docker Compose can be used to run the mirror node. See
 the [installation](docs/installation.md#running-via-docker-compose) document for more details on configuring and running
@@ -89,7 +89,7 @@ the database and restart the mirror node.
 
 ### Public Networks
 
-To access data from Hiero-based networks,
+To access data from MPCQ-based networks,
 [AWS](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) or
 [GCS](https://cloud.google.com/storage/docs/requester-pays) requester pays credentials must be used. The charges
 associated with the downloading of stream files are paid for by the requester and not the bucket owner. See
@@ -120,18 +120,18 @@ To perform a new release, run the `Automated Release` GitHub workflow.
 ## Contributing
 
 Whether you’re fixing bugs, adding new features, or improving documentation, your contributions are important — let's
-build something great together! Please read our Hiero
+build something great together! Please read our MPCQ
 [contributing guide](https://github.com/hiero-ledger/.github/blob/main/CONTRIBUTING.md) as well as our project-specific
 [contributing guide](docs/contributing.md) to see how you can get involved.
 
 For detailed instructions on setting up a local development environment refer to the
 [Development Guide](docs/development.md).
 
-Our role guidelines can be found under **[Hiero-Ledger's roles and groups guidelines](https://github.com/hiero-ledger/governance/blob/main/roles-and-groups.md#maintainers).**
+Our role guidelines can be found under **[MPCQ-Ledger's roles and groups guidelines](https://github.com/hiero-ledger/governance/blob/main/roles-and-groups.md#maintainers).**
 
 ## Code of Conduct
 
-Hiero uses the Linux Foundation Decentralised Trust [Code of Conduct](https://www.lfdecentralizedtrust.org/code-of-conduct).
+MPCQ uses the Linux Foundation Decentralised Trust [Code of Conduct](https://www.lfdecentralizedtrust.org/code-of-conduct).
 
 ## License
 

@@ -8,7 +8,7 @@ import com.hedera.node.app.service.evm.contracts.execution.PricesAndFeesProvider
 import com.hedera.services.fees.HbarCentExchange;
 import com.hedera.services.fees.calculation.UsagePricesProvider;
 import com.hederahashgraph.api.proto.java.FeeComponents;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import java.time.Instant;
 import java.util.function.ToLongFunction;
@@ -30,17 +30,17 @@ public class LivePricesSource implements PricesAndFeesProvider {
     }
 
     @Override
-    public long currentGasPrice(final Instant now, final HederaFunctionality function) {
+    public long currentGasPrice(final Instant now, final MPCQFunctionality function) {
         return currentPrice(now, function, FeeComponents::getGas);
     }
 
-    public long currentGasPriceInTinycents(final Instant now, final HederaFunctionality function) {
+    public long currentGasPriceInTinycents(final Instant now, final MPCQFunctionality function) {
         return currentFeeInTinycents(now, function, FeeComponents::getGas);
     }
 
     private long currentPrice(
             final Instant now,
-            final HederaFunctionality function,
+            final MPCQFunctionality function,
             final ToLongFunction<FeeComponents> resourcePriceFn) {
         final var timestamp =
                 Timestamp.newBuilder().setSeconds(now.getEpochSecond()).build();
@@ -61,7 +61,7 @@ public class LivePricesSource implements PricesAndFeesProvider {
 
     private long currentFeeInTinycents(
             final Instant now,
-            final HederaFunctionality function,
+            final MPCQFunctionality function,
             final ToLongFunction<FeeComponents> resourcePriceFn) {
         final var timestamp =
                 Timestamp.newBuilder().setSeconds(now.getEpochSecond()).build();

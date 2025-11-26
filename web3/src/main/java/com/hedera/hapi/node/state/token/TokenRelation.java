@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- * Representation of a Hedera Token Service token relationship entity in the network Merkle tree.
+ * Representation of a MPCQ Token Service token relationship entity in the network Merkle tree.
  * <p>
  * As with all network entities, a token relationship has a unique entity number pair, which is represented
  * with the account and the token involved in the relationship.

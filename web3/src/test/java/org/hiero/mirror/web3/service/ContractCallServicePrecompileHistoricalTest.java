@@ -587,7 +587,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
         final var result = contract.call_getInformationForFungibleToken(getAddressFromEntity(tokenEntity))
                 .send();
 
-        final var expectedHederaToken = createExpectedHederaToken(tokenEntity, token, treasury, autoRenewAccount);
+        final var expectedMPCQToken = createExpectedMPCQToken(tokenEntity, token, treasury, autoRenewAccount);
 
         final var fixedFees = new ArrayList<FixedFee>();
         fixedFees.add(getFixedFee(customFees.getFixedFees().getFirst(), feeCollector));
@@ -598,7 +598,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
         final var royaltyFees = new ArrayList<PrecompileTestContractHistorical.RoyaltyFee>();
 
         final var expectedTokenInfo = createExpectedTokenInfo(
-                expectedHederaToken, token, tokenEntity, fixedFees, fractionalFees, royaltyFees);
+                expectedMPCQToken, token, tokenEntity, fixedFees, fractionalFees, royaltyFees);
 
         final var expectedFungibleTokenInfo =
                 new FungibleTokenInfo(expectedTokenInfo, BigInteger.valueOf(token.getDecimals()));
@@ -643,7 +643,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
                         getAddressFromEntity(tokenEntity), DEFAULT_SERIAL_NUMBER)
                 .send();
 
-        final var expectedHederaToken = createExpectedHederaToken(tokenEntity, token, treasury, autoRenewAccount);
+        final var expectedMPCQToken = createExpectedMPCQToken(tokenEntity, token, treasury, autoRenewAccount);
 
         final var fixedFees = new ArrayList<PrecompileTestContractHistorical.FixedFee>();
         fixedFees.add(getFixedFee(customFees.getFixedFees().getFirst(), feeCollector));
@@ -654,7 +654,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
         royaltyFees.add(getRoyaltyFee(customFees.getRoyaltyFees().getFirst(), feeCollector));
 
         final var expectedTokenInfo = createExpectedTokenInfo(
-                expectedHederaToken, token, tokenEntity, fixedFees, fractionalFees, royaltyFees);
+                expectedMPCQToken, token, tokenEntity, fixedFees, fractionalFees, royaltyFees);
 
         final var expectedNonFungibleTokenInfo = new NonFungibleTokenInfo(
                 expectedTokenInfo,
@@ -695,7 +695,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
         final var result = contract.call_getInformationForToken(getAddressFromEntity(tokenEntity))
                 .send();
 
-        final var expectedHederaToken = createExpectedHederaToken(tokenEntity, token, treasury, autoRenewAccount);
+        final var expectedMPCQToken = createExpectedMPCQToken(tokenEntity, token, treasury, autoRenewAccount);
 
         final var fixedFees = new ArrayList<PrecompileTestContractHistorical.FixedFee>();
         fixedFees.add(getFixedFee(customFees.getFixedFees().getFirst(), feeCollector));
@@ -704,7 +704,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
         fractionalFees.add(getFractionalFee(customFees.getFractionalFees().getFirst(), feeCollector));
 
         final var expectedTokenInfo = createExpectedTokenInfo(
-                expectedHederaToken, token, tokenEntity, fixedFees, fractionalFees, Collections.emptyList());
+                expectedMPCQToken, token, tokenEntity, fixedFees, fractionalFees, Collections.emptyList());
 
         // Then
         assertThat(result).usingRecursiveComparison().isEqualTo(expectedTokenInfo);
@@ -742,7 +742,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
         final var result = contract.call_getInformationForToken(getAddressFromEntity(tokenEntity))
                 .send();
 
-        final var expectedHederaToken = createExpectedHederaToken(tokenEntity, token, treasury, autoRenewAccount);
+        final var expectedMPCQToken = createExpectedMPCQToken(tokenEntity, token, treasury, autoRenewAccount);
 
         final var fixedFees = new ArrayList<PrecompileTestContractHistorical.FixedFee>();
         fixedFees.add(getFixedFee(customFees.getFixedFees().getFirst(), feeCollector));
@@ -751,7 +751,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
         royaltyFees.add(getRoyaltyFee(customFees.getRoyaltyFees().getFirst(), feeCollector));
 
         final var expectedTokenInfo = createExpectedTokenInfo(
-                expectedHederaToken, token, tokenEntity, fixedFees, Collections.emptyList(), royaltyFees);
+                expectedMPCQToken, token, tokenEntity, fixedFees, Collections.emptyList(), royaltyFees);
 
         // Then
         assertThat(result).usingRecursiveComparison().isEqualTo(expectedTokenInfo);
@@ -1072,7 +1072,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
         return entity;
     }
 
-    private PrecompileTestContractHistorical.HederaToken createExpectedHederaToken(
+    private PrecompileTestContractHistorical.MPCQToken createExpectedMPCQToken(
             final Entity tokenEntity, final Token token, final Entity treasury, final Entity autoRenewAccount) {
         final var expectedTokenKeys = getExpectedTokenKeys(tokenEntity, token);
 
@@ -1080,7 +1080,7 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
                 BigInteger.valueOf(tokenEntity.getExpirationTimestamp()).divide(BigInteger.valueOf(1_000_000_000L)),
                 getAddressFromEntity(autoRenewAccount),
                 BigInteger.valueOf(tokenEntity.getAutoRenewPeriod()));
-        return new PrecompileTestContractHistorical.HederaToken(
+        return new PrecompileTestContractHistorical.MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 mirrorNodeEvmProperties.isModularizedServices()
@@ -1095,14 +1095,14 @@ class ContractCallServicePrecompileHistoricalTest extends AbstractContractCallSe
     }
 
     private PrecompileTestContractHistorical.TokenInfo createExpectedTokenInfo(
-            PrecompileTestContractHistorical.HederaToken expectedHederaToken,
+            PrecompileTestContractHistorical.MPCQToken expectedMPCQToken,
             Token token,
             Entity tokenEntity,
             List<PrecompileTestContractHistorical.FixedFee> fixedFees,
             List<PrecompileTestContractHistorical.FractionalFee> fractionalFees,
             List<PrecompileTestContractHistorical.RoyaltyFee> royaltyFees) {
         return new PrecompileTestContractHistorical.TokenInfo(
-                expectedHederaToken,
+                expectedMPCQToken,
                 BigInteger.valueOf(token.getTotalSupply()),
                 tokenEntity.getDeleted(),
                 false,

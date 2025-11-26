@@ -20,7 +20,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(ContextExtension.class)
 @ExtendWith(MockitoExtension.class)
-class HederaBlockHashOperationTest {
+class MPCQBlockHashOperationTest {
 
     @Mock
     private MessageFrame messageFrame;
@@ -31,11 +31,11 @@ class HederaBlockHashOperationTest {
     @Mock
     private GasCalculator gasCalculator;
 
-    private HederaBlockHashOperation subject;
+    private MPCQBlockHashOperation subject;
 
     @BeforeEach
     void setup() {
-        subject = new HederaBlockHashOperation(gasCalculator);
+        subject = new MPCQBlockHashOperation(gasCalculator);
     }
 
     @Test

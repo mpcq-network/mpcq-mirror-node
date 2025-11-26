@@ -3,8 +3,8 @@
 package org.hiero.mirror.importer.migration;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hiero.mirror.importer.ImporterProperties.HederaNetwork.PREVIEWNET;
-import static org.hiero.mirror.importer.ImporterProperties.HederaNetwork.TESTNET;
+import static org.hiero.mirror.importer.ImporterProperties.MPCQNetwork.PREVIEWNET;
+import static org.hiero.mirror.importer.ImporterProperties.MPCQNetwork.TESTNET;
 import static org.hiero.mirror.importer.migration.BlockNumberMigration.BLOCK_NUMBER_MAPPING;
 
 import java.util.ArrayList;

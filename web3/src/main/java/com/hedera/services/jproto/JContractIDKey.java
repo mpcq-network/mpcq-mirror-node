@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Maps to proto Key of type contractID.
  *
- * <p>Just as a public-private key pair is used to control permissions for a Hedera entity (e.g., an
+ * <p>Just as a public-private key pair is used to control permissions for a MPCQ entity (e.g., an
  * account), a {@code contractID} key is <i>also</i> used to control permissions for an entity. The
  * difference is that a {@code contractID} key requires a particular contract to be executing in
  * order to count as having "signed".

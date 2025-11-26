@@ -5,8 +5,8 @@ package com.hedera.node.app.service.contract.impl.utils;
 import static com.esaulpaugh.headlong.abi.Address.toChecksumAddress;
 import static com.hedera.hapi.node.base.ResponseCodeEnum.SUCCESS;
 import static com.hedera.node.app.hapi.utils.contracts.HookUtils.leftPad32;
-import static com.hedera.node.app.service.contract.impl.exec.scope.HederaNativeOperations.MISSING_ENTITY_NUMBER;
-import static com.hedera.node.app.service.contract.impl.exec.scope.HederaNativeOperations.NON_CANONICAL_REFERENCE_NUMBER;
+import static com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations.MISSING_ENTITY_NUMBER;
+import static com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations.NON_CANONICAL_REFERENCE_NUMBER;
 import static com.hedera.node.app.service.contract.impl.exec.utils.FrameUtils.proxyUpdaterFor;
 import static com.hedera.node.app.service.contract.impl.utils.ConstantUtils.ZERO_CONTRACT_ID;
 import static com.hedera.node.app.service.contract.impl.utils.SynthTxnUtils.hasNonDegenerateAutoRenewAccountId;
@@ -35,9 +35,9 @@ import com.hedera.hapi.streams.ContractStateChange;
 import com.hedera.hapi.streams.ContractStateChanges;
 import com.hedera.hapi.streams.StorageChange;
 import com.hedera.node.app.service.contract.impl.exec.CallOutcome;
-import com.hedera.node.app.service.contract.impl.exec.scope.HandleHederaNativeOperations;
-import com.hedera.node.app.service.contract.impl.exec.scope.HederaNativeOperations;
-import com.hedera.node.app.service.contract.impl.exec.scope.HederaOperations;
+import com.hedera.node.app.service.contract.impl.exec.scope.HandleMPCQNativeOperations;
+import com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations;
+import com.hedera.node.app.service.contract.impl.exec.scope.MPCQOperations;
 import com.hedera.node.app.service.contract.impl.infra.StorageAccessTracker;
 import com.hedera.node.app.service.contract.impl.records.ContractCallStreamBuilder;
 import com.hedera.node.app.service.contract.impl.state.ProxyWorldUpdater;
@@ -47,7 +47,7 @@ import com.hedera.node.app.service.contract.impl.state.TxStorageUsage;
 import com.hedera.node.app.service.entityid.EntityIdFactory;
 import com.hedera.node.app.service.token.ReadableAccountStore;
 import com.hedera.node.app.spi.workflows.HandleException;
-import com.hedera.node.config.data.HederaConfig;
+import com.hedera.node.config.data.MPCQConfig;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import java.math.BigInteger;
@@ -417,29 +417,29 @@ public class ConversionUtils {
     }
 
     /**
-     * Returns the given Besu {@link Log}s as Hedera {@link EvmTransactionLog}s.
+     * Returns the given Besu {@link Log}s as MPCQ {@link EvmTransactionLog}s.
      *
-     * @param logs the Besu {@link Log}s, using the long-zero address format for the logger's Hedera id number
-     * @param entityIdFactory the Hedera entity id factory
-     * @return the Hedera {@link EvmTransactionLog}s
+     * @param logs the Besu {@link Log}s, using the long-zero address format for the logger's MPCQ id number
+     * @param entityIdFactory the MPCQ entity id factory
+     * @return the MPCQ {@link EvmTransactionLog}s
      */
-    public static List<EvmTransactionLog> asHederaLogs(
+    public static List<EvmTransactionLog> asMPCQLogs(
             @NonNull final List<Log> logs, @NonNull final EntityIdFactory entityIdFactory) {
         requireNonNull(logs);
         final List<EvmTransactionLog> hederaLogs = new ArrayList<>(logs.size());
         for (final var log : logs) {
-            hederaLogs.add(asHederaLog(entityIdFactory, log));
+            hederaLogs.add(asMPCQLog(entityIdFactory, log));
         }
         return hederaLogs;
     }
 
     /**
-     * Returns the given Besu {@link Log} as a Hedera {@link EvmTransactionLog}.
-     * @param entityIdFactory the Hedera entity id factory
-     * @param log the Besu {@link Log}, using the long-zero address format for the logger's Hedera id number
-     * @return the Hedera {@link EvmTransactionLog}
+     * Returns the given Besu {@link Log} as a MPCQ {@link EvmTransactionLog}.
+     * @param entityIdFactory the MPCQ entity id factory
+     * @param log the Besu {@link Log}, using the long-zero address format for the logger's MPCQ id number
+     * @return the MPCQ {@link EvmTransactionLog}
      */
-    public static EvmTransactionLog asHederaLog(
+    public static EvmTransactionLog asMPCQLog(
             @NonNull final EntityIdFactory entityIdFactory, @NonNull final Log log) {
         final List<com.hedera.pbj.runtime.io.buffer.Bytes> topics =
                 new ArrayList<>(log.getTopics().size());
@@ -475,16 +475,16 @@ public class ConversionUtils {
     }
 
     /**
-     * Given a {@link MessageFrame}, returns the id number of the given address's Hedera id.
+     * Given a {@link MessageFrame}, returns the id number of the given address's MPCQ id.
      *
      * @param frame the {@link MessageFrame}
      * @param address the address to get the id number of
-     * @return the id number of the given address's Hedera id
+     * @return the id number of the given address's MPCQ id
      */
     private static long hederaIdNumberIn(@NonNull final MessageFrame frame, @NonNull final Address address) {
         return isLongZero(address)
                 ? numberOfLongZero(address)
-                : proxyUpdaterFor(frame).getHederaContractId(address).contractNumOrThrow();
+                : proxyUpdaterFor(frame).getMPCQContractId(address).contractNumOrThrow();
     }
 
     /**
@@ -498,18 +498,18 @@ public class ConversionUtils {
     }
 
     /**
-     * Given an EVM address (possibly long-zero), returns the number of the corresponding Hedera entity
-     * within the given {@link HandleHederaNativeOperations}; or {@link HederaNativeOperations#MISSING_ENTITY_NUMBER}
-     * if the address does not correspond to a known Hedera entity; or {@link HederaNativeOperations#NON_CANONICAL_REFERENCE_NUMBER}
+     * Given an EVM address (possibly long-zero), returns the number of the corresponding MPCQ entity
+     * within the given {@link HandleMPCQNativeOperations}; or {@link MPCQNativeOperations#MISSING_ENTITY_NUMBER}
+     * if the address does not correspond to a known MPCQ entity; or {@link MPCQNativeOperations#NON_CANONICAL_REFERENCE_NUMBER}
      * if the address references an account by its "non-priority" long-zero address.
      *
      * @param address the EVM address
-     * @param nativeOperations the {@link HandleHederaNativeOperations} to use for resolving aliases
-     * @return the number of the corresponding Hedera entity, if it exists and has this priority address
+     * @param nativeOperations the {@link HandleMPCQNativeOperations} to use for resolving aliases
+     * @return the number of the corresponding MPCQ entity, if it exists and has this priority address
      */
     public static long accountNumberForEvmReference(
             @NonNull final com.esaulpaugh.headlong.abi.Address address,
-            @NonNull final HederaNativeOperations nativeOperations) {
+            @NonNull final MPCQNativeOperations nativeOperations) {
         final var explicit = explicitFromHeadlong(address);
         final var number = maybeMissingNumberOf(explicit, nativeOperations);
         final var longZeroAddressPermitted = Boolean.parseBoolean(System.getProperty(ALLOW_LONG_ZERO_ADDRESSES));
@@ -529,24 +529,24 @@ public class ConversionUtils {
     }
 
     /**
-     * Given an EVM address (possibly long-zero), returns the number of the corresponding Hedera entity
-     * within the given {@link HandleHederaNativeOperations}; or {@link HederaNativeOperations#MISSING_ENTITY_NUMBER}
-     * if the address is not long-zero and does not correspond to a known Hedera entity.
+     * Given an EVM address (possibly long-zero), returns the number of the corresponding MPCQ entity
+     * within the given {@link HandleMPCQNativeOperations}; or {@link MPCQNativeOperations#MISSING_ENTITY_NUMBER}
+     * if the address is not long-zero and does not correspond to a known MPCQ entity.
      *
      * @param address the EVM address
-     * @param nativeOperations the {@link HandleHederaNativeOperations} to use for resolving aliases
-     * @return the number of the corresponding Hedera entity, if it exists
+     * @param nativeOperations the {@link HandleMPCQNativeOperations} to use for resolving aliases
+     * @return the number of the corresponding MPCQ entity, if it exists
      */
     public static long maybeMissingNumberOf(
-            @NonNull final Address address, @NonNull final HederaNativeOperations nativeOperations) {
+            @NonNull final Address address, @NonNull final MPCQNativeOperations nativeOperations) {
         return maybeMissingNumberOf(address.toArrayUnsafe(), nativeOperations);
     }
 
     /**
-     * Given a long-zero EVM address, returns the implied Hedera entity number.
+     * Given a long-zero EVM address, returns the implied MPCQ entity number.
      *
      * @param address the EVM address
-     * @return the implied Hedera entity number
+     * @return the implied MPCQ entity number
      */
     @SuppressWarnings("java:S2201")
     public static long numberOfLongZero(@NonNull final Address address) {
@@ -698,12 +698,12 @@ public class ConversionUtils {
     /**
      * Throws a {@link HandleException} if the given outcome did not succeed for a call.
      * @param outcome the outcome
-     * @param hederaOperations the Hedera operations
+     * @param hederaOperations the MPCQ operations
      * @param streamBuilder the stream builder
      */
     public static void throwIfUnsuccessfulCall(
             @NonNull final CallOutcome outcome,
-            @NonNull final HederaOperations hederaOperations,
+            @NonNull final MPCQOperations hederaOperations,
             @NonNull final ContractCallStreamBuilder streamBuilder) {
         requireNonNull(outcome);
         requireNonNull(hederaOperations);
@@ -719,10 +719,10 @@ public class ConversionUtils {
     /**
      * Throws a {@link HandleException} if the given outcome did not succeed for a call.
      * @param outcome the outcome
-     * @param hederaOperations the Hedera operations
+     * @param hederaOperations the MPCQ operations
      */
     public static void throwIfUnsuccessfulCreate(
-            @NonNull final CallOutcome outcome, @NonNull final HederaOperations hederaOperations) {
+            @NonNull final CallOutcome outcome, @NonNull final MPCQOperations hederaOperations) {
         requireNonNull(outcome);
         requireNonNull(hederaOperations);
         if (outcome.status() != SUCCESS) {
@@ -906,11 +906,11 @@ public class ConversionUtils {
         return isLongZero(address)
                 ? address
                 : asLongZeroAddress(
-                        proxyUpdaterFor(frame).getHederaContractId(address).contractNumOrThrow());
+                        proxyUpdaterFor(frame).getMPCQContractId(address).contractNumOrThrow());
     }
 
     private static long maybeMissingNumberOf(
-            @NonNull final byte[] explicit, @NonNull final HederaNativeOperations nativeOperations) {
+            @NonNull final byte[] explicit, @NonNull final MPCQNativeOperations nativeOperations) {
         if (isLongZeroAddress(explicit)) {
             return longFrom(
                     explicit[12],
@@ -923,9 +923,9 @@ public class ConversionUtils {
                     explicit[19]);
         } else {
             final var evmAddress = extractEvmAddress(com.hedera.pbj.runtime.io.buffer.Bytes.wrap(explicit));
-            final var config = nativeOperations.configuration().getConfigData(HederaConfig.class);
+            final var config = nativeOperations.configuration().getConfigData(MPCQConfig.class);
             return evmAddress == null
-                    ? HederaNativeOperations.MISSING_ENTITY_NUMBER
+                    ? MPCQNativeOperations.MISSING_ENTITY_NUMBER
                     : nativeOperations.resolveAlias(config.shard(), config.realm(), evmAddress);
         }
     }
@@ -1086,7 +1086,7 @@ public class ConversionUtils {
 
     /**
      * Returns a tuple of the {@code KeyValue} struct
-     * <br><a href="https://github.com/hashgraph/hedera-smart-contracts/blob/main/contracts/hts-precompile/IHederaTokenService.sol#L92">Link</a>
+     * <br><a href="https://github.com/hashgraph/hedera-smart-contracts/blob/main/contracts/hts-precompile/IMPCQTokenService.sol#L92">Link</a>
      * @param key the key to get the tuple for
      * @return Tuple encoding of the KeyValue
      */

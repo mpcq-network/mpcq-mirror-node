@@ -2,7 +2,7 @@
 
 package com.hedera.services.store.contracts.precompile.impl;
 
-import static com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases.isMirror;
+import static com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases.isMirror;
 import static com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
 import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.INT;
 import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateFalseOrRevert;
@@ -56,7 +56,7 @@ import com.hedera.services.store.contracts.precompile.codec.RunResult;
 import com.hedera.services.store.contracts.precompile.codec.TransferParams;
 import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
 import com.hedera.services.store.models.Id;
-import com.hedera.services.store.tokens.HederaTokenStore;
+import com.hedera.services.store.tokens.MPCQTokenStore;
 import com.hedera.services.txns.crypto.AutoCreationLogic;
 import com.hedera.services.txns.validation.ContextOptionValidator;
 import com.hedera.services.utils.EntityIdUtils;
@@ -87,7 +87,7 @@ import org.hiero.mirror.web3.common.PrecompileContext;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
 import org.hiero.mirror.web3.evm.store.contract.EntityAddressSequencer;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
@@ -382,9 +382,9 @@ public class TransferPrecompile extends AbstractWritePrecompile {
 
     @Override
     public RunResult run(final MessageFrame frame, final TransactionBody transactionBody) {
-        final var updater = (HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater();
+        final var updater = (MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater();
         final var store = updater.getStore();
-        final var hederaTokenStore = initializeHederaTokenStore(store);
+        final var hederaTokenStore = initializeMPCQTokenStore(store);
         final var impliedValidity = extrapolateValidityDetailsFromSyntheticTxn(transactionBody);
         if (impliedValidity != OK) {
             throw new InvalidTransactionException(impliedValidity, true);
@@ -428,8 +428,8 @@ public class TransferPrecompile extends AbstractWritePrecompile {
                 ABI_ID_TRANSFER_NFT);
     }
 
-    private HederaTokenStore initializeHederaTokenStore(Store store) {
-        return new HederaTokenStore(contextOptionValidator, mirrorNodeEvmProperties, store);
+    private MPCQTokenStore initializeMPCQTokenStore(Store store) {
+        return new MPCQTokenStore(contextOptionValidator, mirrorNodeEvmProperties, store);
     }
 
     @Override

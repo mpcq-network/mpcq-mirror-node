@@ -58,7 +58,7 @@ public class ImporterProperties {
     private Map<String, MigrationProperties> migration = new CaseInsensitiveMap<>();
 
     @NotBlank
-    private String network = HederaNetwork.DEMO;
+    private String network = MPCQNetwork.DEMO;
 
     private String nodePublicKey;
 
@@ -97,7 +97,7 @@ public class ImporterProperties {
     }
 
     @NullMarked
-    public final class HederaNetwork {
+    public final class MPCQNetwork {
         public static final String DEMO = "demo";
         public static final String MAINNET = "mainnet";
         public static final String OTHER = "other";
@@ -111,7 +111,7 @@ public class ImporterProperties {
                 PREVIEWNET, "hedera-preview-testnet-streams",
                 TESTNET, "hedera-testnet-streams-2024-02");
 
-        private HederaNetwork() {}
+        private MPCQNetwork() {}
 
         public static String getBucketName(String network) {
             return NETWORK_DEFAULT_BUCKETS.getOrDefault(network, "");

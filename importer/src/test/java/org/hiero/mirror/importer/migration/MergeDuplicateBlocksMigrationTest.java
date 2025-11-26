@@ -43,7 +43,7 @@ class MergeDuplicateBlocksMigrationTest extends ImporterIntegrationTest {
     @Test
     void notMainnet() throws Exception {
         // Given
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.TESTNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.TESTNET);
 
         // When
         migration.doMigrate();
@@ -60,7 +60,7 @@ class MergeDuplicateBlocksMigrationTest extends ImporterIntegrationTest {
     @Test
     void mainnet() throws Exception {
         // Given
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.MAINNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.MAINNET);
 
         // When
         migration.doMigrate();

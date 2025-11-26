@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.pricing;
 
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -22,7 +22,7 @@ import org.hiero.mirror.common.CommonProperties;
 import org.hiero.mirror.common.domain.SystemEntity;
 import org.hiero.mirror.common.domain.file.FileData;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
-import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.HederaNetwork;
+import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.MPCQNetwork;
 import org.hiero.mirror.web3.repository.FileDataRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,12 +50,12 @@ class RatesAndFeesLoaderTest {
             .setCurrentFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(200L))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder().build())))
             .setNextFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(2_234_567_890L))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder().build())))
             .build();
     private static final FileData exchangeRatesFileData = FileData.builder()
@@ -109,7 +109,7 @@ class RatesAndFeesLoaderTest {
     @ParameterizedTest
     @MethodSource("shardAndRealmData")
     void loadDefaultExchangeRates(long shard, long realm) {
-        evmProperties.setNetwork(HederaNetwork.OTHER);
+        evmProperties.setNetwork(MPCQNetwork.OTHER);
         commonProperties.setRealm(realm);
         commonProperties.setShard(shard);
         var exchangeRateEntityId = systemEntity.exchangeRateFile();
@@ -181,7 +181,7 @@ class RatesAndFeesLoaderTest {
     @ParameterizedTest
     @MethodSource("shardAndRealmData")
     void loadDefaultFeeSchedules(long shard, long realm) {
-        evmProperties.setNetwork(HederaNetwork.OTHER);
+        evmProperties.setNetwork(MPCQNetwork.OTHER);
         commonProperties.setRealm(realm);
         commonProperties.setShard(shard);
         var feeScheduleEntityId = systemEntity.feeScheduleFile();

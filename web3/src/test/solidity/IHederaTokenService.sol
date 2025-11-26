@@ -2,7 +2,7 @@
 pragma solidity >=0.4.9 <0.9.0;
 pragma experimental ABIEncoderV2;
 
-interface IHederaTokenService {
+interface IMPCQTokenService {
 
     /// Transfers cryptocurrency among two or more accounts by making the desired adjustments to their
     /// balances. Each transfer list can specify up to 10 adjustments. Each negative amount is withdrawn
@@ -65,7 +65,7 @@ interface IHederaTokenService {
         AccountAmount[] transfers;
     }
 
-    /// Expiry properties of a Hedera token - second, autoRenewAccount, autoRenewPeriod
+    /// Expiry properties of a MPCQ token - second, autoRenewAccount, autoRenewPeriod
     struct Expiry {
         // The epoch second at which the token should expire; if an auto-renew account and period are
         // specified, this is coerced to the current epoch second plus the autoRenewPeriod
@@ -91,7 +91,7 @@ interface IHederaTokenService {
     /// Exactly one of the possible values should be populated in order for the Key to be valid.
     struct KeyValue {
 
-        // if set to true, the key of the calling Hedera account will be inherited as the token key
+        // if set to true, the key of the calling MPCQ account will be inherited as the token key
         bool inheritAccountKey;
 
         // smart contract instance that is authorized as if it had signed with a key
@@ -131,9 +131,9 @@ interface IHederaTokenService {
         KeyValue key;
     }
 
-    /// Basic properties of a Hedera Token - name, symbol, memo, tokenSupplyType, maxSupply,
+    /// Basic properties of a MPCQ Token - name, symbol, memo, tokenSupplyType, maxSupply,
     /// treasury, freezeDefault. These properties are related both to Fungible and NFT token types.
-    struct HederaToken {
+    struct MPCQToken {
         // The publicly visible name of the token. The token name is specified as a Unicode string.
         // Its UTF-8 encoding cannot exceed 100 bytes, and cannot contain the 0 byte (NUL).
         string name;
@@ -158,21 +158,21 @@ interface IHederaTokenService {
         // the maximum number of NFTs (serial numbers) that can be minted. This field can never be changed!
         int64 maxSupply;
 
-        // The default Freeze status (frozen or unfrozen) of Hedera accounts relative to this token. If
+        // The default Freeze status (frozen or unfrozen) of MPCQ accounts relative to this token. If
         // true, an account must be unfrozen before it can receive the token
         bool freezeDefault;
 
         // list of keys to set to the token
         TokenKey[] tokenKeys;
 
-        // expiry properties of a Hedera token - second, autoRenewAccount, autoRenewPeriod
+        // expiry properties of a MPCQ token - second, autoRenewAccount, autoRenewPeriod
         Expiry expiry;
     }
 
-    /// Additional post creation fungible and non fungible properties of a Hedera Token.
+    /// Additional post creation fungible and non fungible properties of a MPCQ Token.
     struct TokenInfo {
-        /// Basic properties of a Hedera Token
-        HederaToken token;
+        /// Basic properties of a MPCQ Token
+        MPCQToken token;
 
         /// The number of tokens (fungible) or serials (non-fungible) of the token
         int64 totalSupply;
@@ -199,7 +199,7 @@ interface IHederaTokenService {
         string ledgerId;
     }
 
-    /// Additional fungible properties of a Hedera Token.
+    /// Additional fungible properties of a MPCQ Token.
     struct FungibleTokenInfo {
         /// The shared hedera token info
         TokenInfo tokenInfo;
@@ -208,7 +208,7 @@ interface IHederaTokenService {
         int32 decimals;
     }
 
-    /// Additional non fungible properties of a Hedera Token.
+    /// Additional non fungible properties of a MPCQ Token.
     struct NonFungibleTokenInfo {
         /// The shared hedera token info
         TokenInfo tokenInfo;
@@ -431,7 +431,7 @@ interface IHederaTokenService {
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     /// @return tokenAddress the created token's address
     function createFungibleToken(
-        HederaToken memory token,
+        MPCQToken memory token,
         int64 initialTotalSupply,
         int32 decimals
     ) external payable returns (int64 responseCode, address tokenAddress);
@@ -446,7 +446,7 @@ interface IHederaTokenService {
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     /// @return tokenAddress the created token's address
     function createFungibleTokenWithCustomFees(
-        HederaToken memory token,
+        MPCQToken memory token,
         int64 initialTotalSupply,
         int32 decimals,
         FixedFee[] memory fixedFees,
@@ -457,7 +457,7 @@ interface IHederaTokenService {
     /// @param token the basic properties of the token being created
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     /// @return tokenAddress the created token's address
-    function createNonFungibleToken(HederaToken memory token)
+    function createNonFungibleToken(MPCQToken memory token)
     external
     payable
     returns (int64 responseCode, address tokenAddress);
@@ -469,7 +469,7 @@ interface IHederaTokenService {
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     /// @return tokenAddress the created token's address
     function createNonFungibleTokenWithCustomFees(
-        HederaToken memory token,
+        MPCQToken memory token,
         FixedFee[] memory fixedFees,
         RoyaltyFee[] memory royaltyFees
     ) external payable returns (int64 responseCode, address tokenAddress);
@@ -544,7 +544,7 @@ interface IHederaTokenService {
     /// Transfers `amount` tokens from `from` to `to` using the
     //  allowance mechanism. `amount` is then deducted from the caller's allowance.
     /// Only applicable to fungible tokens
-    /// @param token The address of the fungible Hedera token to transfer
+    /// @param token The address of the fungible MPCQ token to transfer
     /// @param from The account address of the owner of the token, on the behalf of which to transfer `amount` tokens
     /// @param to The account address of the receiver of the `amount` tokens
     /// @param amount The amount of tokens to transfer from `from` to `to`
@@ -553,7 +553,7 @@ interface IHederaTokenService {
 
     /// Returns the amount which spender is still allowed to withdraw from owner.
     /// Only Applicable to Fungible Tokens
-    /// @param token The Hedera token address to check the allowance of
+    /// @param token The MPCQ token address to check the allowance of
     /// @param owner the owner of the tokens to be spent
     /// @param spender the spender of the tokens
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
@@ -566,7 +566,7 @@ interface IHederaTokenService {
 
     /// Allow or reaffirm the approved address to transfer an NFT the approved address does not own.
     /// Only Applicable to NFT Tokens
-    /// @param token The Hedera NFT token address to approve
+    /// @param token The MPCQ NFT token address to approve
     /// @param approved The new approved NFT controller.  To revoke approvals pass in the zero address.
     /// @param serialNumber The NFT serial number  to approve
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
@@ -578,7 +578,7 @@ interface IHederaTokenService {
 
     /// Transfers `serialNumber` of `token` from `from` to `to` using the allowance mechanism.
     /// Only applicable to NFT tokens
-    /// @param token The address of the non-fungible Hedera token to transfer
+    /// @param token The address of the non-fungible MPCQ token to transfer
     /// @param from The account address of the owner of `serialNumber` of `token`
     /// @param to The account address of the receiver of `serialNumber`
     /// @param serialNumber The NFT serial number to transfer
@@ -587,7 +587,7 @@ interface IHederaTokenService {
 
     /// Get the approved address for a single NFT
     /// Only Applicable to NFT Tokens
-    /// @param token The Hedera NFT token address to check approval
+    /// @param token The MPCQ NFT token address to check approval
     /// @param serialNumber The NFT to find the approved address for
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     /// @return approved The approved address for this NFT, or the zero address if there is none
@@ -597,7 +597,7 @@ interface IHederaTokenService {
 
     /// Enable or disable approval for a third party ("operator") to manage
     ///  all of `msg.sender`'s assets
-    /// @param token The Hedera NFT token address to approve
+    /// @param token The MPCQ NFT token address to approve
     /// @param operator Address to add to the set of authorized operators
     /// @param approved True if the operator is approved, false to revoke approval
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
@@ -609,7 +609,7 @@ interface IHederaTokenService {
 
     /// Query if an address is an authorized operator for another address
     /// Only Applicable to NFT Tokens
-    /// @param token The Hedera NFT token address to approve
+    /// @param token The MPCQ NFT token address to approve
     /// @param owner The address that owns the NFTs
     /// @param operator The address that acts on behalf of the owner
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
@@ -779,7 +779,7 @@ interface IHederaTokenService {
     /// @param token The token address
     /// @param tokenInfo The hedera token info to update token with
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
-    function updateTokenInfo(address token, HederaToken memory tokenInfo)
+    function updateTokenInfo(address token, MPCQToken memory tokenInfo)
     external
     returns (int64 responseCode);
 
@@ -827,14 +827,14 @@ interface IHederaTokenService {
     /// @param fixedFees Set of fixed fees for `token`
     /// @param fractionalFees Set of fractional fees for `token`
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
-    function updateFungibleTokenCustomFees(address token,  IHederaTokenService.FixedFee[] memory fixedFees, IHederaTokenService.FractionalFee[] memory fractionalFees) external returns (int64 responseCode);
+    function updateFungibleTokenCustomFees(address token,  IMPCQTokenService.FixedFee[] memory fixedFees, IMPCQTokenService.FractionalFee[] memory fractionalFees) external returns (int64 responseCode);
 
     /// Update the custom fees for a non-fungible token
     /// @param token The token address
     /// @param fixedFees Set of fixed fees for `token`
     /// @param royaltyFees Set of royalty fees for `token`
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
-    function updateNonFungibleTokenCustomFees(address token, IHederaTokenService.FixedFee[] memory fixedFees, IHederaTokenService.RoyaltyFee[] memory royaltyFees) external returns (int64 responseCode);
+    function updateNonFungibleTokenCustomFees(address token, IMPCQTokenService.FixedFee[] memory fixedFees, IMPCQTokenService.RoyaltyFee[] memory royaltyFees) external returns (int64 responseCode);
 
     /// @notice Airdrop one or more tokens to one or more accounts
     /// @notice Recipients will receive tokens in one of these ways:

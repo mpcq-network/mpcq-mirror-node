@@ -2,10 +2,10 @@
 pragma solidity >=0.5.0 <0.9.0;
 pragma experimental ABIEncoderV2;
 
-import "./HederaResponseCodes.sol";
-import "./IHederaScheduleService.sol";
+import "./MPCQResponseCodes.sol";
+import "./IMPCQScheduleService.sol";
 
-abstract contract HederaScheduleService {
+abstract contract MPCQScheduleService {
     address constant scheduleSystemContractAddress = address(0x16b);
 
     /// Authorizes the calling contract as a signer to the schedule transaction.
@@ -13,8 +13,8 @@ abstract contract HederaScheduleService {
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     function authorizeSchedule(address schedule) internal returns (int64 responseCode) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.call(
-            abi.encodeWithSelector(IHederaScheduleService.authorizeSchedule.selector, schedule));
-        responseCode = success ? abi.decode(result, (int64)) : HederaResponseCodes.UNKNOWN;
+            abi.encodeWithSelector(IMPCQScheduleService.authorizeSchedule.selector, schedule));
+        responseCode = success ? abi.decode(result, (int64)) : MPCQResponseCodes.UNKNOWN;
     }
 
     /// Allows for the signing of a schedule transaction given a protobuf encoded signature map
@@ -24,12 +24,12 @@ abstract contract HederaScheduleService {
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     function signSchedule(address schedule, bytes memory signatureMap) internal returns (int64 responseCode) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.call(
-            abi.encodeWithSelector(IHederaScheduleService.signSchedule.selector, schedule, signatureMap));
-        responseCode = success ? abi.decode(result, (int64)) : HederaResponseCodes.UNKNOWN;
+            abi.encodeWithSelector(IMPCQScheduleService.signSchedule.selector, schedule, signatureMap));
+        responseCode = success ? abi.decode(result, (int64)) : MPCQResponseCodes.UNKNOWN;
     }
 
     /// Allows for the creation of a schedule transaction for given a system contract address, abi encoded call data and payer address
-    /// Currently supports the Hedera Token Service System Contract (0x167) with encoded call data for
+    /// Currently supports the MPCQ Token Service System Contract (0x167) with encoded call data for
     /// createFungibleToken, createNonFungibleToken, createFungibleTokenWithCustomFees, createNonFungibleTokenWithCustomFees
     /// and updateToken functions
     /// @param systemContractAddress the address of the system contract from which to create the schedule transaction
@@ -39,30 +39,30 @@ abstract contract HederaScheduleService {
     /// @return scheduleAddress The address of the newly created schedule transaction.
     function scheduleNative(address systemContractAddress, bytes memory callData, address payer) internal returns (int64 responseCode, address scheduleAddress) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.call(
-            abi.encodeWithSelector(IHederaScheduleService.scheduleNative.selector, systemContractAddress, callData, payer));
-        (responseCode, scheduleAddress) = success ? abi.decode(result, (int64, address)) : (int64(HederaResponseCodes.UNKNOWN), address(0));
+            abi.encodeWithSelector(IMPCQScheduleService.scheduleNative.selector, systemContractAddress, callData, payer));
+        (responseCode, scheduleAddress) = success ? abi.decode(result, (int64, address)) : (int64(MPCQResponseCodes.UNKNOWN), address(0));
     }
 
     /// Returns the token information for a scheduled fungible token create transaction
     /// @param scheduleAddress the address of the schedule transaction
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     /// @return fungibleTokenInfo The token information for the scheduled fungible token create transaction
-    function getScheduledCreateFungibleTokenInfo(address scheduleAddress) internal returns (int64 responseCode, IHederaTokenService.FungibleTokenInfo memory fungibleTokenInfo) {
+    function getScheduledCreateFungibleTokenInfo(address scheduleAddress) internal returns (int64 responseCode, IMPCQTokenService.FungibleTokenInfo memory fungibleTokenInfo) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.call(
-            abi.encodeWithSelector(IHederaScheduleService.getScheduledCreateFungibleTokenInfo.selector, scheduleAddress));
-        IHederaTokenService.FungibleTokenInfo memory defaultTokenInfo;
-        (responseCode, fungibleTokenInfo) = success ? abi.decode(result, (int64, IHederaTokenService.FungibleTokenInfo)) : (int64(HederaResponseCodes.UNKNOWN), defaultTokenInfo);
+            abi.encodeWithSelector(IMPCQScheduleService.getScheduledCreateFungibleTokenInfo.selector, scheduleAddress));
+        IMPCQTokenService.FungibleTokenInfo memory defaultTokenInfo;
+        (responseCode, fungibleTokenInfo) = success ? abi.decode(result, (int64, IMPCQTokenService.FungibleTokenInfo)) : (int64(MPCQResponseCodes.UNKNOWN), defaultTokenInfo);
     }
 
     /// Returns the token information for a scheduled non fungible token create transaction
     /// @param scheduleAddress the address of the schedule transaction
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     /// @return nonFungibleTokenInfo The token information for the scheduled non fungible token create transaction
-    function getScheduledCreateNonFungibleTokenInfo(address scheduleAddress) internal returns (int64 responseCode, IHederaTokenService.NonFungibleTokenInfo memory nonFungibleTokenInfo) {
+    function getScheduledCreateNonFungibleTokenInfo(address scheduleAddress) internal returns (int64 responseCode, IMPCQTokenService.NonFungibleTokenInfo memory nonFungibleTokenInfo) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.call(
-            abi.encodeWithSelector(IHederaScheduleService.getScheduledCreateNonFungibleTokenInfo.selector, scheduleAddress));
-        IHederaTokenService.NonFungibleTokenInfo memory defaultTokenInfo;
-        (responseCode, nonFungibleTokenInfo) = success ? abi.decode(result, (int64, IHederaTokenService.NonFungibleTokenInfo)) : (int64(HederaResponseCodes.UNKNOWN), defaultTokenInfo);
+            abi.encodeWithSelector(IMPCQScheduleService.getScheduledCreateNonFungibleTokenInfo.selector, scheduleAddress));
+        IMPCQTokenService.NonFungibleTokenInfo memory defaultTokenInfo;
+        (responseCode, nonFungibleTokenInfo) = success ? abi.decode(result, (int64, IMPCQTokenService.NonFungibleTokenInfo)) : (int64(MPCQResponseCodes.UNKNOWN), defaultTokenInfo);
     }
 
     /// Allows for the creation of a schedule transaction to schedule any contract call for a given smart contract
@@ -80,8 +80,8 @@ abstract contract HederaScheduleService {
     function scheduleCall(address to, uint256 expirySecond, uint256 gasLimit, uint64 value, bytes memory callData)
     internal returns (int64 responseCode, address scheduleAddress) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.call(
-            abi.encodeWithSelector(IHederaScheduleService.scheduleCall.selector, to, expirySecond, gasLimit, value, callData));
-        (responseCode, scheduleAddress) = success ? abi.decode(result, (int64, address)) : (int64(HederaResponseCodes.UNKNOWN), address(0));
+            abi.encodeWithSelector(IMPCQScheduleService.scheduleCall.selector, to, expirySecond, gasLimit, value, callData));
+        (responseCode, scheduleAddress) = success ? abi.decode(result, (int64, address)) : (int64(MPCQResponseCodes.UNKNOWN), address(0));
     }
 
     /// Allows for the creation of a schedule transaction to schedule any contract call for a given smart contract
@@ -101,8 +101,8 @@ abstract contract HederaScheduleService {
     function scheduleCallWithPayer(address to, address payer, uint256 expirySecond, uint256 gasLimit, uint64 value, bytes memory callData)
     internal returns (int64 responseCode, address scheduleAddress) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.call(
-            abi.encodeWithSelector(IHederaScheduleService.scheduleCallWithPayer.selector, to, payer, expirySecond, gasLimit, value, callData));
-        (responseCode, scheduleAddress) = success ? abi.decode(result, (int64, address)) : (int64(HederaResponseCodes.UNKNOWN), address(0));
+            abi.encodeWithSelector(IMPCQScheduleService.scheduleCallWithPayer.selector, to, payer, expirySecond, gasLimit, value, callData));
+        (responseCode, scheduleAddress) = success ? abi.decode(result, (int64, address)) : (int64(MPCQResponseCodes.UNKNOWN), address(0));
     }
 
     /// Allows for the creation of a schedule transaction to schedule any contract call for a given smart contract
@@ -122,8 +122,8 @@ abstract contract HederaScheduleService {
     function executeCallOnPayerSignature(address to, address payer, uint256 expirySecond, uint256 gasLimit, uint64 value, bytes memory callData)
     internal returns (int64 responseCode, address scheduleAddress) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.call(
-            abi.encodeWithSelector(IHederaScheduleService.executeCallOnPayerSignature.selector, to, payer, expirySecond, gasLimit, value, callData));
-        (responseCode, scheduleAddress) = success ? abi.decode(result, (int64, address)) : (int64(HederaResponseCodes.UNKNOWN), address(0));
+            abi.encodeWithSelector(IMPCQScheduleService.executeCallOnPayerSignature.selector, to, payer, expirySecond, gasLimit, value, callData));
+        (responseCode, scheduleAddress) = success ? abi.decode(result, (int64, address)) : (int64(MPCQResponseCodes.UNKNOWN), address(0));
     }
 
     /// Delete the targeted schedule transaction.
@@ -131,8 +131,8 @@ abstract contract HederaScheduleService {
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
     function deleteSchedule(address scheduleAddress) internal returns (int64 responseCode) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.call(
-            abi.encodeWithSelector(IHederaScheduleService.deleteSchedule.selector, scheduleAddress));
-        responseCode = success ? abi.decode(result, (int64)) : HederaResponseCodes.UNKNOWN;
+            abi.encodeWithSelector(IMPCQScheduleService.deleteSchedule.selector, scheduleAddress));
+        responseCode = success ? abi.decode(result, (int64)) : MPCQResponseCodes.UNKNOWN;
     }
 
     /// Allows to check if the given second still has capacity to schedule a contract call with the specified gas limit.
@@ -142,7 +142,7 @@ abstract contract HederaScheduleService {
     /// with the specified gas limit.
     function hasScheduleCapacity(uint256 expirySecond, uint256 gasLimit) view internal returns (bool hasCapacity) {
         (bool success, bytes memory result) = scheduleSystemContractAddress.staticcall(
-            abi.encodeWithSelector(IHederaScheduleService.hasScheduleCapacity.selector, expirySecond, gasLimit));
+            abi.encodeWithSelector(IMPCQScheduleService.hasScheduleCapacity.selector, expirySecond, gasLimit));
         hasCapacity = success ? abi.decode(result, (bool)) : false;
     }
 }

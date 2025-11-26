@@ -10,7 +10,7 @@ import static org.mockito.Mockito.mockStatic;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
 import com.hedera.services.contracts.execution.LivePricesSource;
-import com.hedera.services.contracts.gascalculator.GasCalculatorHederaV22;
+import com.hedera.services.contracts.gascalculator.GasCalculatorMPCQV22;
 import com.hedera.services.fees.BasicHbarCentExchange;
 import com.hedera.services.fees.calculation.BasicFcfsUsagePrices;
 import com.hedera.services.store.contracts.precompile.ExchangeRatePrecompiledContract;
@@ -30,7 +30,7 @@ import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.properties.TraceProperties;
 import org.hiero.mirror.web3.evm.store.Store;
 import org.hiero.mirror.web3.evm.store.contract.EntityAddressSequencer;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.EVM;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.hyperledger.besu.evm.precompile.PrecompileContractRegistry;
@@ -76,7 +76,7 @@ public abstract class MirrorEvmMessageCallProcessorBaseTest {
     TraceProperties traceProperties;
 
     @Mock
-    HederaEvmStackedWorldStateUpdater updater;
+    MPCQEvmStackedWorldStateUpdater updater;
 
     @Mock
     Store store;
@@ -85,7 +85,7 @@ public abstract class MirrorEvmMessageCallProcessorBaseTest {
     OperationTracer operationTracer;
 
     @Mock
-    GasCalculatorHederaV22 gasCalculatorHederaV22;
+    GasCalculatorMPCQV22 gasCalculatorMPCQV22;
 
     @Mock
     EvmInfrastructureFactory evmInfrastructureFactory;
@@ -99,12 +99,12 @@ public abstract class MirrorEvmMessageCallProcessorBaseTest {
     RatesAndFeesLoader ratesAndFeesLoader;
 
     final ExchangeRatePrecompiledContract exchangeRatePrecompiledContract = new ExchangeRatePrecompiledContract(
-            gasCalculatorHederaV22,
+            gasCalculatorMPCQV22,
             new BasicHbarCentExchange(ratesAndFeesLoader),
             new MirrorNodeEvmProperties(commonProperties, new SystemEntity(commonProperties)),
             Instant.now());
     final PrngSystemPrecompiledContract prngSystemPrecompiledContract = new PrngSystemPrecompiledContract(
-            gasCalculatorHederaV22,
+            gasCalculatorMPCQV22,
             new PrngLogic(() -> WELL_KNOWN_HASH_BYTE_ARRAY),
             new LivePricesSource(
                     new BasicHbarCentExchange(ratesAndFeesLoader), new BasicFcfsUsagePrices(ratesAndFeesLoader)),

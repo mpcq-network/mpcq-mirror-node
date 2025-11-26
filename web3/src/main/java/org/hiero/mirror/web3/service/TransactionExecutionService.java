@@ -20,7 +20,7 @@ import com.hedera.hapi.node.contract.ContractFunctionResult;
 import com.hedera.hapi.node.state.primitives.ProtoBytes;
 import com.hedera.hapi.node.transaction.TransactionBody;
 import com.hedera.hapi.node.transaction.TransactionRecord;
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import com.hedera.node.app.state.SingleTransactionRecord;
 import com.hedera.node.config.data.EntitiesConfig;
 import com.hedera.services.utils.EntityIdUtils;
@@ -67,7 +67,7 @@ public class TransactionExecutionService {
     private final SystemEntity systemEntity;
     private final TransactionExecutorFactory transactionExecutorFactory;
 
-    public HederaEvmTransactionProcessingResult execute(final CallServiceParameters params, final long estimatedGas) {
+    public MPCQEvmTransactionProcessingResult execute(final CallServiceParameters params, final long estimatedGas) {
         final var isContractCreate = params.getReceiver().isZero();
         final var configuration = mirrorNodeEvmProperties.getVersionedConfiguration();
         final var maxLifetime =
@@ -75,7 +75,7 @@ public class TransactionExecutionService {
         final var executor = transactionExecutorFactory.get();
 
         TransactionBody transactionBody;
-        HederaEvmTransactionProcessingResult result;
+        MPCQEvmTransactionProcessingResult result;
         if (isContractCreate) {
             transactionBody = buildContractCreateTransactionBody(params, estimatedGas, maxLifetime);
         } else {
@@ -100,7 +100,7 @@ public class TransactionExecutionService {
                 : transactionRecord.contractCallResultOrThrow();
     }
 
-    private HederaEvmTransactionProcessingResult buildSuccessResult(
+    private MPCQEvmTransactionProcessingResult buildSuccessResult(
             final boolean isContractCreate,
             final List<SingleTransactionRecord> transactionRecords,
             final CallServiceParameters params) {
@@ -118,7 +118,7 @@ public class TransactionExecutionService {
                     childTransactionErrors);
         }
 
-        return HederaEvmTransactionProcessingResult.successful(
+        return MPCQEvmTransactionProcessingResult.successful(
                 List.of(),
                 result.gasUsed(),
                 0L,
@@ -127,7 +127,7 @@ public class TransactionExecutionService {
                 params.getReceiver());
     }
 
-    private HederaEvmTransactionProcessingResult handleFailedResult(
+    private MPCQEvmTransactionProcessingResult handleFailedResult(
             final List<SingleTransactionRecord> transactionRecords, final boolean isContractCreate)
             throws MirrorEvmTransactionException {
         final var parentTransactionRecord = transactionRecords.getFirst().transactionRecord();
@@ -146,7 +146,7 @@ public class TransactionExecutionService {
             final var childTransactionErrors = populateChildTransactionErrors(transactionRecords);
 
             if (ContractCallContext.get().getOpcodeTracerOptions() == null) {
-                var processingResult = HederaEvmTransactionProcessingResult.failed(
+                var processingResult = MPCQEvmTransactionProcessingResult.failed(
                         result.gasUsed(), 0L, 0L, Optional.of(errorMessage), Optional.empty());
 
                 throw new MirrorEvmTransactionException(
@@ -155,7 +155,7 @@ public class TransactionExecutionService {
                 // If we are in an opcode trace scenario, we need to return a failed result in order to get the
                 // opcode list from the ContractCallContext. If we throw an exception instead of returning a result,
                 // as in the regular case, we won't be able to get the opcode list.
-                return HederaEvmTransactionProcessingResult.failed(
+                return MPCQEvmTransactionProcessingResult.failed(
                         result.gasUsed(), 0L, 0L, Optional.of(errorMessage), Optional.empty());
             }
         }

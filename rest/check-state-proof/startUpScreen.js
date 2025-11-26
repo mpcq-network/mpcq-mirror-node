@@ -21,7 +21,7 @@ const options = yargs(hideBin(process.argv))
   .usage('Usage: -t <transactionId> -e <env>')
   .option('transactionId', {
     alias: 't',
-    describe: 'Your Hedera Network Transaction Id e.g. 0.0.94139-1570800748-313194300',
+    describe: 'Your MPCQ Network Transaction Id e.g. 0.0.94139-1570800748-313194300',
     type: 'string',
     demandOption: true,
   })
@@ -58,7 +58,7 @@ const options = yargs(hideBin(process.argv))
   }).argv;
 
 const startUpScreen = () => {
-  const greeting = chalk.bold(`Hedera Transaction State Proof Checker CLI`);
+  const greeting = chalk.bold(`MPCQ Transaction State Proof Checker CLI`);
   const msgBox = boxen(greeting, boxenOptions);
   logger.info(msgBox);
 

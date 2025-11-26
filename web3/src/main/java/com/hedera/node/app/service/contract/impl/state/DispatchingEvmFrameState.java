@@ -14,7 +14,7 @@ import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExcep
 import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INVALID_ALIAS_KEY;
 import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS;
 import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.SELF_DESTRUCT_TO_SELF;
-import static com.hedera.node.app.service.contract.impl.exec.scope.HederaNativeOperations.MISSING_ENTITY_NUMBER;
+import static com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations.MISSING_ENTITY_NUMBER;
 import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.asLongZeroAddress;
 import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.isLongZero;
 import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.maybeMissingNumberOf;
@@ -37,8 +37,8 @@ import com.hedera.hapi.node.state.contract.SlotValue;
 import com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason;
 import com.hedera.node.app.service.contract.impl.exec.scope.ActiveContractVerificationStrategy;
 import com.hedera.node.app.service.contract.impl.exec.scope.ActiveContractVerificationStrategy.UseTopLevelSigs;
-import com.hedera.node.app.service.contract.impl.exec.scope.HandleHederaNativeOperations;
-import com.hedera.node.app.service.contract.impl.exec.scope.HederaNativeOperations;
+import com.hedera.node.app.service.contract.impl.exec.scope.HandleMPCQNativeOperations;
+import com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations;
 import com.hedera.node.app.service.contract.impl.utils.RedirectBytecodeUtils;
 import com.hedera.node.app.service.entityid.EntityIdFactory;
 import com.swirlds.state.spi.WritableKVState;
@@ -64,8 +64,8 @@ import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
  * An implementation of {@link EvmFrameState} that uses {@link WritableKVState}s to manage
- * contract storage and bytecode, and a {@link HandleHederaNativeOperations} for additional influence over
- * the non-contract Hedera state in the current scope.
+ * contract storage and bytecode, and a {@link HandleMPCQNativeOperations} for additional influence over
+ * the non-contract MPCQ state in the current scope.
  *
  * <p>Almost every access requires a conversion from a PBJ type to a Besu type. At some
  * point it might be necessary to cache the converted values and invalidate them when
@@ -81,17 +81,17 @@ public class DispatchingEvmFrameState implements EvmFrameState {
     public static final Key HOLLOW_ACCOUNT_KEY =
             Key.newBuilder().keyList(KeyList.DEFAULT).build();
 
-    private final HederaNativeOperations nativeOperations;
+    private final MPCQNativeOperations nativeOperations;
     private final ContractStateStore contractStateStore;
     private final CodeFactory codeFactory;
 
     /**
-     * @param nativeOperations   the Hedera native operation
+     * @param nativeOperations   the MPCQ native operation
      * @param contractStateStore the contract store that manages the key/value states
      * @param codeFactory the code factory to use
      */
     public DispatchingEvmFrameState(
-            @NonNull final HederaNativeOperations nativeOperations,
+            @NonNull final MPCQNativeOperations nativeOperations,
             @NonNull final ContractStateStore contractStateStore,
             @NonNull final CodeFactory codeFactory) {
         this.nativeOperations = requireNonNull(nativeOperations);
@@ -351,7 +351,7 @@ public class DispatchingEvmFrameState implements EvmFrameState {
     public long getIdNumber(@NonNull final Address address) {
         final var number = maybeMissingNumberOf(address, nativeOperations);
         if (number == MISSING_ENTITY_NUMBER) {
-            throw new IllegalArgumentException("Address " + address + " has no associated Hedera id");
+            throw new IllegalArgumentException("Address " + address + " has no associated MPCQ id");
         }
         return number;
     }

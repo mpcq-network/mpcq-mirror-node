@@ -36,7 +36,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import com.hedera.services.store.models.Id;
 import com.hedera.services.utils.EntityIdUtils;
 import java.math.BigInteger;
@@ -301,7 +301,7 @@ class ContractCallServiceTest extends ContractCallServicePrecompileHistoricalTes
 
     /**
      * If we make a contract call with the zero address (0x0) set as the recipient in the contractExecutionParameters,
-     * Hedera treats this as a contract creation request rather than a function call. The contract is then initialized
+     * MPCQ treats this as a contract creation request rather than a function call. The contract is then initialized
      * using the contractCallData, which should contain the compiled bytecode of the contract. If contractCallData is
      * empty (0x0), the contract will be deployed without any functions(no fallback function as well, which is called
      * when the contract is called without specifying a function or when non-existent function is specified.) in its
@@ -1288,7 +1288,7 @@ class ContractCallServiceTest extends ContractCallServicePrecompileHistoricalTes
                     .isModularized(spyEvmProperties.directTrafficThroughTransactionExecutionService())
                     .build();
             when(txnExecutionService.execute(params, estimatedGas))
-                    .thenReturn(HederaEvmTransactionProcessingResult.successful(
+                    .thenReturn(MPCQEvmTransactionProcessingResult.successful(
                             List.of(), 100, 0, 0, Bytes.EMPTY, Address.ZERO));
 
             contractCallService.doProcessCall(params, estimatedGas, true);
@@ -1313,7 +1313,7 @@ class ContractCallServiceTest extends ContractCallServicePrecompileHistoricalTes
             when(spyEvmProperties.isModularizedServices()).thenReturn(isModularizedServices);
             when(spyEvmProperties.getModularizedTrafficPercent()).thenReturn(trafficShare);
             var result =
-                    HederaEvmTransactionProcessingResult.successful(List.of(), 100, 0, 0, Bytes.EMPTY, Address.ZERO);
+                    MPCQEvmTransactionProcessingResult.successful(List.of(), 100, 0, 0, Bytes.EMPTY, Address.ZERO);
             if (isModularizedServices && trafficShare == 1.0) {
                 when(txnExecutionService.execute(params, estimatedGas)).thenReturn(result);
             } else {

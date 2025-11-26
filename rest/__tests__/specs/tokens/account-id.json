@@ -57,7 +57,7 @@
         "created_timestamp": "1234567890000000004",
         "decimals": 6,
         "metadata": [2, 2],
-        "name": "Hedera",
+        "name": "MPCQ",
         "type": "FUNGIBLE_COMMON"
       }
     ],
@@ -137,7 +137,7 @@
         "admin_key": null,
         "decimals": 6,
         "metadata": "AgI=",
-        "name": "Hedera",
+        "name": "MPCQ",
         "type": "FUNGIBLE_COMMON"
       }
     ],

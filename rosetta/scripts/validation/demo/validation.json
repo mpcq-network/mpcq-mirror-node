@@ -1,6 +1,6 @@
 {
   "network": {
-    "blockchain": "Hedera",
+    "blockchain": "MPCQ",
     "network": "demo"
   },
   "online_url": "http://localhost:5700",

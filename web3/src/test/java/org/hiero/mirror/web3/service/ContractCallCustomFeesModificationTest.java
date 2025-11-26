@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests system contact functions for custom token fees(fixed, fractional, royalty) modification.
- * HTS functions are exposed to smart contract calls via IHederaTokenService.sol
+ * HTS functions are exposed to smart contract calls via IMPCQTokenService.sol
  * Target functions are updateFungibleTokenCustomFees and updateNonFungibleTokenCustomFees
  * Fixed fee - a flat fee charged regardless of the transferred amount
  * Fractional fee - a percentage of the transferred amount

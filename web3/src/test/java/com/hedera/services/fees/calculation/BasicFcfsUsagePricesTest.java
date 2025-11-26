@@ -4,9 +4,9 @@ package com.hedera.services.fees.calculation;
 
 import static com.hedera.services.fees.calculation.BasicFcfsUsagePrices.DEFAULT_RESOURCE_PRICES;
 import static com.hedera.services.utils.IdUtils.asContract;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.UNRECOGNIZED;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.UNRECOGNIZED;
 import static com.hederahashgraph.api.proto.java.SubType.DEFAULT;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -80,14 +80,14 @@ class BasicFcfsUsagePricesTest {
     private final FeeSchedule nextFeeSchedule = FeeSchedule.newBuilder()
             .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(nextExpiry))
             .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                    .setHederaFunctionality(ContractCall)
+                    .setMPCQFunctionality(ContractCall)
                     .addFees(nextUsagePricesMap.get(DEFAULT)))
             .build();
 
     private final FeeSchedule currentFeeSchedule = FeeSchedule.newBuilder()
             .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(currentExpiry))
             .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                    .setHederaFunctionality(ContractCall)
+                    .setMPCQFunctionality(ContractCall)
                     .addFees(currUsagePricesMap.get(DEFAULT)))
             .build();
 

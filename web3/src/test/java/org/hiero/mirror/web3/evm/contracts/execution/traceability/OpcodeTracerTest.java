@@ -142,7 +142,7 @@ class OpcodeTracerTest {
 
     @BeforeEach
     void setUp() {
-        when(precompilesHolder.getHederaPrecompiles())
+        when(precompilesHolder.getMPCQPrecompiles())
                 .thenReturn(Map.of(
                         HTS_PRECOMPILE_ADDRESS.toString(),
                         mock(PrecompiledContract.class),

@@ -5,7 +5,7 @@ package org.hiero.mirror.web3.state.singleton;
 import static com.hedera.node.app.service.entityid.impl.schemas.V0490EntityIdSchema.ENTITY_ID_STATE_ID;
 
 import com.hedera.hapi.node.state.common.EntityNumber;
-import com.hedera.node.config.data.HederaConfig;
+import com.hedera.node.config.data.MPCQConfig;
 import jakarta.inject.Named;
 import lombok.RequiredArgsConstructor;
 import org.hiero.mirror.common.domain.entity.EntityId;
@@ -34,7 +34,7 @@ public class EntityIdSingleton implements SingletonState<EntityNumber> {
         }
         final long firstUserEntity = mirrorNodeEvmProperties
                 .getVersionedConfiguration()
-                .getConfigData(HederaConfig.class)
+                .getConfigData(MPCQConfig.class)
                 .firstUserEntity();
 
         final Long maxId = entityRepository.findMaxId();

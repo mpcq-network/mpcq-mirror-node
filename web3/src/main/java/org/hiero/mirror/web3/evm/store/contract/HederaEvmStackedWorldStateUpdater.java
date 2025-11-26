@@ -8,11 +8,11 @@ import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
 import com.google.protobuf.ByteString;
 import com.hedera.node.app.service.evm.accounts.AccountAccessor;
 import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmMutableWorldState;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmStackedWorldUpdater;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmWorldStateTokenAccount;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmWorldUpdater;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmStackedWorldUpdater;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldUpdater;
 import com.hedera.node.app.service.evm.store.models.UpdateTrackingAccount;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import com.hedera.services.store.models.Id;
@@ -27,21 +27,21 @@ import org.hyperledger.besu.evm.account.Account;
 import org.hyperledger.besu.evm.account.MutableAccount;
 
 @SuppressWarnings("java:S107")
-public class HederaEvmStackedWorldStateUpdater
-        extends AbstractEvmStackedLedgerUpdater<HederaEvmMutableWorldState, Account>
-        implements HederaEvmWorldUpdater, HederaEvmStackedWorldUpdater {
+public class MPCQEvmStackedWorldStateUpdater
+        extends AbstractEvmStackedLedgerUpdater<MPCQEvmMutableWorldState, Account>
+        implements MPCQEvmWorldUpdater, MPCQEvmStackedWorldUpdater {
 
     private static final byte[] NON_CANONICAL_REFERENCE = new byte[20];
-    protected final HederaEvmEntityAccess hederaEvmEntityAccess;
+    protected final MPCQEvmEntityAccess hederaEvmEntityAccess;
     private final EvmProperties evmProperties;
     private final EntityAddressSequencer entityAddressSequencer;
     private final TokenAccessor tokenAccessor;
     private final MirrorEvmContractAliases mirrorEvmContractAliases;
 
-    public HederaEvmStackedWorldStateUpdater(
-            final AbstractLedgerWorldUpdater<HederaEvmMutableWorldState, Account> updater,
+    public MPCQEvmStackedWorldStateUpdater(
+            final AbstractLedgerWorldUpdater<MPCQEvmMutableWorldState, Account> updater,
             final AccountAccessor accountAccessor,
-            final HederaEvmEntityAccess hederaEvmEntityAccess,
+            final MPCQEvmEntityAccess hederaEvmEntityAccess,
             final TokenAccessor tokenAccessor,
             final EvmProperties evmProperties,
             final EntityAddressSequencer entityAddressSequencer,
@@ -79,7 +79,7 @@ public class HederaEvmStackedWorldStateUpdater
     @Override
     public Account get(final Address address) {
         if (isTokenRedirect(address)) {
-            return new HederaEvmWorldStateTokenAccount(address);
+            return new MPCQEvmWorldStateTokenAccount(address);
         }
         return super.get(address);
     }
@@ -87,7 +87,7 @@ public class HederaEvmStackedWorldStateUpdater
     @Override
     public MutableAccount getAccount(final Address address) {
         if (isTokenRedirect(address)) {
-            final var proxyAccount = new HederaEvmWorldStateTokenAccount(address);
+            final var proxyAccount = new MPCQEvmWorldStateTokenAccount(address);
             return new UpdateTrackingAccount<>(proxyAccount, null);
         }
 

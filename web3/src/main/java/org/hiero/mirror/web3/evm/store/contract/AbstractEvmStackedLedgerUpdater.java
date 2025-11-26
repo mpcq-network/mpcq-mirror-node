@@ -3,7 +3,7 @@
 package org.hiero.mirror.web3.evm.store.contract;
 
 import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
 import com.hedera.node.app.service.evm.store.models.UpdateTrackingAccount;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import org.hiero.mirror.web3.evm.store.Store;
@@ -18,7 +18,7 @@ public abstract class AbstractEvmStackedLedgerUpdater<W extends WorldView, A ext
             final AbstractLedgerWorldUpdater<W, A> world,
             final AccountAccessor accountAccessor,
             final TokenAccessor tokenAccessor,
-            final HederaEvmEntityAccess entityAccess,
+            final MPCQEvmEntityAccess entityAccess,
             final Store store) {
         super(world, accountAccessor, tokenAccessor, entityAccess, store);
     }

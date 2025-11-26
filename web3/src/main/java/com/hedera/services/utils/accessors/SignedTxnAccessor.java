@@ -4,19 +4,19 @@ package com.hedera.services.utils.accessors;
 
 import static com.hedera.services.fees.usage.token.TokenOpsUsageUtils.TOKEN_OPS_USAGE_UTILS;
 import static com.hedera.services.utils.MiscUtils.FUNCTION_EXTRACTOR;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoApproveAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoDeleteAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoTransfer;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoUpdate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAccountWipe;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenBurn;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenFreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenMint;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenPause;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnfreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnpause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoApproveAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoDeleteAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoTransfer;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAccountWipe;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenBurn;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenFreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenMint;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenPause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnfreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnpause;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_FUNGIBLE_COMMON;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_NON_FUNGIBLE_UNIQUE;
 
@@ -31,7 +31,7 @@ import com.hedera.services.hapi.fees.usage.crypto.CryptoTransferMeta;
 import com.hedera.services.hapi.fees.usage.crypto.CryptoUpdateMeta;
 import com.hedera.services.txns.span.ExpandHandleSpanMapAccessor;
 import com.hederahashgraph.api.proto.java.AccountID;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SignatureMap;
 import com.hederahashgraph.api.proto.java.SignedTransaction;
 import com.hederahashgraph.api.proto.java.SubType;
@@ -55,7 +55,7 @@ import org.apache.logging.log4j.Logger;
 public class SignedTxnAccessor implements TxnAccessor {
 
     private static final String ACCESSOR_LITERAL = " accessor";
-    private HederaFunctionality function;
+    private MPCQFunctionality function;
     private Map<String, Object> spanMap = new HashMap<>();
     private CryptoTransferMeta xferUsageMeta;
     private BaseTransactionMeta txnUsageMeta;
@@ -144,7 +144,7 @@ public class SignedTxnAccessor implements TxnAccessor {
     }
 
     @Override
-    public HederaFunctionality getFunction() {
+    public MPCQFunctionality getFunction() {
         if (function == null) {
             function = FUNCTION_EXTRACTOR.apply(getTxn());
         }

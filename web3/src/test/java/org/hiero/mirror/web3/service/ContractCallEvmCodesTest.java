@@ -311,7 +311,7 @@ class ContractCallEvmCodesTest extends AbstractContractCallServiceTest {
 
     /**
      * Verifies exception is thrown when STATICCALL EVM operation is called in the tryKZGPrecompile contract function
-     * since the EVM_46_BLOCK_INDEX corresponds to a time before Hedera added support for KZG Point Evaluation
+     * since the EVM_46_BLOCK_INDEX corresponds to a time before MPCQ added support for KZG Point Evaluation
      * precompile (the precompiled contract at address 0x0A).
      */
     @Test

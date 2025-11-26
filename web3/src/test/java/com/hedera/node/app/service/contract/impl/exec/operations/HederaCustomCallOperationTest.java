@@ -7,7 +7,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
 
 import org.apache.tuweni.bytes.Bytes;
-import org.hiero.mirror.web3.evm.contracts.operations.HederaCustomCallOperation;
+import org.hiero.mirror.web3.evm.contracts.operations.MPCQCustomCallOperation;
 import org.hyperledger.besu.evm.EVM;
 import org.hyperledger.besu.evm.frame.ExceptionalHaltReason;
 import org.hyperledger.besu.evm.frame.MessageFrame;
@@ -22,7 +22,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class HederaCustomCallOperationTest {
+class MPCQCustomCallOperationTest {
 
     @Mock
     private MessageFrame frame;
@@ -36,11 +36,11 @@ class HederaCustomCallOperationTest {
     @Mock
     private WorldUpdater worldUpdater;
 
-    private HederaCustomCallOperation subject;
+    private MPCQCustomCallOperation subject;
 
     @BeforeEach
     void setUp() {
-        subject = new HederaCustomCallOperation(gasCalculator);
+        subject = new MPCQCustomCallOperation(gasCalculator);
     }
 
     @Test

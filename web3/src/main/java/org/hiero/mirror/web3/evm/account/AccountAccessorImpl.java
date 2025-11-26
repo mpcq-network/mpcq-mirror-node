@@ -3,7 +3,7 @@
 package org.hiero.mirror.web3.evm.account;
 
 import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
 import jakarta.inject.Named;
 import lombok.RequiredArgsConstructor;
 import org.hiero.mirror.web3.evm.store.Store;
@@ -16,7 +16,7 @@ public class AccountAccessorImpl implements AccountAccessor {
     public static final int EVM_ADDRESS_SIZE = 20;
 
     private final Store store;
-    private final HederaEvmEntityAccess mirrorEntityAccess;
+    private final MPCQEvmEntityAccess mirrorEntityAccess;
     private final MirrorEvmContractAliases aliases;
 
     @Override

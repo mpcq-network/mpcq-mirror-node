@@ -68,13 +68,13 @@ public class ErrataMigrationTest extends ImporterIntegrationTest {
 
     @BeforeEach
     void setup() {
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.MAINNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.MAINNET);
     }
 
     @AfterEach
     void teardown() {
         importerProperties.setEndDate(Utility.MAX_INSTANT_LONG);
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.TESTNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.TESTNET);
         importerProperties.setStartDate(Instant.EPOCH);
     }
 
@@ -85,7 +85,7 @@ public class ErrataMigrationTest extends ImporterIntegrationTest {
 
     @Test
     void migrateNotMainnet() throws Exception {
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.TESTNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.TESTNET);
         domainBuilder.accountBalanceFile().persist();
         domainBuilder
                 .accountBalanceFile()
@@ -230,7 +230,7 @@ public class ErrataMigrationTest extends ImporterIntegrationTest {
 
     @Test
     void onEndNotMainnet() {
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.TESTNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.TESTNET);
         AccountBalanceFile accountBalanceFile = new AccountBalanceFile();
         accountBalanceFile.setConsensusTimestamp(BAD_TIMESTAMP1);
         errataMigration.onEnd(accountBalanceFile);

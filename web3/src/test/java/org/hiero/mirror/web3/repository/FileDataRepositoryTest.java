@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.repository;
 
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import com.hederahashgraph.api.proto.java.CurrentAndNextFeeSchedule;
@@ -66,12 +66,12 @@ class FileDataRepositoryTest extends Web3IntegrationTest {
             .setCurrentFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(EXPIRY))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder().build())))
             .setNextFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(2_234_567_890L))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder().build())))
             .build()
             .toByteArray();

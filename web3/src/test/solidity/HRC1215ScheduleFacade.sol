@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity >=0.4.9 <0.9.0;
 
-import "./HederaResponseCodes.sol";
+import "./MPCQResponseCodes.sol";
 import "./IHRC1215ScheduleFacade.sol";
 
 abstract contract HRC1215ScheduleFacade {
@@ -11,7 +11,7 @@ abstract contract HRC1215ScheduleFacade {
     function deleteSchedule(address scheduleAddress) internal returns (int64 responseCode) {
         (bool success, bytes memory result) = scheduleAddress.call(
             abi.encodeWithSelector(IHRC1215ScheduleFacade.deleteSchedule.selector));
-        responseCode = success ? abi.decode(result, (int64)) : HederaResponseCodes.UNKNOWN;
+        responseCode = success ? abi.decode(result, (int64)) : MPCQResponseCodes.UNKNOWN;
     }
 
 }

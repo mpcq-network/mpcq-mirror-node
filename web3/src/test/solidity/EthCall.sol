@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.0;
 
-import "./HederaTokenService.sol";
-import "./IHederaTokenService.sol";
+import "./MPCQTokenService.sol";
+import "./IMPCQTokenService.sol";
 
-contract EthCall is HederaTokenService {
+contract EthCall is MPCQTokenService {
 
     uint256 salt = 1234;
     string constant storageData = "test";
@@ -54,7 +54,7 @@ contract EthCall is HederaTokenService {
     // External function that freezes a given token for the message sender
     function freezeToken(address _tokenAddress) external {
         (bool success, bytes memory result) = precompileAddress.call(
-            abi.encodeWithSelector(IHederaTokenService.freezeToken.selector, _tokenAddress, msg.sender));
+            abi.encodeWithSelector(IMPCQTokenService.freezeToken.selector, _tokenAddress, msg.sender));
         require(success, "Freeze token failed");
     }
 

@@ -164,11 +164,11 @@ class ContractCallAliasTests extends AbstractContractCallServiceTest {
         final var accountLongZeroAddress = getAddressFromEntity(accountEntity);
         final var contract = testWeb3jService.deploy(HRC632Contract::deploy);
         // When
-        final var functionCall = contract.send_getHederaAccountNumAliasCall(addressAlias.toString());
+        final var functionCall = contract.send_getMPCQAccountNumAliasCall(addressAlias.toString());
         System.setProperty(ALLOW_LONG_ZERO_ADDRESSES, Boolean.toString(longZeroAddressAllowed));
         // Then
         if (mirrorNodeEvmProperties.isModularizedServices()) {
-            final var result = contract.call_getHederaAccountNumAliasCall(addressAlias.toString())
+            final var result = contract.call_getMPCQAccountNumAliasCall(addressAlias.toString())
                     .send();
             assertThat(result.component1()).isEqualTo(BigInteger.valueOf(ResponseCodeEnum.SUCCESS.getNumber()));
             assertThat(result.component2()).isEqualTo(accountLongZeroAddress);
@@ -186,7 +186,7 @@ class ContractCallAliasTests extends AbstractContractCallServiceTest {
         // Given
         final var contract = testWeb3jService.deploy(HRC632Contract::deploy);
         // When
-        final var functionCall = contract.call_getHederaAccountNumAliasCall(nonExistingEvmAddress.toString());
+        final var functionCall = contract.call_getMPCQAccountNumAliasCall(nonExistingEvmAddress.toString());
         final var exception = assertThrows(MirrorEvmTransactionException.class, functionCall::send);
         System.setProperty(ALLOW_LONG_ZERO_ADDRESSES, Boolean.toString(longZeroAddressAllowed));
         // Then
@@ -201,7 +201,7 @@ class ContractCallAliasTests extends AbstractContractCallServiceTest {
         // Given
         final var contract = testWeb3jService.deploy(HRC632Contract::deploy);
         // When
-        final var functionCall = contract.call_getHederaAccountNumAliasCall(Address.ZERO.toString());
+        final var functionCall = contract.call_getMPCQAccountNumAliasCall(Address.ZERO.toString());
         final var exception = assertThrows(MirrorEvmTransactionException.class, functionCall::send);
         System.setProperty(ALLOW_LONG_ZERO_ADDRESSES, Boolean.toString(longZeroAddressAllowed));
         // Then

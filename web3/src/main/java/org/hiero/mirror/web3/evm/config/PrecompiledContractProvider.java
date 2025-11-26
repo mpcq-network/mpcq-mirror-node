@@ -6,5 +6,5 @@ import java.util.Map;
 import org.hyperledger.besu.evm.precompile.PrecompiledContract;
 
 public interface PrecompiledContractProvider {
-    Map<String, PrecompiledContract> getHederaPrecompiles();
+    Map<String, PrecompiledContract> getMPCQPrecompiles();
 }

@@ -7,7 +7,7 @@ import static org.hiero.mirror.web3.convert.BytesDecoder.maybeDecodeSolidityErro
 import static org.hiero.mirror.web3.evm.exception.ResponseCodeUtil.getStatusOrDefault;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Meter.MeterProvider;
@@ -76,7 +76,7 @@ public abstract class ContractCallService {
     }
 
     @VisibleForTesting
-    public HederaEvmTransactionProcessingResult callContract(CallServiceParameters params)
+    public MPCQEvmTransactionProcessingResult callContract(CallServiceParameters params)
             throws MirrorEvmTransactionException {
         return ContractCallContext.run(context -> callContract(params, context));
     }
@@ -94,11 +94,11 @@ public abstract class ContractCallService {
      *
      * @param params the call service parameters
      * @param ctx    the contract call context
-     * @return {@link HederaEvmTransactionProcessingResult} of the contract call
+     * @return {@link MPCQEvmTransactionProcessingResult} of the contract call
      * @throws MirrorEvmTransactionException if any pre-checks fail with {@link IllegalStateException} or
      *                                       {@link IllegalArgumentException}
      */
-    protected final HederaEvmTransactionProcessingResult callContract(
+    protected final MPCQEvmTransactionProcessingResult callContract(
             CallServiceParameters params, ContractCallContext ctx) throws MirrorEvmTransactionException {
         ctx.setCallServiceParameters(params);
 
@@ -116,9 +116,9 @@ public abstract class ContractCallService {
         return doProcessCall(params, params.getGas(), false);
     }
 
-    protected final HederaEvmTransactionProcessingResult doProcessCall(
+    protected final MPCQEvmTransactionProcessingResult doProcessCall(
             CallServiceParameters params, long estimatedGas, boolean estimate) throws MirrorEvmTransactionException {
-        HederaEvmTransactionProcessingResult result = null;
+        MPCQEvmTransactionProcessingResult result = null;
         var status = ResponseCodeEnum.SUCCESS.toString();
 
         try {
@@ -151,7 +151,7 @@ public abstract class ContractCallService {
         return result;
     }
 
-    private void restoreGasToBucket(HederaEvmTransactionProcessingResult result, long gasLimit) {
+    private void restoreGasToBucket(MPCQEvmTransactionProcessingResult result, long gasLimit) {
         // If the transaction fails, gasUsed is equal to gasLimit, so restore the configured refund percent
         // of the gasLimit value back in the bucket.
         final var gasLimitToRestoreBaseline = (long) (gasLimit * throttleProperties.getGasLimitRefundPercent() / 100f);
@@ -166,7 +166,7 @@ public abstract class ContractCallService {
     }
 
     protected void validateResult(
-            final HederaEvmTransactionProcessingResult txnResult, final CallServiceParameters params) {
+            final MPCQEvmTransactionProcessingResult txnResult, final CallServiceParameters params) {
         if (!txnResult.isSuccessful()) {
             var revertReason = txnResult.getRevertReason().orElse(Bytes.EMPTY);
             var detail = maybeDecodeSolidityErrorStringToReadableMessage(revertReason);

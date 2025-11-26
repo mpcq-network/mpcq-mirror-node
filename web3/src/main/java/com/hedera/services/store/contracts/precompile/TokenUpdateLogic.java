@@ -6,9 +6,9 @@ import static com.hedera.node.app.service.evm.store.tokens.TokenType.NON_FUNGIBL
 import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateFalse;
 import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateFalseOrRevert;
 import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrueOrRevert;
-import static com.hedera.services.store.tokens.HederaTokenStore.MISSING_TOKEN;
-import static com.hedera.services.store.tokens.HederaTokenStore.affectsExpiryAtMost;
-import static com.hedera.services.store.tokens.HederaTokenStore.asTokenRelationshipKey;
+import static com.hedera.services.store.tokens.MPCQTokenStore.MISSING_TOKEN;
+import static com.hedera.services.store.tokens.MPCQTokenStore.affectsExpiryAtMost;
+import static com.hedera.services.store.tokens.MPCQTokenStore.asTokenRelationshipKey;
 import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_EXPIRED_AND_PENDING_REMOVAL;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.CURRENT_TREASURY_STILL_OWNS_NFTS;
@@ -26,7 +26,7 @@ import com.hedera.node.app.service.evm.store.tokens.TokenType;
 import com.hedera.services.store.models.Id;
 import com.hedera.services.store.models.NftId;
 import com.hedera.services.store.models.Token;
-import com.hedera.services.store.tokens.HederaTokenStore;
+import com.hedera.services.store.tokens.MPCQTokenStore;
 import com.hedera.services.txns.util.TokenUpdateValidator;
 import com.hedera.services.txns.validation.OptionValidator;
 import com.hederahashgraph.api.proto.java.AccountID;
@@ -55,7 +55,7 @@ public class TokenUpdateLogic {
         this.validator = validator;
     }
 
-    public void updateToken(TokenUpdateTransactionBody op, long now, Store store, HederaTokenStore tokenStore) {
+    public void updateToken(TokenUpdateTransactionBody op, long now, Store store, MPCQTokenStore tokenStore) {
         updateToken(op, now, false, store, tokenStore);
     }
 
@@ -82,7 +82,7 @@ public class TokenUpdateLogic {
             long now,
             boolean mergeUnsetMemoFromExisting,
             Store store,
-            HederaTokenStore tokenStore) {
+            MPCQTokenStore tokenStore) {
         final var tokenID = tokenValidityCheck(op);
         if (op.hasExpiry()) {
             validateTrueOrRevert(validator.isValidExpiry(op.getExpiry()), INVALID_EXPIRATION_TIME);
@@ -147,7 +147,7 @@ public class TokenUpdateLogic {
         }
     }
 
-    public void updateTokenExpiryInfo(TokenUpdateTransactionBody op, Store store, HederaTokenStore tokenStore) {
+    public void updateTokenExpiryInfo(TokenUpdateTransactionBody op, Store store, MPCQTokenStore tokenStore) {
         final var tokenID = tokenStore.resolve(op.getToken());
         validateTrueOrRevert(!tokenID.equals(MISSING_TOKEN), INVALID_TOKEN_ID);
         if (op.hasExpiry()) {
@@ -163,7 +163,7 @@ public class TokenUpdateLogic {
         }
     }
 
-    public void updateTokenKeys(TokenUpdateTransactionBody op, long now, HederaTokenStore tokenStore) {
+    public void updateTokenKeys(TokenUpdateTransactionBody op, long now, MPCQTokenStore tokenStore) {
         final var tokenID = tokenValidityCheck(op);
         Token token = tokenStore.get(tokenID);
         checkTokenPreconditions(token, op);
@@ -215,7 +215,7 @@ public class TokenUpdateLogic {
             final AccountID newTreasury,
             final AccountID oldTreasury,
             Store store,
-            HederaTokenStore tokenStore) {
+            MPCQTokenStore tokenStore) {
         var status = OK;
         if (token.hasFreezeKey()) {
             status = tokenStore.unfreeze(newTreasury, id);
@@ -235,7 +235,7 @@ public class TokenUpdateLogic {
     }
 
     private ResponseCodeEnum doTokenTransfer(
-            TokenID tId, AccountID from, AccountID to, long adjustment, HederaTokenStore tokenStore) {
+            TokenID tId, AccountID from, AccountID to, long adjustment, MPCQTokenStore tokenStore) {
         ResponseCodeEnum validity = tokenStore.adjustBalance(from, tId, -adjustment);
         if (validity == OK) {
             validity = tokenStore.adjustBalance(to, tId, adjustment);

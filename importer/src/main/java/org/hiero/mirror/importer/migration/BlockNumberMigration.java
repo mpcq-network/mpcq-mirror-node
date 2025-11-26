@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.importer.migration;
 
-import static org.hiero.mirror.importer.ImporterProperties.HederaNetwork.MAINNET;
-import static org.hiero.mirror.importer.ImporterProperties.HederaNetwork.TESTNET;
+import static org.hiero.mirror.importer.ImporterProperties.MPCQNetwork.MAINNET;
+import static org.hiero.mirror.importer.ImporterProperties.MPCQNetwork.TESTNET;
 
 import com.google.common.base.Stopwatch;
 import jakarta.inject.Named;

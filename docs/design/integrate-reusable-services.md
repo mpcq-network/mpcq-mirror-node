@@ -7,9 +7,9 @@ as `eth_call`, `eth_estimateGas`, `eth_debugTraceTransaction`
 via
 REST API calls they simulate the transaction via business logic nested in web3 module. It copies code base from
 the mono `hedera-services` code
-that is now obsolete. Doing so, it has the necessary Hedera specific logic wrapping the besu evm dependency.
+that is now obsolete. Doing so, it has the necessary MPCQ specific logic wrapping the besu evm dependency.
 
-The `hedera-services` started utilizing new modularized code base and is going to integrate new Hedera precompile
+The `hedera-services` started utilizing new modularized code base and is going to integrate new MPCQ precompile
 calls over it. This makes the consensus node and
 archive node business logic diverging and have different support of precompiles.
 

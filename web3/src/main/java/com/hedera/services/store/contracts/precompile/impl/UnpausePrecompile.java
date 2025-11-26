@@ -31,7 +31,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.UnaryOperator;
 import org.apache.tuweni.bytes.Bytes;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
@@ -75,7 +75,7 @@ public class UnpausePrecompile extends AbstractWritePrecompile {
     public RunResult run(final MessageFrame frame, final TransactionBody transactionBody) {
         Objects.requireNonNull(transactionBody, "`body` method should be called before `run`");
 
-        final var store = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
+        final var store = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
         final var tokenId = transactionBody.getTokenUnpause().getToken();
         final var validity = unpauseLogic.validateSyntax(transactionBody);
         validateTrue(validity == OK, validity);

@@ -35,7 +35,7 @@ type Mirror struct {
 }
 
 type fullConfig struct {
-	Hiero struct {
+	MPCQ struct {
 		Mirror Mirror
 	}
 }
@@ -84,7 +84,7 @@ func LoadConfig() (*Mirror, error) {
 		return nil, err
 	}
 
-	mirrorConfig := &config.Hiero.Mirror
+	mirrorConfig := &config.MPCQ.Mirror
 	mirrorConfig.Rosetta.Network = strings.ToLower(mirrorConfig.Rosetta.Network)
 	if len(nodeMap) != 0 {
 		mirrorConfig.Rosetta.Nodes = nodeMap

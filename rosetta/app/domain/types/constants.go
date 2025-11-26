@@ -34,7 +34,7 @@ const (
 )
 
 const (
-	Blockchain = "Hedera"
+	Blockchain = "MPCQ"
 
 	currencySymbol   = "HBAR"
 	currencyDecimals = 8

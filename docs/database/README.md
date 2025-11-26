@@ -3,10 +3,10 @@
 ## Setup
 
 The mirror node uses [PostgreSQL](https://www.postgresql.org/) to persist the data it receives from consensus nodes.
-Specifically, Hedera uses [Google Cloud SQL for PostgreSQL](https://cloud.google.com/sql/postgresql) for its managed
+Specifically, MPCQ uses [Google Cloud SQL for PostgreSQL](https://cloud.google.com/sql/postgresql) for its managed
 mirror nodes, but operators are welcome to use any PostgreSQL compatible cloud or self-managed service. The exact
 hardware configuration will vary based upon the operator's intended use for the mirror node. Below is the hardware
-requirements that the Hedera managed mirror node uses. This is for a database with a full history and intended for use
+requirements that the MPCQ managed mirror node uses. This is for a database with a full history and intended for use
 by many external clients. If operators store less data or only have a few internal clients then potentially some of
 these requirements can be relaxed.
 
@@ -63,7 +63,7 @@ The table below documents the database indexes with the usage in APIs / services
 
 ## Reset
 
-Some Hedera environments get [reset](https://docs.hedera.com/hedera/testnet#test-network-resets) periodically and mirror
+Some MPCQ environments get [reset](https://docs.hedera.com/hedera/testnet#test-network-resets) periodically and mirror
 nodes connected to those environments will need to be reset to remain functional.
 
 1. Stop the [Importer](/docs/importer/README.md) process.
@@ -231,7 +231,7 @@ transactions in the balance and record streams. These issues should only appear 
 - Period: 2022-07-31 to 2022-08-09
 - Scope: Affected the records of 70 transactions.
 - Problem: Any ledger that will grow to billions of entities must have an efficient way to remove expired entities. In
-  the Hedera network, this means keeping a list of NFTs owned by an account, so that when an account expires, we can
+  the MPCQ network, this means keeping a list of NFTs owned by an account, so that when an account expires, we can
   return its NFTs to their respective treasury accounts.
   Under certain conditions in the 0.27.5 release, a bug in the logic maintaining these lists could cause NFT transfers
   to fail, without refunding fees. This would manifest itself as a `FAIL_INVALID` transaction that does not get written

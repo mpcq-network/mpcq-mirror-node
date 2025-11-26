@@ -15,7 +15,7 @@ import com.hedera.services.jproto.JKey;
 import com.hedera.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeData;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Query;
 import com.hederahashgraph.api.proto.java.ResponseType;
 import com.hederahashgraph.api.proto.java.SubType;
@@ -49,14 +49,14 @@ public class UsageBasedFeeCalculator implements FeeCalculator {
     private final UsagePricesProvider usagePrices;
     private final List<QueryResourceUsageEstimator> queryUsageEstimators;
     private final PricedUsageCalculator pricedUsageCalculator;
-    private final Map<HederaFunctionality, List<TxnResourceUsageEstimator>> txnUsageEstimators;
+    private final Map<MPCQFunctionality, List<TxnResourceUsageEstimator>> txnUsageEstimators;
 
     public UsageBasedFeeCalculator(
             final HbarCentExchange exchange,
             final UsagePricesProvider usagePrices,
             final PricedUsageCalculator pricedUsageCalculator,
             final Set<QueryResourceUsageEstimator> queryUsageEstimators,
-            final Map<HederaFunctionality, List<TxnResourceUsageEstimator>> txnUsageEstimators) {
+            final Map<MPCQFunctionality, List<TxnResourceUsageEstimator>> txnUsageEstimators) {
         this.exchange = exchange;
         this.usagePrices = usagePrices;
         this.pricedUsageCalculator = pricedUsageCalculator;
@@ -91,7 +91,7 @@ public class UsageBasedFeeCalculator implements FeeCalculator {
     }
 
     @Override
-    public long estimatedGasPriceInTinybars(HederaFunctionality function, Timestamp at) {
+    public long estimatedGasPriceInTinybars(MPCQFunctionality function, Timestamp at) {
         var rates = exchange.rate(at);
         var prices = usagePrices.defaultPricesGiven(function, at);
         return gasPriceInTinybars(prices, rates);
@@ -157,10 +157,10 @@ public class UsageBasedFeeCalculator implements FeeCalculator {
     }
 
     /**
-     * Performs a left-to-right DFS of the Hedera key structure, offering each simple key to the provided
+     * Performs a left-to-right DFS of the MPCQ key structure, offering each simple key to the provided
      * {@link Consumer}.
      *
-     * @param key               the top-level Hedera key to traverse.
+     * @param key               the top-level MPCQ key to traverse.
      * @param actionOnSimpleKey the logic to apply to each visited simple key.
      */
     public static void visitSimpleKeys(final JKey key, final Consumer<JKey> actionOnSimpleKey) {
@@ -168,10 +168,10 @@ public class UsageBasedFeeCalculator implements FeeCalculator {
     }
 
     /**
-     * Counts the simple keys present in a complex Hedera key.
+     * Counts the simple keys present in a complex MPCQ key.
      *
-     * @param key the top-level Hedera key.
-     * @return the number of simple keys in the leaves of the Hedera key.
+     * @param key the top-level MPCQ key.
+     * @return the number of simple keys in the leaves of the MPCQ key.
      */
     public static int numSimpleKeys(final JKey key) {
         final var count = new AtomicInteger(0);

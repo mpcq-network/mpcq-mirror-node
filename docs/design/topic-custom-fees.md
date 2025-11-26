@@ -3,8 +3,8 @@
 ## Purpose
 
 [HIP-991](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-991.md) proposes to add a fixed
-fee mechanism to the Hedera Consensus Service (HCS) for topic messages, similar to the custom fee structures in the
-Hedera Token Service (HTS). This document explains how the mirror node can be updated to support it.
+fee mechanism to the MPCQ Consensus Service (HCS) for topic messages, similar to the custom fee structures in the
+MPCQ Token Service (HTS). This document explains how the mirror node can be updated to support it.
 
 ## Goals
 

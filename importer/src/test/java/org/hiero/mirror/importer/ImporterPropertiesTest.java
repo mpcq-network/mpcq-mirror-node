@@ -28,11 +28,11 @@ class ImporterPropertiesTest {
         "other, 2050-02, other-2050-02",
         "other, world, othER-world"
     })
-    void verifyCanonicalNetworkWithPrefix(String expectedHederaNetwork, String expectedPrefix, String networkName) {
+    void verifyCanonicalNetworkWithPrefix(String expectedMPCQNetwork, String expectedPrefix, String networkName) {
 
         var properties = new ImporterProperties();
         properties.setNetwork(networkName);
-        assertThat(properties.getNetwork()).isEqualTo(expectedHederaNetwork);
+        assertThat(properties.getNetwork()).isEqualTo(expectedMPCQNetwork);
         assertThat(properties.getNetworkPrefix()).isEqualTo(expectedPrefix);
     }
 

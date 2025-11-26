@@ -3,14 +3,14 @@
 package org.hiero.mirror.web3.evm.contracts.execution;
 
 import com.hedera.hapi.node.base.SemanticVersion;
-import com.hedera.node.app.service.contract.impl.hevm.HederaEvmBlocks;
+import com.hedera.node.app.service.contract.impl.hevm.MPCQEvmBlocks;
 import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTxProcessor;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTxProcessor;
 import com.hedera.node.app.service.evm.contracts.execution.PricesAndFeesProvider;
-import com.hedera.node.app.service.evm.contracts.execution.traceability.HederaEvmOperationTracer;
+import com.hedera.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
 import com.hedera.node.app.service.evm.store.contracts.AbstractCodeCache;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmMutableWorldState;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import com.hedera.services.store.models.Account;
 import com.hedera.services.utils.EntityIdUtils;
@@ -37,7 +37,7 @@ import org.hyperledger.besu.evm.processor.ContractCreationProcessor;
 import org.hyperledger.besu.evm.processor.MessageCallProcessor;
 
 @Named
-public class MirrorEvmTxProcessorImpl extends HederaEvmTxProcessor implements MirrorEvmTxProcessor {
+public class MirrorEvmTxProcessorImpl extends MPCQEvmTxProcessor implements MirrorEvmTxProcessor {
 
     private final AbstractCodeCache codeCache;
     private final MirrorEvmContractAliases aliasManager;
@@ -48,16 +48,16 @@ public class MirrorEvmTxProcessorImpl extends HederaEvmTxProcessor implements Mi
 
     @SuppressWarnings("java:S107")
     public MirrorEvmTxProcessorImpl(
-            final HederaEvmMutableWorldState worldState,
+            final MPCQEvmMutableWorldState worldState,
             final PricesAndFeesProvider pricesAndFeesProvider,
             final EvmProperties dynamicProperties,
             final GasCalculator gasCalculator,
             final Map<SemanticVersion, Provider<MessageCallProcessor>> mcps,
             final Map<SemanticVersion, Provider<ContractCreationProcessor>> ccps,
-            final HederaEvmBlocks blockMetaSource,
+            final MPCQEvmBlocks blockMetaSource,
             final MirrorEvmContractAliases aliasManager,
             final AbstractCodeCache codeCache,
-            final Map<TracerType, Provider<HederaEvmOperationTracer>> tracerMap,
+            final Map<TracerType, Provider<MPCQEvmOperationTracer>> tracerMap,
             final Store store,
             final EntityAddressSequencer entityAddressSequencer,
             final TokenAccessor tokenAccessor,
@@ -80,7 +80,7 @@ public class MirrorEvmTxProcessorImpl extends HederaEvmTxProcessor implements Mi
         this.codeFactory = codeFactory;
     }
 
-    public HederaEvmTransactionProcessingResult execute(final CallServiceParameters params, final long estimatedGas) {
+    public MPCQEvmTransactionProcessingResult execute(final CallServiceParameters params, final long estimatedGas) {
         final long gasPrice = gasPriceTinyBarsGiven(Instant.now());
 
         store.wrap();

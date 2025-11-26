@@ -57,7 +57,7 @@ import org.hiero.mirror.web3.web3j.generated.ModificationPrecompileTestContract.
 import org.hiero.mirror.web3.web3j.generated.ModificationPrecompileTestContract.Expiry;
 import org.hiero.mirror.web3.web3j.generated.ModificationPrecompileTestContract.FixedFee;
 import org.hiero.mirror.web3.web3j.generated.ModificationPrecompileTestContract.FractionalFee;
-import org.hiero.mirror.web3.web3j.generated.ModificationPrecompileTestContract.HederaToken;
+import org.hiero.mirror.web3.web3j.generated.ModificationPrecompileTestContract.MPCQToken;
 import org.hiero.mirror.web3.web3j.generated.ModificationPrecompileTestContract.KeyValue;
 import org.hiero.mirror.web3.web3j.generated.ModificationPrecompileTestContract.NftTransfer;
 import org.hiero.mirror.web3.web3j.generated.ModificationPrecompileTestContract.RoyaltyFee;
@@ -804,7 +804,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
 
         final var treasuryAccount = accountEntityPersist();
 
-        final var token = populateHederaToken(
+        final var token = populateMPCQToken(
                 contract.getContractAddress(), TokenTypeEnum.FUNGIBLE_COMMON, treasuryAccount.toEntityId());
         final var initialTokenSupply = BigInteger.valueOf(10L);
         final var decimalPlacesSupportedByToken = BigInteger.valueOf(10L); // e.g. 1.0123456789
@@ -851,7 +851,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         testWeb3jService.setSender(toAddress(sender.toEntityId()).toHexString());
         testWeb3jService.setValue(value);
 
-        final var token = populateHederaToken(
+        final var token = populateMPCQToken(
                 contract.getContractAddress(), TokenTypeEnum.FUNGIBLE_COMMON, treasuryAccount.toEntityId());
 
         final var fixedFee = new FixedFee(
@@ -906,7 +906,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         testWeb3jService.setValue(value);
 
         final var treasuryAccount = accountEntityPersist();
-        final var token = populateHederaToken(
+        final var token = populateMPCQToken(
                 contract.getContractAddress(), TokenTypeEnum.NON_FUNGIBLE_UNIQUE, treasuryAccount.toEntityId());
         final var fixedFee = new FixedFee(
                 BigInteger.valueOf(100L),
@@ -953,7 +953,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         testWeb3jService.setSender(toAddress(sender.toEntityId()).toHexString());
 
         final var treasuryAccount = accountEntityPersist();
-        final var token = populateHederaToken(
+        final var token = populateMPCQToken(
                 contract.getContractAddress(), TokenTypeEnum.NON_FUNGIBLE_UNIQUE, treasuryAccount.toEntityId());
 
         // When
@@ -1043,7 +1043,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(domainBuilder
+        final var tokenToCreate = convertTokenEntityToMPCQToken(domainBuilder
                 .token()
                 .customize(t -> t.metadata(new byte[mirrorNodeEvmProperties.getMaxMemoUtf8Bytes() + 1]))
                 .get());
@@ -1062,7 +1062,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(domainBuilder
+        final var tokenToCreate = convertTokenEntityToMPCQToken(domainBuilder
                 .token()
                 .customize(t -> t.name(new String(
                         new byte[mirrorNodeEvmProperties.getMaxTokenNameUtf8Bytes() + 1], StandardCharsets.UTF_8)))
@@ -1082,7 +1082,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(domainBuilder
+        final var tokenToCreate = convertTokenEntityToMPCQToken(domainBuilder
                 .token()
                 .customize(t -> t.symbol(new String(
                         new byte[mirrorNodeEvmProperties.getMaxTokenNameUtf8Bytes() + 1], StandardCharsets.UTF_8)))
@@ -1102,7 +1102,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(
+        final var tokenToCreate = convertTokenEntityToMPCQToken(
                 domainBuilder.token().customize(t -> t.decimals(-1)).get());
 
         // When
@@ -1119,7 +1119,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(
+        final var tokenToCreate = convertTokenEntityToMPCQToken(
                 domainBuilder.token().customize(t -> t.initialSupply(-1L)).get());
 
         // When
@@ -1136,7 +1136,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(domainBuilder
+        final var tokenToCreate = convertTokenEntityToMPCQToken(domainBuilder
                 .token()
                 .customize(t -> t.initialSupply(10_000_001L))
                 .get());
@@ -1155,7 +1155,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(
+        final var tokenToCreate = convertTokenEntityToMPCQToken(
                 domainBuilder.token().customize(t -> t.supplyKey(new byte[0])).get());
 
         // When
@@ -1171,7 +1171,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(
+        final var tokenToCreate = convertTokenEntityToMPCQToken(
                 domainBuilder.token().customize(t -> t.treasuryAccountId(null)).get());
 
         // When
@@ -1187,7 +1187,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(domainBuilder
+        final var tokenToCreate = convertTokenEntityToMPCQToken(domainBuilder
                 .token()
                 .customize(t -> t.freezeDefault(true).freezeKey(new byte[0]))
                 .get());
@@ -1205,7 +1205,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         // Given
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var tokenToCreate = convertTokenEntityToHederaToken(
+        final var tokenToCreate = convertTokenEntityToMPCQToken(
                 domainBuilder.token().get(),
                 domainBuilder.entity().customize(e -> e.autoRenewPeriod(10L)).get());
 
@@ -1514,7 +1514,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
 
         final var contract = testWeb3jService.deploy(ModificationPrecompileTestContract::deploy);
 
-        final var token = populateHederaToken(
+        final var token = populateMPCQToken(
                 contract.getContractAddress(), TokenTypeEnum.FUNGIBLE_COMMON, treasuryAccount.toEntityId());
 
         // When
@@ -1583,7 +1583,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         verifyOpcodeTracerCall(functionCall.encodeFunctionCall(), contract);
     }
 
-    private HederaToken populateHederaToken(
+    private MPCQToken populateMPCQToken(
             final String contractAddress, final TokenTypeEnum tokenType, final EntityId treasuryAccountId) {
         final var autoRenewAccount =
                 accountEntityWithEvmAddressPersist(); // the account that is going to be charged for token renewal upon
@@ -1606,7 +1606,7 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         final var keys = new ArrayList<TokenKey>();
         keys.add(new TokenKey(AbstractContractCallServiceTest.KeyType.SUPPLY_KEY.getKeyTypeNumeric(), supplyKey));
 
-        return new HederaToken(
+        return new MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 getAddressFromEntityId(treasuryAccountId), // id of the account holding the initial token supply
@@ -1644,14 +1644,14 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
         };
     }
 
-    private HederaToken convertTokenEntityToHederaToken(final Token token) {
+    private MPCQToken convertTokenEntityToMPCQToken(final Token token) {
         final var tokenEntity =
                 domainBuilder.entity().customize(e -> e.id(token.getTokenId())).get();
         final var treasuryAccountId = token.getTreasuryAccountId();
         final var keys = new ArrayList<TokenKey>();
         final var entityRenewAccountId = tokenEntity.getAutoRenewAccountId();
 
-        return new HederaToken(
+        return new MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 treasuryAccountId != null
@@ -1669,12 +1669,12 @@ class ContractCallServicePrecompileModificationTest extends AbstractContractCall
                         BigInteger.valueOf(tokenEntity.getEffectiveExpiration())));
     }
 
-    private HederaToken convertTokenEntityToHederaToken(final Token token, final Entity entity) {
+    private MPCQToken convertTokenEntityToMPCQToken(final Token token, final Entity entity) {
         final var treasuryAccountId = token.getTreasuryAccountId();
         final var keys = new ArrayList<TokenKey>();
         final var entityRenewAccountId = entity.getAutoRenewAccountId();
 
-        return new HederaToken(
+        return new MPCQToken(
                 token.getName(),
                 token.getSymbol(),
                 asHexedEvmAddress(

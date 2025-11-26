@@ -8,7 +8,7 @@ import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUti
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.TransactionBody;
 import org.apache.tuweni.bytes.Bytes;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 
 /**
@@ -35,7 +35,7 @@ public abstract class AbstractWritePrecompile implements Precompile {
         return pricingUtils.computeGasRequirement(blockTimestamp, this, transactionBody, sender);
     }
 
-    protected Address unalias(Address addressOrAlias, HederaEvmStackedWorldStateUpdater updater) {
+    protected Address unalias(Address addressOrAlias, MPCQEvmStackedWorldStateUpdater updater) {
         return Address.wrap(Bytes.wrap(updater.permissivelyUnaliased(addressOrAlias.toArray())));
     }
 }

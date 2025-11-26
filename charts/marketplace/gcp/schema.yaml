@@ -143,8 +143,8 @@ properties:
   importer.config.hiero.mirror.importer.network:
     default: MAINNET
     type: string
-    description: Which Hedera network to use. Can be either DEMO (free), TESTNET or MAINNET.
-    title: Importer Hedera network
+    description: Which MPCQ network to use. Can be either DEMO (free), TESTNET or MAINNET.
+    title: Importer MPCQ network
     enum:
       - MAINNET
       - TESTNET

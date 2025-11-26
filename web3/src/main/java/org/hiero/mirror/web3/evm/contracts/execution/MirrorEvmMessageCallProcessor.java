@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution;
 
-import static com.hedera.node.app.service.evm.contracts.operations.HederaExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATE;
+import static com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATE;
 import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.wrapUnsafely;
 import static org.hyperledger.besu.evm.frame.ExceptionalHaltReason.INSUFFICIENT_GAS;
 import static org.hyperledger.besu.evm.frame.MessageFrame.State.EXCEPTIONAL_HALT;
@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import org.hiero.mirror.web3.evm.config.PrecompiledContractProvider;
 import org.hiero.mirror.web3.evm.store.contract.EntityAddressSequencer;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.EVM;
 import org.hyperledger.besu.evm.frame.ExceptionalHaltReason;
@@ -42,7 +42,7 @@ public class MirrorEvmMessageCallProcessor extends AbstractEvmMessageCallProcess
             final PrecompiledContractProvider precompilesHolder,
             final GasCalculator gasCalculator,
             final Predicate<Address> systemAccountDetector) {
-        super(evm, precompiles, precompilesHolder.getHederaPrecompiles(), systemAccountDetector);
+        super(evm, precompiles, precompilesHolder.getMPCQPrecompiles(), systemAccountDetector);
         this.autoCreationLogic = autoCreationLogic;
         this.entityAddressSequencer = entityAddressSequencer;
 
@@ -50,14 +50,14 @@ public class MirrorEvmMessageCallProcessor extends AbstractEvmMessageCallProcess
     }
 
     /**
-     * This logic is copied from hedera-services HederaMessageCallProcessor.
+     * This logic is copied from hedera-services MPCQMessageCallProcessor.
      *
      * @param frame
      * @param operationTracer
      */
     @Override
     protected void executeLazyCreate(final MessageFrame frame, final OperationTracer operationTracer) {
-        final var updater = (HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater();
+        final var updater = (MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater();
         final var syntheticBalanceChange = constructSyntheticLazyCreateBalanceChangeFrom(frame);
         final var timestamp = Timestamp.newBuilder()
                 .setSeconds(frame.getBlockValues().getTimestamp())

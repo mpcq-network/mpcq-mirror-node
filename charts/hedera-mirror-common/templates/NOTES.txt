@@ -1,4 +1,4 @@
-Hedera Mirror Node {{ .Chart.AppVersion }} successfully installed.
+MPCQ Mirror Node {{ .Chart.AppVersion }} successfully installed.
 
 {{ if .Values.traefik.enabled -}}
 To get the load balancer IP:

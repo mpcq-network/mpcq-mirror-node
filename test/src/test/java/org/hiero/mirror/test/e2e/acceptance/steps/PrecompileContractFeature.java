@@ -678,7 +678,7 @@ public class PrecompileContractFeature extends AbstractFeature {
 
     // ETHCALL-032
     @And(
-            "I call function with HederaTokenService getTokenCustomFees token - fractional fee and fixed fee - fungible token")
+            "I call function with MPCQTokenService getTokenCustomFees token - fractional fee and fixed fee - fungible token")
     public void getCustomFeesForFungibleTokenFractionalAndFixedFees() throws Exception {
         var data = encodeData(PRECOMPILE, GET_CUSTOM_FEES_FOR_TOKEN_SELECTOR, fungibleTokenAddress);
         var response = callContract(data, precompileTestContractSolidityAddress);
@@ -699,7 +699,7 @@ public class PrecompileContractFeature extends AbstractFeature {
     }
 
     // ETHCALL-033
-    @And("I call function with HederaTokenService getTokenCustomFees token - royalty fee")
+    @And("I call function with MPCQTokenService getTokenCustomFees token - royalty fee")
     public void getCustomFeesForFungibleTokenRoyaltyFee() throws Exception {
         var data = encodeData(PRECOMPILE, GET_CUSTOM_FEES_FOR_TOKEN_SELECTOR, nonFungibleTokenAddress);
         var response = callContract(data, precompileTestContractSolidityAddress);
@@ -720,7 +720,7 @@ public class PrecompileContractFeature extends AbstractFeature {
     }
 
     // ETHCALL-034
-    @And("I call function with HederaTokenService getTokenCustomFees token - royalty fee + fallback")
+    @And("I call function with MPCQTokenService getTokenCustomFees token - royalty fee + fallback")
     public void getCustomFeesForFungibleTokenRoyaltyFeeAndFallback() throws Exception {
         var data = encodeData(PRECOMPILE, GET_CUSTOM_FEES_FOR_TOKEN_SELECTOR, nonFungibleTokenAddress);
         var response = callContract(data, precompileTestContractSolidityAddress);

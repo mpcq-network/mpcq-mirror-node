@@ -12,11 +12,11 @@ Feature: eth_call Contract Base Coverage Feature
     Then I call function with IERC721Metadata token "NFT" symbol
     Then I call function with IERC721Metadata token NFT totalSupply
     Then I call function with IERC721 token NFT balanceOf owner
-    Then I call function with HederaTokenService isToken token FUNGIBLE
-    Then I call function with HederaTokenService isFrozen token FUNGIBLE, account
-    Then I call function with HederaTokenService isKyc token FUNGIBLE, account
-    Then I call function with HederaTokenService getTokenDefaultFreezeStatus token FUNGIBLE
-    Then I call function with HederaTokenService getTokenDefaultKycStatus token FUNGIBLE
+    Then I call function with MPCQTokenService isToken token FUNGIBLE
+    Then I call function with MPCQTokenService isFrozen token FUNGIBLE, account
+    Then I call function with MPCQTokenService isKyc token FUNGIBLE, account
+    Then I call function with MPCQTokenService getTokenDefaultFreezeStatus token FUNGIBLE
+    Then I call function with MPCQTokenService getTokenDefaultKycStatus token FUNGIBLE
     Then I call function with update and I expect return of the updated value
     Then I call function that makes N times state update
     Then I call function with nested deploy using create function

@@ -2,7 +2,7 @@
 pragma solidity >=0.4.9 <0.9.0;
 pragma experimental ABIEncoderV2;
 
-interface IHederaAccountService {
+interface IMPCQAccountService {
 
     /// Returns the amount of hbar that the spender has been authorized to spend on behalf of the owner.
     /// @param owner The account that has authorized the spender.
@@ -25,23 +25,23 @@ interface IHederaAccountService {
         int256 amount
     ) external returns (int64 responseCode);
 
-    /// Returns the EVM address alias for the given Hedera account.
-    /// @param accountNumAlias The Hedera account to get the EVM address alias for.
+    /// Returns the EVM address alias for the given MPCQ account.
+    /// @param accountNumAlias The MPCQ account to get the EVM address alias for.
     /// @return responseCode The response code for the status of the request. SUCCESS is 22.
-    /// @return evmAddressAlias The EVM address alias for the given Hedera account.
+    /// @return evmAddressAlias The EVM address alias for the given MPCQ account.
     function getEvmAddressAlias(address accountNumAlias) external
     returns (int64 responseCode, address evmAddressAlias);
 
-    /// Returns the Hedera Account ID (as account num alias) for the given EVM address alias
-    /// @param evmAddressAlias The EVM address alias to get the Hedera account for.
+    /// Returns the MPCQ Account ID (as account num alias) for the given EVM address alias
+    /// @param evmAddressAlias The EVM address alias to get the MPCQ account for.
     /// @return responseCode The response code for the status of the request.  SUCCESS is 22.
-    /// @return accountNumAlias The Hedera account's num for the given EVM address alias.
-    function getHederaAccountNumAlias(address evmAddressAlias) external
+    /// @return accountNumAlias The MPCQ account's num for the given EVM address alias.
+    function getMPCQAccountNumAlias(address evmAddressAlias) external
     returns (int64 responseCode, address accountNumAlias);
 
-    /// Returns true iff a Hedera account num alias or EVM address alias.
+    /// Returns true iff a MPCQ account num alias or EVM address alias.
     /// @param addr Some 20-byte address.
-    /// @return response true iff addr is a Hedera account num alias or an EVM address alias (and false otherwise).
+    /// @return response true iff addr is a MPCQ account num alias or an EVM address alias (and false otherwise).
     function isValidAlias(address addr) external returns (bool response);
 
     /// Determines if the signature is valid for the given message hash and account.

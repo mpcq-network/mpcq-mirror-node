@@ -217,7 +217,7 @@ class ContractCallDynamicCallsTest extends AbstractContractCallServiceOpcodeTrac
     }
 
     /**
-     * The test calls HederaTokenService.freezeToken(token, account) precompiled system contract to freeze a given
+     * The test calls MPCQTokenService.freezeToken(token, account) precompiled system contract to freeze a given
      * fungible/non-fungible token for a given account.
      *
      * @param tokenType

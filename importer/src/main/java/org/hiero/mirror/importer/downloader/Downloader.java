@@ -155,7 +155,7 @@ public abstract class Downloader<T extends StreamFile<I>, I extends StreamItem> 
 
             // Following is a cost optimization to not unnecessarily list the public demo bucket once complete
             if (sigFilesMap.isEmpty()
-                    && ImporterProperties.HederaNetwork.DEMO.equalsIgnoreCase(importerProperties.getNetwork())) {
+                    && ImporterProperties.MPCQNetwork.DEMO.equalsIgnoreCase(importerProperties.getNetwork())) {
                 downloaderProperties.setEnabled(false);
                 log.warn("Disabled polling after downloading all files in demo bucket");
             }

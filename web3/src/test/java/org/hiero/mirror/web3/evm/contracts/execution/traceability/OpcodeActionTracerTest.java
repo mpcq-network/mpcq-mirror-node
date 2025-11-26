@@ -29,7 +29,7 @@ import static org.mockito.Mockito.when;
 import com.google.common.collect.ImmutableSortedMap;
 import com.hedera.hapi.node.base.ContractID;
 import com.hedera.hapi.node.state.contract.SlotKey;
-import com.hedera.node.app.service.contract.impl.exec.systemcontracts.HederaSystemContract;
+import com.hedera.node.app.service.contract.impl.exec.systemcontracts.MPCQSystemContract;
 import com.hedera.node.app.service.contract.impl.state.EvmFrameState;
 import com.hedera.node.app.service.contract.impl.state.ProxyWorldUpdater;
 import com.hedera.node.app.service.contract.impl.state.RootProxyWorldUpdater;
@@ -150,7 +150,7 @@ class OpcodeActionTracerTest {
     void setUp() {
         REMAINING_GAS.set(INITIAL_GAS);
         tracer = new OpcodeActionTracer();
-        tracer.setSystemContracts(Map.of(HTS_PRECOMPILE_ADDRESS, mock(HederaSystemContract.class)));
+        tracer.setSystemContracts(Map.of(HTS_PRECOMPILE_ADDRESS, mock(MPCQSystemContract.class)));
         tracerOptions = new OpcodeTracerOptions(false, false, false, true);
         contextMockedStatic.when(ContractCallContext::get).thenReturn(contractCallContext);
     }

@@ -1162,7 +1162,7 @@ func TestConstructionPayloadsThrowsWithConstructorConstructFailure(t *testing.T)
 			defaultContext,
 			mock.IsType(types.OperationSlice{}),
 		).
-		Return(mocks.NilHederaTransaction, mocks.NilSigners, errors.ErrInternalServerError)
+		Return(mocks.NilMPCQTransaction, mocks.NilSigners, errors.ErrInternalServerError)
 	service, _ := NewConstructionAPIService(nil, onlineBaseService, defaultConfig, mockConstructor)
 
 	// when

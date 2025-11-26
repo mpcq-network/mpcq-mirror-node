@@ -8,7 +8,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.util.Optional;
 import org.hiero.mirror.common.domain.transaction.RecordFile;
@@ -88,7 +88,7 @@ class ContractCallServiceUnitTest {
         mirrorNodeEvmProperties.setModularizedServices(false);
         when(params.getCallType()).thenReturn(CallType.ETH_CALL);
         when(recordFileService.findByBlockType(any())).thenReturn(Optional.of(new RecordFile()));
-        final var successResult = HederaEvmTransactionProcessingResult.successful(null, 1000, 0, 0, null, Address.ZERO);
+        final var successResult = MPCQEvmTransactionProcessingResult.successful(null, 1000, 0, 0, null, Address.ZERO);
         when(store.getStackedStateFrames()).thenReturn(stackedStateFrames);
         when(mirrorEvmTxProcessor.execute(any(), anyLong())).thenReturn(successResult);
 
@@ -102,7 +102,7 @@ class ContractCallServiceUnitTest {
         when(params.isModularized()).thenReturn(false);
         when(params.getCallType()).thenReturn(CallType.ETH_CALL);
         when(recordFileService.findByBlockType(any())).thenReturn(Optional.of(new RecordFile()));
-        final var successResult = HederaEvmTransactionProcessingResult.successful(null, 1000, 0, 0, null, Address.ZERO);
+        final var successResult = MPCQEvmTransactionProcessingResult.successful(null, 1000, 0, 0, null, Address.ZERO);
         when(store.getStackedStateFrames()).thenReturn(stackedStateFrames);
         when(mirrorEvmTxProcessor.execute(any(), anyLong())).thenReturn(successResult);
 
@@ -116,7 +116,7 @@ class ContractCallServiceUnitTest {
         when(params.isModularized()).thenReturn(true);
         when(params.getCallType()).thenReturn(CallType.ETH_CALL);
         when(recordFileService.findByBlockType(any())).thenReturn(Optional.of(new RecordFile()));
-        final var successResult = HederaEvmTransactionProcessingResult.successful(null, 1000, 0, 0, null, Address.ZERO);
+        final var successResult = MPCQEvmTransactionProcessingResult.successful(null, 1000, 0, 0, null, Address.ZERO);
         when(transactionExecutionService.execute(any(), anyLong())).thenReturn(successResult);
 
         contractCallService.callContract(params, ctx);

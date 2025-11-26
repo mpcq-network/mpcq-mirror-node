@@ -11,11 +11,11 @@ import static org.hyperledger.besu.evm.frame.MessageFrame.State.COMPLETED_SUCCES
 import static org.hyperledger.besu.evm.frame.MessageFrame.State.EXCEPTIONAL_HALT;
 import static org.hyperledger.besu.evm.frame.MessageFrame.State.REVERT;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmMessageCallProcessor;
-import com.hedera.node.app.service.evm.contracts.operations.HederaExceptionalHaltReason;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmMessageCallProcessor;
+import com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
 import com.hedera.node.app.service.evm.store.contracts.AbstractLedgerEvmWorldUpdater;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract;
-import com.hedera.node.app.service.mono.contracts.execution.traceability.HederaOperationTracer;
+import com.hedera.node.app.service.mono.contracts.execution.traceability.MPCQOperationTracer;
 import com.swirlds.base.utility.Pair;
 import java.util.Map;
 import java.util.Optional;
@@ -30,7 +30,7 @@ import org.hyperledger.besu.evm.precompile.PrecompileContractRegistry;
 import org.hyperledger.besu.evm.precompile.PrecompiledContract;
 import org.hyperledger.besu.evm.tracing.OperationTracer;
 
-public abstract class AbstractEvmMessageCallProcessor extends HederaEvmMessageCallProcessor {
+public abstract class AbstractEvmMessageCallProcessor extends MPCQEvmMessageCallProcessor {
 
     private final Predicate<Address> isNativePrecompileCheck;
 
@@ -53,10 +53,10 @@ public abstract class AbstractEvmMessageCallProcessor extends HederaEvmMessageCa
         // potential precompile execution will be done after super.start(), so trace results here
         final Address contractAddress = frame.getContractAddress();
         final boolean isNativePrecompile = isNativePrecompileCheck.test(contractAddress);
-        final boolean isHederaPrecompile = hederaPrecompiles.containsKey(contractAddress);
-        if ((isNativePrecompile || isHederaPrecompile)
-                && operationTracer instanceof HederaOperationTracer hederaOperationTracer) {
-            hederaOperationTracer.tracePrecompileResult(frame, isHederaPrecompile ? SYSTEM : PRECOMPILE);
+        final boolean isMPCQPrecompile = hederaPrecompiles.containsKey(contractAddress);
+        if ((isNativePrecompile || isMPCQPrecompile)
+                && operationTracer instanceof MPCQOperationTracer hederaOperationTracer) {
+            hederaOperationTracer.tracePrecompileResult(frame, isMPCQPrecompile ? SYSTEM : PRECOMPILE);
         }
         final Integer evmHtsPrecompiledContractAddressNum =
                 Integer.parseInt(EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS.substring(2), 16);
@@ -70,17 +70,17 @@ public abstract class AbstractEvmMessageCallProcessor extends HederaEvmMessageCa
                 && nonHTS) {
             // cannot send value to native precompile calls, since there are collisions with system account
             // and value will be transferred to the system account, which is undesired
-            frame.setExceptionalHaltReason(Optional.of(HederaExceptionalHaltReason.INVALID_FEE_SUBMITTED));
+            frame.setExceptionalHaltReason(Optional.of(MPCQExceptionalHaltReason.INVALID_FEE_SUBMITTED));
             frame.setState(MessageFrame.State.EXCEPTIONAL_HALT);
             operationTracer.tracePostExecution(
                     frame,
                     new Operation.OperationResult(
-                            frame.getRemainingGas(), HederaExceptionalHaltReason.INVALID_FEE_SUBMITTED));
+                            frame.getRemainingGas(), MPCQExceptionalHaltReason.INVALID_FEE_SUBMITTED));
         }
     }
 
     @Override
-    protected void executeHederaPrecompile(
+    protected void executeMPCQPrecompile(
             PrecompiledContract contract, MessageFrame frame, OperationTracer operationTracer) {
         Pair<Long, Bytes> costAndResult = calculatePrecompileGasAndOutput(contract, frame);
 

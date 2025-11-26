@@ -4,8 +4,8 @@ package com.hedera.services.store.contracts.precompile;
 
 import static com.hedera.node.app.service.evm.store.tokens.TokenType.FUNGIBLE_COMMON;
 import static com.hedera.node.app.service.evm.store.tokens.TokenType.NON_FUNGIBLE_UNIQUE;
-import static com.hedera.services.store.tokens.HederaTokenStore.MISSING_TOKEN;
-import static com.hedera.services.store.tokens.HederaTokenStore.asTokenRelationshipKey;
+import static com.hedera.services.store.tokens.MPCQTokenStore.MISSING_TOKEN;
+import static com.hedera.services.store.tokens.MPCQTokenStore.asTokenRelationshipKey;
 import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
 import static com.hedera.services.utils.TxnUtils.assertFailsWith;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_EXPIRED_AND_PENDING_REMOVAL;
@@ -29,7 +29,7 @@ import com.hedera.services.store.models.Id;
 import com.hedera.services.store.models.NftId;
 import com.hedera.services.store.models.Token;
 import com.hedera.services.store.models.TokenRelationship;
-import com.hedera.services.store.tokens.HederaTokenStore;
+import com.hedera.services.store.tokens.MPCQTokenStore;
 import com.hedera.services.txns.validation.OptionValidator;
 import com.hedera.services.utils.IdUtils;
 import com.hederahashgraph.api.proto.java.AccountID;
@@ -61,7 +61,7 @@ class TokenUpdateLogicTest {
     private OptionValidator validator;
 
     @Mock
-    private HederaTokenStore tokenStore;
+    private MPCQTokenStore tokenStore;
 
     @Mock
     private Store store;
@@ -119,7 +119,7 @@ class TokenUpdateLogicTest {
         givenTokenUpdateLogic(true);
         givenValidTransactionBody(true, true);
         givenContextForSuccessFullCalls();
-        givenHederaStoreContextForFungible();
+        givenMPCQStoreContextForFungible();
         givenKeys();
         given(token.getType()).willReturn(FUNGIBLE_COMMON);
         given(token.getTreasury()).willReturn(treasuryAccount);
@@ -180,7 +180,7 @@ class TokenUpdateLogicTest {
         givenTokenUpdateLogic(true);
         givenValidTransactionBody(true, true);
         givenContextForSuccessFullCalls();
-        givenHederaStoreContextForFungible();
+        givenMPCQStoreContextForFungible();
         givenKeys();
         given(token.getType()).willReturn(FUNGIBLE_COMMON);
         given(token.getTreasury()).willReturn(treasuryAccount);
@@ -314,7 +314,7 @@ class TokenUpdateLogicTest {
         givenTokenUpdateLogic(true);
         givenValidTransactionBody(false, true);
         givenContextForSuccessFullCalls();
-        givenHederaStoreContextForNonFungible();
+        givenMPCQStoreContextForNonFungible();
         given(token.getTreasury()).willReturn(treasuryAccount);
         given(transactionBody.getTokenUpdate()).willReturn(op);
         given(store.getAccount(asTypedEvmAddress(treasury), OnMissing.THROW)).willReturn(treasuryAccount);
@@ -350,7 +350,7 @@ class TokenUpdateLogicTest {
         // given
         givenTokenUpdateLogic(true);
         givenValidTransactionBody(false, true);
-        givenHederaStoreContextForNonFungible();
+        givenMPCQStoreContextForNonFungible();
         given(token.hasAdminKey()).willReturn(true);
         given(validator.expiryStatusGiven(store, accountId)).willReturn(OK);
         given(validator.expiryStatusGiven(store, treasury)).willReturn(OK);
@@ -594,13 +594,13 @@ class TokenUpdateLogicTest {
         given(validator.expiryStatusGiven(store, accountId)).willReturn(ACCOUNT_EXPIRED_AND_PENDING_REMOVAL);
     }
 
-    private void givenHederaStoreContextForFungible() {
+    private void givenMPCQStoreContextForFungible() {
         given(tokenStore.get(fungible)).willReturn(token);
         given(tokenStore.autoAssociate(any(), any())).willReturn(OK);
         given(tokenStore.update(op, CONSENSUS_TIME)).willReturn(OK);
     }
 
-    private void givenHederaStoreContextForNonFungible() {
+    private void givenMPCQStoreContextForNonFungible() {
         given(tokenStore.get(nonFungible)).willReturn(token);
         given(tokenStore.autoAssociate(any(), any())).willReturn(OK);
         given(tokenStore.update(op, CONSENSUS_TIME)).willReturn(OK);

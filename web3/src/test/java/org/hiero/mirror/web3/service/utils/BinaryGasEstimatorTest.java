@@ -4,7 +4,7 @@ package org.hiero.mirror.web3.service.utils;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ class BinaryGasEstimatorTest extends Web3IntegrationTest {
     /**
      * @link BinaryGasEstimator is using slightly modified binary algorithm which is coupled to some exttend with the
      * gas used estimation and its metric updates. Here the logic of processing contact calls is replaced with a dummy
-     * function, returning successful/failed HederaEvmTransactionProcessingResult with gasUsed value equal to the low
+     * function, returning successful/failed MPCQEvmTransactionProcessingResult with gasUsed value equal to the low
      * value, which corresponds to the intial gasUsed in the real world. The metric logic is replaced with a lambda
      * which counts the iterations count.
      */
@@ -111,11 +111,11 @@ class BinaryGasEstimatorTest extends Web3IntegrationTest {
                 .isLessThanOrEqualTo(properties.getMaxGasEstimateRetriesCount());
     }
 
-    private HederaEvmTransactionProcessingResult createTxnResult(final long gasUsed, final boolean isSuccessful) {
+    private MPCQEvmTransactionProcessingResult createTxnResult(final long gasUsed, final boolean isSuccessful) {
         if (!isSuccessful) {
-            return HederaEvmTransactionProcessingResult.failed(gasUsed, 0, 0, Optional.empty(), Optional.empty());
+            return MPCQEvmTransactionProcessingResult.failed(gasUsed, 0, 0, Optional.empty(), Optional.empty());
         }
-        return HederaEvmTransactionProcessingResult.successful(null, gasUsed, 0, 0, null, Address.ZERO);
+        return MPCQEvmTransactionProcessingResult.successful(null, gasUsed, 0, 0, null, Address.ZERO);
     }
 
     private boolean failEverySecondCall() {

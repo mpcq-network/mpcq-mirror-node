@@ -20,7 +20,7 @@ public class MirrorEvmMessageCallProcessorV30 extends AbstractEvmMessageCallProc
             final PrecompiledContractProvider precompilesHolder,
             final GasCalculator gasCalculator,
             final Predicate<Address> systemAccountDetector) {
-        super(v30, precompiles, precompilesHolder.getHederaPrecompiles(), systemAccountDetector);
+        super(v30, precompiles, precompilesHolder.getMPCQPrecompiles(), systemAccountDetector);
         MainnetPrecompiledContracts.populateForIstanbul(precompiles, gasCalculator);
     }
 }

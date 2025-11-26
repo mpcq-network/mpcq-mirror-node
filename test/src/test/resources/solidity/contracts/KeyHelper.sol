@@ -2,7 +2,7 @@
 pragma solidity >=0.5.0 <0.9.0;
 pragma experimental ABIEncoderV2;
 
-import "./HederaTokenService.sol";
+import "./MPCQTokenService.sol";
 
 abstract contract KeyHelper {
     using Bits for uint256;
@@ -37,10 +37,10 @@ abstract contract KeyHelper {
         keyTypes[KeyType.PAUSE] = 64;
     }
 
-    function getDefaultKeys() internal view returns (IHederaTokenService.TokenKey[] memory keys) {
-        keys = new IHederaTokenService.TokenKey[](2);
+    function getDefaultKeys() internal view returns (IMPCQTokenService.TokenKey[] memory keys) {
+        keys = new IMPCQTokenService.TokenKey[](2);
         keys[0] = getSingleKey(KeyType.KYC, KeyValueType.CONTRACT_ID, '');
-        keys[1] = IHederaTokenService.TokenKey(
+        keys[1] = IMPCQTokenService.TokenKey(
             getDuplexKeyType(KeyType.SUPPLY, KeyType.PAUSE),
             getKeyValueType(KeyValueType.CONTRACT_ID, '')
         );
@@ -49,19 +49,19 @@ abstract contract KeyHelper {
     function getAllTypeKeys(KeyValueType keyValueType, bytes memory key)
     internal
     view
-    returns (IHederaTokenService.TokenKey[] memory keys)
+    returns (IMPCQTokenService.TokenKey[] memory keys)
     {
-        keys = new IHederaTokenService.TokenKey[](1);
-        keys[0] = IHederaTokenService.TokenKey(getAllKeyTypes(), getKeyValueType(keyValueType, key));
+        keys = new IMPCQTokenService.TokenKey[](1);
+        keys[0] = IMPCQTokenService.TokenKey(getAllKeyTypes(), getKeyValueType(keyValueType, key));
     }
 
     function getCustomSingleTypeKeys(
         KeyType keyType,
         KeyValueType keyValueType,
         bytes memory key
-    ) internal view returns (IHederaTokenService.TokenKey[] memory keys) {
-        keys = new IHederaTokenService.TokenKey[](1);
-        keys[0] = IHederaTokenService.TokenKey(getKeyType(keyType), getKeyValueType(keyValueType, key));
+    ) internal view returns (IMPCQTokenService.TokenKey[] memory keys) {
+        keys = new IMPCQTokenService.TokenKey[](1);
+        keys[0] = IMPCQTokenService.TokenKey(getKeyType(keyType), getKeyValueType(keyValueType, key));
     }
 
     function getCustomDuplexTypeKeys(
@@ -69,9 +69,9 @@ abstract contract KeyHelper {
         KeyType secondType,
         KeyValueType keyValueType,
         bytes memory key
-    ) internal view returns (IHederaTokenService.TokenKey[] memory keys) {
-        keys = new IHederaTokenService.TokenKey[](1);
-        keys[0] = IHederaTokenService.TokenKey(
+    ) internal view returns (IMPCQTokenService.TokenKey[] memory keys) {
+        keys = new IMPCQTokenService.TokenKey[](1);
+        keys[0] = IMPCQTokenService.TokenKey(
             getDuplexKeyType(firstType, secondType),
             getKeyValueType(keyValueType, key)
         );
@@ -81,16 +81,16 @@ abstract contract KeyHelper {
         KeyType keyType,
         KeyValueType keyValueType,
         bytes memory key
-    ) internal view returns (IHederaTokenService.TokenKey memory tokenKey) {
-        tokenKey = IHederaTokenService.TokenKey(getKeyType(keyType), getKeyValueType(keyValueType, key));
+    ) internal view returns (IMPCQTokenService.TokenKey memory tokenKey) {
+        tokenKey = IMPCQTokenService.TokenKey(getKeyType(keyType), getKeyValueType(keyValueType, key));
     }
 
     function getSingleKey(
         KeyType keyType,
         KeyValueType keyValueType,
         address key
-    ) internal view returns (IHederaTokenService.TokenKey memory tokenKey) {
-        tokenKey = IHederaTokenService.TokenKey(getKeyType(keyType), getKeyValueType(keyValueType, key));
+    ) internal view returns (IMPCQTokenService.TokenKey memory tokenKey) {
+        tokenKey = IMPCQTokenService.TokenKey(getKeyType(keyType), getKeyValueType(keyValueType, key));
     }
 
     function getSingleKey(
@@ -98,8 +98,8 @@ abstract contract KeyHelper {
         KeyType secondType,
         KeyValueType keyValueType,
         bytes memory key
-    ) internal view returns (IHederaTokenService.TokenKey memory tokenKey) {
-        tokenKey = IHederaTokenService.TokenKey(
+    ) internal view returns (IMPCQTokenService.TokenKey memory tokenKey) {
+        tokenKey = IMPCQTokenService.TokenKey(
             getDuplexKeyType(firstType, secondType),
             getKeyValueType(keyValueType, key)
         );
@@ -127,7 +127,7 @@ abstract contract KeyHelper {
     function getKeyValueType(KeyValueType keyValueType, bytes memory key)
     internal
     view
-    returns (IHederaTokenService.KeyValue memory keyValue)
+    returns (IMPCQTokenService.KeyValue memory keyValue)
     {
         if (keyValueType == KeyValueType.INHERIT_ACCOUNT_KEY) {
             keyValue.inheritAccountKey = true;
@@ -145,7 +145,7 @@ abstract contract KeyHelper {
     function getKeyValueType(KeyValueType keyValueType, address keyAddress)
     internal
     pure
-    returns (IHederaTokenService.KeyValue memory keyValue)
+    returns (IMPCQTokenService.KeyValue memory keyValue)
     {
         if (keyValueType == KeyValueType.CONTRACT_ID) {
             keyValue.contractId = keyAddress;

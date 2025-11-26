@@ -2,7 +2,7 @@
 
 package com.hedera.services.txns.crypto;
 
-import static com.hedera.node.app.service.evm.store.models.HederaEvmAccount.EVM_ADDRESS_SIZE;
+import static com.hedera.node.app.service.evm.store.models.MPCQEvmAccount.EVM_ADDRESS_SIZE;
 import static com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils.EMPTY_KEY;
 import static com.hedera.services.utils.EntityNum.fromAccountId;
 import static com.hedera.services.utils.MiscUtils.asPrimitiveKeyUnchecked;

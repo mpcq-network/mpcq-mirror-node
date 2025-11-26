@@ -16,8 +16,8 @@ import static org.mockito.Mockito.when;
 
 import com.hedera.node.app.service.evm.accounts.AccountAccessor;
 import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmMutableWorldState;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
 import com.hedera.node.app.service.evm.store.models.UpdateTrackingAccount;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import com.hedera.services.txns.validation.OptionValidator;
@@ -45,14 +45,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(ContextExtension.class)
 @ExtendWith(MockitoExtension.class)
-class HederaEvmStackedWorldStateUpdaterTest {
+class MPCQEvmStackedWorldStateUpdaterTest {
     private static final Address ALIAS = Address.fromHexString("0xabcdefabcdefabcdefbabcdefabcdefabcdefbbb");
     private static final Address ALIAS_2 = Address.fromHexString("0xabcdefabcdefabcdefbabcdefabcdefabcdefbbc");
     private static final Address SPONSOR = Address.fromHexString("0xcba");
     private static final long A_BALANCE = 1_000L;
     private static final long A_NONCE = 1L;
     private final Address address = Address.fromHexString("0x000000000000000000000000000000000000077e");
-    private final UpdateTrackingAccount<Account> updatedHederaEvmAccount = new UpdateTrackingAccount<>(address, null);
+    private final UpdateTrackingAccount<Account> updatedMPCQEvmAccount = new UpdateTrackingAccount<>(address, null);
 
     @Mock
     private AccountAccessor accountAccessor;
@@ -61,10 +61,10 @@ class HederaEvmStackedWorldStateUpdaterTest {
     private TokenAccessor tokenAccessor;
 
     @Mock
-    private HederaEvmEntityAccess entityAccess;
+    private MPCQEvmEntityAccess entityAccess;
 
     @Mock
-    private AbstractLedgerWorldUpdater<HederaEvmMutableWorldState, Account> updater;
+    private AbstractLedgerWorldUpdater<MPCQEvmMutableWorldState, Account> updater;
 
     @Mock
     private EvmProperties properties;
@@ -83,7 +83,7 @@ class HederaEvmStackedWorldStateUpdaterTest {
 
     private Store store;
 
-    private HederaEvmStackedWorldStateUpdater subject;
+    private MPCQEvmStackedWorldStateUpdater subject;
 
     @BeforeEach
     void setUp() {
@@ -95,7 +95,7 @@ class HederaEvmStackedWorldStateUpdaterTest {
                 new AccountDatabaseAccessor(entityDatabaseAccessor, null, null, null, null, null, null, systemEntity));
         final var stackedStateFrames = new StackedStateFrames(accessors);
         store = new StoreImpl(stackedStateFrames, validator);
-        subject = new HederaEvmStackedWorldStateUpdater(
+        subject = new MPCQEvmStackedWorldStateUpdater(
                 updater,
                 accountAccessor,
                 entityAccess,
@@ -115,7 +115,7 @@ class HederaEvmStackedWorldStateUpdaterTest {
     @Test
     void commitsNewlyCreatedAccountAsExpected() {
         updater = new MockLedgerWorldUpdater(null, accountAccessor);
-        subject = new HederaEvmStackedWorldStateUpdater(
+        subject = new MPCQEvmStackedWorldStateUpdater(
                 updater,
                 accountAccessor,
                 entityAccess,
@@ -136,7 +136,7 @@ class HederaEvmStackedWorldStateUpdaterTest {
     @Test
     void commitsDeletedAccountsAsExpected() {
         updater = new MockLedgerWorldUpdater(null, accountAccessor);
-        subject = new HederaEvmStackedWorldStateUpdater(
+        subject = new MPCQEvmStackedWorldStateUpdater(
                 updater,
                 accountAccessor,
                 entityAccess,
@@ -158,7 +158,7 @@ class HederaEvmStackedWorldStateUpdaterTest {
 
     @Test
     void accountTests() {
-        updatedHederaEvmAccount.setBalance(Wei.of(100));
+        updatedMPCQEvmAccount.setBalance(Wei.of(100));
         when(mirrorEvmContractAliases.resolveForEvm(address)).thenReturn(address);
         store.wrap();
         assertThat(subject.createAccount(address, 1, Wei.ONE).getAddress()).isEqualTo(address);
@@ -175,27 +175,27 @@ class HederaEvmStackedWorldStateUpdaterTest {
 
     @Test
     void get() {
-        when(updater.get(address)).thenReturn(updatedHederaEvmAccount);
+        when(updater.get(address)).thenReturn(updatedMPCQEvmAccount);
         when(accountAccessor.canonicalAddress(address)).thenReturn(address);
 
         final var actual = subject.get(address);
-        assertThat(actual.getAddress()).isEqualTo(updatedHederaEvmAccount.getAddress());
+        assertThat(actual.getAddress()).isEqualTo(updatedMPCQEvmAccount.getAddress());
     }
 
     @Test
     void getForRedirect() {
         givenForRedirect();
-        assertThat(subject.get(address).getAddress()).isEqualTo(updatedHederaEvmAccount.getAddress());
+        assertThat(subject.get(address).getAddress()).isEqualTo(updatedMPCQEvmAccount.getAddress());
     }
 
     @Test
     void getWithTrack() {
-        when(updater.getForMutation(address)).thenReturn(updatedHederaEvmAccount);
+        when(updater.getForMutation(address)).thenReturn(updatedMPCQEvmAccount);
         when(accountAccessor.canonicalAddress(address)).thenReturn(address);
 
         subject.getAccount(address);
         subject.get(address);
-        assertThat(subject.get(address).getAddress()).isEqualTo(updatedHederaEvmAccount.getAddress());
+        assertThat(subject.get(address).getAddress()).isEqualTo(updatedMPCQEvmAccount.getAddress());
     }
 
     @Test
@@ -206,15 +206,15 @@ class HederaEvmStackedWorldStateUpdaterTest {
 
     @Test
     void getAccount() {
-        when(updater.getForMutation(address)).thenReturn(updatedHederaEvmAccount);
-        assertThat(subject.getAccount(address).getAddress()).isEqualTo(updatedHederaEvmAccount.getAddress());
+        when(updater.getForMutation(address)).thenReturn(updatedMPCQEvmAccount);
+        assertThat(subject.getAccount(address).getAddress()).isEqualTo(updatedMPCQEvmAccount.getAddress());
     }
 
     @Test
     void getAccountWithTrack() {
-        when(updater.getForMutation(address)).thenReturn(updatedHederaEvmAccount);
+        when(updater.getForMutation(address)).thenReturn(updatedMPCQEvmAccount);
         subject.getAccount(address);
-        assertThat(subject.getAccount(address).getAddress()).isEqualTo(updatedHederaEvmAccount.getAddress());
+        assertThat(subject.getAccount(address).getAddress()).isEqualTo(updatedMPCQEvmAccount.getAddress());
     }
 
     @Test
@@ -225,7 +225,7 @@ class HederaEvmStackedWorldStateUpdaterTest {
     @Test
     void getAccountForRedirect() {
         givenForRedirect();
-        assertThat(subject.getAccount(address).getAddress()).isEqualTo(updatedHederaEvmAccount.getAddress());
+        assertThat(subject.getAccount(address).getAddress()).isEqualTo(updatedMPCQEvmAccount.getAddress());
     }
 
     @Test

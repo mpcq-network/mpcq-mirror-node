@@ -4,7 +4,7 @@ package org.hiero.mirror.web3.evm.store.contract;
 
 import com.hedera.node.app.service.evm.accounts.AccountAccessor;
 import com.hedera.node.app.service.evm.store.contracts.AbstractLedgerEvmWorldUpdater;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmEntityAccess;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import java.util.Collection;
 import org.hiero.mirror.web3.evm.store.Store;
@@ -26,7 +26,7 @@ public abstract class AbstractLedgerWorldUpdater<W extends WorldView, A extends 
             W world,
             AccountAccessor accountAccessor,
             TokenAccessor tokenAccessor,
-            HederaEvmEntityAccess hederaEvmEntityAccess,
+            MPCQEvmEntityAccess hederaEvmEntityAccess,
             Store store) {
         super(world, accountAccessor, tokenAccessor, hederaEvmEntityAccess);
         this.store = store;

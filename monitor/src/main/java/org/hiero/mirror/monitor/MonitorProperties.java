@@ -33,7 +33,7 @@ public class MonitorProperties {
     private MirrorNodeProperties mirrorNode;
 
     @NotNull
-    private HederaNetwork network = HederaNetwork.TESTNET;
+    private MPCQNetwork network = MPCQNetwork.TESTNET;
 
     @NotNull
     @Valid

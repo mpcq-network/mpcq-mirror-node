@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.service.utils;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import jakarta.inject.Named;
 import java.util.function.LongFunction;
 import java.util.function.ObjIntConsumer;
@@ -19,7 +19,7 @@ public class BinaryGasEstimator {
 
     public long search(
             final ObjIntConsumer<Long> metricUpdater,
-            final LongFunction<HederaEvmTransactionProcessingResult> call,
+            final LongFunction<MPCQEvmTransactionProcessingResult> call,
             long lo,
             long hi,
             final boolean isModularized) {
@@ -42,7 +42,7 @@ public class BinaryGasEstimator {
             long mid = (hi + lo) / 2;
 
             // If modularizedServices is true - we call the safeCall function that handles if an exception is thrown
-            HederaEvmTransactionProcessingResult transactionResult =
+            MPCQEvmTransactionProcessingResult transactionResult =
                     isModularized ? safeCall(mid, call) : call.apply(mid);
 
             iterationsMade++;
@@ -70,8 +70,8 @@ public class BinaryGasEstimator {
     // This method is needed because within the modularized services if the contract call fails an exception is thrown
     // instead of transaction result with 'failed' status which will result in a failing test. This way we handle the
     // exception and return estimated gas
-    private HederaEvmTransactionProcessingResult safeCall(
-            long mid, LongFunction<HederaEvmTransactionProcessingResult> call) {
+    private MPCQEvmTransactionProcessingResult safeCall(
+            long mid, LongFunction<MPCQEvmTransactionProcessingResult> call) {
         try {
             return call.apply(mid);
         } catch (Exception ignored) {

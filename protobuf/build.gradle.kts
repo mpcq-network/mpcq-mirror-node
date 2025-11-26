@@ -2,7 +2,7 @@
 
 import com.google.protobuf.gradle.id
 
-description = "Hiero Mirror Node Protobuf"
+description = "MPCQ Mirror Node Protobuf"
 
 plugins {
     id("com.google.protobuf")

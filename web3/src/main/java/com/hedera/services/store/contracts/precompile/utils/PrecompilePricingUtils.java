@@ -3,26 +3,26 @@
 package com.hedera.services.store.contracts.precompile.utils;
 
 import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoApproveAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoDeleteAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoTransfer;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoUpdate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAccountWipe;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAssociateToAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenBurn;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenDelete;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenDissociateFromAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenFreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenGetInfo;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenGrantKycToAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenMint;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenPause;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenRevokeKycFromAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnfreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnpause;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoApproveAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoDeleteAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoTransfer;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAccountWipe;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAssociateToAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenBurn;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenDelete;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenDissociateFromAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenFreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenGetInfo;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenGrantKycToAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenMint;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenPause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenRevokeKycFromAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnfreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnpause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUpdate;
 import static com.hederahashgraph.api.proto.java.ResponseType.ANSWER_ONLY;
 import static com.hederahashgraph.api.proto.java.SubType.DEFAULT;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_FUNGIBLE_COMMON;
@@ -39,7 +39,7 @@ import com.hedera.services.jproto.JKey;
 import com.hedera.services.store.contracts.precompile.Precompile;
 import com.hedera.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.AccountID;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.KeyList;
 import com.hederahashgraph.api.proto.java.Query;
@@ -97,7 +97,7 @@ public class PrecompilePricingUtils {
         this.accessorFactory = accessorFactory;
 
         canonicalOperationCostsInTinyCents = new EnumMap<>(GasCostType.class);
-        final Map<HederaFunctionality, Map<SubType, BigDecimal>> canonicalPrices;
+        final Map<MPCQFunctionality, Map<SubType, BigDecimal>> canonicalPrices;
         try {
             canonicalPrices = assetsLoader.loadCanonicalPrices();
         } catch (final IOException e) {
@@ -180,7 +180,7 @@ public class PrecompilePricingUtils {
     }
 
     public enum GasCostType {
-        UNRECOGNIZED(HederaFunctionality.UNRECOGNIZED, SubType.UNRECOGNIZED),
+        UNRECOGNIZED(MPCQFunctionality.UNRECOGNIZED, SubType.UNRECOGNIZED),
         CRYPTO_CREATE(CryptoCreate, DEFAULT),
         CRYPTO_UPDATE(CryptoUpdate, DEFAULT),
         TRANSFER_HBAR(CryptoTransfer, DEFAULT),
@@ -206,12 +206,12 @@ public class PrecompilePricingUtils {
         WIPE_FUNGIBLE(TokenAccountWipe, TOKEN_FUNGIBLE_COMMON),
         WIPE_NFT(TokenAccountWipe, TOKEN_NON_FUNGIBLE_UNIQUE),
         UPDATE(TokenUpdate, DEFAULT),
-        PRNG(HederaFunctionality.UtilPrng, DEFAULT);
+        PRNG(MPCQFunctionality.UtilPrng, DEFAULT);
 
-        final HederaFunctionality functionality;
+        final MPCQFunctionality functionality;
         final SubType subtype;
 
-        GasCostType(final HederaFunctionality functionality, final SubType subtype) {
+        GasCostType(final MPCQFunctionality functionality, final SubType subtype) {
             this.functionality = functionality;
             this.subtype = subtype;
         }

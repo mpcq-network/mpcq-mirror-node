@@ -2,7 +2,7 @@
 
 package com.hedera.services.fees.pricing;
 
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.*;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.*;
 import static com.hederahashgraph.api.proto.java.SubType.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

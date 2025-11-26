@@ -153,7 +153,7 @@ The following parameters can be used to configure a web3 test:
 | WEB3_TEST_INCLUDE                                         | .\*     | The web3 test scenarios to include                                                                                                                                                |
 
 For k6 to be run we need to deploy the relevant contracts in `test/src/test/resources/solidity` first. For
-that, we can use Hedera SDK. Example for ERC_CONTRACT deployment
+that, we can use MPCQ SDK. Example for ERC_CONTRACT deployment
 with js SDK
 
 ```js

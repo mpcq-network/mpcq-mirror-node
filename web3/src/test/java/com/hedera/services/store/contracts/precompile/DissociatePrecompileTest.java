@@ -8,7 +8,7 @@ import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.sender
 import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.senderAddress;
 import static com.hedera.services.store.contracts.precompile.impl.DissociatePrecompile.decodeDissociate;
 import static com.hedera.services.utils.IdUtils.asToken;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenDissociateFromAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenDissociateFromAccount;
 import static java.util.function.UnaryOperator.identity;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
@@ -18,7 +18,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
 import com.esaulpaugh.headlong.util.Integers;
-import com.hedera.node.app.service.evm.accounts.HederaEvmContractAliases;
+import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
 import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
 import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
 import com.hedera.services.fees.FeeCalculator;
@@ -36,7 +36,7 @@ import com.hedera.services.txn.token.DissociateLogic;
 import com.hedera.services.utils.EntityIdUtils;
 import com.hedera.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.SubType;
 import com.hederahashgraph.api.proto.java.TokenAssociateTransactionBody;
@@ -55,7 +55,7 @@ import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.common.PrecompileContext;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.MessageFrame;
@@ -94,7 +94,7 @@ class DissociatePrecompileTest {
     private Store store;
 
     @Mock
-    private HederaEvmContractAliases hederaEvmContractAliases;
+    private MPCQEvmContractAliases hederaEvmContractAliases;
 
     @Mock
     private EvmInfrastructureFactory evmInfrastructureFactory;
@@ -106,7 +106,7 @@ class DissociatePrecompileTest {
     private MessageFrame frame;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
     private HbarCentExchange exchange;
@@ -151,8 +151,8 @@ class DissociatePrecompileTest {
     @BeforeEach
     void setup() throws IOException {
         syntheticTxnFactory = new SyntheticTxnFactory();
-        final Map<HederaFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
-                new EnumMap<>(HederaFunctionality.class);
+        final Map<MPCQFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
+                new EnumMap<>(MPCQFunctionality.class);
         canonicalPrices.put(TokenDissociateFromAccount, Map.of(SubType.DEFAULT, BigDecimal.valueOf(0)));
         given(assetLoader.loadCanonicalPrices()).willReturn(canonicalPrices);
         final PrecompilePricingUtils pricingUtils =
@@ -194,7 +194,7 @@ class DissociatePrecompileTest {
         givenPricingUtilsContext();
         given(worldUpdater.permissivelyUnaliased(any()))
                 .willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        given(feeCalculator.estimatedGasPriceInTinybars(HederaFunctionality.ContractCall, HTSTestsUtil.timestamp))
+        given(feeCalculator.estimatedGasPriceInTinybars(MPCQFunctionality.ContractCall, HTSTestsUtil.timestamp))
                 .willReturn(1L);
         given(feeCalculator.computeFee(any(), any(), any())).willReturn(mockFeeObject);
         given(mockFeeObject.getServiceFee()).willReturn(1L);
@@ -227,7 +227,7 @@ class DissociatePrecompileTest {
         givenPricingUtilsContext();
         given(worldUpdater.permissivelyUnaliased(any()))
                 .willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        given(feeCalculator.estimatedGasPriceInTinybars(HederaFunctionality.ContractCall, HTSTestsUtil.timestamp))
+        given(feeCalculator.estimatedGasPriceInTinybars(MPCQFunctionality.ContractCall, HTSTestsUtil.timestamp))
                 .willReturn(1L);
         given(feeCalculator.computeFee(any(), any(), any())).willReturn(mockFeeObject);
         given(mockFeeObject.getServiceFee()).willReturn(1L);

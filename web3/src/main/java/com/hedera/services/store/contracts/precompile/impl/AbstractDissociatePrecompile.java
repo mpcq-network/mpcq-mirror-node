@@ -17,7 +17,7 @@ import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import com.hederahashgraph.api.proto.java.TransactionBody;
 import java.util.Objects;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 public abstract class AbstractDissociatePrecompile implements Precompile {
@@ -43,7 +43,7 @@ public abstract class AbstractDissociatePrecompile implements Precompile {
         final var accountId = Id.fromGrpcAccount(
                 Objects.requireNonNull(transactionBody).getTokenDissociate().getAccount());
 
-        final var store = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
+        final var store = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
         final var validity = dissociateLogic.validateSyntax(transactionBody);
         validateTrue(validity == OK, validity);
 

@@ -13,7 +13,7 @@ import com.hedera.services.store.models.Account;
 import com.hedera.services.store.models.FcTokenAllowanceId;
 import com.hedera.services.store.models.Id;
 import com.hedera.services.store.models.UniqueToken;
-import com.hedera.services.store.tokens.HederaTokenStore;
+import com.hedera.services.store.tokens.MPCQTokenStore;
 import com.hedera.services.txns.crypto.AutoCreationLogic;
 import com.hedera.services.utils.EntityNum;
 import com.hederahashgraph.api.proto.java.AccountID;
@@ -49,7 +49,7 @@ public class TransferLogic {
             final List<BalanceChange> changes,
             Store store,
             EntityAddressSequencer ids,
-            HederaTokenStore hederaTokenStore) {
+            MPCQTokenStore hederaTokenStore) {
         var validity = OK;
         for (final var change : changes) {
             // If the change consists of any repeated aliases, replace the alias with the account

@@ -8,7 +8,7 @@ import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.flywaydb.core.api.MigrationVersion;
 import org.hiero.mirror.importer.ImporterProperties;
-import org.hiero.mirror.importer.ImporterProperties.HederaNetwork;
+import org.hiero.mirror.importer.ImporterProperties.MPCQNetwork;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
@@ -18,8 +18,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 public class RecalculatePendingRewardMigration extends AbstractJavaMigration {
 
     static final Map<String, Long> FIRST_NONZERO_REWARD_RATE_TIMESTAMP = Map.of(
-            HederaNetwork.MAINNET, 1666310400447390002L,
-            HederaNetwork.TESTNET, 1659139200596847383L);
+            MPCQNetwork.MAINNET, 1666310400447390002L,
+            MPCQNetwork.TESTNET, 1659139200596847383L);
 
     // Recalculate pending reward since for some staking periods it's accumulated more than one time.
     private static final String MIGRATION_SQL =

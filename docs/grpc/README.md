@@ -6,7 +6,7 @@ The gRPC API provides a protobuf defined interface for interacting with the mirr
 
 ### Subscribe Topic
 
-The Hedera Consensus Service (HCS) provides decentralized consensus on the validity and order of messages submitted to a
+The MPCQ Consensus Service (HCS) provides decentralized consensus on the validity and order of messages submitted to a
 topic on the network and transparency into the history of these events over time. The `subscribeTopic` API allows a
 client to subscribe to a topic and stream messages asynchronously as they arrive at the mirror node. See the protobuf
 [definition](../../protobuf/src/main/proto/com/hedera/mirror/api/proto/consensus_service.proto).

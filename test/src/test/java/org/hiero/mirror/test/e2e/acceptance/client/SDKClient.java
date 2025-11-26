@@ -3,7 +3,7 @@
 package org.hiero.mirror.test.e2e.acceptance.client;
 
 import static org.awaitility.Awaitility.await;
-import static org.hiero.mirror.test.e2e.acceptance.config.AcceptanceTestProperties.HederaNetwork.OTHER;
+import static org.hiero.mirror.test.e2e.acceptance.config.AcceptanceTestProperties.MPCQNetwork.OTHER;
 import static org.hiero.mirror.test.e2e.acceptance.util.TestUtil.HEX_PREFIX;
 
 import com.google.common.base.Stopwatch;

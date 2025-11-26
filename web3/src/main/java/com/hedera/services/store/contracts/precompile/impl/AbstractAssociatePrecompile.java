@@ -19,7 +19,7 @@ import com.hederahashgraph.api.proto.java.Timestamp;
 import com.hederahashgraph.api.proto.java.TransactionBody;
 import java.util.Objects;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
@@ -57,7 +57,7 @@ public abstract class AbstractAssociatePrecompile implements Precompile {
     public RunResult run(MessageFrame frame, final TransactionBody transactionBody) {
         final var accountId = Id.fromGrpcAccount(
                 Objects.requireNonNull(transactionBody).getTokenAssociate().getAccount());
-        final var store = ((HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
+        final var store = ((MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater()).getStore();
 
         // --- Execute the transaction and capture its results ---
 

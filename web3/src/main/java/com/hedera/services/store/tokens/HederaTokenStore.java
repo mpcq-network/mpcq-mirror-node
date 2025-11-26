@@ -76,11 +76,11 @@ import org.hiero.mirror.web3.evm.store.accessor.model.TokenRelationshipKey;
  * <li>Removed SideEffectsTracker and EntityIdSource</li>
  * <li>Use abstraction for the state by introducing {@link Store} interface</li>
  * <li>Use Mirror Node specific properties - {@link MirrorNodeEvmProperties}</li>
- * <li>Copied `usabilityOf` from `HederaLedger`</li>
+ * <li>Copied `usabilityOf` from `MPCQLedger`</li>
  * <li>Renamed `updateLedgers()` to `updateStore()`</li>
  * </ol>
  */
-public class HederaTokenStore {
+public class MPCQTokenStore {
 
     public static final TokenID MISSING_TOKEN = TokenID.getDefaultInstance();
     static final TokenID NO_PENDING_ID = TokenID.getDefaultInstance();
@@ -89,7 +89,7 @@ public class HederaTokenStore {
     private final MirrorNodeEvmProperties mirrorNodeEvmProperties;
     private final Store store;
 
-    public HederaTokenStore(
+    public MPCQTokenStore(
             final OptionValidator validator, final MirrorNodeEvmProperties mirrorNodeEvmProperties, final Store store) {
         this.validator = validator;
         this.mirrorNodeEvmProperties = mirrorNodeEvmProperties;

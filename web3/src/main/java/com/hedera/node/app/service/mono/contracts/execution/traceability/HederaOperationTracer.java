@@ -2,15 +2,15 @@
 
 package com.hedera.node.app.service.mono.contracts.execution.traceability;
 
-import com.hedera.node.app.service.evm.contracts.execution.traceability.HederaEvmOperationTracer;
+import com.hedera.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
 import com.hedera.services.stream.proto.ContractActionType;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**
- * Hedera-specific EVM operation tracer interface with added functionality for contract actions
+ * MPCQ-specific EVM operation tracer interface with added functionality for contract actions
  * traceability.
  */
-public interface HederaOperationTracer extends HederaEvmOperationTracer {
+public interface MPCQOperationTracer extends MPCQEvmOperationTracer {
 
     /**
      * Trace the result from a precompile execution. Must be called after the result has been

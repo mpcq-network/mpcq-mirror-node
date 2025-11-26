@@ -305,7 +305,7 @@ public class ErrataMigration extends RepeatableMigration implements BalanceStrea
     }
 
     private boolean isMainnet() {
-        return ImporterProperties.HederaNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork());
+        return ImporterProperties.MPCQNetwork.MAINNET.equalsIgnoreCase(importerProperties.getNetwork());
     }
 
     private boolean shouldApplyFixedTimeOffset(long consensusTimestamp) {

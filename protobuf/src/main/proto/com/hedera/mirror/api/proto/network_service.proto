@@ -29,7 +29,7 @@ service NetworkService {
 
   /**
    * Query for an address book and return its nodes. The nodes are returned in ascending order by node ID. The
-   * response is not guaranteed to be a byte-for-byte equivalent to the NodeAddress in the Hedera file on
+   * response is not guaranteed to be a byte-for-byte equivalent to the NodeAddress in the MPCQ file on
    * the network since it is reconstructed from a normalized database table.
    */
   rpc getNodes (AddressBookQuery) returns (stream .proto.NodeAddress);

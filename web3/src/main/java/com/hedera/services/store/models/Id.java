@@ -16,7 +16,7 @@ import org.hyperledger.besu.datatypes.Address;
 /**
  * Copied Id type from hedera-services.
  *
- * Represents the id of a Hedera entity (account, topic, token, contract, file, or schedule).
+ * Represents the id of a MPCQ entity (account, topic, token, contract, file, or schedule).
  */
 public record Id(long shard, long realm, long num) {
     public static final Id DEFAULT = new Id(0, 0, 0);

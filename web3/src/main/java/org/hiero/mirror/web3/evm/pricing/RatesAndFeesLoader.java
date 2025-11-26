@@ -2,18 +2,18 @@
 
 package org.hiero.mirror.web3.evm.pricing;
 
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoTransfer;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.EthereumTransaction;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAccountWipe;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAssociateToAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenBurn;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenMint;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoTransfer;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.EthereumTransaction;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAccountWipe;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAssociateToAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenBurn;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenMint;
 import static org.hiero.mirror.web3.evm.config.EvmConfiguration.CACHE_MANAGER_SYSTEM_FILE;
 import static org.hiero.mirror.web3.evm.config.EvmConfiguration.CACHE_NAME_EXCHANGE_RATE;
 import static org.hiero.mirror.web3.evm.config.EvmConfiguration.CACHE_NAME_FEE_SCHEDULE;
-import static org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.HederaNetwork.OTHER;
+import static org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.MPCQNetwork.OTHER;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.hederahashgraph.api.proto.java.CurrentAndNextFeeSchedule;
@@ -50,31 +50,31 @@ public class RatesAndFeesLoader {
             .setCurrentFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(4102444800L))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(CryptoTransfer)
+                            .setMPCQFunctionality(CryptoTransfer)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(EthereumTransaction)
+                            .setMPCQFunctionality(EthereumTransaction)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenAccountWipe)
+                            .setMPCQFunctionality(TokenAccountWipe)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenMint)
+                            .setMPCQFunctionality(TokenMint)
                             .addFees(FeeData.newBuilder()
                                     .setSubType(SubType.TOKEN_NON_FUNGIBLE_UNIQUE)
                                     .setServicedata(FeeComponents.newBuilder()
@@ -92,20 +92,20 @@ public class RatesAndFeesLoader {
                                             .setMin(0)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenBurn)
+                            .setMPCQFunctionality(TokenBurn)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenAssociateToAccount)
+                            .setMPCQFunctionality(TokenAssociateToAccount)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())
                                     .build()))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenCreate)
+                            .setMPCQFunctionality(TokenCreate)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setConstant(7874923918408L)
@@ -147,7 +147,7 @@ public class RatesAndFeesLoader {
             .setNextFeeSchedule(FeeSchedule.newBuilder()
                     .setExpiryTime(TimestampSeconds.newBuilder().setSeconds(2_234_567_890L))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenMint)
+                            .setMPCQFunctionality(TokenMint)
                             .addFees(FeeData.newBuilder()
                                     .setSubType(SubType.TOKEN_NON_FUNGIBLE_UNIQUE)
                                     .setServicedata(FeeComponents.newBuilder()
@@ -165,37 +165,37 @@ public class RatesAndFeesLoader {
                                             .setBpt(160000000000L)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(CryptoTransfer)
+                            .setMPCQFunctionality(CryptoTransfer)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenAccountWipe)
+                            .setMPCQFunctionality(TokenAccountWipe)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenBurn)
+                            .setMPCQFunctionality(TokenBurn)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenAssociateToAccount)
+                            .setMPCQFunctionality(TokenAssociateToAccount)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(ContractCall)
+                            .setMPCQFunctionality(ContractCall)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)
                                             .build())))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(TokenCreate)
+                            .setMPCQFunctionality(TokenCreate)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setConstant(7874923918408L)
@@ -235,7 +235,7 @@ public class RatesAndFeesLoader {
                                             .build())
                                     .build()))
                     .addTransactionFeeSchedule(TransactionFeeSchedule.newBuilder()
-                            .setHederaFunctionality(EthereumTransaction)
+                            .setMPCQFunctionality(EthereumTransaction)
                             .addFees(FeeData.newBuilder()
                                     .setServicedata(FeeComponents.newBuilder()
                                             .setGas(852000)

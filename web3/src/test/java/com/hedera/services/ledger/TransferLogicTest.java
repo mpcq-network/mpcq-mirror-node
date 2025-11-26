@@ -24,7 +24,7 @@ import com.hedera.services.store.models.Account;
 import com.hedera.services.store.models.FcTokenAllowanceId;
 import com.hedera.services.store.models.Id;
 import com.hedera.services.store.models.NftId;
-import com.hedera.services.store.tokens.HederaTokenStore;
+import com.hedera.services.store.tokens.MPCQTokenStore;
 import com.hedera.services.txns.crypto.AutoCreationLogic;
 import com.hedera.services.utils.EntityNum;
 import com.hederahashgraph.api.proto.java.AccountAmount;
@@ -73,7 +73,7 @@ class TransferLogicTest {
     @Mock
     private EntityAddressSequencer ids;
 
-    private HederaTokenStore hederaTokenStore;
+    private MPCQTokenStore hederaTokenStore;
     private AutoCreationLogic autoCreationLogic;
     private MirrorEvmContractAliases mirrorEvmContractAliases;
     private StoreImpl store;
@@ -83,7 +83,7 @@ class TransferLogicTest {
     void setUp() {
         autoCreationLogic = mock(AutoCreationLogic.class);
         mirrorEvmContractAliases = mock(MirrorEvmContractAliases.class);
-        hederaTokenStore = mock(HederaTokenStore.class);
+        hederaTokenStore = mock(MPCQTokenStore.class);
         subject = new TransferLogic(autoCreationLogic, mirrorEvmContractAliases);
         store = mock(StoreImpl.class);
     }

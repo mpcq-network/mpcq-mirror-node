@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- * Representation of a Hedera Token Service file in the network Merkle tree.
+ * Representation of a MPCQ Token Service file in the network Merkle tree.
  * <p>
  * As with all network entities, a file has a unique entity number, which is given along
  * with the network's shard and realm in the form of a shard.realm.number id.

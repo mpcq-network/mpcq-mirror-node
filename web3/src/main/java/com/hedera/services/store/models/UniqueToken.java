@@ -12,7 +12,7 @@ import org.hyperledger.besu.datatypes.Address;
 /**
  * Copied model from hedera-services.
  * <p>
- * Encapsulates the state and operations of a Hedera Unique token.
+ * Encapsulates the state and operations of a MPCQ Unique token.
  *
  * <p>Operations are validated, and throw a {@link InvalidTransactionException} with response code
  * capturing the failure when one occurs. This model is used as a value in a special state, used for speculative write

@@ -47,7 +47,7 @@ class HistoricalAccountInfoMigrationTest extends ImporterIntegrationTest {
     void before() {
         network = importerProperties.getNetwork();
         importerProperties.setImportHistoricalAccountInfo(true);
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.MAINNET);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.MAINNET);
     }
 
     @AfterEach
@@ -131,7 +131,7 @@ class HistoricalAccountInfoMigrationTest extends ImporterIntegrationTest {
 
     @Test
     void notMainnet() throws Exception {
-        importerProperties.setNetwork(ImporterProperties.HederaNetwork.DEMO);
+        importerProperties.setNetwork(ImporterProperties.MPCQNetwork.DEMO);
         historicalAccountInfoMigration.doMigrate();
         assertThat(entityRepository.count()).isZero();
     }

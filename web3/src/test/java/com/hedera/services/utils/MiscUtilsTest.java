@@ -5,31 +5,31 @@ package com.hedera.services.utils;
 import static com.hedera.services.utils.MiscUtils.asUsableFcKey;
 import static com.hedera.services.utils.MiscUtils.functionOf;
 import static com.hedera.services.utils.MiscUtils.perm64;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCall;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractDelete;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.ContractUpdate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoApproveAllowance;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoDelete;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoTransfer;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.CryptoUpdate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.EthereumTransaction;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.Freeze;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAccountWipe;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenAssociateToAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenBurn;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenCreate;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenDelete;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenDissociateFromAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenFreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenGrantKycToAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenMint;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenPause;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenRevokeKycFromAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnfreezeAccount;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUnpause;
-import static com.hederahashgraph.api.proto.java.HederaFunctionality.TokenUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractDelete;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoApproveAllowance;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoDelete;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoTransfer;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoUpdate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.EthereumTransaction;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.Freeze;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAccountWipe;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAssociateToAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenBurn;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenCreate;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenDelete;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenDissociateFromAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenFreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenGrantKycToAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenMint;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenPause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenRevokeKycFromAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnfreezeAccount;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnpause;
+import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUpdate;
 import static com.hederahashgraph.api.proto.java.ResponseType.ANSWER_ONLY;
 import static org.hiero.base.utility.CommonUtils.unhex;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -49,7 +49,7 @@ import com.hederahashgraph.api.proto.java.CryptoTransferTransactionBody;
 import com.hederahashgraph.api.proto.java.CryptoUpdateTransactionBody;
 import com.hederahashgraph.api.proto.java.EthereumTransactionBody;
 import com.hederahashgraph.api.proto.java.FreezeTransactionBody;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.KeyList;
 import com.hederahashgraph.api.proto.java.QueryHeader;
@@ -144,8 +144,8 @@ class MiscUtilsTest {
 
     @Test
     void getsExpectedTxnFunctionality() {
-        final Map<HederaFunctionality, BodySetter<? extends GeneratedMessage, Builder>> setters =
-                new EnumMap<>(HederaFunctionality.class) {
+        final Map<MPCQFunctionality, BodySetter<? extends GeneratedMessage, Builder>> setters =
+                new EnumMap<>(MPCQFunctionality.class) {
                     {
                         put(ContractCall, new BodySetter<>(ContractCallTransactionBody.class));
                         put(ContractCreate, new BodySetter<>(ContractCreateTransactionBody.class));
@@ -182,7 +182,7 @@ class MiscUtilsTest {
                 final var input = txn.build();
                 assertEquals(function, functionOf(input));
             } catch (final Exception uhf) {
-                Assertions.fail("Failed HederaFunctionality check :: " + uhf.getMessage());
+                Assertions.fail("Failed MPCQFunctionality check :: " + uhf.getMessage());
             }
         });
     }

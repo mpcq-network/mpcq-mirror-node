@@ -7,7 +7,7 @@ import com.hedera.services.hapi.fees.usage.SigUsage;
 import com.hedera.services.hapi.fees.usage.crypto.CryptoTransferMeta;
 import com.hedera.services.txns.span.ExpandHandleSpanMapAccessor;
 import com.hederahashgraph.api.proto.java.AccountID;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SignatureMap;
 import com.hederahashgraph.api.proto.java.SubType;
 import com.hederahashgraph.api.proto.java.Transaction;
@@ -16,7 +16,7 @@ import com.hederahashgraph.api.proto.java.TransactionID;
 import java.util.Map;
 
 /**
- * Defines a type that gives access to several commonly referenced parts of a Hedera Services gRPC
+ * Defines a type that gives access to several commonly referenced parts of a MPCQ Services gRPC
  * {@link Transaction}.
  */
 public interface TxnAccessor {
@@ -33,7 +33,7 @@ public interface TxnAccessor {
 
     TransactionID getTxnId();
 
-    HederaFunctionality getFunction();
+    MPCQFunctionality getFunction();
 
     SigUsage usageGiven(int numPayerKeys);
 

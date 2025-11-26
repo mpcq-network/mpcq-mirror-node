@@ -3,7 +3,7 @@
 package com.hedera.services.fees.pricing;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SubType;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class AssetsLoader {
     private static final String CANONICAL_PRICES_RESOURCE = "canonical-prices.json";
-    private Map<HederaFunctionality, Map<SubType, BigDecimal>> cachedCanonicalPrices = null;
+    private Map<MPCQFunctionality, Map<SubType, BigDecimal>> cachedCanonicalPrices = null;
 
     /**
      * Loads a map that, for each supported operation, gives the desired price in USD for the "base
@@ -23,7 +23,7 @@ public class AssetsLoader {
      * @throws IOException if the backing JSON resource cannot be loaded
      */
     @SuppressWarnings("unchecked")
-    public Map<HederaFunctionality, Map<SubType, BigDecimal>> loadCanonicalPrices() throws IOException {
+    public Map<MPCQFunctionality, Map<SubType, BigDecimal>> loadCanonicalPrices() throws IOException {
         if (cachedCanonicalPrices != null) {
             return cachedCanonicalPrices;
         }
@@ -31,10 +31,10 @@ public class AssetsLoader {
             final var om = new ObjectMapper();
             final var prices = om.readValue(fin, Map.class);
 
-            final Map<HederaFunctionality, Map<SubType, BigDecimal>> typedPrices =
-                    new EnumMap<>(HederaFunctionality.class);
+            final Map<MPCQFunctionality, Map<SubType, BigDecimal>> typedPrices =
+                    new EnumMap<>(MPCQFunctionality.class);
             prices.forEach((funName, priceMap) -> {
-                final var function = HederaFunctionality.valueOf((String) funName);
+                final var function = MPCQFunctionality.valueOf((String) funName);
                 final Map<SubType, BigDecimal> scopedPrices = new EnumMap<>(SubType.class);
                 ((Map) priceMap).forEach((typeName, price) -> {
                     final var type = SubType.valueOf((String) typeName);

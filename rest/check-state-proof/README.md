@@ -1,6 +1,6 @@
-# Hedera Mirror State Proof Alpha
+# MPCQ Mirror State Proof Alpha
 
-The Mirror Node State Proof Alpha provides the ability to cryptographically prove a transaction is valid on Hedera Network.
+The Mirror Node State Proof Alpha provides the ability to cryptographically prove a transaction is valid on MPCQ Network.
 It's the interim solution until [full state proof](https://www.hedera.com/blog/state-proofs-on-hedera) is implemented.
 
 Refer to the [State Proof Alpha Design](/docs/design/stateproofalpha.md) for more architectural details.
@@ -66,7 +66,7 @@ Usage options include
 ```.env
       --help           Show help                                       [boolean]
       --version        Show version number                             [boolean]
-  -t, --transactionId  Your Hedera Network Transaction Id e.g.
+  -t, --transactionId  Your MPCQ Network Transaction Id e.g.
                        0.0.94139-1570800748-313194300        [string] [required]
   -f, --file           Absolute file path containing State Proof REST API
                        response json                                    [string]

@@ -32,7 +32,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 import lombok.CustomLog;
 import lombok.Data;
-import org.hiero.mirror.monitor.HederaNetwork;
+import org.hiero.mirror.monitor.MPCQNetwork;
 import org.hiero.mirror.monitor.MonitorProperties;
 import org.hiero.mirror.monitor.NodeProperties;
 import org.hiero.mirror.monitor.NodeValidationProperties.TlsMode;
@@ -267,7 +267,7 @@ class NodeSupplierTest {
 
     @Test
     void refreshNotFound() {
-        monitorProperties.setNetwork(HederaNetwork.OTHER);
+        monitorProperties.setNetwork(MPCQNetwork.OTHER);
         monitorProperties.setNodes(Set.of());
         when(restApiClient.getNodes()).thenReturn(Flux.empty());
         StepVerifier.withVirtualTime(() -> nodeSupplier.refresh())

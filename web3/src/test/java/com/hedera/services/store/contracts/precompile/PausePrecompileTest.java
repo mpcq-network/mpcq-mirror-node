@@ -39,7 +39,7 @@ import org.hiero.mirror.common.CommonProperties;
 import org.hiero.mirror.web3.common.PrecompileContext;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Wei;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.junit.jupiter.api.AfterEach;
@@ -72,7 +72,7 @@ class PausePrecompileTest {
     private SyntheticTxnFactory syntheticTxnFactory;
 
     @Mock
-    private HederaEvmStackedWorldStateUpdater worldUpdater;
+    private MPCQEvmStackedWorldStateUpdater worldUpdater;
 
     @Mock
     private FeeCalculator feeCalculator;
@@ -140,9 +140,9 @@ class PausePrecompileTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        final Map<HederaFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
-                new EnumMap<>(HederaFunctionality.class);
-        canonicalPrices.put(HederaFunctionality.TokenPause, Map.of(SubType.DEFAULT, BigDecimal.valueOf(0)));
+        final Map<MPCQFunctionality, Map<SubType, BigDecimal>> canonicalPrices =
+                new EnumMap<>(MPCQFunctionality.class);
+        canonicalPrices.put(MPCQFunctionality.TokenPause, Map.of(SubType.DEFAULT, BigDecimal.valueOf(0)));
         given(assetLoader.loadCanonicalPrices()).willReturn(canonicalPrices);
         final PrecompilePricingUtils precompilePricingUtils =
                 new PrecompilePricingUtils(assetLoader, exchange, feeCalculator, resourceCosts, accessorFactory);
@@ -167,7 +167,7 @@ class PausePrecompileTest {
         givenFungibleFrameContext();
         givenPricingUtilsContext();
         given(worldUpdater.getStore()).willReturn(store);
-        given(feeCalculator.estimatedGasPriceInTinybars(HederaFunctionality.ContractCall, timestamp))
+        given(feeCalculator.estimatedGasPriceInTinybars(MPCQFunctionality.ContractCall, timestamp))
                 .willReturn(1L);
         given(feeCalculator.computeFee(any(), any(), any())).willReturn(mockFeeObject);
         given(pauseLogic.validateSyntax(any())).willReturn(OK);

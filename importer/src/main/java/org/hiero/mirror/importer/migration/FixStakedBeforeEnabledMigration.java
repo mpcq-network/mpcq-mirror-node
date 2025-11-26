@@ -78,7 +78,7 @@ public class FixStakedBeforeEnabledMigration extends AbstractJavaMigration {
     @Override
     protected void doMigrate() {
         var hederaNetwork = importerProperties.getNetwork();
-        if (!ImporterProperties.HederaNetwork.MAINNET.equalsIgnoreCase(hederaNetwork)) {
+        if (!ImporterProperties.MPCQNetwork.MAINNET.equalsIgnoreCase(hederaNetwork)) {
             return;
         }
 

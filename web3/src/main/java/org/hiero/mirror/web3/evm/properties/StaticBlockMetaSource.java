@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.evm.properties;
 
-import com.hedera.node.app.service.contract.impl.hevm.HederaEvmBlocks;
-import com.hedera.node.app.service.evm.contracts.execution.HederaBlockValues;
+import com.hedera.node.app.service.contract.impl.hevm.MPCQEvmBlocks;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQBlockValues;
 import jakarta.inject.Named;
 import java.time.Instant;
 import java.util.Objects;
@@ -18,7 +18,7 @@ import org.hyperledger.besu.evm.frame.MessageFrame;
 
 @Named
 @RequiredArgsConstructor
-public class StaticBlockMetaSource implements HederaEvmBlocks {
+public class StaticBlockMetaSource implements MPCQEvmBlocks {
     private final RecordFileRepository recordFileRepository;
 
     @Override
@@ -37,7 +37,7 @@ public class StaticBlockMetaSource implements HederaEvmBlocks {
                     .findLatest()
                     .orElseThrow(() -> new MissingResultException("No record file available."));
         }
-        return new HederaBlockValues(
+        return new MPCQBlockValues(
                 gasLimit, recordFile.getIndex(), Instant.ofEpochSecond(0, recordFile.getConsensusStart()));
     }
 

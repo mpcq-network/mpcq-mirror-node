@@ -15,7 +15,7 @@ import com.hedera.hapi.node.base.ScheduleID;
 import com.hedera.hapi.node.base.TokenID;
 import com.hedera.hapi.node.base.TopicID;
 import com.hedera.node.app.service.entityid.EntityIdFactory;
-import com.hedera.node.config.data.HederaConfig;
+import com.hedera.node.config.data.MPCQConfig;
 import com.hedera.pbj.runtime.io.buffer.Bytes;
 import com.swirlds.config.api.Configuration;
 import edu.umd.cs.findbugs.annotations.NonNull;
@@ -26,7 +26,7 @@ public class AppEntityIdFactory implements EntityIdFactory {
 
     public AppEntityIdFactory(@NonNull final Configuration bootstrapConfig) {
         requireNonNull(bootstrapConfig);
-        final var hederaConfig = bootstrapConfig.getConfigData(HederaConfig.class);
+        final var hederaConfig = bootstrapConfig.getConfigData(MPCQConfig.class);
         this.shard = hederaConfig.shard();
         this.realm = hederaConfig.realm();
     }

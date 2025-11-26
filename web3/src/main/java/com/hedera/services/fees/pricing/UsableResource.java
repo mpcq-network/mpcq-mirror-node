@@ -2,7 +2,7 @@
 
 package com.hedera.services.fees.pricing;
 
-/** Represents the eight kinds of resources that may be consumed in the Hedera network. */
+/** Represents the eight kinds of resources that may be consumed in the MPCQ network. */
 public enum UsableResource {
     /** Various types of fixed overhead. */
     CONSTANT,

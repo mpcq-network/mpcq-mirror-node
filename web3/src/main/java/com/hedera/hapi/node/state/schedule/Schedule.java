@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- * Representation of a Hedera Schedule entry in the network Merkle tree.<br/>
+ * Representation of a MPCQ Schedule entry in the network Merkle tree.<br/>
  * A Schedule represents a request to run a transaction _at some future time_
  * either when the `Schedule` expires (if long term schedules are enabled and
  * `wait_for_expiry` is true) or as soon as the `Schedule` has gathered

@@ -60,7 +60,7 @@ import java.util.TreeMap;
 import java.util.function.UnaryOperator;
 import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.evm.store.Store.OnMissing;
-import org.hiero.mirror.web3.evm.store.contract.HederaEvmStackedWorldStateUpdater;
+import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 import org.hyperledger.besu.evm.log.Log;
@@ -163,7 +163,7 @@ public class ApprovePrecompile extends AbstractWritePrecompile {
     @Override
     public RunResult run(final MessageFrame frame, TransactionBody transactionBody) {
         Objects.requireNonNull(transactionBody, "`body` method should be called before `run`");
-        final var updater = (HederaEvmStackedWorldStateUpdater) frame.getWorldUpdater();
+        final var updater = (MPCQEvmStackedWorldStateUpdater) frame.getWorldUpdater();
         final var store = updater.getStore();
         final var senderAddress = unalias(frame.getSenderAddress(), updater);
 
@@ -351,7 +351,7 @@ public class ApprovePrecompile extends AbstractWritePrecompile {
             final Address senderAddress,
             final Address spenderAddress,
             final long amount,
-            final HederaEvmStackedWorldStateUpdater updater) {
+            final MPCQEvmStackedWorldStateUpdater updater) {
         return EncodingFacade.LogBuilder.logBuilder()
                 .forLogger(logger)
                 .forEventSignature(AbiConstants.APPROVAL_EVENT)
@@ -366,7 +366,7 @@ public class ApprovePrecompile extends AbstractWritePrecompile {
             final Address senderAddress,
             final Address spenderAddress,
             final long serialNumber,
-            final HederaEvmStackedWorldStateUpdater updater) {
+            final MPCQEvmStackedWorldStateUpdater updater) {
         return EncodingFacade.LogBuilder.logBuilder()
                 .forLogger(logger)
                 .forEventSignature(AbiConstants.APPROVAL_EVENT)
@@ -380,7 +380,7 @@ public class ApprovePrecompile extends AbstractWritePrecompile {
             final Address logger,
             final Address senderAddress,
             final long serialNumber,
-            final HederaEvmStackedWorldStateUpdater updater) {
+            final MPCQEvmStackedWorldStateUpdater updater) {
         return EncodingFacade.LogBuilder.logBuilder()
                 .forLogger(logger)
                 .forEventSignature(AbiConstants.APPROVAL_EVENT)

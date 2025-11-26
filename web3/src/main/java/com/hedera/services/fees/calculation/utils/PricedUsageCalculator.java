@@ -11,7 +11,7 @@ import com.hedera.services.jproto.JKey;
 import com.hedera.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeData;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 
 public class PricedUsageCalculator {
     private final UsageAccumulator handleScopedAccumulator = new UsageAccumulator();
@@ -24,7 +24,7 @@ public class PricedUsageCalculator {
         this.calculator = calculator;
     }
 
-    public boolean supports(final HederaFunctionality function) {
+    public boolean supports(final MPCQFunctionality function) {
         return accessorBasedUsages.supports(function);
     }
 

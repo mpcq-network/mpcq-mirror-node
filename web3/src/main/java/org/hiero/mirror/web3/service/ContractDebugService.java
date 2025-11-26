@@ -4,7 +4,7 @@ package org.hiero.mirror.web3.service;
 
 import static org.hiero.mirror.web3.evm.exception.ResponseCodeUtil.getStatusOrDefault;
 
-import com.hedera.node.app.service.evm.contracts.execution.HederaEvmTransactionProcessingResult;
+import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.inject.Named;
 import jakarta.validation.Valid;
@@ -66,7 +66,7 @@ public class ContractDebugService extends ContractCallService {
 
     @Override
     protected void validateResult(
-            final HederaEvmTransactionProcessingResult txnResult, final CallServiceParameters params) {
+            final MPCQEvmTransactionProcessingResult txnResult, final CallServiceParameters params) {
         try {
             super.validateResult(txnResult, params);
         } catch (MirrorEvmTransactionException e) {

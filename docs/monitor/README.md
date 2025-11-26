@@ -235,7 +235,7 @@ subscribers for that scenario.
 ## REST API
 
 The monitor REST API provides a way to query the status of the scenarios currently publishing and subscribing to various
-Hiero APIs. The monitor [OpenAPI](https://www.openapis.org) specification is available at `/api/v1/docs/openapi`
+MPCQ APIs. The monitor [OpenAPI](https://www.openapis.org) specification is available at `/api/v1/docs/openapi`
 and `/api/v1/docs/openapi.yaml`. The [Swagger UI](https://swagger.io/tools/swagger-ui) is also available
 at `/api/v1/docs`. This UI provides a form of documentation, and an interactive way to explore the monitor's REST API.
 

@@ -5,10 +5,10 @@ package com.hedera.node.app.service.evm.contracts.execution;
 import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
 
 import com.hedera.hapi.node.base.SemanticVersion;
-import com.hedera.node.app.service.contract.impl.hevm.HederaEvmBlocks;
-import com.hedera.node.app.service.evm.contracts.execution.traceability.HederaEvmOperationTracer;
-import com.hedera.node.app.service.evm.store.contracts.HederaEvmMutableWorldState;
-import com.hederahashgraph.api.proto.java.HederaFunctionality;
+import com.hedera.node.app.service.contract.impl.hevm.MPCQEvmBlocks;
+import com.hedera.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
+import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
+import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import jakarta.inject.Provider;
 import java.time.Instant;
 import java.util.Map;
@@ -34,30 +34,30 @@ import org.hyperledger.besu.evm.tracing.OperationTracer;
  * <p>
  * All class fields are final and immutable and some of them moved in the execute method.
  */
-public class HederaEvmTxProcessor {
+public class MPCQEvmTxProcessor {
     private static final int MAX_STACK_SIZE = 1024;
 
-    protected final HederaEvmBlocks blockMetaSource;
-    protected final HederaEvmMutableWorldState worldState;
+    protected final MPCQEvmBlocks blockMetaSource;
+    protected final MPCQEvmMutableWorldState worldState;
 
     protected final GasCalculator gasCalculator;
     // FEATURE WORK to be covered by #3949
     protected final PricesAndFeesProvider livePricesSource;
     protected final Map<SemanticVersion, Provider<MessageCallProcessor>> mcps;
     protected final Map<SemanticVersion, Provider<ContractCreationProcessor>> ccps;
-    protected final Map<TracerType, Provider<HederaEvmOperationTracer>> tracerMap;
+    protected final Map<TracerType, Provider<MPCQEvmOperationTracer>> tracerMap;
     protected final EvmProperties dynamicProperties;
 
     @SuppressWarnings("java:S107")
-    protected HederaEvmTxProcessor(
-            final HederaEvmMutableWorldState worldState,
+    protected MPCQEvmTxProcessor(
+            final MPCQEvmMutableWorldState worldState,
             final PricesAndFeesProvider livePricesSource,
             final EvmProperties dynamicProperties,
             final GasCalculator gasCalculator,
             final Map<SemanticVersion, Provider<MessageCallProcessor>> mcps,
             final Map<SemanticVersion, Provider<ContractCreationProcessor>> ccps,
-            final HederaEvmBlocks blockMetaSource,
-            final Map<TracerType, Provider<HederaEvmOperationTracer>> tracerMap) {
+            final MPCQEvmBlocks blockMetaSource,
+            final Map<TracerType, Provider<MPCQEvmOperationTracer>> tracerMap) {
         this.worldState = worldState;
         this.livePricesSource = livePricesSource;
         this.dynamicProperties = dynamicProperties;
@@ -82,7 +82,7 @@ public class HederaEvmTxProcessor {
      * @param mirrorReceiver the mirror form of the receiving {@link Address}; or the newly created address
      */
     @SuppressWarnings("java:S107")
-    public HederaEvmTransactionProcessingResult execute(
+    public MPCQEvmTransactionProcessingResult execute(
             final Address sender,
             final Address receiver,
             final long gasPrice,
@@ -120,7 +120,7 @@ public class HederaEvmTxProcessor {
                 .miningBeneficiary(dynamicProperties.fundingAccountAddress())
                 .blockHashLookup(blockMetaSource::blockHashOf)
                 .contextVariables(Map.of(
-                        "HederaFunctionality",
+                        "MPCQFunctionality",
                         getFunctionType(contractCreation),
                         PRECOMPILE_CONTEXT,
                         precompileContext,
@@ -129,7 +129,7 @@ public class HederaEvmTxProcessor {
 
         final var initialFrame = buildInitialFrame(commonInitialFrame, receiver, payload, value, codeFactory);
         final var messageFrameStack = initialFrame.getMessageFrameStack();
-        HederaEvmOperationTracer tracer = this.getTracer(tracerType);
+        MPCQEvmOperationTracer tracer = this.getTracer(tracerType);
 
         tracer.init(initialFrame);
 
@@ -145,10 +145,10 @@ public class HederaEvmTxProcessor {
 
         // Externalise result
         if (initialFrame.getState() == MessageFrame.State.COMPLETED_SUCCESS) {
-            return HederaEvmTransactionProcessingResult.successful(
+            return MPCQEvmTransactionProcessingResult.successful(
                     initialFrame.getLogs(), gasUsed, sbhRefund, gasPrice, initialFrame.getOutputData(), mirrorReceiver);
         } else {
-            return HederaEvmTransactionProcessingResult.failed(
+            return MPCQEvmTransactionProcessingResult.failed(
                     gasUsed,
                     sbhRefund,
                     gasPrice,
@@ -174,11 +174,11 @@ public class HederaEvmTxProcessor {
     }
 
     protected long gasPriceTinyBarsGiven(final Instant consensusTime) {
-        return livePricesSource.currentGasPrice(consensusTime, HederaFunctionality.EthereumTransaction);
+        return livePricesSource.currentGasPrice(consensusTime, MPCQFunctionality.EthereumTransaction);
     }
 
-    protected HederaFunctionality getFunctionType(final boolean contractCreation) {
-        return contractCreation ? HederaFunctionality.ContractCreate : HederaFunctionality.ContractCall;
+    protected MPCQFunctionality getFunctionType(final boolean contractCreation) {
+        return contractCreation ? MPCQFunctionality.ContractCreate : MPCQFunctionality.ContractCall;
     }
 
     @SuppressWarnings("java:S1172")
@@ -205,7 +205,7 @@ public class HederaEvmTxProcessor {
         };
     }
 
-    private HederaEvmOperationTracer getTracer(TracerType tracerType) {
+    private MPCQEvmOperationTracer getTracer(TracerType tracerType) {
         return tracerMap.get(tracerType).get();
     }
 }

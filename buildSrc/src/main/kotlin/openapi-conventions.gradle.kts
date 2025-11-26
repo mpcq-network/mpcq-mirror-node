@@ -13,7 +13,7 @@ openApiGenerate {
         mapOf(
             "developerEmail" to "mirrornode@hedera.com",
             "developerName" to "Mirror Node Team",
-            "developerOrganization" to "Hiero",
+            "developerOrganization" to "MPCQ",
             "developerOrganizationUrl" to "https://github.com/hiero-ledger/hiero-mirror-node",
             "interfaceOnly" to "true",
             "licenseName" to "Apache License 2.0",

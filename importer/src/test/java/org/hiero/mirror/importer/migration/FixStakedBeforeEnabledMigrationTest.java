@@ -13,7 +13,7 @@ import org.hiero.mirror.common.domain.entity.Entity;
 import org.hiero.mirror.importer.DisableRepeatableSqlMigration;
 import org.hiero.mirror.importer.EnabledIfV1;
 import org.hiero.mirror.importer.ImporterProperties;
-import org.hiero.mirror.importer.ImporterProperties.HederaNetwork;
+import org.hiero.mirror.importer.ImporterProperties.MPCQNetwork;
 import org.hiero.mirror.importer.util.Utility;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Tag;
@@ -36,7 +36,7 @@ class FixStakedBeforeEnabledMigrationTest extends AbstractStakingMigrationTest {
 
     @AfterEach
     void teardown() {
-        importerProperties.setNetwork(HederaNetwork.TESTNET);
+        importerProperties.setNetwork(MPCQNetwork.TESTNET);
     }
 
     @Test
@@ -70,7 +70,7 @@ class FixStakedBeforeEnabledMigrationTest extends AbstractStakingMigrationTest {
     void otherNetwork() {
         // given
         setupForMainnet();
-        importerProperties.setNetwork(HederaNetwork.OTHER);
+        importerProperties.setNetwork(MPCQNetwork.OTHER);
         var entity = domainBuilder
                 .entity()
                 .customize(e -> e.stakedNodeId(0L)
@@ -245,7 +245,7 @@ class FixStakedBeforeEnabledMigrationTest extends AbstractStakingMigrationTest {
     }
 
     private void setupForMainnet() {
-        importerProperties.setNetwork(HederaNetwork.MAINNET);
+        importerProperties.setNetwork(MPCQNetwork.MAINNET);
         lastHapi26EpochDay = Utility.getEpochDay(LAST_HAPI_26_RECORD_FILE_CONSENSUS_END_MAINNET);
         // Persist last Hapi version 26 RecordFile
         var recordFile = domainBuilder
