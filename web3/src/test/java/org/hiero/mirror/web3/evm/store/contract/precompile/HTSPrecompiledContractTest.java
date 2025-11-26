@@ -2,10 +2,10 @@
 
 package org.hiero.mirror.web3.evm.store.contract.precompile;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.AbiConstants.ABI_ID_ERC_NAME;
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_REDIRECT_FOR_TOKEN;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
-import static com.hedera.services.store.contracts.precompile.codec.EncodingFacade.SUCCESS_RESULT;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.AbiConstants.ABI_ID_ERC_NAME;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_REDIRECT_FOR_TOKEN;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
+import static com.mpcq.services.store.contracts.precompile.codec.EncodingFacade.SUCCESS_RESULT;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
 import static org.hyperledger.besu.datatypes.Address.ALTBN128_ADD;
@@ -16,18 +16,18 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
 import com.esaulpaugh.headlong.util.Integers;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.RedirectViewExecutor;
-import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.ViewExecutor;
-import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.ViewGasCalculator;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.store.contracts.precompile.HTSPrecompiledContract;
-import com.hedera.services.store.contracts.precompile.PrecompileMapper;
-import com.hedera.services.store.contracts.precompile.codec.EncodingFacade;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txns.validation.OptionValidator;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.proxy.RedirectViewExecutor;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.proxy.ViewExecutor;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.proxy.ViewGasCalculator;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.store.contracts.precompile.HTSPrecompiledContract;
+import com.mpcq.services.store.contracts.precompile.PrecompileMapper;
+import com.mpcq.services.store.contracts.precompile.codec.EncodingFacade;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txns.validation.OptionValidator;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TransactionBody;
 import java.util.ArrayDeque;

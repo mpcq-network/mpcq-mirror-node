@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.impl;
+package com.mpcq.services.store.contracts.precompile.impl;
 
-import static com.hedera.services.store.contracts.precompile.impl.SetApprovalForAllPrecompile.decodeSetApprovalForAll;
+import static com.mpcq.services.store.contracts.precompile.impl.SetApprovalForAllPrecompile.decodeSetApprovalForAll;
 import static java.util.function.UnaryOperator.identity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

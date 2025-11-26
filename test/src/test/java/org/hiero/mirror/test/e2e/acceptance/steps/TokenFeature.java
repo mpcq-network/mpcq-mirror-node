@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.test.e2e.acceptance.steps;
 
-import static com.hedera.hashgraph.sdk.Status.CURRENT_TREASURY_STILL_OWNS_NFTS;
+import static com.mpcq.hashgraph.sdk.Status.CURRENT_TREASURY_STILL_OWNS_NFTS;
 import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hiero.mirror.rest.model.TransactionTypes.CRYPTOTRANSFER;
@@ -11,19 +11,19 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.CustomFee;
-import com.hedera.hashgraph.sdk.CustomFixedFee;
-import com.hedera.hashgraph.sdk.CustomFractionalFee;
-import com.hedera.hashgraph.sdk.NftId;
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.PublicKey;
-import com.hedera.hashgraph.sdk.ReceiptStatusException;
-import com.hedera.hashgraph.sdk.TokenId;
-import com.hedera.hashgraph.sdk.TokenType;
-import com.hedera.hashgraph.sdk.TransactionReceipt;
-import com.hedera.hashgraph.sdk.proto.TokenFreezeStatus;
-import com.hedera.hashgraph.sdk.proto.TokenKycStatus;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.CustomFee;
+import com.mpcq.hashgraph.sdk.CustomFixedFee;
+import com.mpcq.hashgraph.sdk.CustomFractionalFee;
+import com.mpcq.hashgraph.sdk.NftId;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.PublicKey;
+import com.mpcq.hashgraph.sdk.ReceiptStatusException;
+import com.mpcq.hashgraph.sdk.TokenId;
+import com.mpcq.hashgraph.sdk.TokenType;
+import com.mpcq.hashgraph.sdk.TransactionReceipt;
+import com.mpcq.hashgraph.sdk.proto.TokenFreezeStatus;
+import com.mpcq.hashgraph.sdk.proto.TokenKycStatus;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

@@ -4,9 +4,9 @@ package org.hiero.mirror.web3.state.core;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.state.token.Account;
-import com.hedera.node.app.service.token.TokenService;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.state.token.Account;
+import com.mpcq.node.app.service.token.TokenService;
 import java.util.Map;
 import org.hiero.mirror.web3.state.keyvalue.AccountReadableKVState;
 import org.hiero.mirror.web3.state.keyvalue.AliasesReadableKVState;

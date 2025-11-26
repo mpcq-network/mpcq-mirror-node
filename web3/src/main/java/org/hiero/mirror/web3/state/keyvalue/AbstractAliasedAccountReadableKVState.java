@@ -2,23 +2,23 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.services.utils.EntityIdUtils.toAccountId;
-import static com.hedera.services.utils.EntityIdUtils.toTokenId;
+import static com.mpcq.services.utils.EntityIdUtils.toAccountId;
+import static com.mpcq.services.utils.EntityIdUtils.toTokenId;
 import static org.hiero.mirror.common.domain.entity.EntityType.CONTRACT;
 import static org.hiero.mirror.web3.state.Utils.DEFAULT_AUTO_RENEW_PERIOD;
 import static org.hiero.mirror.web3.state.Utils.EMPTY_KEY_LIST;
 import static org.hiero.mirror.web3.state.Utils.parseKey;
 
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.state.token.Account;
-import com.hedera.hapi.node.state.token.AccountApprovalForAllAllowance;
-import com.hedera.hapi.node.state.token.AccountCryptoAllowance;
-import com.hedera.hapi.node.state.token.AccountFungibleTokenAllowance;
-import com.hedera.node.app.service.token.TokenService;
-import com.hedera.node.config.data.ContractsConfig;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.state.token.Account;
+import com.mpcq.hapi.node.state.token.AccountApprovalForAllAllowance;
+import com.mpcq.hapi.node.state.token.AccountCryptoAllowance;
+import com.mpcq.hapi.node.state.token.AccountFungibleTokenAllowance;
+import com.mpcq.node.app.service.token.TokenService;
+import com.mpcq.node.config.data.ContractsConfig;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.services.utils.EntityIdUtils;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;

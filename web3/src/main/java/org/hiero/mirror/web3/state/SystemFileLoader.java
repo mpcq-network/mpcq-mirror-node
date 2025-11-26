@@ -2,22 +2,22 @@
 
 package org.hiero.mirror.web3.state;
 
-import static com.hedera.services.utils.EntityIdUtils.toEntityId;
+import static com.mpcq.services.utils.EntityIdUtils.toEntityId;
 import static org.hiero.mirror.web3.evm.config.EvmConfiguration.CACHE_MANAGER_SYSTEM_FILE_MODULARIZED;
 import static org.hiero.mirror.web3.evm.config.EvmConfiguration.CACHE_NAME_MODULARIZED;
 
 import com.google.protobuf.ByteString;
-import com.hedera.hapi.node.base.CurrentAndNextFeeSchedule;
-import com.hedera.hapi.node.base.FileID;
-import com.hedera.hapi.node.base.NodeAddressBook;
-import com.hedera.hapi.node.state.file.File;
-import com.hedera.hapi.node.transaction.ExchangeRateSet;
-import com.hedera.hapi.node.transaction.ThrottleDefinitions;
-import com.hedera.node.app.service.file.impl.schemas.V0490FileSchema;
-import com.hedera.node.config.data.EntitiesConfig;
-import com.hedera.pbj.runtime.Codec;
-import com.hedera.pbj.runtime.ParseException;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.CurrentAndNextFeeSchedule;
+import com.mpcq.hapi.node.base.FileID;
+import com.mpcq.hapi.node.base.NodeAddressBook;
+import com.mpcq.hapi.node.state.file.File;
+import com.mpcq.hapi.node.transaction.ExchangeRateSet;
+import com.mpcq.hapi.node.transaction.ThrottleDefinitions;
+import com.mpcq.node.app.service.file.impl.schemas.V0490FileSchema;
+import com.mpcq.node.config.data.EntitiesConfig;
+import com.mpcq.pbj.runtime.Codec;
+import com.mpcq.pbj.runtime.ParseException;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.NodeAddress;
 import com.hederahashgraph.api.proto.java.ServiceEndpoint;

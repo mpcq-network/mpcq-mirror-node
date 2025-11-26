@@ -1,28 +1,28 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.token;
+package com.mpcq.hapi.node.state.token;
 
-import static com.hedera.pbj.runtime.ProtoTestTools.BOOLEAN_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.BYTES_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.INTEGER_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.STRING_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.generateListArguments;
+import static com.mpcq.pbj.runtime.ProtoTestTools.BOOLEAN_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.BYTES_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.INTEGER_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.STRING_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.generateListArguments;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.AccountID.AccountOneOfType;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.base.TokenSupplyType;
-import com.hedera.hapi.node.base.TokenType;
-import com.hedera.hapi.node.transaction.CustomFee;
-import com.hedera.hapi.node.transaction.FixedFee;
-import com.hedera.pbj.runtime.OneOf;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.AccountID.AccountOneOfType;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.base.TokenSupplyType;
+import com.mpcq.hapi.node.base.TokenType;
+import com.mpcq.hapi.node.transaction.CustomFee;
+import com.mpcq.hapi.node.transaction.FixedFee;
+import com.mpcq.pbj.runtime.OneOf;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

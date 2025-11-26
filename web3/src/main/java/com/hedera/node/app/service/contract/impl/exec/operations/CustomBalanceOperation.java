@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.node.app.service.contract.impl.exec.operations;
+package com.mpcq.node.app.service.contract.impl.exec.operations;
 
-import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS;
-import static com.hedera.node.app.service.contract.impl.exec.utils.FrameUtils.contractRequired;
-import static com.hedera.node.app.service.contract.impl.exec.utils.OperationUtils.isDeficientGas;
+import static com.mpcq.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS;
+import static com.mpcq.node.app.service.contract.impl.exec.utils.FrameUtils.contractRequired;
+import static com.mpcq.node.app.service.contract.impl.exec.utils.OperationUtils.isDeficientGas;
 
-import com.hedera.node.app.service.contract.impl.exec.AddressChecks;
-import com.hedera.node.app.service.contract.impl.exec.FeatureFlags;
-import com.hedera.node.app.service.contract.impl.exec.utils.FrameUtils;
-import com.hedera.node.app.service.contract.impl.exec.utils.InvalidAddressContext;
+import com.mpcq.node.app.service.contract.impl.exec.AddressChecks;
+import com.mpcq.node.app.service.contract.impl.exec.FeatureFlags;
+import com.mpcq.node.app.service.contract.impl.exec.utils.FrameUtils;
+import com.mpcq.node.app.service.contract.impl.exec.utils.InvalidAddressContext;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import org.apache.tuweni.units.bigints.UInt256;
 import org.hiero.mirror.web3.common.ContractCallContext;

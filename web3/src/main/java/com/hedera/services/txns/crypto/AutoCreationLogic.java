@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.crypto;
+package com.mpcq.services.txns.crypto;
 
-import static com.hedera.services.utils.EntityIdUtils.isAliasSizeGreaterThanEvmAddress;
-import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
-import static com.hedera.services.utils.MiscUtils.asPrimitiveKeyUnchecked;
+import static com.mpcq.services.utils.EntityIdUtils.isAliasSizeGreaterThanEvmAddress;
+import static com.mpcq.services.utils.MiscUtils.asFcKeyUnchecked;
+import static com.mpcq.services.utils.MiscUtils.asPrimitiveKeyUnchecked;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.store.contracts.precompile.SyntheticTxnFactory;
+import com.mpcq.node.app.service.evm.contracts.execution.EvmProperties;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory;
 import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.evm.account.MirrorEvmContractAliases;
 import org.hiero.mirror.web3.evm.store.Store;

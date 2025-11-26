@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.fees.usage;
+package com.mpcq.services.hapi.fees.usage;
 
-import static com.hedera.services.hapi.fees.usage.SigUtils.A_SIG_MAP;
-import static com.hedera.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
-import static com.hedera.services.hapi.fees.usage.UsageUtils.A_USAGES_MATRIX;
-import static com.hedera.services.hapi.fees.usage.UsageUtils.A_USAGE_VECTOR;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.HRS_DIVISOR;
+import static com.mpcq.services.hapi.fees.usage.SigUtils.A_SIG_MAP;
+import static com.mpcq.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
+import static com.mpcq.services.hapi.fees.usage.UsageUtils.A_USAGES_MATRIX;
+import static com.mpcq.services.hapi.fees.usage.UsageUtils.A_USAGE_VECTOR;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.HRS_DIVISOR;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyLong;

@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.test.e2e.acceptance.config;
 
-import com.hedera.hashgraph.sdk.PrecheckStatusException;
-import com.hedera.hashgraph.sdk.ReceiptStatusException;
+import com.mpcq.hashgraph.sdk.PrecheckStatusException;
+import com.mpcq.hashgraph.sdk.ReceiptStatusException;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 import lombok.RequiredArgsConstructor;

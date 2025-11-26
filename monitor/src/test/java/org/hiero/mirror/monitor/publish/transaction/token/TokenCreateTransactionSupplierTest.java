@@ -5,11 +5,11 @@ package org.hiero.mirror.monitor.publish.transaction.token;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.InstanceOfAssertFactories.STRING;
 
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.PublicKey;
-import com.hedera.hashgraph.sdk.TokenCreateTransaction;
-import com.hedera.hashgraph.sdk.TokenSupplyType;
-import com.hedera.hashgraph.sdk.TokenType;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.PublicKey;
+import com.mpcq.hashgraph.sdk.TokenCreateTransaction;
+import com.mpcq.hashgraph.sdk.TokenSupplyType;
+import com.mpcq.hashgraph.sdk.TokenType;
 import org.hiero.mirror.monitor.publish.transaction.AbstractTransactionSupplierTest;
 import org.hiero.mirror.monitor.publish.transaction.TransactionSupplier;
 import org.junit.jupiter.api.Test;

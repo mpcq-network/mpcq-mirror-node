@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.contracts.execution;
+package com.mpcq.services.contracts.execution;
 
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
 
-import com.hedera.node.app.service.evm.contracts.execution.PricesAndFeesProvider;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.node.app.service.evm.contracts.execution.PricesAndFeesProvider;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Timestamp;

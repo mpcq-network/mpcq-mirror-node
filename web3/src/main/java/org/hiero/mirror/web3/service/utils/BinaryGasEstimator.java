@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.service.utils;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import jakarta.inject.Named;
 import java.util.function.LongFunction;
 import java.util.function.ObjIntConsumer;

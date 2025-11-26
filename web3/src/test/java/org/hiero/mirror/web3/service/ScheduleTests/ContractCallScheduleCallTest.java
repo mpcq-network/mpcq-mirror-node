@@ -2,12 +2,12 @@
 
 package org.hiero.mirror.web3.service.ScheduleTests;
 
-import static com.hedera.hapi.node.base.ResponseCodeEnum.CONTRACT_REVERT_EXECUTED;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.CONTRACT_REVERT_EXECUTED;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.hedera.hapi.node.base.ResponseCodeEnum;
-import com.hedera.node.config.data.ContractsConfig;
+import com.mpcq.hapi.node.base.ResponseCodeEnum;
+import com.mpcq.node.config.data.ContractsConfig;
 import java.math.BigInteger;
 import java.time.Instant;
 import org.hiero.mirror.web3.evm.store.CachingStateFrame.CacheAccessIncorrectTypeException;

@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils;
+package com.mpcq.services.utils;
 
-import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
+import static com.mpcq.services.utils.MiscUtils.asFcKeyUnchecked;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.jproto.JKeyList;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.jproto.JKeyList;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.KeyList;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;

@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.models;
+package com.mpcq.services.store.models;
 
-import static com.hedera.services.utils.IdUtils.asModelId;
+import static com.mpcq.services.utils.IdUtils.asModelId;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.hedera.services.state.submerkle.RichInstant;
+import com.mpcq.services.state.submerkle.RichInstant;
 import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 

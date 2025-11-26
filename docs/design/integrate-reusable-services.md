@@ -201,8 +201,8 @@ In all cases - the existing behaviour and expected results should remain the sam
 After all changes are fully integrated and tested, the final step will be removing of obsolete code that won't be used
 anymore. This will include the following packages and files:
 
-- com.hedera.node.app.service
-- com.hedera.services
+- com.mpcq.node.app.service
+- com.mpcq.services
 - org.hiero.mirror.web3.evm, without the following files (they can be moved in different packages):
   - EvmConfiguration
   - Opcode

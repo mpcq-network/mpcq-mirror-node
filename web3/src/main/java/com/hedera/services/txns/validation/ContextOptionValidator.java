@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.validation;
+package com.mpcq.services.txns.validation;
 
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_EXPIRED_AND_PENDING_REMOVAL;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.CONTRACT_EXPIRED_AND_PENDING_REMOVAL;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_ZERO_BYTE_IN_STRING;

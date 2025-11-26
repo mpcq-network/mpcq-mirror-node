@@ -3,7 +3,7 @@
 package org.hiero.mirror.importer.migration;
 
 import com.google.common.base.Stopwatch;
-import com.hedera.services.stream.proto.ContractBytecode;
+import com.mpcq.services.stream.proto.ContractBytecode;
 import jakarta.inject.Named;
 import java.util.Collection;
 import java.util.HashSet;

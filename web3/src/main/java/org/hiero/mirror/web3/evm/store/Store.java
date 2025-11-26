@@ -2,11 +2,11 @@
 
 package org.hiero.mirror.web3.evm.store;
 
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.NftId;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.store.models.TokenRelationship;
-import com.hedera.services.store.models.UniqueToken;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.NftId;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.store.models.TokenRelationship;
+import com.mpcq.services.store.models.UniqueToken;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TokenID;
@@ -18,7 +18,7 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * An interface which serves as a facade over the mirror-node specific in-memory state. This interface is used by components
- * inside com.hedera.services package, would be deleted and having this facade would make this task easier.
+ * inside com.mpcq.services package, would be deleted and having this facade would make this task easier.
  * <p>
  * Common methods that are used for interaction with the state are defined here.
  */

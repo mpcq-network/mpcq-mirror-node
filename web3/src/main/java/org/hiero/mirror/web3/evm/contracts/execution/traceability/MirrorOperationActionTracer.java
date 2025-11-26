@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution.traceability;
 
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.services.utils.EntityIdUtils;
 import jakarta.inject.Named;
 import java.util.Optional;
 import lombok.CustomLog;
@@ -38,7 +38,7 @@ public class MirrorOperationActionTracer implements OperationTracer {
         final var recipientAddress = frame.getRecipientAddress();
         final var recipientNum = recipientAddress != null
                 ? commonEntityAccessor.get(
-                        com.hedera.pbj.runtime.io.buffer.Bytes.wrap(recipientAddress.toArray()), Optional.empty())
+                        com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(recipientAddress.toArray()), Optional.empty())
                 : Optional.empty();
 
         if (recipientNum.isPresent()

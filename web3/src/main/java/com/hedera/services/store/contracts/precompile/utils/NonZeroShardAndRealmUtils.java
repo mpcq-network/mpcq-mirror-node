@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.utils;
+package com.mpcq.services.store.contracts.precompile.utils;
 
 import com.hederahashgraph.api.proto.java.TokenID;
 import lombok.experimental.UtilityClass;

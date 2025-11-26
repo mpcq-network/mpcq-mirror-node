@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.state.components;
 
-import com.hedera.node.app.services.ServicesRegistry;
+import com.mpcq.node.app.services.ServicesRegistry;
 import com.swirlds.state.lifecycle.Service;
 import jakarta.inject.Named;
 import java.util.Collections;

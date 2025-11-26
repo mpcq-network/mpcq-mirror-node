@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.createNonFungibleTokenUpdateWrapperWithKeys;
-import static com.hedera.services.utils.EntityIdUtils.contractIdFromEvmAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.createNonFungibleTokenUpdateWrapperWithKeys;
+import static com.mpcq.services.utils.EntityIdUtils.contractIdFromEvmAddress;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.google.protobuf.StringValue;
-import com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper;
-import com.hedera.services.store.contracts.precompile.codec.TokenKeyWrapper;
+import com.mpcq.services.store.contracts.precompile.codec.KeyValueWrapper;
+import com.mpcq.services.store.contracts.precompile.codec.TokenKeyWrapper;
 import com.hederahashgraph.api.proto.java.Duration;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import com.hederahashgraph.api.proto.java.TokenUpdateTransactionBody;

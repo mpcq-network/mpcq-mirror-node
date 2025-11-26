@@ -5,9 +5,9 @@ package com.swirlds.state.spi;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.mock;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.state.token.Account;
-import com.hedera.node.app.service.token.TokenService;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.state.token.Account;
+import com.mpcq.node.app.service.token.TokenService;
 import java.util.Map;
 import java.util.Set;
 import org.hiero.mirror.web3.ContextExtension;

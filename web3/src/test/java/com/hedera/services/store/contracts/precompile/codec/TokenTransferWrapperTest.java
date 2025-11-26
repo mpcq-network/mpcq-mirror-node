@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.codec;
+package com.mpcq.services.store.contracts.precompile.codec;
 
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.token;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.token;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.hedera.services.store.contracts.precompile.FungibleTokenTransfer;
-import com.hedera.services.store.contracts.precompile.NftExchange;
-import com.hedera.services.store.contracts.precompile.TokenTransferWrapper;
-import com.hedera.services.store.models.Id;
+import com.mpcq.services.store.contracts.precompile.FungibleTokenTransfer;
+import com.mpcq.services.store.contracts.precompile.NftExchange;
+import com.mpcq.services.store.contracts.precompile.TokenTransferWrapper;
+import com.mpcq.services.store.models.Id;
 import com.hederahashgraph.api.proto.java.AccountAmount;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.TokenTransferList;

@@ -11,10 +11,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.FcTokenAllowanceId;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.FcTokenAllowanceId;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.utils.EntityNum;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;

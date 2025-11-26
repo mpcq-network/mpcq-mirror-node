@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.usage.token;
+package com.mpcq.services.fees.usage.token;
 
-import static com.hedera.services.hapi.fees.usage.EstimatorUtils.MAX_ENTITY_LIFETIME;
-import static com.hedera.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
+import static com.mpcq.services.hapi.fees.usage.EstimatorUtils.MAX_ENTITY_LIFETIME;
+import static com.mpcq.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
 
-import com.hedera.services.hapi.fees.usage.TxnUsageEstimator;
-import com.hedera.services.hapi.utils.fees.FeeBuilder;
+import com.mpcq.services.hapi.fees.usage.TxnUsageEstimator;
+import com.mpcq.services.hapi.utils.fees.FeeBuilder;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.FeeData;
 import com.hederahashgraph.api.proto.java.Key;

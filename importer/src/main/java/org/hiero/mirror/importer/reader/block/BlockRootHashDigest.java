@@ -5,7 +5,7 @@ package org.hiero.mirror.importer.reader.block;
 import static org.hiero.mirror.common.domain.DigestAlgorithm.SHA_384;
 import static org.hiero.mirror.common.util.DomainUtils.createSha384Digest;
 
-import com.hedera.hapi.block.stream.protoc.BlockItem;
+import com.mpcq.hapi.block.stream.protoc.BlockItem;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;

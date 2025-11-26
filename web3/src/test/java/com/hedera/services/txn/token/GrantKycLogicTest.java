@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txn.token;
+package com.mpcq.services.txn.token;
 
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
-import static com.hedera.services.utils.TxnUtils.assertFailsWith;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.utils.TxnUtils.assertFailsWith;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_ACCOUNT_ID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TOKEN_ID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
@@ -15,9 +15,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.TokenRelationship;
-import com.hedera.services.utils.IdUtils;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.TokenRelationship;
+import com.mpcq.services.utils.IdUtils;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.TokenGrantKycTransactionBody;
 import com.hederahashgraph.api.proto.java.TokenID;

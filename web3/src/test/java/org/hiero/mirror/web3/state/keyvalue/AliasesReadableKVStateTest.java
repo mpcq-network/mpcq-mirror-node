@@ -2,15 +2,15 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.services.utils.EntityIdUtils.toAccountId;
+import static com.mpcq.services.utils.EntityIdUtils.toAccountId;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.state.primitives.ProtoBytes;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.state.primitives.ProtoBytes;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import java.util.Collections;
 import java.util.Optional;
 import org.hiero.mirror.common.domain.entity.Entity;

@@ -2,14 +2,14 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema.TOKEN_RELS_STATE_ID;
-import static com.hedera.services.utils.EntityIdUtils.toEntityId;
+import static com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema.TOKEN_RELS_STATE_ID;
+import static com.mpcq.services.utils.EntityIdUtils.toEntityId;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.state.common.EntityIDPair;
-import com.hedera.hapi.node.state.token.TokenRelation;
-import com.hedera.node.app.service.token.TokenService;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.state.common.EntityIDPair;
+import com.mpcq.hapi.node.state.token.TokenRelation;
+import com.mpcq.node.app.service.token.TokenService;
 import jakarta.inject.Named;
 import java.util.Optional;
 import java.util.function.Supplier;

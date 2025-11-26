@@ -5,8 +5,8 @@ package org.hiero.mirror.web3.evm.properties;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.hedera.node.app.workflows.standalone.TransactionExecutors;
-import com.hedera.node.config.data.ContractsConfig;
+import com.mpcq.node.app.workflows.standalone.TransactionExecutors;
+import com.mpcq.node.config.data.ContractsConfig;
 import com.swirlds.config.api.ConfigData;
 import java.lang.reflect.Field;
 import java.util.Map;

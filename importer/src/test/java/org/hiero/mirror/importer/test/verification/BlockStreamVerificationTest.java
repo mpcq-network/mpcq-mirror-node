@@ -9,7 +9,7 @@ import com.google.common.collect.Multimaps;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.GeneratedMessage;
-import com.hedera.services.stream.proto.TransactionSidecarRecord;
+import com.mpcq.services.stream.proto.TransactionSidecarRecord;
 import com.hederahashgraph.api.proto.java.TransactionRecord;
 import jakarta.persistence.EntityManager;
 import java.util.ArrayList;

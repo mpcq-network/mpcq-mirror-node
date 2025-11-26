@@ -2,19 +2,19 @@
 
 package org.hiero.mirror.web3.evm.store.contract.precompile;
 
-import static com.hedera.services.store.contracts.precompile.PrngSystemPrecompiledContract.PSEUDORANDOM_SEED_GENERATOR_SELECTOR;
-import static com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.PRNG;
+import static com.mpcq.services.store.contracts.precompile.PrngSystemPrecompiledContract.PSEUDORANDOM_SEED_GENERATOR_SELECTOR;
+import static com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.PRNG;
 import static org.hyperledger.besu.evm.frame.MessageFrame.State.COMPLETED_SUCCESS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQBlockValues;
-import com.hedera.services.contracts.execution.LivePricesSource;
-import com.hedera.services.store.contracts.precompile.PrngSystemPrecompiledContract;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txns.util.PrngLogic;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQBlockValues;
+import com.mpcq.services.contracts.execution.LivePricesSource;
+import com.mpcq.services.store.contracts.precompile.PrngSystemPrecompiledContract;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txns.util.PrngLogic;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.time.Instant;

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.fees.usage;
+package com.mpcq.services.hapi.fees.usage;
 
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.BASIC_TX_BODY_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.BASIC_TX_BODY_SIZE;
 
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;

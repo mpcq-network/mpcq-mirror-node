@@ -2,19 +2,19 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.node.app.service.schedule.impl.schemas.V0490ScheduleSchema.SCHEDULES_BY_ID_STATE_ID;
+import static com.mpcq.node.app.service.schedule.impl.schemas.V0490ScheduleSchema.SCHEDULES_BY_ID_STATE_ID;
 import static org.hiero.mirror.web3.state.Utils.parseKey;
 
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.ScheduleID;
-import com.hedera.hapi.node.base.TransactionID;
-import com.hedera.hapi.node.scheduled.SchedulableTransactionBody;
-import com.hedera.hapi.node.state.schedule.Schedule;
-import com.hedera.hapi.node.transaction.TransactionBody;
-import com.hedera.node.app.service.schedule.ScheduleService;
-import com.hedera.pbj.runtime.ParseException;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.ScheduleID;
+import com.mpcq.hapi.node.base.TransactionID;
+import com.mpcq.hapi.node.scheduled.SchedulableTransactionBody;
+import com.mpcq.hapi.node.state.schedule.Schedule;
+import com.mpcq.hapi.node.transaction.TransactionBody;
+import com.mpcq.node.app.service.schedule.ScheduleService;
+import com.mpcq.pbj.runtime.ParseException;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.SignaturePair;
 import com.hederahashgraph.api.proto.java.SignaturePair.SignatureCase;
 import jakarta.inject.Named;

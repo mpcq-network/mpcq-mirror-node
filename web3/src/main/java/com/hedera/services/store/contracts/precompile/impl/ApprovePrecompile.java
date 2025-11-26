@@ -1,25 +1,25 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.impl;
+package com.mpcq.services.store.contracts.precompile.impl;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrueOrRevert;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.ADDRESS_ADDRESS_UINT256_RAW_TYPE;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.ADDRESS_UINT256_RAW_TYPE;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.BOOL;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.INT;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.INT_BOOL_PAIR;
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_APPROVE;
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_APPROVE_NFT;
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_ERC_APPROVE;
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_REDIRECT_FOR_TOKEN;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.convertLeftPaddedAddressToAccountId;
-import static com.hedera.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance;
-import static com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.APPROVE;
-import static com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.DELETE_NFT_APPROVE;
-import static com.hedera.services.utils.EntityIdUtils.accountIdFromEvmAddress;
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrueOrRevert;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.ADDRESS_ADDRESS_UINT256_RAW_TYPE;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.ADDRESS_UINT256_RAW_TYPE;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.BOOL;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.INT;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.INT_BOOL_PAIR;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_APPROVE;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_APPROVE_NFT;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_ERC_APPROVE;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_REDIRECT_FOR_TOKEN;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.convertLeftPaddedAddressToAccountId;
+import static com.mpcq.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance;
+import static com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.APPROVE;
+import static com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.DELETE_NFT_APPROVE;
+import static com.mpcq.services.utils.EntityIdUtils.accountIdFromEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.FAIL_INVALID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.SENDER_DOES_NOT_OWN_NFT_SERIAL_NO;
@@ -29,24 +29,24 @@ import com.esaulpaugh.headlong.abi.ABIType;
 import com.esaulpaugh.headlong.abi.Function;
 import com.esaulpaugh.headlong.abi.Tuple;
 import com.esaulpaugh.headlong.abi.TypeFactory;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.services.store.contracts.precompile.AbiConstants;
-import com.hedera.services.store.contracts.precompile.Precompile;
-import com.hedera.services.store.contracts.precompile.SyntheticTxnFactory;
-import com.hedera.services.store.contracts.precompile.codec.ApproveDecodedNftInfo;
-import com.hedera.services.store.contracts.precompile.codec.ApproveParams;
-import com.hedera.services.store.contracts.precompile.codec.ApproveResult;
-import com.hedera.services.store.contracts.precompile.codec.ApproveWrapper;
-import com.hedera.services.store.contracts.precompile.codec.BodyParams;
-import com.hedera.services.store.contracts.precompile.codec.EncodingFacade;
-import com.hedera.services.store.contracts.precompile.codec.RunResult;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.txns.crypto.ApproveAllowanceLogic;
-import com.hedera.services.txns.crypto.DeleteAllowanceLogic;
-import com.hedera.services.txns.crypto.validators.ApproveAllowanceChecks;
-import com.hedera.services.txns.crypto.validators.DeleteAllowanceChecks;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.services.store.contracts.precompile.AbiConstants;
+import com.mpcq.services.store.contracts.precompile.Precompile;
+import com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory;
+import com.mpcq.services.store.contracts.precompile.codec.ApproveDecodedNftInfo;
+import com.mpcq.services.store.contracts.precompile.codec.ApproveParams;
+import com.mpcq.services.store.contracts.precompile.codec.ApproveResult;
+import com.mpcq.services.store.contracts.precompile.codec.ApproveWrapper;
+import com.mpcq.services.store.contracts.precompile.codec.BodyParams;
+import com.mpcq.services.store.contracts.precompile.codec.EncodingFacade;
+import com.mpcq.services.store.contracts.precompile.codec.RunResult;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.txns.crypto.ApproveAllowanceLogic;
+import com.mpcq.services.txns.crypto.DeleteAllowanceLogic;
+import com.mpcq.services.txns.crypto.validators.ApproveAllowanceChecks;
+import com.mpcq.services.txns.crypto.validators.DeleteAllowanceChecks;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import com.hederahashgraph.api.proto.java.TokenID;
@@ -80,7 +80,7 @@ import org.hyperledger.besu.evm.log.Log;
  *  8. Added {@link ApproveDecodedNftInfo} and decodeTokenIdAndSerialNum method in order to access tokenID from HtsPrecompiledContract and
  *     avoid passing Store unnecessarily
  *  9. Substitute {@link TokenID.getDefaultInstance()} with
- *     {@link com.hedera.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance()},
+ *     {@link com.mpcq.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance()},
  *     so that non-zero shard and realm numbers are respected
  */
 public class ApprovePrecompile extends AbstractWritePrecompile {

@@ -7,7 +7,7 @@ import static org.hiero.mirror.common.domain.entity.EntityType.CONTRACT;
 import static org.hiero.mirror.common.util.DomainUtils.fromBytes;
 import static org.hiero.mirror.importer.TestUtils.toContractId;
 
-import com.hedera.services.stream.proto.ContractBytecode;
+import com.mpcq.services.stream.proto.ContractBytecode;
 import io.hypersistence.utils.hibernate.type.range.guava.PostgreSQLGuavaRangeType;
 import java.util.ArrayList;
 import java.util.Collections;

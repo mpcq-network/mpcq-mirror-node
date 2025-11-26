@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.node.app.service.evm.store.tokens.TokenType.FUNGIBLE_COMMON;
-import static com.hedera.node.app.service.evm.store.tokens.TokenType.NON_FUNGIBLE_UNIQUE;
-import static com.hedera.services.store.tokens.MPCQTokenStore.MISSING_TOKEN;
-import static com.hedera.services.store.tokens.MPCQTokenStore.asTokenRelationshipKey;
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
-import static com.hedera.services.utils.TxnUtils.assertFailsWith;
+import static com.mpcq.node.app.service.evm.store.tokens.TokenType.FUNGIBLE_COMMON;
+import static com.mpcq.node.app.service.evm.store.tokens.TokenType.NON_FUNGIBLE_UNIQUE;
+import static com.mpcq.services.store.tokens.MPCQTokenStore.MISSING_TOKEN;
+import static com.mpcq.services.store.tokens.MPCQTokenStore.asTokenRelationshipKey;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.utils.TxnUtils.assertFailsWith;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_EXPIRED_AND_PENDING_REMOVAL;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.CURRENT_TREASURY_STILL_OWNS_NFTS;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.FAIL_INVALID;
@@ -23,15 +23,15 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
 
 import com.google.protobuf.StringValue;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.NftId;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.store.models.TokenRelationship;
-import com.hedera.services.store.tokens.MPCQTokenStore;
-import com.hedera.services.txns.validation.OptionValidator;
-import com.hedera.services.utils.IdUtils;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.NftId;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.store.models.TokenRelationship;
+import com.mpcq.services.store.tokens.MPCQTokenStore;
+import com.mpcq.services.txns.validation.OptionValidator;
+import com.mpcq.services.utils.IdUtils;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.Duration;
 import com.hederahashgraph.api.proto.java.Timestamp;

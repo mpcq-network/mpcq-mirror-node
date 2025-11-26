@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.crypto.validators;
+package com.mpcq.services.txns.crypto.validators;
 
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.AMOUNT_EXCEEDS_TOKEN_MAX_SUPPLY;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.DELEGATING_SPENDER_CANNOT_GRANT_APPROVE_FOR_ALL;
@@ -12,11 +12,11 @@ import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.SPENDER_ACCOUNT_SAME_AS_OWNER;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TOKEN_NOT_ASSOCIATED_TO_ACCOUNT;
 
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.FcTokenAllowanceId;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.FcTokenAllowanceId;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.utils.EntityNum;
 import com.hederahashgraph.api.proto.java.CryptoAllowance;
 import com.hederahashgraph.api.proto.java.NftAllowance;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;

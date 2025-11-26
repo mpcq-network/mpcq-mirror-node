@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txn.token;
+package com.mpcq.services.txn.token;
 
-import static com.hedera.services.txn.token.TokenOpsValidator.validateTokenOpsWith;
-import static com.hedera.services.txns.validation.ContextOptionValidator.batchSizeCheck;
+import static com.mpcq.services.txn.token.TokenOpsValidator.validateTokenOpsWith;
+import static com.mpcq.services.txns.validation.ContextOptionValidator.batchSizeCheck;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_ACCOUNT_ID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TOKEN_ID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_WIPING_AMOUNT;
 
-import com.hedera.node.app.service.evm.store.tokens.TokenType;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.TokenModificationResult;
+import com.mpcq.node.app.service.evm.store.tokens.TokenType;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.TokenModificationResult;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TokenWipeAccountTransactionBody;
 import com.hederahashgraph.api.proto.java.TransactionBody;

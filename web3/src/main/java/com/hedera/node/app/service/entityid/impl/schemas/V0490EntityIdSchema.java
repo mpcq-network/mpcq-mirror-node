@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.node.app.service.entityid.impl.schemas;
+package com.mpcq.node.app.service.entityid.impl.schemas;
 
-import static com.hedera.hapi.util.HapiUtils.SEMANTIC_VERSION_COMPARATOR;
+import static com.mpcq.hapi.util.HapiUtils.SEMANTIC_VERSION_COMPARATOR;
 import static com.swirlds.state.lifecycle.StateMetadata.computeLabel;
 
-import com.hedera.hapi.node.base.SemanticVersion;
-import com.hedera.hapi.node.state.common.EntityNumber;
-import com.hedera.hapi.platform.state.SingletonType;
-import com.hedera.node.app.service.entityid.impl.EntityIdServiceImpl;
-import com.hedera.node.config.data.MPCQConfig;
+import com.mpcq.hapi.node.base.SemanticVersion;
+import com.mpcq.hapi.node.state.common.EntityNumber;
+import com.mpcq.hapi.platform.state.SingletonType;
+import com.mpcq.node.app.service.entityid.impl.EntityIdServiceImpl;
+import com.mpcq.node.config.data.MPCQConfig;
 import com.swirlds.state.lifecycle.MigrationContext;
 import com.swirlds.state.lifecycle.Schema;
 import com.swirlds.state.lifecycle.StateDefinition;

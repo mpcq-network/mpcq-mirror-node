@@ -1,4 +1,4 @@
--- due to hiero migration, java migrations FQCN changed from com.hedera. prefix to org.hiero. prefix and caused
+-- due to hiero migration, java migrations FQCN changed from com.mpcq. prefix to org.hiero. prefix and caused
 -- issue in async java migration checksum query. As part of the fix, incorrect rows need to be removed
 with affected as (
   select description
@@ -12,7 +12,7 @@ with affected as (
   where (
     select checksum
     from flyway_schema_history
-    where description = a.description and script like 'com.hedera.%'
+    where description = a.description and script like 'com.mpcq.%'
     order by installed_rank desc
     limit 1
   ) > 0 and (

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.impl;
+package com.mpcq.services.store.contracts.precompile.impl;
 
-import com.hedera.services.ledger.BalanceChange;
+import com.mpcq.services.ledger.BalanceChange;
 import java.util.List;
 
 public class ImpliedTransfers {

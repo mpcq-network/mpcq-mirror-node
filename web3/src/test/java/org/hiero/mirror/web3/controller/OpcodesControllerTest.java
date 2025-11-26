@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableSortedMap;
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import com.hederahashgraph.api.proto.java.Key;
 import io.github.bucket4j.Bucket;
 import io.micrometer.core.instrument.MeterRegistry;

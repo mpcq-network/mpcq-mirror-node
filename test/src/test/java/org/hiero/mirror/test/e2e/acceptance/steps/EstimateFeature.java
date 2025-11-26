@@ -57,12 +57,12 @@ import static org.hiero.mirror.test.e2e.acceptance.util.TestUtil.to32BytesString
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.esaulpaugh.headlong.abi.Address;
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.ContractFunctionParameters;
-import com.hedera.hashgraph.sdk.ContractId;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.TokenId;
-import com.hedera.hashgraph.sdk.proto.ResponseCodeEnum;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.ContractFunctionParameters;
+import com.mpcq.hashgraph.sdk.ContractId;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.TokenId;
+import com.mpcq.hashgraph.sdk.proto.ResponseCodeEnum;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

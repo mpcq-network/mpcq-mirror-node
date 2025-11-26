@@ -1,29 +1,29 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.impl;
+package com.mpcq.services.store.contracts.precompile.impl;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.BYTES32;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.INT;
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_PAUSE_TOKEN;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
-import static com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.PAUSE;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrue;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.BYTES32;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.INT;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_PAUSE_TOKEN;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
+import static com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.PAUSE;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 
 import com.esaulpaugh.headlong.abi.ABIType;
 import com.esaulpaugh.headlong.abi.Function;
 import com.esaulpaugh.headlong.abi.Tuple;
 import com.esaulpaugh.headlong.abi.TypeFactory;
-import com.hedera.services.store.contracts.precompile.Precompile;
-import com.hedera.services.store.contracts.precompile.SyntheticTxnFactory;
-import com.hedera.services.store.contracts.precompile.codec.BodyParams;
-import com.hedera.services.store.contracts.precompile.codec.EmptyRunResult;
-import com.hedera.services.store.contracts.precompile.codec.PauseWrapper;
-import com.hedera.services.store.contracts.precompile.codec.RunResult;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.txn.token.PauseLogic;
+import com.mpcq.services.store.contracts.precompile.Precompile;
+import com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory;
+import com.mpcq.services.store.contracts.precompile.codec.BodyParams;
+import com.mpcq.services.store.contracts.precompile.codec.EmptyRunResult;
+import com.mpcq.services.store.contracts.precompile.codec.PauseWrapper;
+import com.mpcq.services.store.contracts.precompile.codec.RunResult;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.txn.token.PauseLogic;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import com.hederahashgraph.api.proto.java.TransactionBody;

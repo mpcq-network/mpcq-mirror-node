@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.impl;
+package com.mpcq.services.store.contracts.precompile.impl;
 
-import com.hedera.services.hapi.utils.contracts.ParsingConstants;
-import com.hedera.services.store.contracts.precompile.codec.DecodingFacade;
+import com.mpcq.services.hapi.utils.contracts.ParsingConstants;
+import com.mpcq.services.store.contracts.precompile.codec.DecodingFacade;
 
 /**
  * Solidity types used by ABI methods defined in `SystemContractAbis`

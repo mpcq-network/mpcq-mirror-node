@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import com.hedera.services.store.contracts.precompile.codec.TokenExpiryWrapper;
-import com.hedera.services.store.contracts.precompile.codec.TokenKeyWrapper;
+import com.mpcq.services.store.contracts.precompile.codec.TokenExpiryWrapper;
+import com.mpcq.services.store.contracts.precompile.codec.TokenKeyWrapper;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.TokenID;
 import java.util.List;

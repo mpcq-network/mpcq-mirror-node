@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.importer.parser.record.transactionhandler;
 
-import com.hedera.hapi.node.hooks.legacy.LambdaStorageUpdate;
-import com.hedera.services.stream.proto.StorageChange;
+import com.mpcq.hapi.node.hooks.legacy.LambdaStorageUpdate;
+import com.mpcq.services.stream.proto.StorageChange;
 import java.util.List;
 import org.hiero.mirror.common.domain.entity.EntityId;
 

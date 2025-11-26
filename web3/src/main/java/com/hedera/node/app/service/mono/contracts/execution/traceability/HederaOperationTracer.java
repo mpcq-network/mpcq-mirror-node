@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.node.app.service.mono.contracts.execution.traceability;
+package com.mpcq.node.app.service.mono.contracts.execution.traceability;
 
-import com.hedera.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
-import com.hedera.services.stream.proto.ContractActionType;
+import com.mpcq.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
+import com.mpcq.services.stream.proto.ContractActionType;
 import org.hyperledger.besu.evm.frame.MessageFrame;
 
 /**

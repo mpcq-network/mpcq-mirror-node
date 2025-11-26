@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.service;
 
-import static com.hedera.hapi.node.base.ResponseCodeEnum.PAYER_ACCOUNT_NOT_FOUND;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.SUCCESS;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.PAYER_ACCOUNT_NOT_FOUND;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.SUCCESS;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.InstanceOfAssertFactories.collection;
@@ -12,16 +12,16 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.ResponseCodeEnum;
-import com.hedera.hapi.node.contract.ContractFunctionResult;
-import com.hedera.hapi.node.state.token.Account;
-import com.hedera.hapi.node.transaction.TransactionBody;
-import com.hedera.hapi.node.transaction.TransactionReceipt;
-import com.hedera.hapi.node.transaction.TransactionRecord;
-import com.hedera.node.app.state.SingleTransactionRecord;
-import com.hedera.node.app.workflows.standalone.TransactionExecutor;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.ResponseCodeEnum;
+import com.mpcq.hapi.node.contract.ContractFunctionResult;
+import com.mpcq.hapi.node.state.token.Account;
+import com.mpcq.hapi.node.transaction.TransactionBody;
+import com.mpcq.hapi.node.transaction.TransactionReceipt;
+import com.mpcq.hapi.node.transaction.TransactionRecord;
+import com.mpcq.node.app.state.SingleTransactionRecord;
+import com.mpcq.node.app.workflows.standalone.TransactionExecutor;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import java.time.Instant;
 import java.util.List;
 import java.util.stream.Stream;

@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.test.e2e.acceptance.response;
 
-import com.hedera.hashgraph.sdk.TransactionId;
-import com.hedera.hashgraph.sdk.TransactionReceipt;
+import com.mpcq.hashgraph.sdk.TransactionId;
+import com.mpcq.hashgraph.sdk.TransactionReceipt;
 import lombok.Value;
 import org.apache.commons.lang3.StringUtils;
 

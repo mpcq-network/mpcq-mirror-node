@@ -6,12 +6,12 @@ import static org.hiero.mirror.common.util.DomainUtils.leftPadBytes;
 import static org.hiero.mirror.common.util.DomainUtils.toBytes;
 
 import com.google.common.collect.Range;
-import com.hedera.hapi.node.hooks.legacy.HookCreationDetails;
-import com.hedera.hapi.node.hooks.legacy.HookCreationDetails.HookCase;
-import com.hedera.hapi.node.hooks.legacy.LambdaMappingEntries;
-import com.hedera.hapi.node.hooks.legacy.LambdaStorageSlot;
-import com.hedera.hapi.node.hooks.legacy.LambdaStorageUpdate;
-import com.hedera.services.stream.proto.StorageChange;
+import com.mpcq.hapi.node.hooks.legacy.HookCreationDetails;
+import com.mpcq.hapi.node.hooks.legacy.HookCreationDetails.HookCase;
+import com.mpcq.hapi.node.hooks.legacy.LambdaMappingEntries;
+import com.mpcq.hapi.node.hooks.legacy.LambdaStorageSlot;
+import com.mpcq.hapi.node.hooks.legacy.LambdaStorageUpdate;
+import com.mpcq.services.stream.proto.StorageChange;
 import jakarta.inject.Named;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -199,7 +199,7 @@ final class EVMHookHandler implements EvmHookStorageHandler {
      * @return the corresponding domain HookExtensionPoint
      */
     private HookExtensionPoint translateHookExtensionPoint(
-            com.hedera.hapi.node.hooks.legacy.HookExtensionPoint protoExtensionPoint) {
+            com.mpcq.hapi.node.hooks.legacy.HookExtensionPoint protoExtensionPoint) {
         return switch (protoExtensionPoint) {
             case ACCOUNT_ALLOWANCE_HOOK -> HookExtensionPoint.ACCOUNT_ALLOWANCE_HOOK;
             default -> {

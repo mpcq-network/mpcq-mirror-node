@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.web3.state.singleton;
 
-import static com.hedera.node.app.blocks.schemas.V0560BlockStreamSchema.BLOCK_STREAM_INFO_STATE_ID;
+import static com.mpcq.node.app.blocks.schemas.V0560BlockStreamSchema.BLOCK_STREAM_INFO_STATE_ID;
 
-import com.hedera.hapi.node.state.blockstream.BlockStreamInfo;
+import com.mpcq.hapi.node.state.blockstream.BlockStreamInfo;
 import jakarta.inject.Named;
 
 @Named

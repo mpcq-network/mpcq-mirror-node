@@ -2,22 +2,22 @@
 
 package org.hiero.mirror.common.domain.transaction;
 
-import static com.hedera.hapi.block.stream.trace.protoc.TraceData.DataCase.AUTO_ASSOCIATE_TRACE_DATA;
-import static com.hedera.hapi.block.stream.trace.protoc.TraceData.DataCase.EVM_TRACE_DATA;
-import static com.hedera.hapi.block.stream.trace.protoc.TraceData.DataCase.SUBMIT_MESSAGE_TRACE_DATA;
+import static com.mpcq.hapi.block.stream.trace.protoc.TraceData.DataCase.AUTO_ASSOCIATE_TRACE_DATA;
+import static com.mpcq.hapi.block.stream.trace.protoc.TraceData.DataCase.EVM_TRACE_DATA;
+import static com.mpcq.hapi.block.stream.trace.protoc.TraceData.DataCase.SUBMIT_MESSAGE_TRACE_DATA;
 import static org.hiero.mirror.common.util.DomainUtils.createSha384Digest;
 import static org.hiero.mirror.common.util.DomainUtils.normalize;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.BytesValue;
 import com.google.protobuf.MessageLite;
-import com.hedera.hapi.block.stream.output.protoc.StateChanges;
-import com.hedera.hapi.block.stream.output.protoc.TransactionOutput;
-import com.hedera.hapi.block.stream.output.protoc.TransactionOutput.TransactionCase;
-import com.hedera.hapi.block.stream.output.protoc.TransactionResult;
-import com.hedera.hapi.block.stream.trace.protoc.AutoAssociateTraceData;
-import com.hedera.hapi.block.stream.trace.protoc.EvmTraceData;
-import com.hedera.hapi.block.stream.trace.protoc.TraceData;
+import com.mpcq.hapi.block.stream.output.protoc.StateChanges;
+import com.mpcq.hapi.block.stream.output.protoc.TransactionOutput;
+import com.mpcq.hapi.block.stream.output.protoc.TransactionOutput.TransactionCase;
+import com.mpcq.hapi.block.stream.output.protoc.TransactionResult;
+import com.mpcq.hapi.block.stream.trace.protoc.AutoAssociateTraceData;
+import com.mpcq.hapi.block.stream.trace.protoc.EvmTraceData;
+import com.mpcq.hapi.block.stream.trace.protoc.TraceData;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.SignedTransaction;
 import com.hederahashgraph.api.proto.java.SlotKey;

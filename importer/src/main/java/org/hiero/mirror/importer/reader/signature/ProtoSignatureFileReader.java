@@ -4,7 +4,7 @@ package org.hiero.mirror.importer.reader.signature;
 
 import static java.lang.String.format;
 
-import com.hedera.services.stream.proto.SignatureFile;
+import com.mpcq.services.stream.proto.SignatureFile;
 import jakarta.inject.Named;
 import java.io.DataInputStream;
 import java.io.IOException;

@@ -6,10 +6,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hiero.mirror.common.util.DomainUtils.NANOS_PER_SECOND;
 import static org.hiero.mirror.grpc.domain.ReactiveDomainBuilder.TOPIC_ID;
 
-import com.hedera.mirror.api.proto.ConsensusServiceGrpc;
-import com.hedera.mirror.api.proto.ConsensusTopicQuery;
-import com.hedera.mirror.api.proto.ConsensusTopicResponse;
-import com.hedera.mirror.api.proto.ReactorConsensusServiceGrpc;
+import com.mpcq.mirror.api.proto.ConsensusServiceGrpc;
+import com.mpcq.mirror.api.proto.ConsensusTopicQuery;
+import com.mpcq.mirror.api.proto.ConsensusTopicResponse;
+import com.mpcq.mirror.api.proto.ReactorConsensusServiceGrpc;
 import com.hederahashgraph.api.proto.java.ConsensusMessageChunkInfo;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import com.hederahashgraph.api.proto.java.TopicID;

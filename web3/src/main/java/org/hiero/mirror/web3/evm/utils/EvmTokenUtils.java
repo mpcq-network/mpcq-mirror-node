@@ -8,7 +8,7 @@ import static org.hiero.mirror.common.util.DomainUtils.toBytes;
 import static org.hiero.mirror.common.util.DomainUtils.toEvmAddress;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmKey;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmKey;
 import com.hederahashgraph.api.proto.java.ContractID;
 import com.hederahashgraph.api.proto.java.Key;
 import lombok.experimental.UtilityClass;

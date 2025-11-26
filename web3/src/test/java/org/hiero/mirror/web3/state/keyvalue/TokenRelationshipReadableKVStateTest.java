@@ -2,17 +2,17 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.services.utils.EntityIdUtils.toEntityId;
+import static com.mpcq.services.utils.EntityIdUtils.toEntityId;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.state.common.EntityIDPair;
-import com.hedera.hapi.node.state.token.TokenRelation;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.state.common.EntityIDPair;
+import com.mpcq.hapi.node.state.token.TokenRelation;
 import java.util.Collections;
 import java.util.Optional;
 import org.hiero.mirror.common.CommonProperties;

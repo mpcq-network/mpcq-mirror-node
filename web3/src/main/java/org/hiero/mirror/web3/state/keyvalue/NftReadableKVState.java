@@ -2,16 +2,16 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema.NFTS_STATE_ID;
+import static com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema.NFTS_STATE_ID;
 import static org.hiero.mirror.web3.state.Utils.convertToTimestamp;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.NftID;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.state.token.Nft;
-import com.hedera.node.app.service.token.TokenService;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.NftID;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.state.token.Nft;
+import com.mpcq.node.app.service.token.TokenService;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.services.utils.EntityIdUtils;
 import jakarta.inject.Named;
 import java.util.Optional;
 import org.hiero.mirror.common.domain.entity.EntityId;

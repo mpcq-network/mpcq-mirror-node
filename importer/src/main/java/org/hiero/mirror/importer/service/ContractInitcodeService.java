@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.importer.service;
 
-import com.hedera.services.stream.proto.ContractBytecode;
+import com.mpcq.services.stream.proto.ContractBytecode;
 import org.hiero.mirror.common.domain.transaction.RecordItem;
 
 public interface ContractInitcodeService {

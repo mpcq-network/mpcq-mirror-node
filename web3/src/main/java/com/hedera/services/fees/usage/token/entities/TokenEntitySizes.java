@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.usage.token.entities;
+package com.mpcq.services.fees.usage.token.entities;
 
-import static com.hedera.services.hapi.fees.usage.SingletonUsageProperties.USAGE_PROPERTIES;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.BOOL_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.INT_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.LONG_SIZE;
+import static com.mpcq.services.hapi.fees.usage.SingletonUsageProperties.USAGE_PROPERTIES;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.BOOL_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.INT_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.LONG_SIZE;
 
 /**
  *  Exact copy from hedera-services

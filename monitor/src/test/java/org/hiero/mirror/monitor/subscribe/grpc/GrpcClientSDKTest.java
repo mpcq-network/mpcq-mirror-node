@@ -5,11 +5,11 @@ package org.hiero.mirror.monitor.subscribe.grpc;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.protobuf.ByteString;
-import com.hedera.hashgraph.sdk.proto.Timestamp;
-import com.hedera.hashgraph.sdk.proto.TopicID;
-import com.hedera.hashgraph.sdk.proto.mirror.ConsensusServiceGrpc;
-import com.hedera.hashgraph.sdk.proto.mirror.ConsensusTopicQuery;
-import com.hedera.hashgraph.sdk.proto.mirror.ConsensusTopicResponse;
+import com.mpcq.hashgraph.sdk.proto.Timestamp;
+import com.mpcq.hashgraph.sdk.proto.TopicID;
+import com.mpcq.hashgraph.sdk.proto.mirror.ConsensusServiceGrpc;
+import com.mpcq.hashgraph.sdk.proto.mirror.ConsensusTopicQuery;
+import com.mpcq.hashgraph.sdk.proto.mirror.ConsensusTopicResponse;
 import io.grpc.Server;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;

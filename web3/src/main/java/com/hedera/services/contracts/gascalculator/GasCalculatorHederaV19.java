@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.contracts.gascalculator;
+package com.mpcq.services.contracts.gascalculator;
 
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
 import jakarta.inject.Inject;
 import org.apache.tuweni.bytes.Bytes;
 import org.hyperledger.besu.evm.frame.MessageFrame;

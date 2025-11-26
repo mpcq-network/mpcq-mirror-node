@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.util;
+package com.mpcq.services.txns.util;
 
-import static com.hedera.services.txns.validation.TokenListChecks.checkKeys;
+import static com.mpcq.services.txns.validation.TokenListChecks.checkKeys;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TOKEN_ID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 
-import com.hedera.services.txns.validation.OptionValidator;
+import com.mpcq.services.txns.validation.OptionValidator;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TokenUpdateTransactionBody;
 import com.hederahashgraph.api.proto.java.TransactionBody;

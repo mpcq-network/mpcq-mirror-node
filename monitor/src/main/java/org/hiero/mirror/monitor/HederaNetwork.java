@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.monitor;
 
-import com.hedera.hashgraph.sdk.Client;
+import com.mpcq.hashgraph.sdk.Client;
 import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.Getter;

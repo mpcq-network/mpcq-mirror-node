@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation.crypto.queries;
+package com.mpcq.services.fees.calculation.crypto.queries;
 
-import static com.hedera.services.fees.calculation.crypto.queries.GetTxnRecordResourceUsage.MISSING_RECORD_STANDIN;
-import static com.hedera.services.utils.IdUtils.asAccount;
+import static com.mpcq.services.fees.calculation.crypto.queries.GetTxnRecordResourceUsage.MISSING_RECORD_STANDIN;
+import static com.mpcq.services.utils.IdUtils.asAccount;
 import static com.hederahashgraph.api.proto.java.ResponseType.ANSWER_ONLY;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.mock;
 
-import com.hedera.services.hapi.utils.fees.CryptoFeeBuilder;
+import com.mpcq.services.hapi.utils.fees.CryptoFeeBuilder;
 import com.hederahashgraph.api.proto.java.FeeData;
 import com.hederahashgraph.api.proto.java.Query;
 import com.hederahashgraph.api.proto.java.QueryHeader;

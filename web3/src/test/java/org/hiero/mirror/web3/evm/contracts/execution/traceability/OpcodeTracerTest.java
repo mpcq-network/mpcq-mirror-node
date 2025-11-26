@@ -2,11 +2,11 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution.traceability;
 
-import static com.hedera.services.store.contracts.precompile.ExchangeRatePrecompiledContract.EXCHANGE_RATE_SYSTEM_CONTRACT_ADDRESS;
-import static com.hedera.services.store.contracts.precompile.PrngSystemPrecompiledContract.PRNG_PRECOMPILE_ADDRESS;
-import static com.hedera.services.store.contracts.precompile.SyntheticTxnFactory.HTS_PRECOMPILED_CONTRACT_ADDRESS;
-import static com.hedera.services.stream.proto.ContractAction.ResultDataCase.OUTPUT;
-import static com.hedera.services.stream.proto.ContractAction.ResultDataCase.REVERT_REASON;
+import static com.mpcq.services.store.contracts.precompile.ExchangeRatePrecompiledContract.EXCHANGE_RATE_SYSTEM_CONTRACT_ADDRESS;
+import static com.mpcq.services.store.contracts.precompile.PrngSystemPrecompiledContract.PRNG_PRECOMPILE_ADDRESS;
+import static com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory.HTS_PRECOMPILED_CONTRACT_ADDRESS;
+import static com.mpcq.services.stream.proto.ContractAction.ResultDataCase.OUTPUT;
+import static com.mpcq.services.stream.proto.ContractAction.ResultDataCase.REVERT_REASON;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hiero.mirror.web3.convert.BytesDecoder.getAbiEncodedRevertReason;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.toAddress;
@@ -29,8 +29,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.ImmutableSortedMap;
-import com.hedera.services.stream.proto.CallOperationType;
-import com.hedera.services.stream.proto.ContractActionType;
+import com.mpcq.services.stream.proto.CallOperationType;
+import com.mpcq.services.stream.proto.ContractActionType;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;

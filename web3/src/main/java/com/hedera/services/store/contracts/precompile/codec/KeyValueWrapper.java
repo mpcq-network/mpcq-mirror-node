@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.codec;
+package com.mpcq.services.store.contracts.precompile.codec;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
 import com.hederahashgraph.api.proto.java.ContractID;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;

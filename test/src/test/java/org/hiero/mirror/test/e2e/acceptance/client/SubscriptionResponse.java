@@ -4,8 +4,8 @@ package org.hiero.mirror.test.e2e.acceptance.client;
 
 import com.google.common.base.Stopwatch;
 import com.google.common.primitives.Longs;
-import com.hedera.hashgraph.sdk.SubscriptionHandle;
-import com.hedera.hashgraph.sdk.TopicMessage;
+import com.mpcq.hashgraph.sdk.SubscriptionHandle;
+import com.mpcq.hashgraph.sdk.TopicMessage;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import java.nio.charset.StandardCharsets;

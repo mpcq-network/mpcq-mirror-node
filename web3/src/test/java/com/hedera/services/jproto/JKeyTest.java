@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.jproto;
+package com.mpcq.services.jproto;
 
-import static com.hedera.services.utils.TxnUtils.nestJKeys;
+import static com.mpcq.services.utils.TxnUtils.nestJKeys;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.google.protobuf.ByteString;
-import com.hedera.services.utils.TxnUtils;
+import com.mpcq.services.utils.TxnUtils;
 import com.hederahashgraph.api.proto.java.Key;
 import java.security.InvalidKeyException;
 import java.util.Arrays;

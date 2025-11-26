@@ -6,8 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.google.protobuf.UnknownFieldSet;
-import com.hedera.services.stream.proto.AllAccountBalances;
-import com.hedera.services.stream.proto.SingleAccountBalances;
+import com.mpcq.services.stream.proto.AllAccountBalances;
+import com.mpcq.services.stream.proto.SingleAccountBalances;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import java.io.File;
 import java.nio.file.Paths;

@@ -3,8 +3,8 @@
 package org.hiero.mirror.monitor.publish;
 
 import com.google.common.base.Throwables;
-import com.hedera.hashgraph.sdk.PrecheckStatusException;
-import com.hedera.hashgraph.sdk.ReceiptStatusException;
+import com.mpcq.hashgraph.sdk.PrecheckStatusException;
+import com.mpcq.hashgraph.sdk.ReceiptStatusException;
 import io.grpc.StatusRuntimeException;
 import lombok.Getter;
 

@@ -1,34 +1,34 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.DEFAULT_GAS_PRICE;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.FUNGIBLE;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.TEST_CONSENSUS_TIME;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.sender;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.senderAddress;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.successResult;
-import static com.hedera.services.store.contracts.precompile.impl.DeleteTokenPrecompile.decodeDelete;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.DEFAULT_GAS_PRICE;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.FUNGIBLE;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.TEST_CONSENSUS_TIME;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.sender;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.senderAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.successResult;
+import static com.mpcq.services.store.contracts.precompile.impl.DeleteTokenPrecompile.decodeDelete;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenDelete;
 import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
-import com.hedera.services.fees.pricing.AssetsLoader;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.store.contracts.precompile.impl.DeleteTokenPrecompile;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.txn.token.DeleteLogic;
-import com.hedera.services.utils.accessors.AccessorFactory;
+import com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.pricing.AssetsLoader;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.store.contracts.precompile.impl.DeleteTokenPrecompile;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.txn.token.DeleteLogic;
+import com.mpcq.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SubType;

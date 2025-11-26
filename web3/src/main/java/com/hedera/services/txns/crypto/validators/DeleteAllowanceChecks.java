@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.crypto.validators;
+package com.mpcq.services.txns.crypto.validators;
 
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.EMPTY_ALLOWANCES;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.FUNGIBLE_TOKEN_IN_NFT_ALLOWANCES;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TOKEN_NOT_ASSOCIATED_TO_ACCOUNT;
 
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
 import com.hederahashgraph.api.proto.java.NftRemoveAllowance;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.util.List;

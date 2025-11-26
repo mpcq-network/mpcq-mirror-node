@@ -8,22 +8,22 @@ import static org.hiero.mirror.test.e2e.acceptance.util.TestUtil.HEX_PREFIX;
 
 import com.google.common.base.Stopwatch;
 import com.google.protobuf.ByteString;
-import com.hedera.hashgraph.sdk.AccountCreateTransaction;
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.Client;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.LedgerId;
-import com.hedera.hashgraph.sdk.TopicDeleteTransaction;
-import com.hedera.hashgraph.sdk.TopicId;
-import com.hedera.hashgraph.sdk.TopicMessageSubmitTransaction;
-import com.hedera.hashgraph.sdk.TransactionReceipt;
-import com.hedera.hashgraph.sdk.TransactionReceiptQuery;
-import com.hedera.hashgraph.sdk.logger.LogLevel;
-import com.hedera.hashgraph.sdk.logger.Logger;
-import com.hedera.hashgraph.sdk.proto.AccountID;
-import com.hedera.hashgraph.sdk.proto.NodeAddress;
-import com.hedera.hashgraph.sdk.proto.NodeAddressBook;
-import com.hedera.hashgraph.sdk.proto.ServiceEndpoint;
+import com.mpcq.hashgraph.sdk.AccountCreateTransaction;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.Client;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.LedgerId;
+import com.mpcq.hashgraph.sdk.TopicDeleteTransaction;
+import com.mpcq.hashgraph.sdk.TopicId;
+import com.mpcq.hashgraph.sdk.TopicMessageSubmitTransaction;
+import com.mpcq.hashgraph.sdk.TransactionReceipt;
+import com.mpcq.hashgraph.sdk.TransactionReceiptQuery;
+import com.mpcq.hashgraph.sdk.logger.LogLevel;
+import com.mpcq.hashgraph.sdk.logger.Logger;
+import com.mpcq.hashgraph.sdk.proto.AccountID;
+import com.mpcq.hashgraph.sdk.proto.NodeAddress;
+import com.mpcq.hashgraph.sdk.proto.NodeAddressBook;
+import com.mpcq.hashgraph.sdk.proto.ServiceEndpoint;
 import jakarta.inject.Named;
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -266,7 +266,7 @@ public class SDKClient implements Cleanable {
     private Client toClient(NodeAddressBook addressBook, LedgerId ledgerId) {
         var client = Client.forNetwork(Map.of()).setLedgerId(ledgerId);
         client.setNetworkFromAddressBook(
-                com.hedera.hashgraph.sdk.NodeAddressBook.fromBytes(addressBook.toByteString()));
+                com.mpcq.hashgraph.sdk.NodeAddressBook.fromBytes(addressBook.toByteString()));
         return configureClient(client).setMirrorNetwork(List.of(acceptanceTestProperties.getMirrorNodeAddress()));
     }
 

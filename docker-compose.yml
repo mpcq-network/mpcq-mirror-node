@@ -224,8 +224,8 @@ configs:
 
         # grpc host
         # Setting 600s read timeout for topic subscription. When the client receives a message the timeout resets to 0.
-        location = /com.hedera.mirror.api.proto.ConsensusService/subscribeTopic { grpc_read_timeout 600s; grpc_pass grpc://grpc_host; }
-        location /com.hedera.mirror.api.proto. { grpc_pass grpc://grpc_host; }
+        location = /com.mpcq.mirror.api.proto.ConsensusService/subscribeTopic { grpc_read_timeout 600s; grpc_pass grpc://grpc_host; }
+        location /com.mpcq.mirror.api.proto. { grpc_pass grpc://grpc_host; }
         location /grpc.reflection.v1alpha.ServerReflection { grpc_pass grpc://grpc_host; }
 
         # graphql host

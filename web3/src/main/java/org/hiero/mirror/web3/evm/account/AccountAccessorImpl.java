@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.evm.account;
 
-import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.mpcq.node.app.service.evm.accounts.AccountAccessor;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
 import jakarta.inject.Named;
 import lombok.RequiredArgsConstructor;
 import org.hiero.mirror.web3.evm.store.Store;

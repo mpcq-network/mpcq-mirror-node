@@ -2,14 +2,14 @@
 
 package org.hiero.mirror.web3.state;
 
-import static com.hedera.services.utils.EntityIdUtils.toEntityId;
+import static com.mpcq.services.utils.EntityIdUtils.toEntityId;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hiero.mirror.common.domain.transaction.TransactionType.FILECREATE;
 import static org.hiero.mirror.common.domain.transaction.TransactionType.FILEUPDATE;
 
 import com.google.protobuf.ByteString;
-import com.hedera.hapi.node.base.FileID;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.FileID;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.CurrentAndNextFeeSchedule;
 import com.hederahashgraph.api.proto.java.ExchangeRate;

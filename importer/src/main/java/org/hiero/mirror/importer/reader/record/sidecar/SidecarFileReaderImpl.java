@@ -17,7 +17,7 @@ public class SidecarFileReaderImpl implements SidecarFileReader {
         try (var digestInputStream = new DigestInputStream(
                 streamFileData.getInputStream(),
                 MessageDigest.getInstance(sidecarFile.getHashAlgorithm().getName()))) {
-            var protoSidecarFile = com.hedera.services.stream.proto.SidecarFile.parseFrom(digestInputStream);
+            var protoSidecarFile = com.mpcq.services.stream.proto.SidecarFile.parseFrom(digestInputStream);
             var bytes = streamFileData.getBytes();
             sidecarFile.setActualHash(digestInputStream.getMessageDigest().digest());
             sidecarFile.setBytes(bytes);

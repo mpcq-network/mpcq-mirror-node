@@ -17,9 +17,9 @@ import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.MAX_STORAGE_IN
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.SUCCESS;
 import static java.util.stream.Collectors.toMap;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
-import com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
-import com.hedera.node.app.service.evm.store.contracts.utils.BytesKey;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
+import com.mpcq.node.app.service.evm.store.contracts.utils.BytesKey;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.util.Map;
 import java.util.stream.Stream;

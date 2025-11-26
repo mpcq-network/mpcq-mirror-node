@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.utils.IdUtils.asAccount;
-import static com.hedera.services.utils.IdUtils.asToken;
+import static com.mpcq.services.utils.IdUtils.asAccount;
+import static com.mpcq.services.utils.IdUtils.asToken;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.hederahashgraph.api.proto.java.AccountID;

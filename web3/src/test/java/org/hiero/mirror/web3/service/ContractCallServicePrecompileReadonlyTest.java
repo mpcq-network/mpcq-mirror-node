@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.service;
 
-import static com.hedera.services.utils.EntityIdUtils.asHexedEvmAddress;
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.asHexedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.toAddress;
@@ -19,9 +19,9 @@ import static org.hiero.mirror.web3.web3j.generated.PrecompileTestContract.MPCQT
 import static org.hiero.mirror.web3.web3j.generated.PrecompileTestContract.TokenKey;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.Key;
 import java.math.BigInteger;
 import java.util.ArrayList;

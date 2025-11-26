@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.models;
+package com.mpcq.services.store.models;
 
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateFalse;
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
-import static com.hedera.services.utils.MiscUtils.asUsableFcKey;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateFalse;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrue;
+import static com.mpcq.services.utils.MiscUtils.asUsableFcKey;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_DOES_NOT_OWN_WIPED_NFT;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.CANNOT_WIPE_TOKEN_TREASURY_ACCOUNT;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.FAIL_INVALID;
@@ -24,11 +24,11 @@ import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TREASURY_MUST_
 
 import com.google.common.base.MoreObjects;
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
-import com.hedera.node.app.service.evm.store.tokens.TokenType;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.state.submerkle.RichInstant;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
+import com.mpcq.node.app.service.evm.store.tokens.TokenType;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.state.submerkle.RichInstant;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TokenCreateTransactionBody;
 import com.hederahashgraph.api.proto.java.TokenSupplyType;

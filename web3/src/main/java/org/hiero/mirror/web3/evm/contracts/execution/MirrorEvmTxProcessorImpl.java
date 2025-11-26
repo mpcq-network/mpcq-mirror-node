@@ -2,18 +2,18 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution;
 
-import com.hedera.hapi.node.base.SemanticVersion;
-import com.hedera.node.app.service.contract.impl.hevm.MPCQEvmBlocks;
-import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTxProcessor;
-import com.hedera.node.app.service.evm.contracts.execution.PricesAndFeesProvider;
-import com.hedera.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
-import com.hedera.node.app.service.evm.store.contracts.AbstractCodeCache;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.hapi.node.base.SemanticVersion;
+import com.mpcq.node.app.service.contract.impl.hevm.MPCQEvmBlocks;
+import com.mpcq.node.app.service.evm.contracts.execution.EvmProperties;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTxProcessor;
+import com.mpcq.node.app.service.evm.contracts.execution.PricesAndFeesProvider;
+import com.mpcq.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
+import com.mpcq.node.app.service.evm.store.contracts.AbstractCodeCache;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import jakarta.inject.Named;
 import jakarta.inject.Provider;

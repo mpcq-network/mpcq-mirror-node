@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.contracts.execution;
+package com.mpcq.services.contracts.execution;
 
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;

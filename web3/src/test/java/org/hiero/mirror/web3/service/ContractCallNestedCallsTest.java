@@ -9,7 +9,7 @@ import static org.hiero.mirror.web3.utils.ContractCallTestUtil.NEW_ECDSA_KEY;
 import static org.hiero.mirror.web3.utils.ContractCallTestUtil.NEW_ED25519_KEY;
 
 import com.google.protobuf.ByteString;
-import com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
+import com.mpcq.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
 import java.math.BigInteger;
 import java.time.Instant;
 import java.util.ArrayList;

@@ -2,10 +2,10 @@
 
 package org.hiero.mirror.test.e2e.acceptance.converter;
 
-import com.hedera.hashgraph.sdk.CustomFee;
-import com.hedera.hashgraph.sdk.CustomFixedFee;
-import com.hedera.hashgraph.sdk.CustomFractionalFee;
-import com.hedera.hashgraph.sdk.TokenId;
+import com.mpcq.hashgraph.sdk.CustomFee;
+import com.mpcq.hashgraph.sdk.CustomFixedFee;
+import com.mpcq.hashgraph.sdk.CustomFractionalFee;
+import com.mpcq.hashgraph.sdk.TokenId;
 import io.cucumber.java.DataTableType;
 import java.util.List;
 import java.util.Map;

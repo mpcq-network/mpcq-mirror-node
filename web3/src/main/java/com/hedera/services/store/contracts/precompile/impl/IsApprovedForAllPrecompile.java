@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.impl;
+package com.mpcq.services.store.contracts.precompile.impl;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
-import static com.hedera.node.app.service.evm.store.contracts.utils.DescriptorUtils.addressFromBytes;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ADDRESS_TRIO_RAW_TYPE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.INT_BOOL_PAIR;
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateFalseOrRevert;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.DescriptorUtils.addressFromBytes;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ADDRESS_TRIO_RAW_TYPE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.INT_BOOL_PAIR;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateFalseOrRevert;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_ACCOUNT_ID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.SUCCESS;
 
@@ -14,15 +14,15 @@ import com.esaulpaugh.headlong.abi.ABIType;
 import com.esaulpaugh.headlong.abi.Function;
 import com.esaulpaugh.headlong.abi.Tuple;
 import com.esaulpaugh.headlong.abi.TypeFactory;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.IsApproveForAllWrapper;
-import com.hedera.services.store.contracts.precompile.AbiConstants;
-import com.hedera.services.store.contracts.precompile.Precompile;
-import com.hedera.services.store.contracts.precompile.SyntheticTxnFactory;
-import com.hedera.services.store.contracts.precompile.codec.BodyParams;
-import com.hedera.services.store.contracts.precompile.codec.EncodingFacade;
-import com.hedera.services.store.contracts.precompile.codec.IsApprovedForAllResult;
-import com.hedera.services.store.contracts.precompile.codec.RunResult;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.IsApproveForAllWrapper;
+import com.mpcq.services.store.contracts.precompile.AbiConstants;
+import com.mpcq.services.store.contracts.precompile.Precompile;
+import com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory;
+import com.mpcq.services.store.contracts.precompile.codec.BodyParams;
+import com.mpcq.services.store.contracts.precompile.codec.EncodingFacade;
+import com.mpcq.services.store.contracts.precompile.codec.IsApprovedForAllResult;
+import com.mpcq.services.store.contracts.precompile.codec.RunResult;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
 import com.hederahashgraph.api.proto.java.TransactionBody;
 import java.util.Set;
 import org.apache.tuweni.bytes.Bytes;

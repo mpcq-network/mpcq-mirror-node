@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.importer.reader.balance;
 
-import com.hedera.services.stream.proto.AllAccountBalances;
-import com.hedera.services.stream.proto.SingleAccountBalances;
+import com.mpcq.services.stream.proto.AllAccountBalances;
+import com.mpcq.services.stream.proto.SingleAccountBalances;
 import jakarta.inject.Named;
 import java.io.IOException;
 import java.util.List;

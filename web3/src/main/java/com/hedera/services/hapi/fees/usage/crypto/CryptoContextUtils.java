@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.fees.usage.crypto;
+package com.mpcq.services.hapi.fees.usage.crypto;
 
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.services.utils.EntityNum;
 import com.hederahashgraph.api.proto.java.CryptoAllowance;
 import com.hederahashgraph.api.proto.java.GrantedCryptoAllowance;
 import com.hederahashgraph.api.proto.java.GrantedNftAllowance;

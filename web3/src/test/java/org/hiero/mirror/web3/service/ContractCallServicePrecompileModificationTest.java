@@ -2,16 +2,16 @@
 
 package org.hiero.mirror.web3.service;
 
-import static com.hedera.hapi.node.base.ResponseCodeEnum.ACCOUNT_STILL_OWNS_NFTS;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.SUCCESS;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.TOKEN_ALREADY_ASSOCIATED_TO_ACCOUNT;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.TOKEN_NOT_ASSOCIATED_TO_ACCOUNT;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.TRANSACTION_REQUIRES_ZERO_TOKEN_BALANCES;
-import static com.hedera.hapi.node.base.TokenType.FUNGIBLE_COMMON;
-import static com.hedera.hapi.node.base.TokenType.NON_FUNGIBLE_UNIQUE;
-import static com.hedera.services.utils.EntityIdUtils.asHexedEvmAddress;
-import static com.hedera.services.utils.EntityIdUtils.entityIdFromContractId;
-import static com.hedera.services.utils.EntityIdUtils.toContractID;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.ACCOUNT_STILL_OWNS_NFTS;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.SUCCESS;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.TOKEN_ALREADY_ASSOCIATED_TO_ACCOUNT;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.TOKEN_NOT_ASSOCIATED_TO_ACCOUNT;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.TRANSACTION_REQUIRES_ZERO_TOKEN_BALANCES;
+import static com.mpcq.hapi.node.base.TokenType.FUNGIBLE_COMMON;
+import static com.mpcq.hapi.node.base.TokenType.NON_FUNGIBLE_UNIQUE;
+import static com.mpcq.services.utils.EntityIdUtils.asHexedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.entityIdFromContractId;
+import static com.mpcq.services.utils.EntityIdUtils.toContractID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TOKEN_ID;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -27,9 +27,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.hedera.hapi.node.base.ResponseCodeEnum;
-import com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
-import com.hedera.services.store.models.Id;
+import com.mpcq.hapi.node.base.ResponseCodeEnum;
+import com.mpcq.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
+import com.mpcq.services.store.models.Id;
 import com.hederahashgraph.api.proto.java.Key.KeyCase;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;

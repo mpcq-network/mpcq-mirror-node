@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.monitor.publish.transaction.consensus;
 
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.TopicDeleteTransaction;
-import com.hedera.hashgraph.sdk.TopicId;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.TopicDeleteTransaction;
+import com.mpcq.hashgraph.sdk.TopicId;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

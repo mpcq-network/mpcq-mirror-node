@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.span;
+package com.mpcq.services.txns.span;
 
-import static com.hedera.services.fees.usage.token.TokenOpsUsageUtils.TOKEN_OPS_USAGE_UTILS;
+import static com.mpcq.services.fees.usage.token.TokenOpsUsageUtils.TOKEN_OPS_USAGE_UTILS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.services.hapi.fees.usage.crypto.CryptoApproveAllowanceMeta;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoCreateMeta;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoDeleteAllowanceMeta;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoUpdateMeta;
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoApproveAllowanceMeta;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoCreateMeta;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoDeleteAllowanceMeta;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoUpdateMeta;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;

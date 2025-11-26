@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils;
+package com.mpcq.services.utils;
 
-import static com.hedera.services.utils.EntityIdUtils.accountIdFromEvmAddress;
-import static com.hedera.services.utils.EntityIdUtils.contractIdFromEvmAddress;
-import static com.hedera.services.utils.EntityIdUtils.toTokenId;
-import static com.hedera.services.utils.EntityIdUtils.tokenIdFromEvmAddress;
-import static com.hedera.services.utils.IdUtils.asAccount;
-import static com.hedera.services.utils.IdUtils.asContract;
-import static com.hedera.services.utils.IdUtils.asToken;
+import static com.mpcq.services.utils.EntityIdUtils.accountIdFromEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.contractIdFromEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.toTokenId;
+import static com.mpcq.services.utils.EntityIdUtils.tokenIdFromEvmAddress;
+import static com.mpcq.services.utils.IdUtils.asAccount;
+import static com.mpcq.services.utils.IdUtils.asContract;
+import static com.mpcq.services.utils.IdUtils.asToken;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hiero.mirror.common.util.DomainUtils.toEvmAddress;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -19,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import com.google.common.primitives.Ints;
 import com.google.common.primitives.Longs;
 import com.google.protobuf.ByteString;
-import com.hedera.hapi.node.base.AccountID.AccountOneOfType;
-import com.hedera.pbj.runtime.OneOf;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
-import com.hedera.services.store.models.Id;
+import com.mpcq.hapi.node.base.AccountID.AccountOneOfType;
+import com.mpcq.pbj.runtime.OneOf;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.services.store.models.Id;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractID;
 import com.hederahashgraph.api.proto.java.TokenID;
@@ -215,7 +215,7 @@ class EntityIdUtilsTest {
 
     @Test
     void toEntityIdFromAccountId() {
-        final var accountId = com.hedera.hapi.node.base.AccountID.newBuilder()
+        final var accountId = com.mpcq.hapi.node.base.AccountID.newBuilder()
                 .shardNum(SHARD)
                 .realmNum(REALM)
                 .accountNum(NUM)
@@ -226,7 +226,7 @@ class EntityIdUtilsTest {
 
     @Test
     void toEntityIdFromScheduleId() {
-        final var scheduleId = com.hedera.hapi.node.base.ScheduleID.newBuilder()
+        final var scheduleId = com.mpcq.hapi.node.base.ScheduleID.newBuilder()
                 .shardNum(SHARD)
                 .realmNum(REALM)
                 .scheduleNum(NUM)
@@ -237,7 +237,7 @@ class EntityIdUtilsTest {
 
     @Test
     void toEntityIdFromFileId() {
-        final var fileId = com.hedera.hapi.node.base.FileID.newBuilder()
+        final var fileId = com.mpcq.hapi.node.base.FileID.newBuilder()
                 .shardNum(SHARD)
                 .realmNum(REALM)
                 .fileNum(NUM)
@@ -249,7 +249,7 @@ class EntityIdUtilsTest {
     void toAccountIdFromEntityId() {
         final var entityId = EntityId.of(SHARD, REALM, NUM);
 
-        final var expectedAccountId = com.hedera.hapi.node.base.AccountID.newBuilder()
+        final var expectedAccountId = com.mpcq.hapi.node.base.AccountID.newBuilder()
                 .shardNum(SHARD)
                 .realmNum(REALM)
                 .accountNum(NUM)
@@ -261,7 +261,7 @@ class EntityIdUtilsTest {
     void toAccountIdFromId() {
         final var id = EntityId.of(SHARD, REALM, NUM).getId();
 
-        final var expectedAccountId = com.hedera.hapi.node.base.AccountID.newBuilder()
+        final var expectedAccountId = com.mpcq.hapi.node.base.AccountID.newBuilder()
                 .shardNum(SHARD)
                 .realmNum(REALM)
                 .accountNum(NUM)
@@ -276,7 +276,7 @@ class EntityIdUtilsTest {
 
     @Test
     void toAccountIdFromShardRealmNum() {
-        final var expectedAccountId = com.hedera.hapi.node.base.AccountID.newBuilder()
+        final var expectedAccountId = com.mpcq.hapi.node.base.AccountID.newBuilder()
                 .shardNum(SHARD)
                 .realmNum(REALM)
                 .accountNum(NUM)
@@ -291,7 +291,7 @@ class EntityIdUtilsTest {
         entity.setEvmAddress(null);
         entity.setAlias(null);
 
-        final var expectedAccountId = com.hedera.hapi.node.base.AccountID.newBuilder()
+        final var expectedAccountId = com.mpcq.hapi.node.base.AccountID.newBuilder()
                 .shardNum(entity.getShard())
                 .realmNum(entity.getRealm())
                 .accountNum(entity.getNum())
@@ -303,7 +303,7 @@ class EntityIdUtilsTest {
     void toAccountIdWithNullEntity() {
         final var accountId = EntityIdUtils.toAccountId((Entity) null);
 
-        assertThat(accountId).isEqualTo(com.hedera.hapi.node.base.AccountID.DEFAULT);
+        assertThat(accountId).isEqualTo(com.mpcq.hapi.node.base.AccountID.DEFAULT);
     }
 
     @Test
@@ -311,7 +311,7 @@ class EntityIdUtilsTest {
         final var domainBuilder = new DomainBuilder();
         final var entity = domainBuilder.entity().get();
 
-        final var expectedAccountId = com.hedera.hapi.node.base.AccountID.newBuilder()
+        final var expectedAccountId = com.mpcq.hapi.node.base.AccountID.newBuilder()
                 .shardNum(entity.getShard())
                 .realmNum(entity.getRealm())
                 .alias(Bytes.wrap(entity.getEvmAddress()))
@@ -325,7 +325,7 @@ class EntityIdUtilsTest {
         final var entity = domainBuilder.entity().get();
         entity.setEvmAddress(null);
 
-        final var expectedAccountId = com.hedera.hapi.node.base.AccountID.newBuilder()
+        final var expectedAccountId = com.mpcq.hapi.node.base.AccountID.newBuilder()
                 .shardNum(entity.getShard())
                 .realmNum(entity.getRealm())
                 .alias(Bytes.wrap(entity.getAlias()))
@@ -341,14 +341,14 @@ class EntityIdUtilsTest {
 
         final var accountId = EntityIdUtils.toAccountId(shard, realm, num);
         final var expectedAccountId =
-                new com.hedera.hapi.node.base.AccountID(shard, realm, new OneOf<>(AccountOneOfType.ACCOUNT_NUM, num));
+                new com.mpcq.hapi.node.base.AccountID(shard, realm, new OneOf<>(AccountOneOfType.ACCOUNT_NUM, num));
 
         assertEquals(expectedAccountId, accountId);
     }
 
     @Test
     void toFileIdFromShardRealmNum() {
-        final var expectedFileId = com.hedera.hapi.node.base.FileID.newBuilder()
+        final var expectedFileId = com.mpcq.hapi.node.base.FileID.newBuilder()
                 .shardNum(1)
                 .realmNum(2)
                 .fileNum(3)
@@ -360,7 +360,7 @@ class EntityIdUtilsTest {
     void toTokenIdFromId() {
         final var id = EntityId.of(SHARD, REALM, NUM).getId();
 
-        final var expectedTokenId = com.hedera.hapi.node.base.TokenID.newBuilder()
+        final var expectedTokenId = com.mpcq.hapi.node.base.TokenID.newBuilder()
                 .shardNum(SHARD)
                 .realmNum(REALM)
                 .tokenNum(NUM)
@@ -378,7 +378,7 @@ class EntityIdUtilsTest {
     void toTokenIdFromEntityId() {
         final var entityId = EntityId.of(SHARD, REALM, NUM);
 
-        final var expectedTokenId = com.hedera.hapi.node.base.TokenID.newBuilder()
+        final var expectedTokenId = com.mpcq.hapi.node.base.TokenID.newBuilder()
                 .shardNum(SHARD)
                 .realmNum(REALM)
                 .tokenNum(NUM)

@@ -3,10 +3,10 @@
 package org.hiero.mirror.test.e2e.acceptance.props;
 
 import com.google.protobuf.ByteString;
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.proto.AccountID;
-import com.hedera.hashgraph.sdk.proto.NodeAddress;
-import com.hedera.hashgraph.sdk.proto.ServiceEndpoint;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.proto.AccountID;
+import com.mpcq.hashgraph.sdk.proto.NodeAddress;
+import com.mpcq.hashgraph.sdk.proto.ServiceEndpoint;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

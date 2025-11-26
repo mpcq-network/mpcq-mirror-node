@@ -2,14 +2,14 @@
 
 package org.hiero.mirror.common.domain.transaction;
 
-import static com.hedera.hapi.block.stream.output.protoc.StateIdentifier.STATE_ID_STORAGE_VALUE;
+import static com.mpcq.hapi.block.stream.output.protoc.StateIdentifier.STATE_ID_STORAGE_VALUE;
 
 import com.google.protobuf.ByteString;
-import com.hedera.hapi.block.stream.output.protoc.MapChangeKey;
-import com.hedera.hapi.block.stream.output.protoc.MapChangeValue;
-import com.hedera.hapi.block.stream.output.protoc.MapDeleteChange;
-import com.hedera.hapi.block.stream.output.protoc.MapUpdateChange;
-import com.hedera.hapi.block.stream.output.protoc.StateChange;
+import com.mpcq.hapi.block.stream.output.protoc.MapChangeKey;
+import com.mpcq.hapi.block.stream.output.protoc.MapChangeValue;
+import com.mpcq.hapi.block.stream.output.protoc.MapDeleteChange;
+import com.mpcq.hapi.block.stream.output.protoc.MapUpdateChange;
+import com.mpcq.hapi.block.stream.output.protoc.StateChange;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractID;
 import com.hederahashgraph.api.proto.java.FileID;

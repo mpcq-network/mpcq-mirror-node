@@ -4,8 +4,8 @@ package org.hiero.mirror.monitor.publish.transaction.account;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.hedera.hashgraph.sdk.AccountDeleteTransaction;
-import com.hedera.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.AccountDeleteTransaction;
+import com.mpcq.hashgraph.sdk.AccountId;
 import org.hiero.mirror.monitor.publish.transaction.AbstractTransactionSupplierTest;
 import org.hiero.mirror.monitor.publish.transaction.TransactionSupplier;
 import org.junit.jupiter.api.Test;

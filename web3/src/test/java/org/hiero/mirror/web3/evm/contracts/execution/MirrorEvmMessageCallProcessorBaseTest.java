@@ -2,22 +2,22 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract.EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS;
-import static com.hedera.services.store.contracts.precompile.ExchangeRatePrecompiledContract.EXCHANGE_RATE_SYSTEM_CONTRACT_ADDRESS;
-import static com.hedera.services.store.contracts.precompile.PrngSystemPrecompiledContract.PRNG_PRECOMPILE_ADDRESS;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract.EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS;
+import static com.mpcq.services.store.contracts.precompile.ExchangeRatePrecompiledContract.EXCHANGE_RATE_SYSTEM_CONTRACT_ADDRESS;
+import static com.mpcq.services.store.contracts.precompile.PrngSystemPrecompiledContract.PRNG_PRECOMPILE_ADDRESS;
 import static org.mockito.Mockito.mockStatic;
 
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.services.contracts.execution.LivePricesSource;
-import com.hedera.services.contracts.gascalculator.GasCalculatorMPCQV22;
-import com.hedera.services.fees.BasicHbarCentExchange;
-import com.hedera.services.fees.calculation.BasicFcfsUsagePrices;
-import com.hedera.services.store.contracts.precompile.ExchangeRatePrecompiledContract;
-import com.hedera.services.store.contracts.precompile.PrngSystemPrecompiledContract;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txns.crypto.AbstractAutoCreationLogic;
-import com.hedera.services.txns.util.PrngLogic;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.services.contracts.execution.LivePricesSource;
+import com.mpcq.services.contracts.gascalculator.GasCalculatorMPCQV22;
+import com.mpcq.services.fees.BasicHbarCentExchange;
+import com.mpcq.services.fees.calculation.BasicFcfsUsagePrices;
+import com.mpcq.services.store.contracts.precompile.ExchangeRatePrecompiledContract;
+import com.mpcq.services.store.contracts.precompile.PrngSystemPrecompiledContract;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txns.crypto.AbstractAutoCreationLogic;
+import com.mpcq.services.txns.util.PrngLogic;
 import java.time.Instant;
 import java.util.Map;
 import org.hiero.base.utility.CommonUtils;

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation.utils;
+package com.mpcq.services.fees.calculation.utils;
 
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoApproveAllowance;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
@@ -18,12 +18,12 @@ import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenRevokeKy
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnfreezeAccount;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenUnpause;
 
-import com.hedera.services.fees.usage.state.UsageAccumulator;
-import com.hedera.services.fees.usage.token.TokenOpsUsage;
-import com.hedera.services.hapi.fees.usage.BaseTransactionMeta;
-import com.hedera.services.hapi.fees.usage.SigUsage;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoOpsUsage;
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.services.fees.usage.state.UsageAccumulator;
+import com.mpcq.services.fees.usage.token.TokenOpsUsage;
+import com.mpcq.services.hapi.fees.usage.BaseTransactionMeta;
+import com.mpcq.services.hapi.fees.usage.SigUsage;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoOpsUsage;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;

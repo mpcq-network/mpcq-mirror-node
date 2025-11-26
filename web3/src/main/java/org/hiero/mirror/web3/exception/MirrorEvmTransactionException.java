@@ -4,7 +4,7 @@ package org.hiero.mirror.web3.exception;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.io.Serial;
 import java.nio.charset.StandardCharsets;

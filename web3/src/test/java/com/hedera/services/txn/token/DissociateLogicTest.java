@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txn.token;
+package com.mpcq.services.txn.token;
 
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_STILL_OWNS_NFTS;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.FAIL_INVALID;
@@ -15,12 +15,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.node.app.service.evm.store.tokens.TokenType;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.store.models.TokenRelationship;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.node.app.service.evm.store.tokens.TokenType;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.store.models.TokenRelationship;
 import java.util.List;
 import org.hiero.mirror.web3.evm.store.Store;
 import org.hiero.mirror.web3.evm.store.Store.OnMissing;
@@ -100,7 +100,7 @@ class DissociateLogicTest {
         setupAccount();
         setupToken();
         assertThatThrownBy(() -> dissociateLogic.dissociate(accountAddress, tokenAddresses, store))
-                .isInstanceOf(com.hedera.node.app.service.evm.exceptions.InvalidTransactionException.class)
+                .isInstanceOf(com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException.class)
                 .hasMessage(TOKEN_NOT_ASSOCIATED_TO_ACCOUNT.name());
     }
 
@@ -164,7 +164,7 @@ class DissociateLogicTest {
         when(token.getExpiry()).thenReturn(9999999999L);
 
         assertThatThrownBy(() -> dissociateLogic.dissociate(accountAddress, tokenAddresses, store))
-                .isInstanceOf(com.hedera.node.app.service.evm.exceptions.InvalidTransactionException.class)
+                .isInstanceOf(com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException.class)
                 .hasMessage(TRANSACTION_REQUIRES_ZERO_TOKEN_BALANCES.name());
     }
 
@@ -180,7 +180,7 @@ class DissociateLogicTest {
         when(token.getType()).thenReturn(TokenType.NON_FUNGIBLE_UNIQUE);
 
         assertThatThrownBy(() -> dissociateLogic.dissociate(accountAddress, tokenAddresses, store))
-                .isInstanceOf(com.hedera.node.app.service.evm.exceptions.InvalidTransactionException.class)
+                .isInstanceOf(com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException.class)
                 .hasMessage(ACCOUNT_STILL_OWNS_NFTS.name());
     }
 

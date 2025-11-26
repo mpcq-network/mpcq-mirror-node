@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.utils;
+package com.mpcq.services.store.contracts.precompile.utils;
 
-import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
+import static com.mpcq.services.utils.MiscUtils.asFcKeyUnchecked;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoApproveAllowance;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
@@ -30,14 +30,14 @@ import static com.hederahashgraph.api.proto.java.SubType.TOKEN_FUNGIBLE_COMMON_W
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_NON_FUNGIBLE_UNIQUE;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_NON_FUNGIBLE_UNIQUE_WITH_CUSTOM_FEES;
 
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
-import com.hedera.services.fees.pricing.AssetsLoader;
-import com.hedera.services.hapi.utils.fees.FeeBuilder;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.store.contracts.precompile.Precompile;
-import com.hedera.services.utils.accessors.AccessorFactory;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.pricing.AssetsLoader;
+import com.mpcq.services.hapi.utils.fees.FeeBuilder;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.store.contracts.precompile.Precompile;
+import com.mpcq.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Key;

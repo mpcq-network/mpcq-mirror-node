@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils;
+package com.mpcq.services.utils;
 
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.store.models.TokenRelationship;
-import com.hedera.services.txn.token.AssociateLogic;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.store.models.TokenRelationship;
+import com.mpcq.services.txn.token.AssociateLogic;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

@@ -2,11 +2,11 @@
 
 package org.hiero.mirror.web3.state.singleton;
 
-import static com.hedera.node.app.blocks.schemas.V0560BlockStreamSchema.BLOCK_STREAM_INFO_STATE_ID;
+import static com.mpcq.node.app.blocks.schemas.V0560BlockStreamSchema.BLOCK_STREAM_INFO_STATE_ID;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.hedera.hapi.node.state.blockstream.BlockStreamInfo;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.state.blockstream.BlockStreamInfo;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import org.hiero.mirror.common.domain.DomainBuilder;
 import org.hiero.mirror.web3.ContextExtension;
 import org.junit.jupiter.api.DisplayName;

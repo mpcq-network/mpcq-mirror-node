@@ -2,13 +2,13 @@
 
 package org.hiero.mirror.web3.evm.account;
 
-import static com.hedera.node.app.service.evm.utils.EthSigsUtils.recoverAddressFromPubKey;
+import static com.mpcq.node.app.service.evm.utils.EthSigsUtils.recoverAddressFromPubKey;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.when;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
-import com.hedera.services.store.models.Account;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.mpcq.services.store.models.Account;
 import org.apache.tuweni.bytes.Bytes;
 import org.bouncycastle.util.encoders.Hex;
 import org.hiero.mirror.web3.evm.store.Store;

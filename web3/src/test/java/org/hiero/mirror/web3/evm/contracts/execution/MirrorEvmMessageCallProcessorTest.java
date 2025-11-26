@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution;
 
-import static com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATE;
-import static com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract.EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS;
+import static com.mpcq.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATE;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract.EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.NOT_SUPPORTED;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 import static org.hyperledger.besu.evm.frame.MessageFrame.State.EXCEPTIONAL_HALT;
@@ -16,9 +16,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQBlockValues;
-import com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
-import com.hedera.services.stream.proto.ContractActionType;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQBlockValues;
+import com.mpcq.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
+import com.mpcq.services.stream.proto.ContractActionType;
 import java.time.Instant;
 import java.util.Optional;
 import org.apache.commons.lang3.tuple.Pair;

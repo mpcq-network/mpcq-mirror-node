@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.utils.contracts;
+package com.mpcq.services.hapi.utils.contracts;
 
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.burnReturnType;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.hapiAllowanceOfType;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.intAddressTuple;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.mintReturnType;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.burnReturnType;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.hapiAllowanceOfType;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.intAddressTuple;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.mintReturnType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.esaulpaugh.headlong.abi.TupleType;
-import com.hedera.services.hapi.utils.contracts.ParsingConstants.FunctionType;
+import com.mpcq.services.hapi.utils.contracts.ParsingConstants.FunctionType;
 import org.junit.jupiter.api.Test;
 
 class ParsingConstantsTest {

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.validation;
+package com.mpcq.services.txns.validation;
 
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 
-import com.hedera.services.jproto.JKey;
+import com.mpcq.services.jproto.JKey;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.security.InvalidKeyException;

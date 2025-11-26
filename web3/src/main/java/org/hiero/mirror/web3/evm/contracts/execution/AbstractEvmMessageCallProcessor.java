@@ -2,20 +2,20 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract.EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS;
-import static com.hedera.services.stream.proto.ContractActionType.PRECOMPILE;
-import static com.hedera.services.stream.proto.ContractActionType.SYSTEM;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract.EVM_HTS_PRECOMPILED_CONTRACT_ADDRESS;
+import static com.mpcq.services.stream.proto.ContractActionType.PRECOMPILE;
+import static com.mpcq.services.stream.proto.ContractActionType.SYSTEM;
 import static org.apache.tuweni.bytes.Bytes.EMPTY;
 import static org.hyperledger.besu.evm.frame.ExceptionalHaltReason.DefaultExceptionalHaltReason.INSUFFICIENT_GAS;
 import static org.hyperledger.besu.evm.frame.MessageFrame.State.COMPLETED_SUCCESS;
 import static org.hyperledger.besu.evm.frame.MessageFrame.State.EXCEPTIONAL_HALT;
 import static org.hyperledger.besu.evm.frame.MessageFrame.State.REVERT;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmMessageCallProcessor;
-import com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
-import com.hedera.node.app.service.evm.store.contracts.AbstractLedgerEvmWorldUpdater;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract;
-import com.hedera.node.app.service.mono.contracts.execution.traceability.MPCQOperationTracer;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmMessageCallProcessor;
+import com.mpcq.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
+import com.mpcq.node.app.service.evm.store.contracts.AbstractLedgerEvmWorldUpdater;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract;
+import com.mpcq.node.app.service.mono.contracts.execution.traceability.MPCQOperationTracer;
 import com.swirlds.base.utility.Pair;
 import java.util.Map;
 import java.util.Optional;

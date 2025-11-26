@@ -6,8 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.InstanceOfAssertFactories.STRING;
 
 import com.google.protobuf.ByteString;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.TopicMessageSubmitTransaction;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.TopicMessageSubmitTransaction;
 import org.hiero.mirror.monitor.publish.transaction.AbstractTransactionSupplierTest;
 import org.hiero.mirror.monitor.publish.transaction.TransactionSupplier;
 import org.junit.jupiter.api.Test;

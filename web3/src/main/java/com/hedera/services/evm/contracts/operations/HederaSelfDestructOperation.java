@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.evm.contracts.operations;
+package com.mpcq.services.evm.contracts.operations;
 
-import com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
+import com.mpcq.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason;
 import java.util.function.BiPredicate;
 import org.hiero.mirror.web3.evm.store.contract.MPCQEvmStackedWorldStateUpdater;
 import org.hyperledger.besu.datatypes.Address;

@@ -3,7 +3,7 @@
 package org.hiero.mirror.importer.service;
 
 import com.google.common.primitives.Bytes;
-import com.hedera.services.stream.proto.ContractBytecode;
+import com.mpcq.services.stream.proto.ContractBytecode;
 import jakarta.inject.Named;
 import lombok.RequiredArgsConstructor;
 import org.hiero.mirror.common.domain.entity.EntityId;

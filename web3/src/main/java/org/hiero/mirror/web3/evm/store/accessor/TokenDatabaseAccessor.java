@@ -2,17 +2,17 @@
 
 package org.hiero.mirror.web3.evm.store.accessor;
 
-import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
+import static com.mpcq.services.utils.MiscUtils.asFcKeyUnchecked;
 import static org.hiero.mirror.common.domain.entity.EntityType.TOKEN;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
-import com.hedera.node.app.service.evm.store.tokens.TokenType;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
+import com.mpcq.node.app.service.evm.store.tokens.TokenType;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.TokenSupplyType;
 import jakarta.inject.Named;

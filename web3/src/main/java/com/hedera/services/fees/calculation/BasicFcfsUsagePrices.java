@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation;
+package com.mpcq.services.fees.calculation;
 
 import static com.hederahashgraph.api.proto.java.SubType.DEFAULT;
 
-import com.hedera.services.fees.pricing.RequiredPriceTypes;
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.services.fees.pricing.RequiredPriceTypes;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.CurrentAndNextFeeSchedule;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;

@@ -2,12 +2,12 @@
 
 package org.hiero.mirror.web3.evm.account;
 
-import static com.hedera.services.utils.MiscUtils.isRecoveredEvmAddress;
+import static com.mpcq.services.utils.MiscUtils.isRecoveredEvmAddress;
 
-import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
-import com.hedera.node.app.service.evm.utils.EthSigsUtils;
-import com.hedera.services.jproto.JECDSASecp256k1Key;
-import com.hedera.services.jproto.JKey;
+import com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases;
+import com.mpcq.node.app.service.evm.utils.EthSigsUtils;
+import com.mpcq.services.jproto.JECDSASecp256k1Key;
+import com.mpcq.services.jproto.JKey;
 import jakarta.inject.Named;
 import lombok.RequiredArgsConstructor;
 import org.apache.tuweni.bytes.Bytes;

@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.token;
+package com.mpcq.hapi.node.state.token;
 
-import static com.hedera.pbj.runtime.ProtoTestTools.BOOLEAN_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.generateListArguments;
+import static com.mpcq.pbj.runtime.ProtoTestTools.BOOLEAN_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.generateListArguments;
 
-import com.hedera.hapi.node.base.FileID;
-import com.hedera.hapi.node.base.Fraction;
-import com.hedera.hapi.node.base.KeyList;
-import com.hedera.hapi.node.transaction.CustomFee;
-import com.hedera.hapi.node.transaction.FixedFee;
-import com.hedera.hapi.node.transaction.FractionalFee;
-import com.hedera.hapi.node.transaction.RoyaltyFee;
-import com.hedera.pbj.runtime.OneOf;
+import com.mpcq.hapi.node.base.FileID;
+import com.mpcq.hapi.node.base.Fraction;
+import com.mpcq.hapi.node.base.KeyList;
+import com.mpcq.hapi.node.transaction.CustomFee;
+import com.mpcq.hapi.node.transaction.FixedFee;
+import com.mpcq.hapi.node.transaction.FractionalFee;
+import com.mpcq.hapi.node.transaction.RoyaltyFee;
+import com.mpcq.pbj.runtime.OneOf;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;

@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.tokens;
+package com.mpcq.services.store.tokens;
 
-import static com.hedera.node.app.service.evm.store.tokens.TokenType.NON_FUNGIBLE_UNIQUE;
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
-import static com.hedera.services.utils.EntityIdUtils.readableId;
-import static com.hedera.services.utils.EntityIdUtils.toGrpcAccountId;
-import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
-import static com.hedera.services.utils.MiscUtils.asUsableFcKey;
+import static com.mpcq.node.app.service.evm.store.tokens.TokenType.NON_FUNGIBLE_UNIQUE;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.readableId;
+import static com.mpcq.services.utils.EntityIdUtils.toGrpcAccountId;
+import static com.mpcq.services.utils.MiscUtils.asFcKeyUnchecked;
+import static com.mpcq.services.utils.MiscUtils.asUsableFcKey;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_AMOUNT_TRANSFERS_ONLY_ALLOWED_FOR_FUNGIBLE_COMMON;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_DELETED;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_EXPIRED_AND_PENDING_REMOVAL;
@@ -39,17 +39,17 @@ import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TOKEN_WAS_DELE
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TRANSACTION_REQUIRES_ZERO_TOKEN_BALANCES;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.UNEXPECTED_TOKEN_DECIMALS;
 
-import com.hedera.node.app.service.evm.store.tokens.TokenType;
-import com.hedera.services.exceptions.MissingEntityException;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.ledger.BalanceChange;
-import com.hedera.services.sigs.utils.ImmutableKeyUtils;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.NftId;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.store.models.TokenRelationship;
-import com.hedera.services.store.models.UniqueToken;
-import com.hedera.services.txns.validation.OptionValidator;
+import com.mpcq.node.app.service.evm.store.tokens.TokenType;
+import com.mpcq.services.exceptions.MissingEntityException;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.ledger.BalanceChange;
+import com.mpcq.services.sigs.utils.ImmutableKeyUtils;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.NftId;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.store.models.TokenRelationship;
+import com.mpcq.services.store.models.UniqueToken;
+import com.mpcq.services.txns.validation.OptionValidator;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.Duration;
 import com.hederahashgraph.api.proto.java.Key;

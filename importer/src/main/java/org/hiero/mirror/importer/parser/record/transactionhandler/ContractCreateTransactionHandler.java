@@ -5,7 +5,7 @@ package org.hiero.mirror.importer.parser.record.transactionhandler;
 import static com.hederahashgraph.api.proto.java.ContractCreateTransactionBody.InitcodeSourceCase.INITCODE;
 import static org.hiero.mirror.common.domain.transaction.RecordFile.HAPI_VERSION_0_27_0;
 
-import com.hedera.services.stream.proto.ContractBytecode;
+import com.mpcq.services.stream.proto.ContractBytecode;
 import com.hederahashgraph.api.proto.java.Key;
 import jakarta.inject.Named;
 import java.util.List;

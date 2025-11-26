@@ -1,23 +1,23 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.codec;
+package com.mpcq.services.store.contracts.precompile.codec;
 
-import static com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases.isMirror;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ARRAY_BRACKETS;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.EXPIRY;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.TOKEN_KEY;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.EXPIRY_V2;
-import static com.hedera.services.utils.EntityIdUtils.accountIdFromEvmAddress;
-import static com.hedera.services.utils.IdUtils.asContract;
+import static com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases.isMirror;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ARRAY_BRACKETS;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.EXPIRY;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.TOKEN_KEY;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.EXPIRY_V2;
+import static com.mpcq.services.utils.EntityIdUtils.accountIdFromEvmAddress;
+import static com.mpcq.services.utils.IdUtils.asContract;
 
 import com.esaulpaugh.headlong.abi.Tuple;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.UnsafeByteOperations;
-import com.hedera.services.hapi.utils.ByteStringUtils;
-import com.hedera.services.store.contracts.precompile.FungibleTokenTransfer;
-import com.hedera.services.store.contracts.precompile.HbarTransfer;
-import com.hedera.services.store.contracts.precompile.NftExchange;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.services.hapi.utils.ByteStringUtils;
+import com.mpcq.services.store.contracts.precompile.FungibleTokenTransfer;
+import com.mpcq.services.store.contracts.precompile.HbarTransfer;
+import com.mpcq.services.store.contracts.precompile.NftExchange;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.TokenID;
 import edu.umd.cs.findbugs.annotations.NonNull;

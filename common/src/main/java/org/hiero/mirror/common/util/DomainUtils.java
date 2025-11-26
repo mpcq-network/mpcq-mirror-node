@@ -10,7 +10,7 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.BytesValue;
 import com.google.protobuf.Internal;
 import com.google.protobuf.UnsafeByteOperations;
-import com.hedera.services.stream.proto.HashObject;
+import com.mpcq.services.stream.proto.HashObject;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractID;
 import com.hederahashgraph.api.proto.java.Key;

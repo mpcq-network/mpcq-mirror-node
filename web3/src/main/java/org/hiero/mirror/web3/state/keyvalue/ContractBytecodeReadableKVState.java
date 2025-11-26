@@ -2,14 +2,14 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.node.app.service.contract.impl.schemas.V0490ContractSchema.BYTECODE_STATE_ID;
-import static com.hedera.services.utils.EntityIdUtils.entityIdFromContractId;
+import static com.mpcq.node.app.service.contract.impl.schemas.V0490ContractSchema.BYTECODE_STATE_ID;
+import static com.mpcq.services.utils.EntityIdUtils.entityIdFromContractId;
 import static org.hiero.mirror.common.util.DomainUtils.isLongZeroAddress;
 
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.state.contract.Bytecode;
-import com.hedera.node.app.service.contract.ContractService;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.state.contract.Bytecode;
+import com.mpcq.node.app.service.contract.ContractService;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import jakarta.inject.Named;
 import java.util.Optional;
 import org.hiero.mirror.common.domain.entity.Entity;

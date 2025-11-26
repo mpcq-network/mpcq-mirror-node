@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.schedule;
+package com.mpcq.hapi.node.state.schedule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,13 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.ScheduleID;
-import com.hedera.hapi.node.base.Timestamp;
-import com.hedera.hapi.node.scheduled.SchedulableTransactionBody;
-import com.hedera.hapi.node.transaction.TransactionBody;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.ScheduleID;
+import com.mpcq.hapi.node.base.Timestamp;
+import com.mpcq.hapi.node.scheduled.SchedulableTransactionBody;
+import com.mpcq.hapi.node.transaction.TransactionBody;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;

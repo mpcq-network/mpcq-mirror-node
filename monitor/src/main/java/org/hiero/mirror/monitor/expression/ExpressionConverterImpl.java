@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.monitor.expression;
 
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.TokenType;
-import com.hedera.hashgraph.sdk.TransactionReceipt;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.TokenType;
+import com.mpcq.hashgraph.sdk.TransactionReceipt;
 import jakarta.inject.Named;
 import java.time.Duration;
 import java.time.Instant;

@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.token.validators;
+package com.mpcq.services.txns.token.validators;
 
-import static com.hedera.services.txns.validation.TokenListChecks.checkKeys;
-import static com.hedera.services.txns.validation.TokenListChecks.nftSupplyKeyCheck;
-import static com.hedera.services.txns.validation.TokenListChecks.suppliesCheck;
-import static com.hedera.services.txns.validation.TokenListChecks.supplyTypeCheck;
-import static com.hedera.services.txns.validation.TokenListChecks.typeCheck;
+import static com.mpcq.services.txns.validation.TokenListChecks.checkKeys;
+import static com.mpcq.services.txns.validation.TokenListChecks.nftSupplyKeyCheck;
+import static com.mpcq.services.txns.validation.TokenListChecks.suppliesCheck;
+import static com.mpcq.services.txns.validation.TokenListChecks.supplyTypeCheck;
+import static com.mpcq.services.txns.validation.TokenListChecks.typeCheck;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_RENEWAL_PERIOD;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TREASURY_ACCOUNT_FOR_TOKEN;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TOKEN_HAS_NO_FREEZE_KEY;
 
-import com.hedera.services.txns.validation.OptionValidator;
+import com.mpcq.services.txns.validation.OptionValidator;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TokenCreateTransactionBody;
 import com.hederahashgraph.api.proto.java.TransactionBody;

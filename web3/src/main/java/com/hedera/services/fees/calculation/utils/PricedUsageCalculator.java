@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation.utils;
+package com.mpcq.services.fees.calculation.utils;
 
-import static com.hedera.services.fees.calculation.UsageBasedFeeCalculator.numSimpleKeys;
+import static com.mpcq.services.fees.calculation.UsageBasedFeeCalculator.numSimpleKeys;
 
-import com.hedera.services.fees.calc.OverflowCheckingCalc;
-import com.hedera.services.fees.usage.state.UsageAccumulator;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.services.fees.calc.OverflowCheckingCalc;
+import com.mpcq.services.fees.usage.state.UsageAccumulator;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeData;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;

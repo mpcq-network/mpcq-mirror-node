@@ -1,30 +1,30 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.token;
+package com.mpcq.hapi.node.state.token;
 
-import static com.hedera.pbj.runtime.ProtoTestTools.BOOLEAN_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.BYTES_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.INTEGER_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.STRING_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.UNSIGNED_INTEGER_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.UNSIGNED_LONG_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.generateListArguments;
+import static com.mpcq.pbj.runtime.ProtoTestTools.BOOLEAN_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.BYTES_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.INTEGER_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.STRING_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.UNSIGNED_INTEGER_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.UNSIGNED_LONG_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.generateListArguments;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.NftID;
-import com.hedera.hapi.node.base.PendingAirdropId;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.state.token.Account.StakedIdOneOfType;
-import com.hedera.pbj.runtime.OneOf;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
-import com.hedera.pbj.runtime.test.NoToStringWrapper;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.NftID;
+import com.mpcq.hapi.node.base.PendingAirdropId;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.state.token.Account.StakedIdOneOfType;
+import com.mpcq.pbj.runtime.OneOf;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.pbj.runtime.test.NoToStringWrapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;

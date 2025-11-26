@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txn.token;
+package com.mpcq.services.txn.token;
 
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
-import static com.hedera.services.store.models.Token.fromGrpcOpAndMeta;
-import static com.hedera.services.utils.CustomFeeUtils.getFeeCollector;
-import static com.hedera.services.utils.CustomFeeUtils.getFeeType;
-import static com.hedera.services.utils.NewRels.listFrom;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrue;
+import static com.mpcq.services.store.models.Token.fromGrpcOpAndMeta;
+import static com.mpcq.services.utils.CustomFeeUtils.getFeeCollector;
+import static com.mpcq.services.utils.CustomFeeUtils.getFeeType;
+import static com.mpcq.services.utils.NewRels.listFrom;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.CUSTOM_FEES_LIST_TOO_LONG;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.CUSTOM_FEE_DENOMINATION_MUST_BE_FUNGIBLE_COMMON;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.CUSTOM_FRACTIONAL_FEE_ONLY_ALLOWED_FOR_FUNGIBLE_COMMON;
@@ -14,14 +14,14 @@ import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.CUSTOM_ROYALTY
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_EXPIRATION_TIME;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TOKEN_NOT_ASSOCIATED_TO_FEE_COLLECTOR;
 
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.FixedFee;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.store.models.TokenRelationship;
-import com.hedera.services.txns.validation.OptionValidator;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.FixedFee;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.store.models.TokenRelationship;
+import com.mpcq.services.txns.validation.OptionValidator;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.TokenCreateTransactionBody;
 import java.util.List;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
@@ -35,8 +35,8 @@ import org.hyperledger.besu.datatypes.Address;
  * introducing {@link Store} interface. 2. Use copied models from hedera-services which are enhanced with additional
  * constructors and/or lombok generated builder for easier setup, those are {@link Account}, {@link Token},
  * {@link TokenRelationship}, {@link CustomFee}. 3. Moved methods from
- * com.hedera.app.service.mono.txns.token.process.Creation to {@link CreateLogic}. 4. Provided
- * {@link com.hedera.services.utils.CustomFeeUtils} for easier work with fees. 5. Adapted validation methods with the
+ * com.mpcq.app.service.mono.txns.token.process.Creation to {@link CreateLogic}. 4. Provided
+ * {@link com.mpcq.services.utils.CustomFeeUtils} for easier work with fees. 5. Adapted validation methods with the
  * logic in {@link CustomFee}.
  */
 public class CreateLogic {

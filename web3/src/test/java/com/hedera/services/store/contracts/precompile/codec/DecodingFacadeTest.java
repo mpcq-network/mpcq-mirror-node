@@ -1,20 +1,20 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.codec;
+package com.mpcq.services.store.contracts.precompile.codec;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ARRAY_BRACKETS;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.FIXED_FEE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.INT;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ROYALTY_FEE;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.FIXED_FEE_DECODER;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_DECODER;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_V2;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.ROYALTY_FEE_DECODER;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.decodeAccountIds;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.decodeTokenExpiry;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.decodeTokenKeys;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.removeBrackets;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ARRAY_BRACKETS;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.FIXED_FEE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.INT;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ROYALTY_FEE;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.FIXED_FEE_DECODER;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_DECODER;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_V2;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.ROYALTY_FEE_DECODER;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.decodeAccountIds;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.decodeTokenExpiry;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.decodeTokenKeys;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.removeBrackets;
 import static java.util.function.UnaryOperator.identity;
 import static org.junit.jupiter.api.Assertions.*;
 

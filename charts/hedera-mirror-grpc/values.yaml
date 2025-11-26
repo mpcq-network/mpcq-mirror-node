@@ -86,9 +86,9 @@ gateway:
           port: 5600
       matches:
         - method:
-            service: com.hedera.mirror.api.proto.ConsensusService
+            service: com.mpcq.mirror.api.proto.ConsensusService
         - method:
-            service: com.hedera.mirror.api.proto.NetworkService
+            service: com.mpcq.mirror.api.proto.NetworkService
         - method:
             service: grpc.reflection.v1alpha.ServerReflection
   target:
@@ -133,8 +133,8 @@ ingress:
   hosts:
     - host: ""
       paths:
-        - "/com.hedera.mirror.api.proto.ConsensusService"
-        - "/com.hedera.mirror.api.proto.NetworkService"
+        - "/com.mpcq.mirror.api.proto.ConsensusService"
+        - "/com.mpcq.mirror.api.proto.NetworkService"
         - "/grpc.reflection.v1alpha.ServerReflection"
   tls:
     enabled: false

@@ -2,11 +2,11 @@
 
 package org.hiero.mirror.importer.downloader.block;
 
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.BLOCK_HEADER;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.RECORD_FILE;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.BLOCK_HEADER;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.RECORD_FILE;
 
 import com.google.common.base.Stopwatch;
-import com.hedera.hapi.block.stream.protoc.BlockItem;
+import com.mpcq.hapi.block.stream.protoc.BlockItem;
 import io.grpc.CallOptions;
 import io.grpc.ManagedChannel;
 import io.grpc.stub.BlockingClientCall;

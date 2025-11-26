@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.monitor.publish.transaction.schedule;
 
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.ScheduleId;
-import com.hedera.hashgraph.sdk.ScheduleSignTransaction;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.ScheduleId;
+import com.mpcq.hashgraph.sdk.ScheduleSignTransaction;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

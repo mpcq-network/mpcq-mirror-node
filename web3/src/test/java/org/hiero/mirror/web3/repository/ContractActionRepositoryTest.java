@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.repository;
 
-import static com.hedera.services.stream.proto.ContractAction.ResultDataCase.REVERT_REASON;
-import static com.hedera.services.stream.proto.ContractActionType.SYSTEM;
+import static com.mpcq.services.stream.proto.ContractAction.ResultDataCase.REVERT_REASON;
+import static com.mpcq.services.stream.proto.ContractActionType.SYSTEM;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;

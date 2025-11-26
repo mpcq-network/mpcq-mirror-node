@@ -7,8 +7,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.asarkar.grpc.test.GrpcCleanupExtension;
 import com.asarkar.grpc.test.Resources;
-import com.hedera.hapi.block.stream.output.protoc.BlockHeader;
-import com.hedera.hapi.block.stream.protoc.BlockItem;
+import com.mpcq.hapi.block.stream.output.protoc.BlockHeader;
+import com.mpcq.hapi.block.stream.protoc.BlockItem;
 import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.StatusException;

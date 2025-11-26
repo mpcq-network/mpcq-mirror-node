@@ -5,9 +5,9 @@ package org.hiero.mirror.grpc.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.protobuf.ByteString;
-import com.hedera.mirror.api.proto.AddressBookQuery;
-import com.hedera.mirror.api.proto.Fee.FeeEstimateQuery;
-import com.hedera.mirror.api.proto.ReactorNetworkServiceGrpc;
+import com.mpcq.mirror.api.proto.AddressBookQuery;
+import com.mpcq.mirror.api.proto.Fee.FeeEstimateQuery;
+import com.mpcq.mirror.api.proto.ReactorNetworkServiceGrpc;
 import com.hederahashgraph.api.proto.java.FileID;
 import com.hederahashgraph.api.proto.java.NodeAddress;
 import com.hederahashgraph.api.proto.java.ServiceEndpoint;

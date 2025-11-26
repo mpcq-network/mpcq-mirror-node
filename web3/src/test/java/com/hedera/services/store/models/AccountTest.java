@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.models;
+package com.mpcq.services.store.models;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hiero.base.utility.CommonUtils.unhex;

@@ -3,8 +3,8 @@
 package org.hiero.mirror.importer.downloader.block.transformer;
 
 import com.google.protobuf.ByteString;
-import com.hedera.hapi.block.stream.trace.protoc.EvmTransactionLog;
-import com.hedera.hapi.block.stream.trace.protoc.InitcodeBookends;
+import com.mpcq.hapi.block.stream.trace.protoc.EvmTransactionLog;
+import com.mpcq.hapi.block.stream.trace.protoc.InitcodeBookends;
 import com.hederahashgraph.api.proto.java.ContractID;
 import java.util.ArrayList;
 import java.util.Collection;

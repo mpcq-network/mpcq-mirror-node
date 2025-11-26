@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.service;
 
-import static com.hedera.services.stream.proto.ContractAction.ResultDataCase.OUTPUT;
+import static com.mpcq.services.stream.proto.ContractAction.ResultDataCase.OUTPUT;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.hiero.mirror.common.domain.entity.EntityType.TOKEN;
 import static org.hiero.mirror.common.domain.transaction.TransactionType.ETHEREUMTRANSACTION;
@@ -14,8 +14,8 @@ import static org.hiero.mirror.web3.utils.ContractCallTestUtil.NEW_ED25519_KEY;
 import static org.hiero.mirror.web3.utils.ContractCallTestUtil.TRANSACTION_GAS_LIMIT;
 import static org.hiero.mirror.web3.validation.HexValidator.HEX_PREFIX;
 
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmEncodingFacade;
-import com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmEncodingFacade;
+import com.mpcq.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
 import java.math.BigInteger;
 import java.time.Instant;
 import java.util.ArrayList;

@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.models;
+package com.mpcq.services.store.models;
 
-import static com.hedera.services.store.models.Token.MAX_UNIQUE_NFTS_PER_TOKEN;
-import static com.hedera.services.utils.IdUtils.asAccount;
-import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
-import static com.hedera.services.utils.TxnUtils.assertFailsWith;
+import static com.mpcq.services.store.models.Token.MAX_UNIQUE_NFTS_PER_TOKEN;
+import static com.mpcq.services.utils.IdUtils.asAccount;
+import static com.mpcq.services.utils.MiscUtils.asFcKeyUnchecked;
+import static com.mpcq.services.utils.TxnUtils.assertFailsWith;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.CANNOT_WIPE_TOKEN_TREASURY_ACCOUNT;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.FAIL_INVALID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TOKEN_BURN_AMOUNT;
@@ -26,10 +26,10 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.node.app.service.evm.store.tokens.TokenType;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.state.submerkle.RichInstant;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.node.app.service.evm.store.tokens.TokenType;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.state.submerkle.RichInstant;
 import com.hederahashgraph.api.proto.java.CustomFee;
 import com.hederahashgraph.api.proto.java.FixedFee;
 import com.hederahashgraph.api.proto.java.Key;

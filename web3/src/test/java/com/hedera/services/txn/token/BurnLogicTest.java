@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txn.token;
+package com.mpcq.services.txn.token;
 
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,13 +8,13 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.node.app.service.evm.store.tokens.TokenType;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.store.models.TokenModificationResult;
-import com.hedera.services.store.models.TokenRelationship;
-import com.hedera.services.txns.validation.OptionValidator;
+import com.mpcq.node.app.service.evm.store.tokens.TokenType;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.store.models.TokenModificationResult;
+import com.mpcq.services.store.models.TokenRelationship;
+import com.mpcq.services.txns.validation.OptionValidator;
 import com.hederahashgraph.api.proto.java.TokenBurnTransactionBody;
 import com.hederahashgraph.api.proto.java.TokenID;
 import com.hederahashgraph.api.proto.java.TransactionBody;

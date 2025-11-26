@@ -2,12 +2,12 @@
 
 package org.hiero.mirror.web3.service;
 
-import static com.hedera.hapi.node.base.ResponseCodeEnum.TRANSACTION_OVERSIZE;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.TRANSACTION_OVERSIZE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.hedera.node.config.data.JumboTransactionsConfig;
+import com.mpcq.node.config.data.JumboTransactionsConfig;
 import org.hiero.mirror.common.exception.MirrorNodeException;
 import org.hiero.mirror.web3.exception.MirrorEvmTransactionException;
 import org.hiero.mirror.web3.web3j.generated.JumboTransaction;

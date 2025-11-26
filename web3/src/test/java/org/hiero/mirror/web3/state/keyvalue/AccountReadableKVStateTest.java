@@ -14,21 +14,21 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.AccountID.AccountOneOfType;
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.state.primitives.ProtoBytes;
-import com.hedera.hapi.node.state.token.Account;
-import com.hedera.hapi.node.state.token.AccountApprovalForAllAllowance;
-import com.hedera.hapi.node.state.token.AccountCryptoAllowance;
-import com.hedera.hapi.node.state.token.AccountFungibleTokenAllowance;
-import com.hedera.node.config.VersionedConfiguration;
-import com.hedera.node.config.data.ContractsConfig;
-import com.hedera.pbj.runtime.OneOf;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.AccountID.AccountOneOfType;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.state.primitives.ProtoBytes;
+import com.mpcq.hapi.node.state.token.Account;
+import com.mpcq.hapi.node.state.token.AccountApprovalForAllAllowance;
+import com.mpcq.hapi.node.state.token.AccountCryptoAllowance;
+import com.mpcq.hapi.node.state.token.AccountFungibleTokenAllowance;
+import com.mpcq.node.config.VersionedConfiguration;
+import com.mpcq.node.config.data.ContractsConfig;
+import com.mpcq.pbj.runtime.OneOf;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.services.utils.EntityIdUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -204,7 +204,7 @@ class AccountReadableKVStateTest {
                                 entity.getShard(),
                                 entity.getRealm(),
                                 new OneOf<>(AccountOneOfType.ACCOUNT_NUM, entity.getNum())),
-                        com.hedera.hapi.node.state.token.Account::accountId)
+                        com.mpcq.hapi.node.state.token.Account::accountId)
                 .returns(
                         TimeUnit.SECONDS.convert(entity.getEffectiveExpiration(), TimeUnit.NANOSECONDS),
                         Account::expirationSecond)
@@ -223,7 +223,7 @@ class AccountReadableKVStateTest {
                                 entity.getShard(),
                                 entity.getRealm(),
                                 new OneOf<>(AccountOneOfType.ACCOUNT_NUM, entity.getNum())),
-                        com.hedera.hapi.node.state.token.Account::accountId)
+                        com.mpcq.hapi.node.state.token.Account::accountId)
                 .returns(EMPTY_KEY_LIST, Account::key));
     }
 
@@ -243,7 +243,7 @@ class AccountReadableKVStateTest {
                                 contractEntity.getShard(),
                                 contractEntity.getRealm(),
                                 new OneOf<>(AccountOneOfType.ACCOUNT_NUM, contractEntity.getNum())),
-                        com.hedera.hapi.node.state.token.Account::accountId)
+                        com.mpcq.hapi.node.state.token.Account::accountId)
                 .returns(
                         Key.newBuilder()
                                 .contractID(ContractID.newBuilder()
@@ -274,7 +274,7 @@ class AccountReadableKVStateTest {
                                 entity.getShard(),
                                 entity.getRealm(),
                                 new OneOf<>(AccountOneOfType.ACCOUNT_NUM, entity.getNum())),
-                        com.hedera.hapi.node.state.token.Account::accountId)
+                        com.mpcq.hapi.node.state.token.Account::accountId)
                 .returns(
                         TimeUnit.SECONDS.convert(entity.getEffectiveExpiration(), TimeUnit.NANOSECONDS),
                         Account::expirationSecond)
@@ -297,7 +297,7 @@ class AccountReadableKVStateTest {
                                 entity.getShard(),
                                 entity.getRealm(),
                                 new OneOf<>(AccountOneOfType.ACCOUNT_NUM, entity.getNum())),
-                        com.hedera.hapi.node.state.token.Account::accountId)
+                        com.mpcq.hapi.node.state.token.Account::accountId)
                 .returns(
                         TimeUnit.SECONDS.convert(entity.getEffectiveExpiration(), TimeUnit.NANOSECONDS),
                         Account::expirationSecond)

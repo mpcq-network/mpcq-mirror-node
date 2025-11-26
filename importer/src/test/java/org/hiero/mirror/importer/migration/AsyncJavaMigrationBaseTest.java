@@ -23,7 +23,7 @@ class AsyncJavaMigrationBaseTest extends ImporterIntegrationTest {
 
     protected static final int ELAPSED = 20;
     protected static final String SCRIPT = AsyncJavaMigrationBaseTest.TestAsyncJavaMigration.class.getName();
-    protected static final String SCRIPT_HEDERA = SCRIPT.replace("org.hiero.", "com.hedera.");
+    protected static final String SCRIPT_HEDERA = SCRIPT.replace("org.hiero.", "com.mpcq.");
     protected static final String TEST_MIGRATION_DESCRIPTION = "Async java migration for testing";
 
     private static final DataClassRowMapper<MigrationHistory> MAPPER = new DataClassRowMapper<>(MigrationHistory.class);

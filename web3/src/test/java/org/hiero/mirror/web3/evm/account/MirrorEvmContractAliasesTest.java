@@ -11,10 +11,10 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.node.app.service.evm.utils.EthSigsUtils;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
+import com.mpcq.node.app.service.evm.utils.EthSigsUtils;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
 import com.hederahashgraph.api.proto.java.Key;
 import java.security.InvalidKeyException;
 import java.util.stream.Stream;

@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.fees.usage.crypto;
+package com.mpcq.services.hapi.fees.usage.crypto;
 
-import static com.hedera.services.hapi.fees.usage.crypto.CryptoContextUtils.convertToCryptoMap;
-import static com.hedera.services.hapi.fees.usage.crypto.CryptoContextUtils.convertToNftMap;
-import static com.hedera.services.hapi.fees.usage.crypto.CryptoContextUtils.convertToTokenMap;
-import static com.hedera.services.hapi.fees.usage.crypto.CryptoContextUtils.countSerials;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.CRYPTO_ALLOWANCE_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.LONG_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.NFT_ALLOWANCE_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.TOKEN_ALLOWANCE_SIZE;
+import static com.mpcq.services.hapi.fees.usage.crypto.CryptoContextUtils.convertToCryptoMap;
+import static com.mpcq.services.hapi.fees.usage.crypto.CryptoContextUtils.convertToNftMap;
+import static com.mpcq.services.hapi.fees.usage.crypto.CryptoContextUtils.convertToTokenMap;
+import static com.mpcq.services.hapi.fees.usage.crypto.CryptoContextUtils.countSerials;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.CRYPTO_ALLOWANCE_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.LONG_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.NFT_ALLOWANCE_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.TOKEN_ALLOWANCE_SIZE;
 
 import com.google.common.base.MoreObjects;
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.services.utils.EntityNum;
 import com.hederahashgraph.api.proto.java.CryptoApproveAllowanceTransactionBody;
 import java.util.Map;
 import java.util.Set;

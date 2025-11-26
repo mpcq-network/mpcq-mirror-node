@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.importer.downloader.block.simulator;
 
-import com.hedera.hapi.block.stream.protoc.BlockItem;
+import com.mpcq.hapi.block.stream.protoc.BlockItem;
 import io.grpc.ForwardingServerBuilder;
 import io.grpc.Server;
 import io.grpc.inprocess.InProcessServerBuilder;

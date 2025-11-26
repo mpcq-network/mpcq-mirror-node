@@ -52,7 +52,7 @@ abstract class AsyncJavaMigration<T> extends RepeatableMigration implements Call
     private static final String SELECT_LAST_CHECKSUM_SQL_PRE_FIX =
             """
             select checksum from flyway_schema_history
-            where description = :description and script like 'com.hedera.%'
+            where description = :description and script like 'com.mpcq.%'
             order by installed_rank desc limit 1
             """;
 

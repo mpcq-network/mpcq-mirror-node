@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
-import static com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.PRNG;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrue;
+import static com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.PRNG;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.FAIL_INVALID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INSUFFICIENT_GAS;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_FEE_SUBMITTED;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TRANSACTION_BODY;
 
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.services.contracts.execution.LivePricesSource;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txns.util.PrngLogic;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.services.contracts.execution.LivePricesSource;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txns.util.PrngLogic;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import jakarta.annotation.Nonnull;
 import java.math.BigInteger;

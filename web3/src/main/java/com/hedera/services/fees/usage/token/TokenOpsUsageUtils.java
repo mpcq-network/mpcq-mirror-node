@@ -1,27 +1,27 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.usage.token;
+package com.mpcq.services.fees.usage.token;
 
-import static com.hedera.services.fees.usage.token.entities.TokenEntitySizes.TOKEN_ENTITY_SIZES;
-import static com.hedera.services.hapi.fees.usage.EstimatorUtils.MAX_ENTITY_LIFETIME;
-import static com.hedera.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.LONG_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.getAccountKeyStorageSize;
+import static com.mpcq.services.fees.usage.token.entities.TokenEntitySizes.TOKEN_ENTITY_SIZES;
+import static com.mpcq.services.hapi.fees.usage.EstimatorUtils.MAX_ENTITY_LIFETIME;
+import static com.mpcq.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.LONG_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.getAccountKeyStorageSize;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_FUNGIBLE_COMMON;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_FUNGIBLE_COMMON_WITH_CUSTOM_FEES;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_NON_FUNGIBLE_UNIQUE;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_NON_FUNGIBLE_UNIQUE_WITH_CUSTOM_FEES;
 import static com.hederahashgraph.api.proto.java.TokenType.NON_FUNGIBLE_UNIQUE;
 
-import com.hedera.services.fees.usage.token.meta.TokenBurnMeta;
-import com.hedera.services.fees.usage.token.meta.TokenCreateMeta;
-import com.hedera.services.fees.usage.token.meta.TokenFreezeMeta;
-import com.hedera.services.fees.usage.token.meta.TokenMintMeta;
-import com.hedera.services.fees.usage.token.meta.TokenPauseMeta;
-import com.hedera.services.fees.usage.token.meta.TokenUnfreezeMeta;
-import com.hedera.services.fees.usage.token.meta.TokenUnpauseMeta;
-import com.hedera.services.fees.usage.token.meta.TokenWipeMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenBurnMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenCreateMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenFreezeMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenMintMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenPauseMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenUnfreezeMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenUnpauseMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenWipeMeta;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.SubType;
 import com.hederahashgraph.api.proto.java.TokenCreateTransactionBody;

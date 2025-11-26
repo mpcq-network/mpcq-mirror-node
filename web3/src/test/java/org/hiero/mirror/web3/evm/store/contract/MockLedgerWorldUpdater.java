@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.evm.store.contract;
 
-import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
+import com.mpcq.node.app.service.evm.accounts.AccountAccessor;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.account.Account;
 import org.hyperledger.besu.evm.account.MutableAccount;

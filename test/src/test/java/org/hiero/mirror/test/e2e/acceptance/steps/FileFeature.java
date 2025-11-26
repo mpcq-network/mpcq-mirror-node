@@ -5,8 +5,8 @@ package org.hiero.mirror.test.e2e.acceptance.steps;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.hedera.hashgraph.sdk.FileId;
-import com.hedera.hashgraph.sdk.FileInfo;
+import com.mpcq.hashgraph.sdk.FileId;
+import com.mpcq.hashgraph.sdk.FileInfo;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import java.nio.charset.StandardCharsets;

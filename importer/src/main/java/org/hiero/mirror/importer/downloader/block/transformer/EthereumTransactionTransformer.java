@@ -3,8 +3,8 @@
 package org.hiero.mirror.importer.downloader.block.transformer;
 
 import com.google.protobuf.Int64Value;
-import com.hedera.hapi.block.stream.output.protoc.TransactionOutput;
-import com.hedera.hapi.block.stream.output.protoc.TransactionOutput.TransactionCase;
+import com.mpcq.hapi.block.stream.output.protoc.TransactionOutput;
+import com.mpcq.hapi.block.stream.output.protoc.TransactionOutput.TransactionCase;
 import jakarta.inject.Named;
 import org.hiero.mirror.common.domain.transaction.BlockTransaction;
 import org.hiero.mirror.common.domain.transaction.TransactionType;

@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation;
+package com.mpcq.services.fees.calculation;
 
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.FEE_DIVISOR_FACTOR;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.getFeeObject;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
-import static com.hedera.services.utils.IdUtils.asAccount;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.FEE_DIVISOR_FACTOR;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.getFeeObject;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
+import static com.mpcq.services.utils.IdUtils.asAccount;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
 import static com.hederahashgraph.api.proto.java.ResponseType.ANSWER_ONLY;
 import static com.hederahashgraph.api.proto.java.SubType.DEFAULT;
@@ -16,14 +16,14 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.mock;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.token.txns.TokenDissociateResourceUsage;
-import com.hedera.services.fees.calculation.utils.PricedUsageCalculator;
-import com.hedera.services.hapi.fees.usage.EstimatorFactory;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.utils.accessors.SignedTxnAccessor;
+import com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.token.txns.TokenDissociateResourceUsage;
+import com.mpcq.services.fees.calculation.utils.PricedUsageCalculator;
+import com.mpcq.services.hapi.fees.usage.EstimatorFactory;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.utils.accessors.SignedTxnAccessor;
 import com.hederahashgraph.api.proto.java.Duration;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeComponents;

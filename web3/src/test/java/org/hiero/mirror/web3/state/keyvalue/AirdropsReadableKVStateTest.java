@@ -2,18 +2,18 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.services.utils.EntityIdUtils.toAccountId;
-import static com.hedera.services.utils.EntityIdUtils.toEntityId;
+import static com.mpcq.services.utils.EntityIdUtils.toAccountId;
+import static com.mpcq.services.utils.EntityIdUtils.toEntityId;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.NftID;
-import com.hedera.hapi.node.base.PendingAirdropId;
-import com.hedera.hapi.node.base.PendingAirdropValue;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.state.token.AccountPendingAirdrop;
+import com.mpcq.hapi.node.base.NftID;
+import com.mpcq.hapi.node.base.PendingAirdropId;
+import com.mpcq.hapi.node.base.PendingAirdropValue;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.state.token.AccountPendingAirdrop;
 import java.util.Collections;
 import java.util.Optional;
 import org.hiero.mirror.common.domain.DomainBuilder;

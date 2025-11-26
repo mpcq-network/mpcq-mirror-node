@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.models;
+package com.mpcq.services.store.models;
 
-import static com.hedera.services.utils.EntityIdUtils.asHexedEvmAddress;
-import static com.hedera.services.utils.MiscUtils.perm64;
+import static com.mpcq.services.utils.EntityIdUtils.asHexedEvmAddress;
+import static com.mpcq.services.utils.MiscUtils.perm64;
 
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.services.utils.EntityNum;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractID;
 import com.hederahashgraph.api.proto.java.TokenID;

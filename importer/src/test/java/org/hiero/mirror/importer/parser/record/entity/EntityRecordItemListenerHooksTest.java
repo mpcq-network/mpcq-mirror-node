@@ -5,12 +5,12 @@ package org.hiero.mirror.importer.parser.record.entity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.protobuf.BytesValue;
-import com.hedera.hapi.node.hooks.legacy.LambdaStorageSlot;
-import com.hedera.hapi.node.hooks.legacy.LambdaStorageUpdate;
-import com.hedera.services.stream.proto.ContractStateChange;
-import com.hedera.services.stream.proto.ContractStateChanges;
-import com.hedera.services.stream.proto.StorageChange;
-import com.hedera.services.stream.proto.TransactionSidecarRecord;
+import com.mpcq.hapi.node.hooks.legacy.LambdaStorageSlot;
+import com.mpcq.hapi.node.hooks.legacy.LambdaStorageUpdate;
+import com.mpcq.services.stream.proto.ContractStateChange;
+import com.mpcq.services.stream.proto.ContractStateChanges;
+import com.mpcq.services.stream.proto.StorageChange;
+import com.mpcq.services.stream.proto.TransactionSidecarRecord;
 import com.hederahashgraph.api.proto.java.AccountAmount;
 import com.hederahashgraph.api.proto.java.ContractCallTransactionBody;
 import com.hederahashgraph.api.proto.java.ContractID;

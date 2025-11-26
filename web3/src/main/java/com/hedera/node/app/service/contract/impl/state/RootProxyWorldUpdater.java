@@ -1,24 +1,24 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.node.app.service.contract.impl.state;
+package com.mpcq.node.app.service.contract.impl.state;
 
-import static com.hedera.hapi.node.base.MPCQFunctionality.CRYPTO_CREATE;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.CONSENSUS_GAS_EXHAUSTED;
-import static com.hedera.node.app.service.token.HookDispatchUtils.HTS_HOOKS_CONTRACT_NUM;
-import static com.hedera.node.app.spi.workflows.HandleContext.DispatchMetadata.Type.EXPLICIT_WRITE_TRACING;
-import static com.hedera.node.app.spi.workflows.ResourceExhaustedException.validateResource;
+import static com.mpcq.hapi.node.base.MPCQFunctionality.CRYPTO_CREATE;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.CONSENSUS_GAS_EXHAUSTED;
+import static com.mpcq.node.app.service.token.HookDispatchUtils.HTS_HOOKS_CONTRACT_NUM;
+import static com.mpcq.node.app.spi.workflows.HandleContext.DispatchMetadata.Type.EXPLICIT_WRITE_TRACING;
+import static com.mpcq.node.app.spi.workflows.ResourceExhaustedException.validateResource;
 import static java.util.Objects.requireNonNull;
 
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.contract.ContractNonceInfo;
-import com.hedera.node.app.service.contract.impl.annotations.TransactionScope;
-import com.hedera.node.app.service.contract.impl.exec.scope.HandleMPCQOperations;
-import com.hedera.node.app.service.contract.impl.infra.IterableStorageManager;
-import com.hedera.node.app.service.contract.impl.infra.RentCalculator;
-import com.hedera.node.app.service.contract.impl.infra.StorageSizeValidator;
-import com.hedera.node.app.spi.workflows.HandleContext;
-import com.hedera.node.app.spi.workflows.ResourceExhaustedException;
-import com.hedera.node.config.data.ContractsConfig;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.contract.ContractNonceInfo;
+import com.mpcq.node.app.service.contract.impl.annotations.TransactionScope;
+import com.mpcq.node.app.service.contract.impl.exec.scope.HandleMPCQOperations;
+import com.mpcq.node.app.service.contract.impl.infra.IterableStorageManager;
+import com.mpcq.node.app.service.contract.impl.infra.RentCalculator;
+import com.mpcq.node.app.service.contract.impl.infra.StorageSizeValidator;
+import com.mpcq.node.app.spi.workflows.HandleContext;
+import com.mpcq.node.app.spi.workflows.ResourceExhaustedException;
+import com.mpcq.node.config.data.ContractsConfig;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import jakarta.inject.Inject;

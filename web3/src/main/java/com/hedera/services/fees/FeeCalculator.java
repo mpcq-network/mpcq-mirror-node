@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees;
+package com.mpcq.services.fees;
 
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.*;
 import org.hiero.mirror.web3.evm.store.Store;
 

@@ -2,13 +2,13 @@
 
 package org.hiero.mirror.web3.state.singleton;
 
-import static com.hedera.node.app.fees.schemas.V0490FeeSchema.MIDNIGHT_RATES_STATE_ID;
+import static com.mpcq.node.app.fees.schemas.V0490FeeSchema.MIDNIGHT_RATES_STATE_ID;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.hedera.hapi.node.base.TimestampSeconds;
-import com.hedera.hapi.node.transaction.ExchangeRate;
-import com.hedera.hapi.node.transaction.ExchangeRateSet;
-import com.hedera.node.config.data.BootstrapConfig;
+import com.mpcq.hapi.node.base.TimestampSeconds;
+import com.mpcq.hapi.node.transaction.ExchangeRate;
+import com.mpcq.hapi.node.transaction.ExchangeRateSet;
+import com.mpcq.node.config.data.BootstrapConfig;
 import lombok.RequiredArgsConstructor;
 import org.hiero.mirror.web3.Web3IntegrationTest;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;

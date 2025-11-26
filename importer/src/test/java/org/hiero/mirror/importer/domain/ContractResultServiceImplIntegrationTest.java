@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.importer.domain;
 
-import static com.hedera.services.stream.proto.ContractAction.RecipientCase.RECIPIENT_NOT_SET;
+import static com.mpcq.services.stream.proto.ContractAction.RecipientCase.RECIPIENT_NOT_SET;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hiero.mirror.common.domain.entity.EntityType.ACCOUNT;
 import static org.hiero.mirror.common.domain.entity.EntityType.CONTRACT;
@@ -12,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import com.google.common.primitives.Bytes;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.BytesValue;
-import com.hedera.services.stream.proto.CallOperationType;
-import com.hedera.services.stream.proto.ContractActionType;
-import com.hedera.services.stream.proto.ContractActions;
-import com.hedera.services.stream.proto.ContractBytecode;
-import com.hedera.services.stream.proto.ContractStateChanges;
-import com.hedera.services.stream.proto.StorageChange;
-import com.hedera.services.stream.proto.TransactionSidecarRecord;
+import com.mpcq.services.stream.proto.CallOperationType;
+import com.mpcq.services.stream.proto.ContractActionType;
+import com.mpcq.services.stream.proto.ContractActions;
+import com.mpcq.services.stream.proto.ContractBytecode;
+import com.mpcq.services.stream.proto.ContractStateChanges;
+import com.mpcq.services.stream.proto.StorageChange;
+import com.mpcq.services.stream.proto.TransactionSidecarRecord;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractFunctionResult;
 import com.hederahashgraph.api.proto.java.ContractID;
@@ -696,11 +696,11 @@ final class ContractResultServiceImplIntegrationTest extends ImporterIntegration
         var stateChangeRecord1 = TransactionSidecarRecord.newBuilder()
                 .setMigration(migration)
                 .setStateChanges(ContractStateChanges.newBuilder()
-                        .addContractStateChanges(com.hedera.services.stream.proto.ContractStateChange.newBuilder()
+                        .addContractStateChanges(com.mpcq.services.stream.proto.ContractStateChange.newBuilder()
                                 .setContractId(domainBuilder.entityId().toContractID())
                                 .addStorageChanges(StorageChange.newBuilder()
                                         .setValueWritten(BytesValue.of(DomainUtils.fromBytes(new byte[] {1, 1})))))
-                        .addContractStateChanges(com.hedera.services.stream.proto.ContractStateChange.newBuilder()
+                        .addContractStateChanges(com.mpcq.services.stream.proto.ContractStateChange.newBuilder()
                                 .setContractId(domainBuilder.entityId().toContractID())
                                 .addStorageChanges(StorageChange.newBuilder()
                                         .setValueWritten(BytesValue.of(DomainUtils.fromBytes(new byte[] {2, 2}))))))
@@ -708,11 +708,11 @@ final class ContractResultServiceImplIntegrationTest extends ImporterIntegration
         var stateChangeRecord2 = TransactionSidecarRecord.newBuilder()
                 .setMigration(false)
                 .setStateChanges(ContractStateChanges.newBuilder()
-                        .addContractStateChanges(com.hedera.services.stream.proto.ContractStateChange.newBuilder()
+                        .addContractStateChanges(com.mpcq.services.stream.proto.ContractStateChange.newBuilder()
                                 .setContractId(domainBuilder.entityId().toContractID())
                                 .addStorageChanges(StorageChange.newBuilder()
                                         .setValueWritten(BytesValue.of(DomainUtils.fromBytes(new byte[] {3, 3})))))
-                        .addContractStateChanges(com.hedera.services.stream.proto.ContractStateChange.newBuilder()
+                        .addContractStateChanges(com.mpcq.services.stream.proto.ContractStateChange.newBuilder()
                                 .setContractId(domainBuilder.entityId().toContractID())
                                 .addStorageChanges(StorageChange.newBuilder()
                                         .setValueWritten(BytesValue.of(DomainUtils.fromBytes(new byte[] {4, 4}))))))
@@ -806,7 +806,7 @@ final class ContractResultServiceImplIntegrationTest extends ImporterIntegration
         var expected = recordItem.getSidecarRecords().stream()
                 .map(TransactionSidecarRecord::getActions)
                 .map(actions -> {
-                    var actionsMap = new HashMap<ContractAction.Id, com.hedera.services.stream.proto.ContractAction>();
+                    var actionsMap = new HashMap<ContractAction.Id, com.mpcq.services.stream.proto.ContractAction>();
                     for (int i = 0; i < actions.getContractActionsCount(); i++) {
                         var action = actions.getContractActions(i);
                         actionsMap.put(new ContractAction.Id(recordItem.getConsensusTimestamp(), i), action);
@@ -838,7 +838,7 @@ final class ContractResultServiceImplIntegrationTest extends ImporterIntegration
                                 e -> assertThat(e.getRecipientCase()).isEqualTo(RECIPIENT_NOT_SET))));
     }
 
-    private EntityType getExpectedCallerType(com.hedera.services.stream.proto.ContractAction e) {
+    private EntityType getExpectedCallerType(com.mpcq.services.stream.proto.ContractAction e) {
         return switch (e.getCallerCase()) {
             case CALLING_CONTRACT -> CONTRACT;
             case CALLING_ACCOUNT -> ACCOUNT;
@@ -995,9 +995,9 @@ final class ContractResultServiceImplIntegrationTest extends ImporterIntegration
                 : txnRecord.getContractCallResult();
     }
 
-    private com.hedera.services.stream.proto.ContractAction contractAction(
+    private com.mpcq.services.stream.proto.ContractAction contractAction(
             CallOperationType callOperationType, ContractActionType contractActionType, int callDepth) {
-        return com.hedera.services.stream.proto.ContractAction.newBuilder()
+        return com.mpcq.services.stream.proto.ContractAction.newBuilder()
                 .setCallDepth(callDepth)
                 .setCallingContract(domainBuilder.entityId().toContractID())
                 .setCallOperationType(callOperationType)

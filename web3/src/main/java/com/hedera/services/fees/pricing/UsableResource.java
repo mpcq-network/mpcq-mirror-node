@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.pricing;
+package com.mpcq.services.fees.pricing;
 
 /** Represents the eight kinds of resources that may be consumed in the MPCQ network. */
 public enum UsableResource {

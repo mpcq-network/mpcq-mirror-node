@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.test.e2e.acceptance.config;
 
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.LedgerId;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.LedgerId;
 import jakarta.inject.Named;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;

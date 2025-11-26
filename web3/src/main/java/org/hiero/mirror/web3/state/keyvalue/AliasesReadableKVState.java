@@ -2,10 +2,10 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema.ALIASES_STATE_ID;
+import static com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema.ALIASES_STATE_ID;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.state.primitives.ProtoBytes;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.state.primitives.ProtoBytes;
 import jakarta.inject.Named;
 import org.hiero.mirror.common.domain.SystemEntity;
 import org.hiero.mirror.web3.common.ContractCallContext;

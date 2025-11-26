@@ -9,8 +9,8 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.hapi.block.stream.protoc.BlockItem;
-import com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase;
+import com.mpcq.hapi.block.stream.protoc.BlockItem;
+import com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

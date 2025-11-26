@@ -2,10 +2,10 @@
 
 package org.hiero.mirror.web3.evm.store.contract;
 
-import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
-import com.hedera.node.app.service.evm.store.models.UpdateTrackingAccount;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.node.app.service.evm.accounts.AccountAccessor;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.mpcq.node.app.service.evm.store.models.UpdateTrackingAccount;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
 import org.hiero.mirror.web3.evm.store.Store;
 import org.hyperledger.besu.datatypes.Address;
 import org.hyperledger.besu.evm.account.Account;

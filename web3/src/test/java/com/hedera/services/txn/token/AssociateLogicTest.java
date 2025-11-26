@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txn.token;
+package com.mpcq.services.txn.token;
 
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.FAIL_INVALID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TOKENS_PER_ACCOUNT_LIMIT_EXCEEDED;
@@ -10,11 +10,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.store.models.TokenRelationship;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.store.models.TokenRelationship;
 import java.util.List;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.hiero.mirror.web3.evm.store.Store.OnMissing;
@@ -85,7 +85,7 @@ class AssociateLogicTest {
 
         // expect:
         assertThatThrownBy(() -> associateLogic.associate(accountAddress, tokenAddresses, store))
-                .isInstanceOf(com.hedera.node.app.service.evm.exceptions.InvalidTransactionException.class)
+                .isInstanceOf(com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException.class)
                 .hasMessage(TOKENS_PER_ACCOUNT_LIMIT_EXCEEDED.name());
     }
 
@@ -98,7 +98,7 @@ class AssociateLogicTest {
         final var tokenRelationShipKey = new TokenRelationshipKey(tokenAddress, accountAddress);
         when(store.hasAssociation(tokenRelationShipKey)).thenReturn(true);
         assertThatThrownBy(() -> associateLogic.associate(accountAddress, tokenAddresses, store))
-                .isInstanceOf(com.hedera.node.app.service.evm.exceptions.InvalidTransactionException.class)
+                .isInstanceOf(com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException.class)
                 .hasMessage(TOKEN_ALREADY_ASSOCIATED_TO_ACCOUNT.name());
     }
 

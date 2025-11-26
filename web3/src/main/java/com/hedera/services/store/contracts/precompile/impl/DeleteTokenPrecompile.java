@@ -1,28 +1,28 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.impl;
+package com.mpcq.services.store.contracts.precompile.impl;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.BYTES32;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.INT;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
-import static com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.DELETE;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrue;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.BYTES32;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.INT;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
+import static com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.DELETE;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 
 import com.esaulpaugh.headlong.abi.ABIType;
 import com.esaulpaugh.headlong.abi.Function;
 import com.esaulpaugh.headlong.abi.Tuple;
 import com.esaulpaugh.headlong.abi.TypeFactory;
-import com.hedera.services.store.contracts.precompile.AbiConstants;
-import com.hedera.services.store.contracts.precompile.Precompile;
-import com.hedera.services.store.contracts.precompile.SyntheticTxnFactory;
-import com.hedera.services.store.contracts.precompile.codec.BodyParams;
-import com.hedera.services.store.contracts.precompile.codec.DeleteWrapper;
-import com.hedera.services.store.contracts.precompile.codec.EmptyRunResult;
-import com.hedera.services.store.contracts.precompile.codec.RunResult;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txn.token.DeleteLogic;
+import com.mpcq.services.store.contracts.precompile.AbiConstants;
+import com.mpcq.services.store.contracts.precompile.Precompile;
+import com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory;
+import com.mpcq.services.store.contracts.precompile.codec.BodyParams;
+import com.mpcq.services.store.contracts.precompile.codec.DeleteWrapper;
+import com.mpcq.services.store.contracts.precompile.codec.EmptyRunResult;
+import com.mpcq.services.store.contracts.precompile.codec.RunResult;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txn.token.DeleteLogic;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import com.hederahashgraph.api.proto.java.TransactionBody;

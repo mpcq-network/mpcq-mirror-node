@@ -2,12 +2,12 @@
 
 package org.hiero.mirror.importer.downloader.block.simulator;
 
-import com.hedera.hapi.block.stream.input.protoc.EventHeader;
-import com.hedera.hapi.block.stream.input.protoc.RoundHeader;
-import com.hedera.hapi.block.stream.output.protoc.BlockHeader;
-import com.hedera.hapi.block.stream.output.protoc.TransactionResult;
-import com.hedera.hapi.block.stream.protoc.BlockItem;
-import com.hedera.hapi.block.stream.protoc.BlockProof;
+import com.mpcq.hapi.block.stream.input.protoc.EventHeader;
+import com.mpcq.hapi.block.stream.input.protoc.RoundHeader;
+import com.mpcq.hapi.block.stream.output.protoc.BlockHeader;
+import com.mpcq.hapi.block.stream.output.protoc.TransactionResult;
+import com.mpcq.hapi.block.stream.protoc.BlockItem;
+import com.mpcq.hapi.block.stream.protoc.BlockProof;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.SignedTransaction;
 import java.util.ArrayList;

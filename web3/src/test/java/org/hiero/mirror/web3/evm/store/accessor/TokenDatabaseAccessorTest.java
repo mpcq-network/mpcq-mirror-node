@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.store.accessor;
 
-import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
+import static com.mpcq.services.utils.MiscUtils.asFcKeyUnchecked;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -15,12 +15,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
-import com.hedera.node.app.service.evm.store.tokens.TokenType;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
+import com.mpcq.node.app.service.evm.store.tokens.TokenType;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.TokenSupplyType;
 import java.util.Collections;

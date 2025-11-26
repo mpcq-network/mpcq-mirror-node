@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.web3.utils;
 
-import static com.hedera.hapi.util.HapiUtils.SEMANTIC_VERSION_COMPARATOR;
+import static com.mpcq.hapi.util.HapiUtils.SEMANTIC_VERSION_COMPARATOR;
 
-import com.hedera.hapi.node.base.SemanticVersion;
+import com.mpcq.hapi.node.base.SemanticVersion;
 import com.swirlds.state.lifecycle.Schema;
 import com.swirlds.state.lifecycle.StateDefinition;
 import java.util.Collections;

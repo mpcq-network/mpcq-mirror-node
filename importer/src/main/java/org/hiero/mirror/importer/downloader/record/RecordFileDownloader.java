@@ -4,8 +4,8 @@ package org.hiero.mirror.importer.downloader.record;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimaps;
-import com.hedera.services.stream.proto.SidecarType;
-import com.hedera.services.stream.proto.TransactionSidecarRecord;
+import com.mpcq.services.stream.proto.SidecarType;
+import com.mpcq.services.stream.proto.TransactionSidecarRecord;
 import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.inject.Named;
 import java.util.Arrays;

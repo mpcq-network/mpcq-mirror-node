@@ -4,9 +4,9 @@ package org.hiero.mirror.monitor.publish.transaction.token;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.hedera.hashgraph.sdk.FileId;
-import com.hedera.hashgraph.sdk.FreezeTransaction;
-import com.hedera.hashgraph.sdk.FreezeType;
+import com.mpcq.hashgraph.sdk.FileId;
+import com.mpcq.hashgraph.sdk.FreezeTransaction;
+import com.mpcq.hashgraph.sdk.FreezeType;
 import java.time.Instant;
 import org.hiero.mirror.monitor.publish.transaction.AbstractTransactionSupplierTest;
 import org.hiero.mirror.monitor.publish.transaction.TransactionSupplier;

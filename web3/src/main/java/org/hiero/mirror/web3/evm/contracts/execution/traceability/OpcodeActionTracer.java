@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution.traceability;
 
-import com.hedera.node.app.service.contract.impl.exec.systemcontracts.MPCQSystemContract;
-import com.hedera.node.app.service.contract.impl.state.RootProxyWorldUpdater;
+import com.mpcq.node.app.service.contract.impl.exec.systemcontracts.MPCQSystemContract;
+import com.mpcq.node.app.service.contract.impl.state.RootProxyWorldUpdater;
 import jakarta.inject.Named;
 import java.util.Collections;
 import java.util.Map;

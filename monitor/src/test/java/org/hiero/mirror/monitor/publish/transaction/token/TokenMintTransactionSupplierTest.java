@@ -5,8 +5,8 @@ package org.hiero.mirror.monitor.publish.transaction.token;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.InstanceOfAssertFactories.LIST;
 
-import com.hedera.hashgraph.sdk.TokenMintTransaction;
-import com.hedera.hashgraph.sdk.TokenType;
+import com.mpcq.hashgraph.sdk.TokenMintTransaction;
+import com.mpcq.hashgraph.sdk.TokenType;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;

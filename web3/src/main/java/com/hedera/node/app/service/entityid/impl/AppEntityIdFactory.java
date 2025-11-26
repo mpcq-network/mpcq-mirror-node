@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.node.app.service.entityid.impl;
+package com.mpcq.node.app.service.entityid.impl;
 
 import static java.lang.System.arraycopy;
 import static java.util.Objects.requireNonNull;
@@ -8,15 +8,15 @@ import static org.hiero.base.utility.CommonUtils.hex;
 
 import com.google.common.primitives.Ints;
 import com.google.common.primitives.Longs;
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.base.FileID;
-import com.hedera.hapi.node.base.ScheduleID;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.base.TopicID;
-import com.hedera.node.app.service.entityid.EntityIdFactory;
-import com.hedera.node.config.data.MPCQConfig;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.base.FileID;
+import com.mpcq.hapi.node.base.ScheduleID;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.base.TopicID;
+import com.mpcq.node.app.service.entityid.EntityIdFactory;
+import com.mpcq.node.config.data.MPCQConfig;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import com.swirlds.config.api.Configuration;
 import edu.umd.cs.findbugs.annotations.NonNull;
 

@@ -9,8 +9,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.hooks.legacy.LambdaSStoreTransactionBody;
-import com.hedera.hapi.node.hooks.legacy.LambdaStorageUpdate;
+import com.mpcq.hapi.node.hooks.legacy.LambdaSStoreTransactionBody;
+import com.mpcq.hapi.node.hooks.legacy.LambdaStorageUpdate;
 import com.hederahashgraph.api.proto.java.HookEntityId;
 import com.hederahashgraph.api.proto.java.HookId;
 import com.hederahashgraph.api.proto.java.TransactionBody;

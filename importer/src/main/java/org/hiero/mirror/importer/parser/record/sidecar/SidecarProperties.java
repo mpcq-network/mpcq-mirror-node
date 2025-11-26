@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.importer.parser.record.sidecar;
 
-import com.hedera.services.stream.proto.SidecarType;
+import com.mpcq.services.stream.proto.SidecarType;
 import jakarta.validation.constraints.NotNull;
 import java.util.Collections;
 import java.util.Set;

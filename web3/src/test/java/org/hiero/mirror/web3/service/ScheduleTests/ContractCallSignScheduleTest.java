@@ -2,16 +2,16 @@
 
 package org.hiero.mirror.web3.service.ScheduleTests;
 
-import static com.hedera.hapi.node.base.ResponseCodeEnum.CONTRACT_REVERT_EXECUTED;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.CONTRACT_REVERT_EXECUTED;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hiero.mirror.common.domain.entity.EntityType.CONTRACT;
 import static org.hiero.mirror.common.util.DomainUtils.toEvmAddress;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.entityIdFromEvmAddress;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.hedera.hapi.node.base.SignatureMap;
-import com.hedera.hapi.node.base.SignaturePair;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.SignatureMap;
+import com.mpcq.hapi.node.base.SignaturePair;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.Key.KeyCase;
 import com.hederahashgraph.api.proto.java.SignaturePair.SignatureCase;

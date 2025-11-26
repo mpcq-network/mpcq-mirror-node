@@ -9,10 +9,10 @@ import static org.hiero.mirror.test.e2e.acceptance.steps.AbstractFeature.Selecto
 import static org.hiero.mirror.test.e2e.acceptance.util.TestUtil.HEX_PREFIX;
 
 import com.google.common.base.Suppliers;
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.ContractFunctionParameters;
-import com.hedera.hashgraph.sdk.ContractId;
-import com.hedera.hashgraph.sdk.PrecheckStatusException;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.ContractFunctionParameters;
+import com.mpcq.hashgraph.sdk.ContractId;
+import com.mpcq.hashgraph.sdk.PrecheckStatusException;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;

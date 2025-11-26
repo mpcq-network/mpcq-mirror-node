@@ -2,15 +2,15 @@
 
 package org.hiero.mirror.test.e2e.acceptance.client;
 
-import com.hedera.hashgraph.sdk.ContractExecuteTransaction;
-import com.hedera.hashgraph.sdk.ContractFunctionParameters;
-import com.hedera.hashgraph.sdk.ContractFunctionResult;
-import com.hedera.hashgraph.sdk.ContractId;
-import com.hedera.hashgraph.sdk.EthereumTransaction;
-import com.hedera.hashgraph.sdk.FileId;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.TransactionRecord;
+import com.mpcq.hashgraph.sdk.ContractExecuteTransaction;
+import com.mpcq.hashgraph.sdk.ContractFunctionParameters;
+import com.mpcq.hashgraph.sdk.ContractFunctionResult;
+import com.mpcq.hashgraph.sdk.ContractId;
+import com.mpcq.hashgraph.sdk.EthereumTransaction;
+import com.mpcq.hashgraph.sdk.FileId;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.TransactionRecord;
 import jakarta.inject.Named;
 import java.math.BigInteger;
 import java.util.Collections;

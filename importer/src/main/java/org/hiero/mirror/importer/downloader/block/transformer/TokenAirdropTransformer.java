@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.importer.downloader.block.transformer;
 
-import com.hedera.hapi.block.stream.output.protoc.TransactionResult;
+import com.mpcq.hapi.block.stream.output.protoc.TransactionResult;
 import com.hederahashgraph.api.proto.java.AccountAmount;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.NftID;

@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils.accessors;
+package com.mpcq.services.utils.accessors;
 
-import com.hedera.services.hapi.fees.usage.BaseTransactionMeta;
-import com.hedera.services.hapi.fees.usage.SigUsage;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoTransferMeta;
-import com.hedera.services.txns.span.ExpandHandleSpanMapAccessor;
+import com.mpcq.services.hapi.fees.usage.BaseTransactionMeta;
+import com.mpcq.services.hapi.fees.usage.SigUsage;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoTransferMeta;
+import com.mpcq.services.txns.span.ExpandHandleSpanMapAccessor;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SignatureMap;

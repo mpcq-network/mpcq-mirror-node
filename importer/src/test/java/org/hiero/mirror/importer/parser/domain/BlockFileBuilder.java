@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.importer.parser.domain;
 
-import com.hedera.hapi.block.stream.output.protoc.BlockHeader;
+import com.mpcq.hapi.block.stream.output.protoc.BlockHeader;
 import com.hederahashgraph.api.proto.java.SemanticVersion;
 import jakarta.inject.Named;
 import java.util.List;

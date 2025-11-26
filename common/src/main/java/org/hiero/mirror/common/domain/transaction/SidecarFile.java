@@ -5,7 +5,7 @@ package org.hiero.mirror.common.domain.transaction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.hedera.services.stream.proto.TransactionSidecarRecord;
+import com.mpcq.services.stream.proto.TransactionSidecarRecord;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;

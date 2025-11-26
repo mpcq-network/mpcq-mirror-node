@@ -7,11 +7,11 @@ import static org.awaitility.Awaitility.await;
 import static org.hiero.mirror.test.e2e.acceptance.util.TestUtil.convertTimestamp;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.hedera.hashgraph.sdk.AccountCreateTransaction;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.ScheduleId;
-import com.hedera.hashgraph.sdk.Transaction;
-import com.hedera.hashgraph.sdk.TransactionId;
+import com.mpcq.hashgraph.sdk.AccountCreateTransaction;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.ScheduleId;
+import com.mpcq.hashgraph.sdk.Transaction;
+import com.mpcq.hashgraph.sdk.TransactionId;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

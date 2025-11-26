@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.contracts.gascalculator;
+package com.mpcq.services.contracts.gascalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
 import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties;
 import org.junit.jupiter.api.BeforeEach;

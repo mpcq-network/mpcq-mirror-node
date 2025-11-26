@@ -1,21 +1,21 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.impl;
+package com.mpcq.services.store.contracts.precompile.impl;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.convertLeftPaddedAddressToAccountId;
-import static com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.WIPE_FUNGIBLE;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.convertLeftPaddedAddressToAccountId;
+import static com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils.GasCostType.WIPE_FUNGIBLE;
 
 import com.esaulpaugh.headlong.abi.Tuple;
-import com.hedera.services.store.contracts.precompile.AbiConstants;
-import com.hedera.services.store.contracts.precompile.Precompile;
-import com.hedera.services.store.contracts.precompile.SyntheticTxnFactory;
-import com.hedera.services.store.contracts.precompile.codec.BodyParams;
-import com.hedera.services.store.contracts.precompile.codec.FunctionParam;
-import com.hedera.services.store.contracts.precompile.codec.WipeWrapper;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txn.token.WipeLogic;
+import com.mpcq.services.store.contracts.precompile.AbiConstants;
+import com.mpcq.services.store.contracts.precompile.Precompile;
+import com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory;
+import com.mpcq.services.store.contracts.precompile.codec.BodyParams;
+import com.mpcq.services.store.contracts.precompile.codec.FunctionParam;
+import com.mpcq.services.store.contracts.precompile.codec.WipeWrapper;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txn.token.WipeLogic;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.Timestamp;
 import com.hederahashgraph.api.proto.java.TransactionBody;

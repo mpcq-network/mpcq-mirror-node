@@ -19,8 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import com.google.common.collect.Range;
 import com.google.protobuf.ByteString;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.Key;
 import com.sun.jna.ptr.IntByReference;
 import com.swirlds.state.State;

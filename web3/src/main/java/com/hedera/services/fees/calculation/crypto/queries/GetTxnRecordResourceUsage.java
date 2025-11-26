@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation.crypto.queries;
+package com.mpcq.services.fees.calculation.crypto.queries;
 
-import com.hedera.services.fees.calculation.QueryResourceUsageEstimator;
-import com.hedera.services.hapi.utils.fees.CryptoFeeBuilder;
+import com.mpcq.services.fees.calculation.QueryResourceUsageEstimator;
+import com.mpcq.services.hapi.utils.fees.CryptoFeeBuilder;
 import com.hederahashgraph.api.proto.java.FeeData;
 import com.hederahashgraph.api.proto.java.Query;
 import com.hederahashgraph.api.proto.java.ResponseType;

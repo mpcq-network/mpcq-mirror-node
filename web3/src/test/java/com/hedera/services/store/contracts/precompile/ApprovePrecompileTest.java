@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.store.contracts.precompile.impl.ApprovePrecompile.decodeTokenApprove;
-import static com.hedera.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance;
+import static com.mpcq.services.store.contracts.precompile.impl.ApprovePrecompile.decodeTokenApprove;
+import static com.mpcq.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance;
 import static java.util.function.UnaryOperator.identity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

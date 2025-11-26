@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation.utils;
+package com.mpcq.services.fees.calculation.utils;
 
-import static com.hedera.services.utils.IdUtils.asAccount;
-import static com.hedera.services.utils.IdUtils.asToken;
-import static com.hedera.services.utils.MiscUtils.asUsableFcKey;
+import static com.mpcq.services.utils.IdUtils.asAccount;
+import static com.mpcq.services.utils.IdUtils.asToken;
+import static com.mpcq.services.utils.MiscUtils.asUsableFcKey;
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_NON_FUNGIBLE_UNIQUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -12,12 +12,12 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 import com.google.protobuf.ByteString;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.FcTokenAllowanceId;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.utils.EntityNum;
-import com.hedera.services.utils.IdUtils;
-import com.hedera.services.utils.accessors.SignedTxnAccessor;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.FcTokenAllowanceId;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.utils.EntityNum;
+import com.mpcq.services.utils.IdUtils;
+import com.mpcq.services.utils.accessors.SignedTxnAccessor;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.Timestamp;

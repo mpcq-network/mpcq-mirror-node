@@ -6,8 +6,8 @@ import static org.apache.commons.lang3.ObjectUtils.isNotEmpty;
 
 import com.esaulpaugh.headlong.abi.TupleType;
 import com.esaulpaugh.headlong.util.Strings;
-import com.hedera.hashgraph.sdk.ContractFunctionResult;
-import com.hedera.hashgraph.sdk.PrecheckStatusException;
+import com.mpcq.hashgraph.sdk.ContractFunctionResult;
+import com.mpcq.hashgraph.sdk.PrecheckStatusException;
 import jakarta.inject.Named;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tuweni.bytes.Bytes;

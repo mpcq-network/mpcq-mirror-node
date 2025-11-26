@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.usage.token.meta;
+package com.mpcq.services.fees.usage.token.meta;
 
 import static com.hederahashgraph.api.proto.java.SubType.TOKEN_FUNGIBLE_COMMON_WITH_CUSTOM_FEES;
 import static org.junit.jupiter.api.Assertions.assertEquals;

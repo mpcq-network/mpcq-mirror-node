@@ -2,11 +2,11 @@
 
 package org.hiero.mirror.monitor.publish.transaction.consensus;
 
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.PublicKey;
-import com.hedera.hashgraph.sdk.TopicId;
-import com.hedera.hashgraph.sdk.TopicUpdateTransaction;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.PublicKey;
+import com.mpcq.hashgraph.sdk.TopicId;
+import com.mpcq.hashgraph.sdk.TopicUpdateTransaction;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

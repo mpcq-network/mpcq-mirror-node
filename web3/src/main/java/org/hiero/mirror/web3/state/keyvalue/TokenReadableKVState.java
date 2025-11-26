@@ -2,25 +2,25 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema.TOKENS_STATE_ID;
-import static com.hedera.services.utils.EntityIdUtils.toAccountId;
-import static com.hedera.services.utils.EntityIdUtils.toTokenId;
+import static com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema.TOKENS_STATE_ID;
+import static com.mpcq.services.utils.EntityIdUtils.toAccountId;
+import static com.mpcq.services.utils.EntityIdUtils.toTokenId;
 import static org.hiero.mirror.web3.state.Utils.DEFAULT_AUTO_RENEW_PERIOD;
 
-import com.hedera.hapi.node.base.Fraction;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.base.TokenSupplyType;
-import com.hedera.hapi.node.base.TokenType;
-import com.hedera.hapi.node.state.token.Token;
-import com.hedera.hapi.node.transaction.CustomFee;
-import com.hedera.hapi.node.transaction.CustomFee.FeeOneOfType;
-import com.hedera.hapi.node.transaction.FixedFee;
-import com.hedera.hapi.node.transaction.FractionalFee;
-import com.hedera.hapi.node.transaction.RoyaltyFee;
-import com.hedera.node.app.service.token.TokenService;
-import com.hedera.pbj.runtime.OneOf;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.hapi.node.base.Fraction;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.base.TokenSupplyType;
+import com.mpcq.hapi.node.base.TokenType;
+import com.mpcq.hapi.node.state.token.Token;
+import com.mpcq.hapi.node.transaction.CustomFee;
+import com.mpcq.hapi.node.transaction.CustomFee.FeeOneOfType;
+import com.mpcq.hapi.node.transaction.FixedFee;
+import com.mpcq.hapi.node.transaction.FractionalFee;
+import com.mpcq.hapi.node.transaction.RoyaltyFee;
+import com.mpcq.node.app.service.token.TokenService;
+import com.mpcq.pbj.runtime.OneOf;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.services.utils.EntityIdUtils;
 import jakarta.inject.Named;
 import java.util.ArrayList;
 import java.util.Collections;

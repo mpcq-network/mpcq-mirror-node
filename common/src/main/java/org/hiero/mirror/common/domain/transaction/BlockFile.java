@@ -4,9 +4,9 @@ package org.hiero.mirror.common.domain.transaction;
 
 import static org.apache.commons.lang3.StringUtils.leftPad;
 
-import com.hedera.hapi.block.stream.output.protoc.BlockHeader;
-import com.hedera.hapi.block.stream.protoc.BlockProof;
-import com.hedera.hapi.block.stream.protoc.RecordFileItem;
+import com.mpcq.hapi.block.stream.output.protoc.BlockHeader;
+import com.mpcq.hapi.block.stream.protoc.BlockProof;
+import com.mpcq.hapi.block.stream.protoc.RecordFileItem;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;

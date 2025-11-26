@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation;
+package com.mpcq.services.fees.calculation;
 
-import static com.hedera.services.fees.calculation.BasicFcfsUsagePrices.DEFAULT_RESOURCE_PRICES;
-import static com.hedera.services.utils.IdUtils.asContract;
+import static com.mpcq.services.fees.calculation.BasicFcfsUsagePrices.DEFAULT_RESOURCE_PRICES;
+import static com.mpcq.services.utils.IdUtils.asContract;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCreate;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.UNRECOGNIZED;
@@ -13,7 +13,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.when;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.ContractCallTransactionBody;
 import com.hederahashgraph.api.proto.java.CurrentAndNextFeeSchedule;
 import com.hederahashgraph.api.proto.java.FeeComponents;

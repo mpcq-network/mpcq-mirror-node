@@ -14,13 +14,13 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
-import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
-import com.hedera.node.app.service.evm.store.models.UpdateTrackingAccount;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.txns.validation.OptionValidator;
+import com.mpcq.node.app.service.evm.accounts.AccountAccessor;
+import com.mpcq.node.app.service.evm.contracts.execution.EvmProperties;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
+import com.mpcq.node.app.service.evm.store.models.UpdateTrackingAccount;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.txns.validation.OptionValidator;
 import java.util.List;
 import org.hiero.mirror.common.CommonProperties;
 import org.hiero.mirror.common.domain.SystemEntity;
@@ -153,7 +153,7 @@ class MPCQEvmStackedWorldStateUpdaterTest {
         subject.commit();
         assertThat(subject.getDeletedAccountAddresses()).hasSize(1);
         var accountFromTopFrame = store.getAccount(address, OnMissing.DONT_THROW);
-        assertEquals(com.hedera.services.store.models.Account.getEmptyAccount(), accountFromTopFrame);
+        assertEquals(com.mpcq.services.store.models.Account.getEmptyAccount(), accountFromTopFrame);
     }
 
     @Test
@@ -166,11 +166,11 @@ class MPCQEvmStackedWorldStateUpdaterTest {
         assertThat(subject.getTouchedAccounts()).isNotEmpty();
         assertThat(subject.getDeletedAccountAddresses()).isEmpty();
         var accountFromTopFrame = store.getAccount(address, OnMissing.DONT_THROW);
-        assertNotEquals(com.hedera.services.store.models.Account.getEmptyAccount(), accountFromTopFrame);
+        assertNotEquals(com.mpcq.services.store.models.Account.getEmptyAccount(), accountFromTopFrame);
         subject.commit();
         deleteTestAccount(address);
         accountFromTopFrame = store.getAccount(address, OnMissing.DONT_THROW);
-        assertEquals(com.hedera.services.store.models.Account.getEmptyAccount(), accountFromTopFrame);
+        assertEquals(com.mpcq.services.store.models.Account.getEmptyAccount(), accountFromTopFrame);
     }
 
     @Test
@@ -322,7 +322,7 @@ class MPCQEvmStackedWorldStateUpdaterTest {
         subject.deleteAccount(treasuryAddress);
     }
 
-    private com.hedera.services.store.models.Account createTestAccount(Address treasuryAddress) {
+    private com.mpcq.services.store.models.Account createTestAccount(Address treasuryAddress) {
         when(mirrorEvmContractAliases.resolveForEvm(treasuryAddress)).thenReturn(treasuryAddress);
         store.wrap();
         subject.createAccount(treasuryAddress, A_NONCE, Wei.of(A_BALANCE));

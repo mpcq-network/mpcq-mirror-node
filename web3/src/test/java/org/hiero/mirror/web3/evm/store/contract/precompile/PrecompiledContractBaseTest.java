@@ -2,16 +2,16 @@
 
 package org.hiero.mirror.web3.evm.store.contract.precompile;
 
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_REDIRECT_FOR_TOKEN;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_REDIRECT_FOR_TOKEN;
 
 import com.esaulpaugh.headlong.util.Integers;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.RedirectViewExecutor;
-import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.ViewExecutor;
-import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.ViewGasCalculator;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.proxy.RedirectViewExecutor;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.proxy.ViewExecutor;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.proxy.ViewGasCalculator;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
 import java.util.Deque;
 import java.util.Optional;
 import org.apache.commons.lang3.tuple.Pair;

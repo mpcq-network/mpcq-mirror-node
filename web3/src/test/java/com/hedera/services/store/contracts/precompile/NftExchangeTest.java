@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.store.contracts.precompile.FungibleTokenTransferTest.A;
-import static com.hedera.services.store.contracts.precompile.FungibleTokenTransferTest.B;
-import static com.hedera.services.store.contracts.precompile.FungibleTokenTransferTest.NON_FUNGIBLE;
+import static com.mpcq.services.store.contracts.precompile.FungibleTokenTransferTest.A;
+import static com.mpcq.services.store.contracts.precompile.FungibleTokenTransferTest.B;
+import static com.mpcq.services.store.contracts.precompile.FungibleTokenTransferTest.NON_FUNGIBLE;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;

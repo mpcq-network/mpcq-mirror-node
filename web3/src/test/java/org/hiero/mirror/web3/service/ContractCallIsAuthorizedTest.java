@@ -2,12 +2,12 @@
 
 package org.hiero.mirror.web3.service;
 
-import static com.hedera.hapi.node.base.ResponseCodeEnum.CONTRACT_REVERT_EXECUTED;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.CONTRACT_REVERT_EXECUTED;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.ALLOW_LONG_ZERO_ADDRESSES;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.hedera.node.app.service.evm.utils.EthSigsUtils;
+import com.mpcq.node.app.service.evm.utils.EthSigsUtils;
 import java.math.BigInteger;
 import java.security.KeyPairGenerator;
 import org.bouncycastle.jcajce.provider.digest.Keccak;

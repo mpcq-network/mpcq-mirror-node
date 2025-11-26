@@ -2,20 +2,20 @@
 
 package org.hiero.mirror.web3.evm.store.accessor;
 
-import static com.hedera.services.utils.EntityIdUtils.idFromEntityId;
-import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
+import static com.mpcq.services.utils.EntityIdUtils.idFromEntityId;
+import static com.mpcq.services.utils.MiscUtils.asFcKeyUnchecked;
 import static org.hiero.mirror.common.domain.entity.EntityType.ACCOUNT;
 import static org.hiero.mirror.common.domain.entity.EntityType.CONTRACT;
 import static org.hiero.mirror.web3.evm.store.accessor.TokenRelationshipDatabaseAccessor.ZERO_BALANCE;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.services.jproto.JContractIDKey;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.FcTokenAllowanceId;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.services.jproto.JContractIDKey;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.FcTokenAllowanceId;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.utils.EntityNum;
 import com.hederahashgraph.api.proto.java.ContractID;
 import com.hederahashgraph.api.proto.java.Key;
 import jakarta.inject.Named;

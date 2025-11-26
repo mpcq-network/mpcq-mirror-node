@@ -13,7 +13,7 @@ client to subscribe to a topic and stream messages asynchronously as they arrive
 
 Example invocation using [grpcurl](https://github.com/fullstorydev/grpcurl):
 
-`grpcurl -plaintext -d '{"topicID": {"topicNum": 41110}, "limit": 0}' localhost:5600 com.hedera.mirror.api.proto.ConsensusService/subscribeTopic`
+`grpcurl -plaintext -d '{"topicID": {"topicNum": 41110}, "limit": 0}' localhost:5600 com.mpcq.mirror.api.proto.ConsensusService/subscribeTopic`
 
 ## Network Service
 
@@ -23,7 +23,7 @@ Example invocation using [grpcurl](https://github.com/fullstorydev/grpcurl):
 current fee schedule for a given transaction. See the
 protobuf [definition](../../protobuf/src/main/proto/com/hedera/mirror/api/proto/network_service.proto).
 
-`grpcurl -plaintext -d '{"mode": "STATE", "transaction": {"signedTransactionBytes": ""}}' localhost:5600 com.hedera.mirror.api.proto.NetworkService/getFeeEstimate`
+`grpcurl -plaintext -d '{"mode": "STATE", "transaction": {"signedTransactionBytes": ""}}' localhost:5600 com.mpcq.mirror.api.proto.NetworkService/getFeeEstimate`
 
 ### Get Nodes
 
@@ -34,4 +34,4 @@ nodes associated with the latest address book file. See the protobuf
 
 Example invocation using `grpcurl`:
 
-`grpcurl -plaintext -d '{"file_id": {"fileNum": 102}, "limit": 0}' localhost:5600 com.hedera.mirror.api.proto.NetworkService/getNodes`
+`grpcurl -plaintext -d '{"file_id": {"fileNum": 102}, "limit": 0}' localhost:5600 com.mpcq.mirror.api.proto.NetworkService/getNodes`

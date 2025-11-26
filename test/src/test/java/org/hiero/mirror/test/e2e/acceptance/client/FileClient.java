@@ -2,12 +2,12 @@
 
 package org.hiero.mirror.test.e2e.acceptance.client;
 
-import com.hedera.hashgraph.sdk.FileAppendTransaction;
-import com.hedera.hashgraph.sdk.FileCreateTransaction;
-import com.hedera.hashgraph.sdk.FileDeleteTransaction;
-import com.hedera.hashgraph.sdk.FileId;
-import com.hedera.hashgraph.sdk.FileUpdateTransaction;
-import com.hedera.hashgraph.sdk.KeyList;
+import com.mpcq.hashgraph.sdk.FileAppendTransaction;
+import com.mpcq.hashgraph.sdk.FileCreateTransaction;
+import com.mpcq.hashgraph.sdk.FileDeleteTransaction;
+import com.mpcq.hashgraph.sdk.FileId;
+import com.mpcq.hashgraph.sdk.FileUpdateTransaction;
+import com.mpcq.hashgraph.sdk.KeyList;
 import jakarta.inject.Named;
 import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArrayList;

@@ -2,15 +2,15 @@
 
 package org.hiero.mirror.web3.evm.store.accessor;
 
-import static com.hedera.services.utils.EntityIdUtils.idFromEncodedId;
-import static com.hedera.services.utils.EntityIdUtils.idFromEntityId;
+import static com.mpcq.services.utils.EntityIdUtils.idFromEncodedId;
+import static com.mpcq.services.utils.EntityIdUtils.idFromEntityId;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
-import com.hedera.services.state.submerkle.RichInstant;
-import com.hedera.services.store.models.NftId;
-import com.hedera.services.store.models.UniqueToken;
+import com.mpcq.services.state.submerkle.RichInstant;
+import com.mpcq.services.store.models.NftId;
+import com.mpcq.services.store.models.UniqueToken;
 import java.util.Optional;
 import org.hiero.mirror.common.domain.DomainBuilder;
 import org.hiero.mirror.common.domain.entity.EntityId;

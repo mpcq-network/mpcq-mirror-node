@@ -2,10 +2,10 @@
 
 package org.hiero.mirror.monitor.publish.transaction.network;
 
-import com.hedera.hashgraph.sdk.FileId;
-import com.hedera.hashgraph.sdk.FreezeTransaction;
-import com.hedera.hashgraph.sdk.FreezeType;
-import com.hedera.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.FileId;
+import com.mpcq.hashgraph.sdk.FreezeTransaction;
+import com.mpcq.hashgraph.sdk.FreezeType;
+import com.mpcq.hashgraph.sdk.Hbar;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import java.time.Instant;

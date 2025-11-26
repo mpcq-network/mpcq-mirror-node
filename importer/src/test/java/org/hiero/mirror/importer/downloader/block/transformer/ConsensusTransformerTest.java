@@ -4,14 +4,14 @@ package org.hiero.mirror.importer.downloader.block.transformer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.hedera.hapi.block.stream.output.protoc.MapChangeKey;
-import com.hedera.hapi.block.stream.output.protoc.MapChangeValue;
-import com.hedera.hapi.block.stream.output.protoc.MapUpdateChange;
-import com.hedera.hapi.block.stream.output.protoc.StateChange;
-import com.hedera.hapi.block.stream.output.protoc.StateChanges;
-import com.hedera.hapi.block.stream.output.protoc.StateIdentifier;
-import com.hedera.hapi.block.stream.trace.protoc.SubmitMessageTraceData;
-import com.hedera.hapi.block.stream.trace.protoc.TraceData;
+import com.mpcq.hapi.block.stream.output.protoc.MapChangeKey;
+import com.mpcq.hapi.block.stream.output.protoc.MapChangeValue;
+import com.mpcq.hapi.block.stream.output.protoc.MapUpdateChange;
+import com.mpcq.hapi.block.stream.output.protoc.StateChange;
+import com.mpcq.hapi.block.stream.output.protoc.StateChanges;
+import com.mpcq.hapi.block.stream.output.protoc.StateIdentifier;
+import com.mpcq.hapi.block.stream.trace.protoc.SubmitMessageTraceData;
+import com.mpcq.hapi.block.stream.trace.protoc.TraceData;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.Topic;
 import com.hederahashgraph.api.proto.java.TransactionID;

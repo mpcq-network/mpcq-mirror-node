@@ -7,10 +7,10 @@ import static org.hiero.mirror.web3.state.Utils.convertToTimestamp;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.NftID;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.hapi.node.base.NftID;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.services.utils.EntityIdUtils;
 import java.util.Collections;
 import java.util.Optional;
 import org.hiero.mirror.common.domain.DomainBuilder;
@@ -83,19 +83,19 @@ class NftReadableKVStateTest {
         when(contractCallContext.getTimestamp()).thenReturn(timestamp);
         Nft nftDomain = setupNft(timestamp);
         assertThat(nftReadableKVState.readFromDataSource(NFT_ID)).satisfies(nft -> assertThat(nft)
-                .returns(NFT_ID, com.hedera.hapi.node.state.token.Nft::nftId)
+                .returns(NFT_ID, com.mpcq.hapi.node.state.token.Nft::nftId)
                 .returns(
                         EntityIdUtils.toAccountId(nftDomain.getAccountId()),
-                        com.hedera.hapi.node.state.token.Nft::ownerId)
+                        com.mpcq.hapi.node.state.token.Nft::ownerId)
                 .returns(
                         EntityIdUtils.toAccountId(nftDomain.getSpender()),
-                        com.hedera.hapi.node.state.token.Nft::spenderId)
+                        com.mpcq.hapi.node.state.token.Nft::spenderId)
                 .returns(
                         convertToTimestamp(nftDomain.getCreatedTimestamp()),
-                        com.hedera.hapi.node.state.token.Nft::mintTime)
-                .returns(Bytes.wrap(nftDomain.getMetadata()), com.hedera.hapi.node.state.token.Nft::metadata)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerPreviousNftId)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerNextNftId));
+                        com.mpcq.hapi.node.state.token.Nft::mintTime)
+                .returns(Bytes.wrap(nftDomain.getMetadata()), com.mpcq.hapi.node.state.token.Nft::metadata)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerPreviousNftId)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerNextNftId));
     }
 
     @Test
@@ -103,17 +103,17 @@ class NftReadableKVStateTest {
         when(contractCallContext.getTimestamp()).thenReturn(timestamp);
         Nft nftDomain = setupNftWithOwner(timestamp);
         assertThat(nftReadableKVState.readFromDataSource(NFT_ID)).satisfies(nft -> assertThat(nft)
-                .returns(NFT_ID, com.hedera.hapi.node.state.token.Nft::nftId)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerId)
+                .returns(NFT_ID, com.mpcq.hapi.node.state.token.Nft::nftId)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerId)
                 .returns(
                         EntityIdUtils.toAccountId(nftDomain.getSpender()),
-                        com.hedera.hapi.node.state.token.Nft::spenderId)
+                        com.mpcq.hapi.node.state.token.Nft::spenderId)
                 .returns(
                         convertToTimestamp(nftDomain.getCreatedTimestamp()),
-                        com.hedera.hapi.node.state.token.Nft::mintTime)
-                .returns(Bytes.wrap(nftDomain.getMetadata()), com.hedera.hapi.node.state.token.Nft::metadata)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerPreviousNftId)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerNextNftId));
+                        com.mpcq.hapi.node.state.token.Nft::mintTime)
+                .returns(Bytes.wrap(nftDomain.getMetadata()), com.mpcq.hapi.node.state.token.Nft::metadata)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerPreviousNftId)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerNextNftId));
     }
 
     @Test
@@ -121,19 +121,19 @@ class NftReadableKVStateTest {
         when(contractCallContext.getTimestamp()).thenReturn(Optional.empty());
         Nft nftDomain = setupNft(Optional.empty());
         assertThat(nftReadableKVState.readFromDataSource(NFT_ID)).satisfies(nft -> assertThat(nft)
-                .returns(NFT_ID, com.hedera.hapi.node.state.token.Nft::nftId)
+                .returns(NFT_ID, com.mpcq.hapi.node.state.token.Nft::nftId)
                 .returns(
                         EntityIdUtils.toAccountId(nftDomain.getAccountId()),
-                        com.hedera.hapi.node.state.token.Nft::ownerId)
+                        com.mpcq.hapi.node.state.token.Nft::ownerId)
                 .returns(
                         EntityIdUtils.toAccountId(nftDomain.getSpender()),
-                        com.hedera.hapi.node.state.token.Nft::spenderId)
+                        com.mpcq.hapi.node.state.token.Nft::spenderId)
                 .returns(
                         convertToTimestamp(nftDomain.getCreatedTimestamp()),
-                        com.hedera.hapi.node.state.token.Nft::mintTime)
-                .returns(Bytes.wrap(nftDomain.getMetadata()), com.hedera.hapi.node.state.token.Nft::metadata)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerPreviousNftId)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerNextNftId));
+                        com.mpcq.hapi.node.state.token.Nft::mintTime)
+                .returns(Bytes.wrap(nftDomain.getMetadata()), com.mpcq.hapi.node.state.token.Nft::metadata)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerPreviousNftId)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerNextNftId));
     }
 
     @Test
@@ -147,17 +147,17 @@ class NftReadableKVStateTest {
         when(contractCallContext.getTimestamp()).thenReturn(Optional.empty());
         Nft nftDomain = setupNftMissingSpender(Optional.empty());
         assertThat(nftReadableKVState.readFromDataSource(NFT_ID)).satisfies(nft -> assertThat(nft)
-                .returns(NFT_ID, com.hedera.hapi.node.state.token.Nft::nftId)
+                .returns(NFT_ID, com.mpcq.hapi.node.state.token.Nft::nftId)
                 .returns(
                         EntityIdUtils.toAccountId(nftDomain.getAccountId()),
-                        com.hedera.hapi.node.state.token.Nft::ownerId)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::spenderId)
+                        com.mpcq.hapi.node.state.token.Nft::ownerId)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::spenderId)
                 .returns(
                         convertToTimestamp(nftDomain.getCreatedTimestamp()),
-                        com.hedera.hapi.node.state.token.Nft::mintTime)
-                .returns(Bytes.wrap(nftDomain.getMetadata()), com.hedera.hapi.node.state.token.Nft::metadata)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerPreviousNftId)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerNextNftId));
+                        com.mpcq.hapi.node.state.token.Nft::mintTime)
+                .returns(Bytes.wrap(nftDomain.getMetadata()), com.mpcq.hapi.node.state.token.Nft::metadata)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerPreviousNftId)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerNextNftId));
     }
 
     @Test
@@ -165,17 +165,17 @@ class NftReadableKVStateTest {
         when(contractCallContext.getTimestamp()).thenReturn(timestamp);
         Nft nftDomain = setupNftMissingSpender(timestamp);
         assertThat(nftReadableKVState.readFromDataSource(NFT_ID)).satisfies(nft -> assertThat(nft)
-                .returns(NFT_ID, com.hedera.hapi.node.state.token.Nft::nftId)
+                .returns(NFT_ID, com.mpcq.hapi.node.state.token.Nft::nftId)
                 .returns(
                         EntityIdUtils.toAccountId(nftDomain.getAccountId()),
-                        com.hedera.hapi.node.state.token.Nft::ownerId)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::spenderId)
+                        com.mpcq.hapi.node.state.token.Nft::ownerId)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::spenderId)
                 .returns(
                         convertToTimestamp(nftDomain.getCreatedTimestamp()),
-                        com.hedera.hapi.node.state.token.Nft::mintTime)
-                .returns(Bytes.wrap(nftDomain.getMetadata()), com.hedera.hapi.node.state.token.Nft::metadata)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerPreviousNftId)
-                .returns(null, com.hedera.hapi.node.state.token.Nft::ownerNextNftId));
+                        com.mpcq.hapi.node.state.token.Nft::mintTime)
+                .returns(Bytes.wrap(nftDomain.getMetadata()), com.mpcq.hapi.node.state.token.Nft::metadata)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerPreviousNftId)
+                .returns(null, com.mpcq.hapi.node.state.token.Nft::ownerNextNftId));
     }
 
     @Test

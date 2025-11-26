@@ -4,7 +4,7 @@ package org.hiero.mirror.monitor.publish.transaction.token;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.hedera.hashgraph.sdk.TokenAssociateTransaction;
+import com.mpcq.hashgraph.sdk.TokenAssociateTransaction;
 import java.util.List;
 import org.hiero.mirror.monitor.publish.transaction.AbstractTransactionSupplierTest;
 import org.hiero.mirror.monitor.publish.transaction.TransactionSupplier;

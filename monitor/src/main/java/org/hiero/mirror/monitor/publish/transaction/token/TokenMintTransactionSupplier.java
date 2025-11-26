@@ -2,10 +2,10 @@
 
 package org.hiero.mirror.monitor.publish.transaction.token;
 
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.TokenId;
-import com.hedera.hashgraph.sdk.TokenMintTransaction;
-import com.hedera.hashgraph.sdk.TokenType;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.TokenId;
+import com.mpcq.hashgraph.sdk.TokenMintTransaction;
+import com.mpcq.hashgraph.sdk.TokenType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

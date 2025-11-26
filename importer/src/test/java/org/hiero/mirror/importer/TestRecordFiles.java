@@ -3,11 +3,11 @@
 package org.hiero.mirror.importer;
 
 import com.google.protobuf.BytesValue;
-import com.hedera.services.stream.proto.ContractBytecode;
-import com.hedera.services.stream.proto.ContractStateChange;
-import com.hedera.services.stream.proto.ContractStateChanges;
-import com.hedera.services.stream.proto.StorageChange;
-import com.hedera.services.stream.proto.TransactionSidecarRecord;
+import com.mpcq.services.stream.proto.ContractBytecode;
+import com.mpcq.services.stream.proto.ContractStateChange;
+import com.mpcq.services.stream.proto.ContractStateChanges;
+import com.mpcq.services.stream.proto.StorageChange;
+import com.mpcq.services.stream.proto.TransactionSidecarRecord;
 import com.hederahashgraph.api.proto.java.ContractID;
 import java.util.Collections;
 import java.util.List;

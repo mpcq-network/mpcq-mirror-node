@@ -2,17 +2,17 @@
 
 package org.hiero.mirror.web3.evm.store.contract;
 
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
 
-import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.app.service.evm.store.contracts.AbstractCodeCache;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldUpdater;
-import com.hedera.node.app.service.evm.store.contracts.WorldStateAccount;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.node.app.service.evm.accounts.AccountAccessor;
+import com.mpcq.node.app.service.evm.contracts.execution.EvmProperties;
+import com.mpcq.node.app.service.evm.store.contracts.AbstractCodeCache;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmWorldUpdater;
+import com.mpcq.node.app.service.evm.store.contracts.WorldStateAccount;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
 import jakarta.inject.Named;
 import java.util.stream.Stream;
 import org.apache.tuweni.bytes.Bytes32;

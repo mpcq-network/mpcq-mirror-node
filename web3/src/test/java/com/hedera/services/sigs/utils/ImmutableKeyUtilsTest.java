@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.sigs.utils;
+package com.mpcq.services.sigs.utils;
 
-import static com.hedera.services.sigs.utils.ImmutableKeyUtils.signalsKeyRemoval;
+import static com.mpcq.services.sigs.utils.ImmutableKeyUtils.signalsKeyRemoval;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

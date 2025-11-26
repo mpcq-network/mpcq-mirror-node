@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txn.token;
+package com.mpcq.services.txn.token;
 
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
-import static com.hedera.services.utils.TxnUtils.assertFailsWith;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.utils.TxnUtils.assertFailsWith;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TOKEN_HAS_NO_PAUSE_KEY;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.utils.IdUtils;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.utils.IdUtils;
 import org.hiero.mirror.web3.evm.store.Store;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

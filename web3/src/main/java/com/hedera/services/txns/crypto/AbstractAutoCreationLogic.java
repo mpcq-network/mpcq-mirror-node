@@ -1,22 +1,22 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.crypto;
+package com.mpcq.services.txns.crypto;
 
-import static com.hedera.node.app.service.evm.store.models.MPCQEvmAccount.EVM_ADDRESS_SIZE;
-import static com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils.EMPTY_KEY;
-import static com.hedera.services.utils.EntityNum.fromAccountId;
-import static com.hedera.services.utils.MiscUtils.asPrimitiveKeyUnchecked;
-import static com.hedera.services.utils.MiscUtils.synthAccessorFor;
+import static com.mpcq.node.app.service.evm.store.models.MPCQEvmAccount.EVM_ADDRESS_SIZE;
+import static com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils.EMPTY_KEY;
+import static com.mpcq.services.utils.EntityNum.fromAccountId;
+import static com.mpcq.services.utils.MiscUtils.asPrimitiveKeyUnchecked;
+import static com.mpcq.services.utils.MiscUtils.synthAccessorFor;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.NOT_SUPPORTED;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.ledger.BalanceChange;
-import com.hedera.services.store.contracts.precompile.SyntheticTxnFactory;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
+import com.mpcq.node.app.service.evm.contracts.execution.EvmProperties;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.ledger.BalanceChange;
+import com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.CryptoUpdateTransactionBody;
 import com.hederahashgraph.api.proto.java.Key;

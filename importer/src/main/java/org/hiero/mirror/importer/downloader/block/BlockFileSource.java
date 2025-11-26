@@ -3,7 +3,7 @@
 package org.hiero.mirror.importer.downloader.block;
 
 import com.google.common.base.Stopwatch;
-import com.hedera.hapi.block.stream.protoc.Block;
+import com.mpcq.hapi.block.stream.protoc.Block;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
 import jakarta.inject.Named;

@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.models;
+package com.mpcq.services.store.models;
 
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrue;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.NO_REMAINING_AUTOMATIC_ASSOCIATIONS;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.store.models.MPCQEvmAccount;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.utils.EntityIdUtils;
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.node.app.service.evm.store.models.MPCQEvmAccount;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.utils.EntityIdUtils;
+import com.mpcq.services.utils.EntityNum;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.SortedMap;

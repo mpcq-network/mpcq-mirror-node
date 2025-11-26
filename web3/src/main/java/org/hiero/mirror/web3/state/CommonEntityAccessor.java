@@ -2,15 +2,15 @@
 
 package org.hiero.mirror.web3.state;
 
-import static com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases.isMirror;
-import static com.hedera.services.utils.EntityIdUtils.toEntityId;
+import static com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases.isMirror;
+import static com.mpcq.services.utils.EntityIdUtils.toEntityId;
 import static org.hiero.mirror.common.util.DomainUtils.EVM_ADDRESS_LENGTH;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.entityIdNumFromEvmAddress;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.toAddress;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import jakarta.inject.Named;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

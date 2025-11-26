@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.token;
+package com.mpcq.hapi.node.state.token;
 
-import static com.hedera.pbj.runtime.ProtoTestTools.BOOLEAN_TESTS_LIST;
-import static com.hedera.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.BOOLEAN_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.AccountID.AccountOneOfType;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.pbj.runtime.OneOf;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.AccountID.AccountOneOfType;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.pbj.runtime.OneOf;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;

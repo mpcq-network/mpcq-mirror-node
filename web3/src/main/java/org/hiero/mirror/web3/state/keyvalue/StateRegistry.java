@@ -3,14 +3,14 @@
 package org.hiero.mirror.web3.state.keyvalue;
 
 import com.google.common.collect.ImmutableMap;
-import com.hedera.node.app.blocks.schemas.V0560BlockStreamSchema;
-import com.hedera.node.app.service.contract.impl.schemas.V065ContractSchema;
-import com.hedera.node.app.service.file.impl.schemas.V0490FileSchema;
-import com.hedera.node.app.service.schedule.impl.schemas.V0490ScheduleSchema;
-import com.hedera.node.app.service.schedule.impl.schemas.V0570ScheduleSchema;
-import com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema;
-import com.hedera.node.app.service.token.impl.schemas.V0610TokenSchema;
-import com.hedera.node.app.state.recordcache.schemas.V0490RecordCacheSchema;
+import com.mpcq.node.app.blocks.schemas.V0560BlockStreamSchema;
+import com.mpcq.node.app.service.contract.impl.schemas.V065ContractSchema;
+import com.mpcq.node.app.service.file.impl.schemas.V0490FileSchema;
+import com.mpcq.node.app.service.schedule.impl.schemas.V0490ScheduleSchema;
+import com.mpcq.node.app.service.schedule.impl.schemas.V0570ScheduleSchema;
+import com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema;
+import com.mpcq.node.app.service.token.impl.schemas.V0610TokenSchema;
+import com.mpcq.node.app.state.recordcache.schemas.V0490RecordCacheSchema;
 import com.swirlds.state.lifecycle.StateDefinition;
 import com.swirlds.state.spi.ReadableKVState;
 import jakarta.inject.Named;

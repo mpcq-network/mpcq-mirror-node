@@ -13,13 +13,13 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.proto.AccountID;
-import com.hedera.hashgraph.sdk.proto.ScheduleID;
-import com.hedera.hashgraph.sdk.proto.TokenID;
-import com.hedera.hashgraph.sdk.proto.TopicID;
-import com.hedera.hashgraph.sdk.proto.TransactionReceipt;
-import com.hedera.hashgraph.sdk.proto.TransactionRecord;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.proto.AccountID;
+import com.mpcq.hashgraph.sdk.proto.ScheduleID;
+import com.mpcq.hashgraph.sdk.proto.TokenID;
+import com.mpcq.hashgraph.sdk.proto.TopicID;
+import com.mpcq.hashgraph.sdk.proto.TransactionReceipt;
+import com.mpcq.hashgraph.sdk.proto.TransactionRecord;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
 import org.hiero.mirror.monitor.MonitorProperties;
@@ -204,7 +204,7 @@ class ExpressionConverterImplTest {
             receipt.setScheduleID(ScheduleID.newBuilder().setScheduleNum(id).build());
         }
 
-        com.hedera.hashgraph.sdk.TransactionRecord txnRecord = com.hedera.hashgraph.sdk.TransactionRecord.fromBytes(
+        com.mpcq.hashgraph.sdk.TransactionRecord txnRecord = com.mpcq.hashgraph.sdk.TransactionRecord.fromBytes(
                 TransactionRecord.newBuilder().setReceipt(receipt).build().toByteArray());
 
         return Mono.just(PublishResponse.builder()

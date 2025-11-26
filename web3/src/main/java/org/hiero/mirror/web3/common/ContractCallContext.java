@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.common;
 
-import com.hedera.hapi.node.state.common.EntityNumber;
+import com.mpcq.hapi.node.state.common.EntityNumber;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.HashMap;

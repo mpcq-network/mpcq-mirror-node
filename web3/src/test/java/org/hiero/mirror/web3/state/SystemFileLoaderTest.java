@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.state;
 
-import static com.hedera.services.utils.EntityIdUtils.toEntityId;
+import static com.mpcq.services.utils.EntityIdUtils.toEntityId;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
@@ -10,19 +10,19 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.CurrentAndNextFeeSchedule;
-import com.hedera.hapi.node.base.FeeSchedule;
-import com.hedera.hapi.node.base.FileID;
-import com.hedera.hapi.node.base.NodeAddressBook;
-import com.hedera.hapi.node.base.ServicesConfigurationList;
-import com.hedera.hapi.node.state.file.File;
-import com.hedera.hapi.node.transaction.ExchangeRate;
-import com.hedera.hapi.node.transaction.ExchangeRateSet;
-import com.hedera.hapi.node.transaction.ThrottleDefinitions;
-import com.hedera.node.app.service.file.impl.schemas.V0490FileSchema;
-import com.hedera.node.config.VersionedConfiguration;
-import com.hedera.node.config.data.EntitiesConfig;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.CurrentAndNextFeeSchedule;
+import com.mpcq.hapi.node.base.FeeSchedule;
+import com.mpcq.hapi.node.base.FileID;
+import com.mpcq.hapi.node.base.NodeAddressBook;
+import com.mpcq.hapi.node.base.ServicesConfigurationList;
+import com.mpcq.hapi.node.state.file.File;
+import com.mpcq.hapi.node.transaction.ExchangeRate;
+import com.mpcq.hapi.node.transaction.ExchangeRateSet;
+import com.mpcq.hapi.node.transaction.ThrottleDefinitions;
+import com.mpcq.node.app.service.file.impl.schemas.V0490FileSchema;
+import com.mpcq.node.config.VersionedConfiguration;
+import com.mpcq.node.config.data.EntitiesConfig;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;

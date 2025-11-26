@@ -5,9 +5,9 @@ package org.hiero.mirror.importer.downloader.record;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hiero.mirror.importer.TestUtils.gzip;
 
-import com.hedera.services.stream.proto.SidecarFile;
-import com.hedera.services.stream.proto.SidecarType;
-import com.hedera.services.stream.proto.TransactionSidecarRecord;
+import com.mpcq.services.stream.proto.SidecarFile;
+import com.mpcq.services.stream.proto.SidecarType;
+import com.mpcq.services.stream.proto.TransactionSidecarRecord;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

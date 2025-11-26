@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.state.components;
 
-import com.hedera.hapi.node.base.SemanticVersion;
+import com.mpcq.hapi.node.base.SemanticVersion;
 import com.swirlds.config.api.Configuration;
 import com.swirlds.state.lifecycle.Schema;
 import com.swirlds.state.lifecycle.SchemaRegistry;

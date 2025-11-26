@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txn.token;
+package com.mpcq.services.txn.token;
 
-import static com.hedera.node.app.service.evm.store.tokens.TokenType.NON_FUNGIBLE_UNIQUE;
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateFalse;
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
-import static com.hedera.services.txns.validation.TokenListChecks.repeatsItself;
+import static com.mpcq.node.app.service.evm.store.tokens.TokenType.NON_FUNGIBLE_UNIQUE;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateFalse;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrue;
+import static com.mpcq.services.txns.validation.TokenListChecks.repeatsItself;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_FROZEN_FOR_TOKEN;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_IS_TREASURY;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.ACCOUNT_STILL_OWNS_NFTS;
@@ -15,9 +15,9 @@ import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TOKEN_ID_REPEA
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TOKEN_NOT_ASSOCIATED_TO_ACCOUNT;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.TRANSACTION_REQUIRES_ZERO_TOKEN_BALANCES;
 
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.store.models.TokenRelationship;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.store.models.TokenRelationship;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TokenDissociateTransactionBody;
 import com.hederahashgraph.api.proto.java.TransactionBody;
@@ -34,7 +34,7 @@ import org.hyperledger.besu.datatypes.Address;
  *  2. Use copied models from hedera-services which are enhanced with additional constructors and/or lombok generated builder for easier setup,
  *  those are {@link Account}, {@link Token}, {@link TokenRelationship}
  *  3. Moved dissociateUsing method from Account to DissociateLogic
- *  4. Moved methods from com.hedera.app.service.mono.txns.token.process.Dissociation
+ *  4. Moved methods from com.mpcq.app.service.mono.txns.token.process.Dissociation
  *  to DissociateLogic
  * */
 public class DissociateLogic {
@@ -61,7 +61,7 @@ public class DissociateLogic {
     }
 
     /**
-     * Based on the dissociateUsing method in com.hedera.node.app.service.mono.store.models.Account
+     * Based on the dissociateUsing method in com.mpcq.node.app.service.mono.store.models.Account
      * in hedera-services. Instead of the List of Dissociation and validator we provide the Account, a List of tokens
      * to be dissociated and the Store.
      * We first check if the account and provided tokens have association with the hasAssociation method,

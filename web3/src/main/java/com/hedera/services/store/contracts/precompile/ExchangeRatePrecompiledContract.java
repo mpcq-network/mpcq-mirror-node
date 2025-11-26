@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrue;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_FEE_SUBMITTED;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TRANSACTION_BODY;
 
 import com.esaulpaugh.headlong.abi.BigIntegerType;
 import com.esaulpaugh.headlong.abi.TypeFactory;
-import com.hedera.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.HbarCentExchange;
 import java.math.BigInteger;
 import java.time.Instant;
 import java.util.Optional;

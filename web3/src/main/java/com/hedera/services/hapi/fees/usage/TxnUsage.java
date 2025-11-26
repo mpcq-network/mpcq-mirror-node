@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.fees.usage;
+package com.mpcq.services.hapi.fees.usage;
 
-import static com.hedera.services.hapi.fees.usage.SingletonUsageProperties.USAGE_PROPERTIES;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.getAccountKeyStorageSize;
+import static com.mpcq.services.hapi.fees.usage.SingletonUsageProperties.USAGE_PROPERTIES;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.getAccountKeyStorageSize;
 
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.TransactionBody;

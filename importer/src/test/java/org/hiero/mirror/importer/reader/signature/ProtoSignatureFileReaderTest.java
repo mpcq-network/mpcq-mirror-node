@@ -6,11 +6,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.google.common.primitives.Bytes;
-import com.hedera.services.stream.proto.HashAlgorithm;
-import com.hedera.services.stream.proto.HashObject;
-import com.hedera.services.stream.proto.SignatureFile;
-import com.hedera.services.stream.proto.SignatureObject;
-import com.hedera.services.stream.proto.SignatureType;
+import com.mpcq.services.stream.proto.HashAlgorithm;
+import com.mpcq.services.stream.proto.HashObject;
+import com.mpcq.services.stream.proto.SignatureFile;
+import com.mpcq.services.stream.proto.SignatureObject;
+import com.mpcq.services.stream.proto.SignatureType;
 import java.nio.file.Path;
 import java.util.function.Function;
 import java.util.stream.Stream;

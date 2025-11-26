@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.state.submerkle;
+package com.mpcq.services.state.submerkle;
 
-import static com.hedera.services.state.submerkle.RichInstant.MISSING_INSTANT;
-import static com.hedera.services.state.submerkle.RichInstant.from;
-import static com.hedera.services.state.submerkle.RichInstant.fromGrpc;
-import static com.hedera.services.state.submerkle.RichInstant.fromJava;
+import static com.mpcq.services.state.submerkle.RichInstant.MISSING_INSTANT;
+import static com.mpcq.services.state.submerkle.RichInstant.from;
+import static com.mpcq.services.state.submerkle.RichInstant.fromGrpc;
+import static com.mpcq.services.state.submerkle.RichInstant.fromJava;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

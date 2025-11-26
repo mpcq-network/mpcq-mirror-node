@@ -6,9 +6,9 @@ import static org.hiero.mirror.common.util.DomainUtils.normalize;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.BytesValue;
-import com.hedera.hapi.block.stream.output.protoc.MapUpdateChange;
-import com.hedera.hapi.block.stream.output.protoc.StateChanges;
-import com.hedera.hapi.block.stream.output.protoc.StateIdentifier;
+import com.mpcq.hapi.block.stream.output.protoc.MapUpdateChange;
+import com.mpcq.hapi.block.stream.output.protoc.StateChanges;
+import com.mpcq.hapi.block.stream.output.protoc.StateIdentifier;
 import com.hederahashgraph.api.proto.java.Account;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractID;

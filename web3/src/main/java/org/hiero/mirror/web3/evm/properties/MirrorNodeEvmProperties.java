@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.properties;
 
-import static com.hedera.hapi.util.HapiUtils.SEMANTIC_VERSION_COMPARATOR;
+import static com.mpcq.hapi.util.HapiUtils.SEMANTIC_VERSION_COMPARATOR;
 import static org.hiero.base.utility.CommonUtils.unhex;
 import static org.hiero.mirror.web3.evm.config.EvmConfiguration.EVM_VERSION;
 import static org.hiero.mirror.web3.evm.config.EvmConfiguration.EVM_VERSION_0_30;
@@ -14,10 +14,10 @@ import static org.hiero.mirror.web3.evm.config.EvmConfiguration.EVM_VERSION_0_51
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.toAddress;
 
 import com.google.common.collect.ImmutableSortedMap;
-import com.hedera.hapi.node.base.SemanticVersion;
-import com.hedera.node.app.config.ConfigProviderImpl;
-import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.config.VersionedConfiguration;
+import com.mpcq.hapi.node.base.SemanticVersion;
+import com.mpcq.node.app.config.ConfigProviderImpl;
+import com.mpcq.node.app.service.evm.contracts.execution.EvmProperties;
+import com.mpcq.node.config.VersionedConfiguration;
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;

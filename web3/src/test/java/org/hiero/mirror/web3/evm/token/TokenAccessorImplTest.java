@@ -11,9 +11,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmNftInfo;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.TokenKeyType;
-import com.hedera.services.txns.validation.OptionValidator;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmNftInfo;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.TokenKeyType;
+import com.mpcq.services.txns.validation.OptionValidator;
 import com.hederahashgraph.api.proto.java.Key;
 import java.util.List;
 import java.util.Optional;

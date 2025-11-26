@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils;
+package com.mpcq.services.utils;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.FixedFee;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.FractionalFee;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.RoyaltyFee;
-import com.hedera.services.txn.token.CreateLogic.FeeType;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.FixedFee;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.FractionalFee;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.RoyaltyFee;
+import com.mpcq.services.txn.token.CreateLogic.FeeType;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;

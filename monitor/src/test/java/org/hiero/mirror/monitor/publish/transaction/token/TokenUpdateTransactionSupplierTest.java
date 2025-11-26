@@ -5,9 +5,9 @@ package org.hiero.mirror.monitor.publish.transaction.token;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.InstanceOfAssertFactories.STRING;
 
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.PublicKey;
-import com.hedera.hashgraph.sdk.TokenUpdateTransaction;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.PublicKey;
+import com.mpcq.hashgraph.sdk.TokenUpdateTransaction;
 import java.time.Duration;
 import java.time.Instant;
 import org.hiero.mirror.monitor.publish.transaction.AbstractTransactionSupplierTest;

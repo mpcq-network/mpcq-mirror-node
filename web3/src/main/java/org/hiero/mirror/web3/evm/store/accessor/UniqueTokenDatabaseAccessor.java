@@ -2,13 +2,13 @@
 
 package org.hiero.mirror.web3.evm.store.accessor;
 
-import static com.hedera.services.utils.EntityIdUtils.idFromEncodedId;
-import static com.hedera.services.utils.EntityIdUtils.idFromEntityId;
+import static com.mpcq.services.utils.EntityIdUtils.idFromEncodedId;
+import static com.mpcq.services.utils.EntityIdUtils.idFromEntityId;
 
-import com.hedera.services.state.submerkle.RichInstant;
-import com.hedera.services.store.models.NftId;
-import com.hedera.services.store.models.UniqueToken;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.services.state.submerkle.RichInstant;
+import com.mpcq.services.store.models.NftId;
+import com.mpcq.services.store.models.UniqueToken;
+import com.mpcq.services.utils.EntityIdUtils;
 import jakarta.inject.Named;
 import java.time.Instant;
 import java.util.Optional;

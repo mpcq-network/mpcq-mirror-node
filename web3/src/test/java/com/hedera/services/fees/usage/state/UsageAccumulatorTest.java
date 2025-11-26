@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.usage.state;
+package com.mpcq.services.fees.usage.state;
 
-import static com.hedera.services.fees.pricing.ResourceProvider.*;
-import static com.hedera.services.fees.pricing.UsableResource.*;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.*;
+import static com.mpcq.services.fees.pricing.ResourceProvider.*;
+import static com.mpcq.services.fees.pricing.UsableResource.*;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.hedera.services.hapi.fees.usage.BaseTransactionMeta;
-import com.hedera.services.hapi.fees.usage.SigUsage;
+import com.mpcq.services.hapi.fees.usage.BaseTransactionMeta;
+import com.mpcq.services.hapi.fees.usage.SigUsage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

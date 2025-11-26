@@ -6,9 +6,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.state.token.Account;
-import com.hedera.node.app.service.token.TokenService;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.state.token.Account;
+import com.mpcq.node.app.service.token.TokenService;
 import com.swirlds.state.spi.ReadableKVState;
 import java.util.Collections;
 import org.hiero.mirror.web3.ContextExtension;

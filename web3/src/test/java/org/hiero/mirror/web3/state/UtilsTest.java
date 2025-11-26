@@ -6,8 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.Timestamp;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.Timestamp;
 import com.hederahashgraph.api.proto.java.Key.KeyCase;
 import java.time.Instant;
 import org.hiero.mirror.common.domain.DomainBuilder;

@@ -2,18 +2,18 @@
 
 package org.hiero.mirror.web3.service.ScheduleTests;
 
-import static com.hedera.hapi.node.base.ResponseCodeEnum.CONTRACT_REVERT_EXECUTED;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.CONTRACT_REVERT_EXECUTED;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.toAddress;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.Timestamp;
-import com.hedera.hapi.node.base.TokenSupplyType;
-import com.hedera.hapi.node.base.TokenType;
-import com.hedera.hapi.node.scheduled.SchedulableTransactionBody;
-import com.hedera.hapi.node.token.TokenCreateTransactionBody;
-import com.hedera.node.app.hapi.utils.CommonPbjConverters;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.Timestamp;
+import com.mpcq.hapi.node.base.TokenSupplyType;
+import com.mpcq.hapi.node.base.TokenType;
+import com.mpcq.hapi.node.scheduled.SchedulableTransactionBody;
+import com.mpcq.hapi.node.token.TokenCreateTransactionBody;
+import com.mpcq.node.app.hapi.utils.CommonPbjConverters;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.math.BigInteger;
 import org.hiero.mirror.common.domain.entity.Entity;

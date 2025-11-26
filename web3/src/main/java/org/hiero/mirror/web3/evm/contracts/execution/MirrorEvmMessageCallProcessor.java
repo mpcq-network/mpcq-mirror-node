@@ -2,14 +2,14 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution;
 
-import static com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATE;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.wrapUnsafely;
+import static com.mpcq.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATE;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.wrapUnsafely;
 import static org.hyperledger.besu.evm.frame.ExceptionalHaltReason.INSUFFICIENT_GAS;
 import static org.hyperledger.besu.evm.frame.MessageFrame.State.EXCEPTIONAL_HALT;
 
-import com.hedera.services.ledger.BalanceChange;
-import com.hedera.services.txns.crypto.AbstractAutoCreationLogic;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.services.ledger.BalanceChange;
+import com.mpcq.services.txns.crypto.AbstractAutoCreationLogic;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.AccountAmount;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;

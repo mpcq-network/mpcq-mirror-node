@@ -7,11 +7,11 @@ import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.entityIdNumFromEvmAd
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.base.ContractID.ContractOneOfType;
-import com.hedera.hapi.node.state.contract.Bytecode;
-import com.hedera.pbj.runtime.OneOf;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.base.ContractID.ContractOneOfType;
+import com.mpcq.hapi.node.state.contract.Bytecode;
+import com.mpcq.pbj.runtime.OneOf;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import java.util.Collections;
 import java.util.Optional;
 import org.hiero.mirror.common.domain.entity.Entity;

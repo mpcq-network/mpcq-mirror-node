@@ -16,14 +16,14 @@ import static org.mockito.Mockito.when;
 import com.google.common.collect.Range;
 import com.google.common.primitives.Bytes;
 import com.google.protobuf.ByteString;
-import com.hedera.hapi.node.hooks.legacy.EvmHookSpec;
-import com.hedera.hapi.node.hooks.legacy.HookCreationDetails;
-import com.hedera.hapi.node.hooks.legacy.LambdaEvmHook;
-import com.hedera.hapi.node.hooks.legacy.LambdaMappingEntries;
-import com.hedera.hapi.node.hooks.legacy.LambdaMappingEntry;
-import com.hedera.hapi.node.hooks.legacy.LambdaStorageSlot;
-import com.hedera.hapi.node.hooks.legacy.LambdaStorageUpdate;
-import com.hedera.services.stream.proto.StorageChange;
+import com.mpcq.hapi.node.hooks.legacy.EvmHookSpec;
+import com.mpcq.hapi.node.hooks.legacy.HookCreationDetails;
+import com.mpcq.hapi.node.hooks.legacy.LambdaEvmHook;
+import com.mpcq.hapi.node.hooks.legacy.LambdaMappingEntries;
+import com.mpcq.hapi.node.hooks.legacy.LambdaMappingEntry;
+import com.mpcq.hapi.node.hooks.legacy.LambdaStorageSlot;
+import com.mpcq.hapi.node.hooks.legacy.LambdaStorageUpdate;
+import com.mpcq.services.stream.proto.StorageChange;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +92,7 @@ final class EVMHookHandlerTest {
                 .build();
 
         var hookCreationDetails = HookCreationDetails.newBuilder()
-                .setExtensionPoint(com.hedera.hapi.node.hooks.legacy.HookExtensionPoint.ACCOUNT_ALLOWANCE_HOOK)
+                .setExtensionPoint(com.mpcq.hapi.node.hooks.legacy.HookExtensionPoint.ACCOUNT_ALLOWANCE_HOOK)
                 .setHookId(hookId)
                 .setLambdaEvmHook(lambdaEvmHook)
                 .setAdminKey(com.hederahashgraph.api.proto.java.Key.newBuilder()
@@ -151,7 +151,7 @@ final class EVMHookHandlerTest {
         var lambdaEvmHook = LambdaEvmHook.newBuilder().setSpec(evmHookSpec).build();
 
         var hookCreationDetails = HookCreationDetails.newBuilder()
-                .setExtensionPoint(com.hedera.hapi.node.hooks.legacy.HookExtensionPoint.ACCOUNT_ALLOWANCE_HOOK)
+                .setExtensionPoint(com.mpcq.hapi.node.hooks.legacy.HookExtensionPoint.ACCOUNT_ALLOWANCE_HOOK)
                 .setHookId(hookId)
                 .setLambdaEvmHook(lambdaEvmHook)
                 .setAdminKey(com.hederahashgraph.api.proto.java.Key.newBuilder()
@@ -569,7 +569,7 @@ final class EVMHookHandlerTest {
         var lambdaEvmHook = LambdaEvmHook.newBuilder().setSpec(evmHookSpec).build();
 
         return HookCreationDetails.newBuilder()
-                .setExtensionPoint(com.hedera.hapi.node.hooks.legacy.HookExtensionPoint.ACCOUNT_ALLOWANCE_HOOK)
+                .setExtensionPoint(com.mpcq.hapi.node.hooks.legacy.HookExtensionPoint.ACCOUNT_ALLOWANCE_HOOK)
                 .setHookId(hookId)
                 .setLambdaEvmHook(lambdaEvmHook)
                 .setAdminKey(com.hederahashgraph.api.proto.java.Key.newBuilder()

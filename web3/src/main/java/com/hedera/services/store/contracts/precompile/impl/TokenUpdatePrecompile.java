@@ -1,34 +1,34 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.impl;
+package com.mpcq.services.store.contracts.precompile.impl;
 
-import static com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.BYTES32;
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_UPDATE_TOKEN_INFO;
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_UPDATE_TOKEN_INFO_V2;
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_UPDATE_TOKEN_INFO_V3;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_DECODER;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_V2;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_V3;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.convertLeftPaddedAddressToAccountId;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.decodeTokenExpiry;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.decodeTokenKeys;
-import static com.hedera.services.store.contracts.precompile.codec.DecodingFacade.removeBrackets;
+import static com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmDecodingFacade.decodeFunctionCall;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.BYTES32;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_UPDATE_TOKEN_INFO;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_UPDATE_TOKEN_INFO_V2;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_UPDATE_TOKEN_INFO_V3;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_DECODER;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_V2;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.HEDERA_TOKEN_STRUCT_V3;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.convertAddressBytesToTokenID;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.convertLeftPaddedAddressToAccountId;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.decodeTokenExpiry;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.decodeTokenKeys;
+import static com.mpcq.services.store.contracts.precompile.codec.DecodingFacade.removeBrackets;
 
 import com.esaulpaugh.headlong.abi.ABIType;
 import com.esaulpaugh.headlong.abi.Function;
 import com.esaulpaugh.headlong.abi.Tuple;
 import com.esaulpaugh.headlong.abi.TypeFactory;
-import com.hedera.services.store.contracts.precompile.Precompile;
-import com.hedera.services.store.contracts.precompile.SyntheticTxnFactory;
-import com.hedera.services.store.contracts.precompile.TokenUpdateLogic;
-import com.hedera.services.store.contracts.precompile.TokenUpdateWrapper;
-import com.hedera.services.store.contracts.precompile.codec.BodyParams;
-import com.hedera.services.store.contracts.precompile.codec.FunctionParam;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txns.validation.ContextOptionValidator;
+import com.mpcq.services.store.contracts.precompile.Precompile;
+import com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory;
+import com.mpcq.services.store.contracts.precompile.TokenUpdateLogic;
+import com.mpcq.services.store.contracts.precompile.TokenUpdateWrapper;
+import com.mpcq.services.store.contracts.precompile.codec.BodyParams;
+import com.mpcq.services.store.contracts.precompile.codec.FunctionParam;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txns.validation.ContextOptionValidator;
 import com.hederahashgraph.api.proto.java.TransactionBody.Builder;
 import java.util.Objects;
 import java.util.Set;

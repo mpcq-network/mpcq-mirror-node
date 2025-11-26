@@ -2,27 +2,27 @@
 
 package org.hiero.mirror.web3.state.components;
 
-import static com.hedera.node.app.service.file.impl.schemas.V0490FileSchema.FILES_STATE_ID;
-import static com.hedera.node.app.service.schedule.impl.schemas.V0490ScheduleSchema.SCHEDULES_BY_EXPIRY_SEC_KEY;
-import static com.hedera.node.app.service.schedule.impl.schemas.V0490ScheduleSchema.SCHEDULES_BY_EXPIRY_SEC_STATE_ID;
-import static com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema.TOKENS_KEY;
-import static com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema.TOKENS_STATE_ID;
-import static com.hedera.node.app.service.token.impl.schemas.V0610TokenSchema.NODE_REWARDS_KEY;
-import static com.hedera.node.app.service.token.impl.schemas.V0610TokenSchema.NODE_REWARDS_STATE_ID;
-import static com.hedera.node.app.throttle.schemas.V0490CongestionThrottleSchema.CONGESTION_LEVEL_STARTS_KEY;
-import static com.hedera.node.app.throttle.schemas.V0490CongestionThrottleSchema.CONGESTION_LEVEL_STARTS_STATE_ID;
+import static com.mpcq.node.app.service.file.impl.schemas.V0490FileSchema.FILES_STATE_ID;
+import static com.mpcq.node.app.service.schedule.impl.schemas.V0490ScheduleSchema.SCHEDULES_BY_EXPIRY_SEC_KEY;
+import static com.mpcq.node.app.service.schedule.impl.schemas.V0490ScheduleSchema.SCHEDULES_BY_EXPIRY_SEC_STATE_ID;
+import static com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema.TOKENS_KEY;
+import static com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema.TOKENS_STATE_ID;
+import static com.mpcq.node.app.service.token.impl.schemas.V0610TokenSchema.NODE_REWARDS_KEY;
+import static com.mpcq.node.app.service.token.impl.schemas.V0610TokenSchema.NODE_REWARDS_STATE_ID;
+import static com.mpcq.node.app.throttle.schemas.V0490CongestionThrottleSchema.CONGESTION_LEVEL_STARTS_KEY;
+import static com.mpcq.node.app.throttle.schemas.V0490CongestionThrottleSchema.CONGESTION_LEVEL_STARTS_STATE_ID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-import com.hedera.hapi.node.base.SemanticVersion;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.state.congestion.CongestionLevelStarts;
-import com.hedera.hapi.node.state.primitives.ProtoBytes;
-import com.hedera.hapi.node.state.primitives.ProtoLong;
-import com.hedera.hapi.node.state.schedule.ScheduleList;
-import com.hedera.hapi.node.state.token.NodeRewards;
-import com.hedera.hapi.node.state.token.Token;
-import com.hedera.node.app.config.ConfigProviderImpl;
+import com.mpcq.hapi.node.base.SemanticVersion;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.state.congestion.CongestionLevelStarts;
+import com.mpcq.hapi.node.state.primitives.ProtoBytes;
+import com.mpcq.hapi.node.state.primitives.ProtoLong;
+import com.mpcq.hapi.node.state.schedule.ScheduleList;
+import com.mpcq.hapi.node.state.token.NodeRewards;
+import com.mpcq.hapi.node.state.token.Token;
+import com.mpcq.node.app.config.ConfigProviderImpl;
 import com.swirlds.config.api.Configuration;
 import com.swirlds.state.lifecycle.StateDefinition;
 import com.swirlds.state.spi.ReadableStates;
@@ -87,7 +87,7 @@ final class SchemaRegistryImplIntegrationTest extends Web3IntegrationTest {
     void setup() {
         mirrorNodeState = new MirrorNodeState(
                 java.util.List.of(),
-                mock(com.hedera.node.app.services.ServicesRegistry.class),
+                mock(com.mpcq.node.app.services.ServicesRegistry.class),
                 mock(org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.class));
         schemaRegistry = new SchemaRegistryImpl(SERVICE_NAME, stateRegistry);
         config = new ConfigProviderImpl().getConfiguration();

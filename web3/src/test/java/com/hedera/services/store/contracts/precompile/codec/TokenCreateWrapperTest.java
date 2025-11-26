@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.codec;
+package com.mpcq.services.store.contracts.precompile.codec;
 
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.*;
-import static com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper.ECDSA_SECP256K1_COMPRESSED_KEY_LENGTH;
-import static com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper.ED25519_BYTE_LENGTH;
-import static com.hedera.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance;
-import static com.hedera.services.utils.EntityIdUtils.contractIdFromEvmAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.*;
+import static com.mpcq.services.store.contracts.precompile.codec.KeyValueWrapper.ECDSA_SECP256K1_COMPRESSED_KEY_LENGTH;
+import static com.mpcq.services.store.contracts.precompile.codec.KeyValueWrapper.ED25519_BYTE_LENGTH;
+import static com.mpcq.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance;
+import static com.mpcq.services.utils.EntityIdUtils.contractIdFromEvmAddress;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.services.jproto.JContractIDKey;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.store.contracts.precompile.TokenCreateWrapper;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.services.jproto.JContractIDKey;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.store.contracts.precompile.TokenCreateWrapper;
 import com.hederahashgraph.api.proto.java.ContractID;
 import com.hederahashgraph.api.proto.java.Key;
 import java.math.BigInteger;

@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution;
 
-import com.hedera.services.txns.crypto.AbstractAutoCreationLogic;
+import com.mpcq.services.txns.crypto.AbstractAutoCreationLogic;
 import jakarta.inject.Named;
 import java.util.function.Predicate;
 import org.hiero.mirror.web3.evm.config.PrecompiledContractProvider;

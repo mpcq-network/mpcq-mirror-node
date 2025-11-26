@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution.traceability;
 
-import com.hedera.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
+import com.mpcq.node.app.service.evm.contracts.execution.traceability.MPCQEvmOperationTracer;
 import jakarta.inject.Named;
 import lombok.CustomLog;
 import lombok.RequiredArgsConstructor;

@@ -2,21 +2,21 @@
 
 package org.hiero.mirror.web3.evm.store.contract;
 
-import static com.hedera.services.utils.EntityIdUtils.accountIdFromEvmAddress;
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.accountIdFromEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.app.service.evm.store.contracts.AbstractCodeCache;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.txns.validation.OptionValidator;
+import com.mpcq.node.app.service.evm.accounts.AccountAccessor;
+import com.mpcq.node.app.service.evm.contracts.execution.EvmProperties;
+import com.mpcq.node.app.service.evm.store.contracts.AbstractCodeCache;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.txns.validation.OptionValidator;
 import com.hederahashgraph.api.proto.java.ContractID;
 import java.util.Collections;
 import java.util.List;
@@ -208,7 +208,7 @@ class MPCQEvmWorldStateTest {
     void commitsNewlyCreatedAccountToStackedStateFrames() {
         final var actualSubject = subject.updater();
 
-        final var accountModel = new com.hedera.services.store.models.Account(
+        final var accountModel = new com.mpcq.services.store.models.Account(
                 ByteString.EMPTY,
                 0L,
                 Id.fromGrpcAccount(accountIdFromEvmAddress(address.toArrayUnsafe())),

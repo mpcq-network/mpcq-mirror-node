@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation.token.txns;
+package com.mpcq.services.fees.calculation.token.txns;
 
-import com.hedera.services.hapi.fees.usage.EstimatorFactory;
+import com.mpcq.services.hapi.fees.usage.EstimatorFactory;
 
 public class AbstractTokenResourceUsage {
     protected final EstimatorFactory estimatorFactory;

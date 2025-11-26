@@ -6,10 +6,10 @@ import static java.util.Objects.requireNonNullElse;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.EMPTY_EVM_ADDRESS;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.toAddress;
 
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.FixedFee;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.FractionalFee;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.RoyaltyFee;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.FixedFee;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.FractionalFee;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.RoyaltyFee;
 import jakarta.inject.Named;
 import java.util.ArrayList;
 import java.util.Collections;

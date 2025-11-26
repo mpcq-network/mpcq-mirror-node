@@ -4,12 +4,12 @@ package org.hiero.mirror.web3.service.ScheduleTests;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import com.hedera.hapi.node.base.AccountAmount;
-import com.hedera.hapi.node.base.TransferList;
-import com.hedera.hapi.node.scheduled.SchedulableTransactionBody;
-import com.hedera.hapi.node.token.CryptoTransferTransactionBody;
-import com.hedera.node.app.hapi.utils.CommonPbjConverters;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.hapi.node.base.AccountAmount;
+import com.mpcq.hapi.node.base.TransferList;
+import com.mpcq.hapi.node.scheduled.SchedulableTransactionBody;
+import com.mpcq.hapi.node.token.CryptoTransferTransactionBody;
+import com.mpcq.node.app.hapi.utils.CommonPbjConverters;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.math.BigInteger;
 import org.hiero.mirror.common.domain.entity.Entity;

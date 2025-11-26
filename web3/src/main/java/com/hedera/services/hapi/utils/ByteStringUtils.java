@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.utils;
+package com.mpcq.services.hapi.utils;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.UnsafeByteOperations;

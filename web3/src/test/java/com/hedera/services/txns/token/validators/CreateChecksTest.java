@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.token.validators;
+package com.mpcq.services.txns.token.validators;
 
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_KYC_KEY;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_RENEWAL_PERIOD;
@@ -21,8 +21,8 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mockStatic;
 
-import com.hedera.services.txns.validation.OptionValidator;
-import com.hedera.services.txns.validation.TokenListChecks;
+import com.mpcq.services.txns.validation.OptionValidator;
+import com.mpcq.services.txns.validation.TokenListChecks;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.TokenCreateTransactionBody;
 import com.hederahashgraph.api.proto.java.TokenSupplyType;

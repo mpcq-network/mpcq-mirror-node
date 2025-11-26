@@ -4,8 +4,8 @@ package org.hiero.mirror.monitor.publish.transaction.token;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.hedera.hashgraph.sdk.TokenBurnTransaction;
-import com.hedera.hashgraph.sdk.TokenType;
+import com.mpcq.hashgraph.sdk.TokenBurnTransaction;
+import com.mpcq.hashgraph.sdk.TokenType;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.concurrent.atomic.AtomicLong;

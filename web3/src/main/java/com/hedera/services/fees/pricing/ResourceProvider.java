@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.pricing;
+package com.mpcq.services.fees.pricing;
 
 /**
  * Represents the three resources providers a transaction may consume resources from, and hence owe

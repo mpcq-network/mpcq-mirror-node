@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.monitor.publish;
 
-import com.hedera.hashgraph.sdk.TransactionId;
-import com.hedera.hashgraph.sdk.TransactionReceipt;
-import com.hedera.hashgraph.sdk.TransactionRecord;
+import com.mpcq.hashgraph.sdk.TransactionId;
+import com.mpcq.hashgraph.sdk.TransactionReceipt;
+import com.mpcq.hashgraph.sdk.TransactionRecord;
 import java.time.Instant;
 import lombok.Builder;
 import lombok.ToString;

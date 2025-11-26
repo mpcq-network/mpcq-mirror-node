@@ -12,7 +12,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.block.stream.output.protoc.BlockHeader;
+import com.mpcq.hapi.block.stream.output.protoc.BlockHeader;
 import com.hederahashgraph.api.proto.java.SemanticVersion;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.time.Instant;

@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.senderAddress;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.successResult;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.tokenUpdateExpiryInfoWrapper;
-import static com.hedera.services.store.contracts.precompile.impl.UpdateTokenExpiryInfoPrecompile.getTokenUpdateExpiryInfoWrapper;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.senderAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.successResult;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.tokenUpdateExpiryInfoWrapper;
+import static com.mpcq.services.store.contracts.precompile.impl.UpdateTokenExpiryInfoPrecompile.getTokenUpdateExpiryInfoWrapper;
 import static java.util.function.UnaryOperator.identity;
 import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,17 +16,17 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mockStatic;
 
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
-import com.hedera.services.fees.pricing.AssetsLoader;
-import com.hedera.services.store.contracts.precompile.impl.SystemContractAbis;
-import com.hedera.services.store.contracts.precompile.impl.UpdateTokenExpiryInfoPrecompile;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txns.validation.ContextOptionValidator;
-import com.hedera.services.utils.accessors.AccessorFactory;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.pricing.AssetsLoader;
+import com.mpcq.services.store.contracts.precompile.impl.SystemContractAbis;
+import com.mpcq.services.store.contracts.precompile.impl.UpdateTokenExpiryInfoPrecompile;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txns.validation.ContextOptionValidator;
+import com.mpcq.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TokenUpdateTransactionBody;
 import com.hederahashgraph.api.proto.java.TransactionBody;

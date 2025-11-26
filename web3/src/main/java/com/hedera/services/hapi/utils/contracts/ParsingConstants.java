@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.utils.contracts;
+package com.mpcq.services.hapi.utils.contracts;
 
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.RESPONSE_STATUS_AT_BEGINNING;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.RESPONSE_STATUS_AT_BEGINNING;
 
 import com.esaulpaugh.headlong.abi.TupleType;
 

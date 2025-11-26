@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.codec;
+package com.mpcq.services.store.contracts.precompile.codec;
 
-import static com.hedera.services.store.contracts.precompile.codec.EncodingFacade.SUCCESS_RESULT;
-import static com.hedera.services.store.contracts.precompile.codec.EncodingFacade.convertBesuAddressToHeadlongAddress;
+import static com.mpcq.services.store.contracts.precompile.codec.EncodingFacade.SUCCESS_RESULT;
+import static com.mpcq.services.store.contracts.precompile.codec.EncodingFacade.convertBesuAddressToHeadlongAddress;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_EXPIRATION_TIME;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TOKEN_ID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.SUCCESS;

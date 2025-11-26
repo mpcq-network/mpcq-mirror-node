@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.fees.usage.crypto;
+package com.mpcq.services.hapi.fees.usage.crypto;
 
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.*;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

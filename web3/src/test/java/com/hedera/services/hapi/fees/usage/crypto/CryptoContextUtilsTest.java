@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.fees.usage.crypto;
+package com.mpcq.services.hapi.fees.usage.crypto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.services.utils.EntityNum;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.TokenID;
 import java.util.HashMap;

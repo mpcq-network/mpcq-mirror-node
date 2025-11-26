@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_PAUSE_TOKEN;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.*;
-import static com.hedera.services.store.contracts.precompile.impl.PausePrecompile.decodePause;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_PAUSE_TOKEN;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.*;
+import static com.mpcq.services.store.contracts.precompile.impl.PausePrecompile.decodePause;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,18 +14,18 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 import com.esaulpaugh.headlong.util.Integers;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
-import com.hedera.services.fees.pricing.AssetsLoader;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.store.contracts.precompile.codec.BodyParams;
-import com.hedera.services.store.contracts.precompile.impl.PausePrecompile;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txn.token.PauseLogic;
-import com.hedera.services.utils.accessors.AccessorFactory;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.pricing.AssetsLoader;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.store.contracts.precompile.codec.BodyParams;
+import com.mpcq.services.store.contracts.precompile.impl.PausePrecompile;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txn.token.PauseLogic;
+import com.mpcq.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.*;
 import java.io.IOException;
 import java.math.BigDecimal;

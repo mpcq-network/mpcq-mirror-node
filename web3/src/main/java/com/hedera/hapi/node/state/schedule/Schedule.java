@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.schedule;
+package com.mpcq.hapi.node.state.schedule;
 
 import static java.util.Objects.requireNonNull;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.ScheduleID;
-import com.hedera.hapi.node.base.Timestamp;
-import com.hedera.hapi.node.scheduled.SchedulableTransactionBody;
-import com.hedera.hapi.node.transaction.TransactionBody;
-import com.hedera.pbj.runtime.Codec;
-import com.hedera.pbj.runtime.JsonCodec;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.ScheduleID;
+import com.mpcq.hapi.node.base.Timestamp;
+import com.mpcq.hapi.node.scheduled.SchedulableTransactionBody;
+import com.mpcq.hapi.node.transaction.TransactionBody;
+import com.mpcq.pbj.runtime.Codec;
+import com.mpcq.pbj.runtime.JsonCodec;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.util.Collections;
@@ -136,9 +136,9 @@ public record Schedule(
         @Nullable TransactionBody originalCreateTransaction,
         @Nonnull Supplier<List<Key>> signatoriesSupplier) {
     /** Protobuf codec for reading and writing in protobuf format */
-    public static final Codec<Schedule> PROTOBUF = new com.hedera.hapi.node.state.schedule.codec.ScheduleProtoCodec();
+    public static final Codec<Schedule> PROTOBUF = new com.mpcq.hapi.node.state.schedule.codec.ScheduleProtoCodec();
     /** JSON codec for reading and writing in JSON format */
-    public static final JsonCodec<Schedule> JSON = new com.hedera.hapi.node.state.schedule.codec.ScheduleJsonCodec();
+    public static final JsonCodec<Schedule> JSON = new com.mpcq.hapi.node.state.schedule.codec.ScheduleJsonCodec();
 
     /** Default instance with all fields set to default values */
     public static final Schedule DEFAULT = newBuilder().build();

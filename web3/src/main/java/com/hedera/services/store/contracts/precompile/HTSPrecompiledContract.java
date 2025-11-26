@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason.ERROR_DECODING_PRECOMPILE_INPUT;
-import static com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount.TOKEN_PROXY_ACCOUNT_NONCE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.DescriptorUtils.isTokenProxyRedirect;
-import static com.hedera.node.app.service.evm.store.contracts.utils.DescriptorUtils.isViewFunction;
-import static com.hedera.node.app.service.evm.utils.ValidationUtils.validateTrue;
-import static com.hedera.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance;
+import static com.mpcq.node.app.service.evm.contracts.operations.MPCQExceptionalHaltReason.ERROR_DECODING_PRECOMPILE_INPUT;
+import static com.mpcq.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount.TOKEN_PROXY_ACCOUNT_NONCE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.DescriptorUtils.isTokenProxyRedirect;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.DescriptorUtils.isViewFunction;
+import static com.mpcq.node.app.service.evm.utils.ValidationUtils.validateTrue;
+import static com.mpcq.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.FAIL_INVALID;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INSUFFICIENT_GAS;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_TOKEN_ID;
@@ -16,28 +16,28 @@ import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
 import com.esaulpaugh.headlong.abi.Tuple;
 import com.esaulpaugh.headlong.abi.TupleType;
 import com.google.common.annotations.VisibleForTesting;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.RedirectTarget;
-import com.hedera.node.app.service.evm.store.contracts.precompile.proxy.ViewGasCalculator;
-import com.hedera.node.app.service.evm.store.contracts.utils.DescriptorUtils;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.store.contracts.precompile.codec.ApproveForAllParams;
-import com.hedera.services.store.contracts.precompile.codec.ApproveParams;
-import com.hedera.services.store.contracts.precompile.codec.CreateParams;
-import com.hedera.services.store.contracts.precompile.codec.ERCTransferParams;
-import com.hedera.services.store.contracts.precompile.codec.FunctionParam;
-import com.hedera.services.store.contracts.precompile.codec.HrcParams;
-import com.hedera.services.store.contracts.precompile.codec.TransferParams;
-import com.hedera.services.store.contracts.precompile.impl.ApprovePrecompile;
-import com.hedera.services.store.contracts.precompile.impl.AssociatePrecompile;
-import com.hedera.services.store.contracts.precompile.impl.DissociatePrecompile;
-import com.hedera.services.store.contracts.precompile.impl.ERCTransferPrecompile;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.NftId;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmHTSPrecompiledContract;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.proxy.RedirectTarget;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.proxy.ViewGasCalculator;
+import com.mpcq.node.app.service.evm.store.contracts.utils.DescriptorUtils;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.store.contracts.precompile.codec.ApproveForAllParams;
+import com.mpcq.services.store.contracts.precompile.codec.ApproveParams;
+import com.mpcq.services.store.contracts.precompile.codec.CreateParams;
+import com.mpcq.services.store.contracts.precompile.codec.ERCTransferParams;
+import com.mpcq.services.store.contracts.precompile.codec.FunctionParam;
+import com.mpcq.services.store.contracts.precompile.codec.HrcParams;
+import com.mpcq.services.store.contracts.precompile.codec.TransferParams;
+import com.mpcq.services.store.contracts.precompile.impl.ApprovePrecompile;
+import com.mpcq.services.store.contracts.precompile.impl.AssociatePrecompile;
+import com.mpcq.services.store.contracts.precompile.impl.DissociatePrecompile;
+import com.mpcq.services.store.contracts.precompile.impl.ERCTransferPrecompile;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.NftId;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.TransactionBody;
 import edu.umd.cs.findbugs.annotations.NonNull;
@@ -70,7 +70,7 @@ import org.hyperledger.besu.evm.frame.MessageFrame;
  *    thus removing the need of having separate precompile classes.
  * 3. All stateful fields are extracted into {@link ContractCallContext} and the class is converted to a singleton bean
  * 4. Substitute {@link TokenID.getDefaultInstance()} with
- *    {@link com.hedera.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance()},
+ *    {@link com.mpcq.services.store.contracts.precompile.utils.NonZeroShardAndRealmUtils.getDefaultTokenIDInstance()},
  *    so that non-zero shard and realm numbers are respected
  */
 @SuppressWarnings({"rawtypes", "unchecked"})

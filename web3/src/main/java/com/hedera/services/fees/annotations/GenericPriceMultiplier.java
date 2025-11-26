@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.annotations;
+package com.mpcq.services.fees.annotations;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 

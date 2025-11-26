@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.*;
-import static com.hedera.services.store.contracts.precompile.impl.AssociatePrecompile.decodeAssociation;
-import static com.hedera.services.store.contracts.precompile.impl.MultiAssociatePrecompile.decodeMultipleAssociations;
-import static com.hedera.services.utils.EntityIdUtils.asHexedEvmAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.*;
+import static com.mpcq.services.store.contracts.precompile.impl.AssociatePrecompile.decodeAssociation;
+import static com.mpcq.services.store.contracts.precompile.impl.MultiAssociatePrecompile.decodeMultipleAssociations;
+import static com.mpcq.services.utils.EntityIdUtils.asHexedEvmAddress;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenAssociateToAccount;
 import static java.util.function.UnaryOperator.identity;
 import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
@@ -14,20 +14,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
-import com.hedera.services.fees.pricing.AssetsLoader;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.store.contracts.precompile.impl.AssociatePrecompile;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.txn.token.AssociateLogic;
-import com.hedera.services.utils.accessors.AccessorFactory;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.pricing.AssetsLoader;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.store.contracts.precompile.impl.AssociatePrecompile;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.txn.token.AssociateLogic;
+import com.mpcq.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SubType;

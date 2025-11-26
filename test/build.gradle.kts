@@ -25,9 +25,9 @@ dependencies {
     testImplementation("io.grpc:grpc-inprocess")
     testImplementation("com.esaulpaugh:headlong")
     testImplementation("com.google.guava:guava")
-    testImplementation("com.hedera.hashgraph:sdk")
+    testImplementation("com.mpcq.hashgraph:sdk")
     testImplementation(project(":common")) {
-        exclude("com.hedera.hashgraph", "hedera-protobuf-java-api")
+        exclude("com.mpcq.hashgraph", "hedera-protobuf-java-api")
         exclude("com.google.protobuf", "protobuf-java")
         exclude("org.springframework.boot", "spring-boot-starter-data-jpa")
         exclude("org.web3j", "core")

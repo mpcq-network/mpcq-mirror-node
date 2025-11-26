@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation.token.txns;
+package com.mpcq.services.fees.calculation.token.txns;
 
-import static com.hedera.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
 
-import com.hedera.services.fees.calculation.TxnResourceUsageEstimator;
-import com.hedera.services.fees.usage.token.TokenUpdateUsage;
-import com.hedera.services.hapi.fees.usage.EstimatorFactory;
-import com.hedera.services.hapi.fees.usage.SigUsage;
-import com.hedera.services.hapi.fees.usage.TxnUsageEstimator;
-import com.hedera.services.hapi.utils.fees.SigValueObj;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.store.models.Token;
+import com.mpcq.services.fees.calculation.TxnResourceUsageEstimator;
+import com.mpcq.services.fees.usage.token.TokenUpdateUsage;
+import com.mpcq.services.hapi.fees.usage.EstimatorFactory;
+import com.mpcq.services.hapi.fees.usage.SigUsage;
+import com.mpcq.services.hapi.fees.usage.TxnUsageEstimator;
+import com.mpcq.services.hapi.utils.fees.SigValueObj;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.store.models.Token;
 import com.hederahashgraph.api.proto.java.FeeData;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.TransactionBody;

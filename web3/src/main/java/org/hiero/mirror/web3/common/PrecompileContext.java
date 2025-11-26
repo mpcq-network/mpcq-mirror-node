@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.common;
 
-import com.hedera.services.store.contracts.precompile.Precompile;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.services.store.contracts.precompile.Precompile;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.TransactionBody;
 import lombok.Data;

@@ -3,10 +3,10 @@
 package org.hiero.mirror.importer.domain;
 
 import com.google.common.base.Stopwatch;
-import com.hedera.services.stream.proto.ContractAction;
-import com.hedera.services.stream.proto.ContractActionType;
-import com.hedera.services.stream.proto.ContractBytecode;
-import com.hedera.services.stream.proto.ContractStateChange;
+import com.mpcq.services.stream.proto.ContractAction;
+import com.mpcq.services.stream.proto.ContractActionType;
+import com.mpcq.services.stream.proto.ContractBytecode;
+import com.mpcq.services.stream.proto.ContractStateChange;
 import com.hederahashgraph.api.proto.java.ContractFunctionResult;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import jakarta.inject.Named;

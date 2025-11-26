@@ -1,53 +1,53 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.node.app.service.contract.impl.utils;
+package com.mpcq.node.app.service.contract.impl.utils;
 
 import static com.esaulpaugh.headlong.abi.Address.toChecksumAddress;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.SUCCESS;
-import static com.hedera.node.app.hapi.utils.contracts.HookUtils.leftPad32;
-import static com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations.MISSING_ENTITY_NUMBER;
-import static com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations.NON_CANONICAL_REFERENCE_NUMBER;
-import static com.hedera.node.app.service.contract.impl.exec.utils.FrameUtils.proxyUpdaterFor;
-import static com.hedera.node.app.service.contract.impl.utils.ConstantUtils.ZERO_CONTRACT_ID;
-import static com.hedera.node.app.service.contract.impl.utils.SynthTxnUtils.hasNonDegenerateAutoRenewAccountId;
-import static com.hedera.node.app.service.token.AliasUtils.extractEvmAddress;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.SUCCESS;
+import static com.mpcq.node.app.hapi.utils.contracts.HookUtils.leftPad32;
+import static com.mpcq.node.app.service.contract.impl.exec.scope.MPCQNativeOperations.MISSING_ENTITY_NUMBER;
+import static com.mpcq.node.app.service.contract.impl.exec.scope.MPCQNativeOperations.NON_CANONICAL_REFERENCE_NUMBER;
+import static com.mpcq.node.app.service.contract.impl.exec.utils.FrameUtils.proxyUpdaterFor;
+import static com.mpcq.node.app.service.contract.impl.utils.ConstantUtils.ZERO_CONTRACT_ID;
+import static com.mpcq.node.app.service.contract.impl.utils.SynthTxnUtils.hasNonDegenerateAutoRenewAccountId;
+import static com.mpcq.node.app.service.token.AliasUtils.extractEvmAddress;
 import static java.math.BigInteger.ZERO;
 import static java.util.Objects.requireNonNull;
 import static org.hiero.base.utility.CommonUtils.unhex;
 import static org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.ALLOW_LONG_ZERO_ADDRESSES;
 
 import com.esaulpaugh.headlong.abi.Tuple;
-import com.hedera.hapi.block.stream.trace.ContractSlotUsage;
-import com.hedera.hapi.block.stream.trace.EvmTransactionLog;
-import com.hedera.hapi.block.stream.trace.SlotRead;
-import com.hedera.hapi.block.stream.trace.WrittenSlotKeys;
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.base.Duration;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.ScheduleID;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.contract.ContractCreateTransactionBody;
-import com.hedera.hapi.node.contract.ContractLoginfo;
-import com.hedera.hapi.node.state.token.Account;
-import com.hedera.hapi.node.transaction.ExchangeRate;
-import com.hedera.hapi.streams.ContractStateChange;
-import com.hedera.hapi.streams.ContractStateChanges;
-import com.hedera.hapi.streams.StorageChange;
-import com.hedera.node.app.service.contract.impl.exec.CallOutcome;
-import com.hedera.node.app.service.contract.impl.exec.scope.HandleMPCQNativeOperations;
-import com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations;
-import com.hedera.node.app.service.contract.impl.exec.scope.MPCQOperations;
-import com.hedera.node.app.service.contract.impl.infra.StorageAccessTracker;
-import com.hedera.node.app.service.contract.impl.records.ContractCallStreamBuilder;
-import com.hedera.node.app.service.contract.impl.state.ProxyWorldUpdater;
-import com.hedera.node.app.service.contract.impl.state.RootProxyWorldUpdater;
-import com.hedera.node.app.service.contract.impl.state.StorageAccesses;
-import com.hedera.node.app.service.contract.impl.state.TxStorageUsage;
-import com.hedera.node.app.service.entityid.EntityIdFactory;
-import com.hedera.node.app.service.token.ReadableAccountStore;
-import com.hedera.node.app.spi.workflows.HandleException;
-import com.hedera.node.config.data.MPCQConfig;
+import com.mpcq.hapi.block.stream.trace.ContractSlotUsage;
+import com.mpcq.hapi.block.stream.trace.EvmTransactionLog;
+import com.mpcq.hapi.block.stream.trace.SlotRead;
+import com.mpcq.hapi.block.stream.trace.WrittenSlotKeys;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.base.Duration;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.ScheduleID;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.contract.ContractCreateTransactionBody;
+import com.mpcq.hapi.node.contract.ContractLoginfo;
+import com.mpcq.hapi.node.state.token.Account;
+import com.mpcq.hapi.node.transaction.ExchangeRate;
+import com.mpcq.hapi.streams.ContractStateChange;
+import com.mpcq.hapi.streams.ContractStateChanges;
+import com.mpcq.hapi.streams.StorageChange;
+import com.mpcq.node.app.service.contract.impl.exec.CallOutcome;
+import com.mpcq.node.app.service.contract.impl.exec.scope.HandleMPCQNativeOperations;
+import com.mpcq.node.app.service.contract.impl.exec.scope.MPCQNativeOperations;
+import com.mpcq.node.app.service.contract.impl.exec.scope.MPCQOperations;
+import com.mpcq.node.app.service.contract.impl.infra.StorageAccessTracker;
+import com.mpcq.node.app.service.contract.impl.records.ContractCallStreamBuilder;
+import com.mpcq.node.app.service.contract.impl.state.ProxyWorldUpdater;
+import com.mpcq.node.app.service.contract.impl.state.RootProxyWorldUpdater;
+import com.mpcq.node.app.service.contract.impl.state.StorageAccesses;
+import com.mpcq.node.app.service.contract.impl.state.TxStorageUsage;
+import com.mpcq.node.app.service.entityid.EntityIdFactory;
+import com.mpcq.node.app.service.token.ReadableAccountStore;
+import com.mpcq.node.app.spi.workflows.HandleException;
+import com.mpcq.node.config.data.MPCQConfig;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import java.math.BigInteger;
@@ -174,7 +174,7 @@ public class ConversionUtils {
         final var integralAddress = accountID.hasAccountNum()
                 ? asEvmAddress(accountID.accountNumOrThrow())
                 : accountID
-                        .aliasOrElse(com.hedera.pbj.runtime.io.buffer.Bytes.EMPTY)
+                        .aliasOrElse(com.mpcq.pbj.runtime.io.buffer.Bytes.EMPTY)
                         .toByteArray();
         return asHeadlongAddress(integralAddress);
     }
@@ -310,7 +310,7 @@ public class ConversionUtils {
      * @return the first 32 bytes as a Besu {@link Hash}
      */
     public static org.hyperledger.besu.datatypes.Hash ethHashFrom(
-            @NonNull final com.hedera.pbj.runtime.io.buffer.Bytes sha384Hash) {
+            @NonNull final com.mpcq.pbj.runtime.io.buffer.Bytes sha384Hash) {
         requireNonNull(sha384Hash);
         final byte[] prefixBytes = new byte[32];
         sha384Hash.getBytes(0, prefixBytes, 0, prefixBytes.length);
@@ -359,7 +359,7 @@ public class ConversionUtils {
         final List<ContractSlotUsage> slotUsages = new ArrayList<>();
         for (final var storageAccess : storageAccesses) {
             final List<SlotRead> reads = new ArrayList<>();
-            final List<com.hedera.pbj.runtime.io.buffer.Bytes> writes = traceExplicitWrites ? new ArrayList<>() : null;
+            final List<com.mpcq.pbj.runtime.io.buffer.Bytes> writes = traceExplicitWrites ? new ArrayList<>() : null;
             for (final var access : storageAccess.accesses()) {
                 if (!access.isReadOnly()) {
                     if (writes != null) {
@@ -404,7 +404,7 @@ public class ConversionUtils {
      */
     public static ContractLoginfo pbjLogFrom(@NonNull final EntityIdFactory entityIdFactory, @NonNull final Log log) {
         final var loggerNumber = numberOfLongZero(log.getLogger());
-        final List<com.hedera.pbj.runtime.io.buffer.Bytes> loggedTopics = new ArrayList<>();
+        final List<com.mpcq.pbj.runtime.io.buffer.Bytes> loggedTopics = new ArrayList<>();
         for (final var topic : log.getTopics()) {
             loggedTopics.add(tuweniToPbjBytes(topic));
         }
@@ -441,7 +441,7 @@ public class ConversionUtils {
      */
     public static EvmTransactionLog asMPCQLog(
             @NonNull final EntityIdFactory entityIdFactory, @NonNull final Log log) {
-        final List<com.hedera.pbj.runtime.io.buffer.Bytes> topics =
+        final List<com.mpcq.pbj.runtime.io.buffer.Bytes> topics =
                 new ArrayList<>(log.getTopics().size());
         for (final var topic : log.getTopics()) {
             topics.add(tuweniToPbjBytes(topic.trimLeadingZeros()));
@@ -591,13 +591,13 @@ public class ConversionUtils {
     }
 
     /**
-     * Converts an EVM address to a PBJ {@link com.hedera.pbj.runtime.io.buffer.Bytes} alias.
+     * Converts an EVM address to a PBJ {@link com.mpcq.pbj.runtime.io.buffer.Bytes} alias.
      *
      * @param address the EVM address
      * @return the PBJ bytes alias
      */
-    public static com.hedera.pbj.runtime.io.buffer.Bytes aliasFrom(@NonNull final Address address) {
-        return com.hedera.pbj.runtime.io.buffer.Bytes.wrap(address.toArrayUnsafe());
+    public static com.mpcq.pbj.runtime.io.buffer.Bytes aliasFrom(@NonNull final Address address) {
+        return com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(address.toArrayUnsafe());
     }
 
     /**
@@ -625,8 +625,8 @@ public class ConversionUtils {
      * @param bytes the Tuweni bytes
      * @return the PBJ bytes
      */
-    public static @NonNull com.hedera.pbj.runtime.io.buffer.Bytes tuweniToPbjBytes(@NonNull final Bytes bytes) {
-        return com.hedera.pbj.runtime.io.buffer.Bytes.wrap(requireNonNull(bytes).toArrayUnsafe());
+    public static @NonNull com.mpcq.pbj.runtime.io.buffer.Bytes tuweniToPbjBytes(@NonNull final Bytes bytes) {
+        return com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(requireNonNull(bytes).toArrayUnsafe());
     }
 
     /**
@@ -736,7 +736,7 @@ public class ConversionUtils {
      * @param bytes the PBJ bytes
      * @return the Tuweni bytes
      */
-    public static @NonNull Bytes pbjToTuweniBytes(@NonNull final com.hedera.pbj.runtime.io.buffer.Bytes bytes) {
+    public static @NonNull Bytes pbjToTuweniBytes(@NonNull final com.mpcq.pbj.runtime.io.buffer.Bytes bytes) {
         if (bytes.length() == 0) {
             return Bytes.EMPTY;
         }
@@ -749,7 +749,7 @@ public class ConversionUtils {
      * @param alias the alias
      * @return whether it is an EVM address
      */
-    public static boolean isEvmAddress(@Nullable final com.hedera.pbj.runtime.io.buffer.Bytes alias) {
+    public static boolean isEvmAddress(@Nullable final com.mpcq.pbj.runtime.io.buffer.Bytes alias) {
         return alias != null && alias.length() == EVM_ADDRESS_LENGTH_AS_LONG;
     }
 
@@ -760,7 +760,7 @@ public class ConversionUtils {
      * @return the Besu address
      * @throws IllegalArgumentException if the bytes are not 20 bytes long
      */
-    public static @NonNull Address pbjToBesuAddress(@NonNull final com.hedera.pbj.runtime.io.buffer.Bytes bytes) {
+    public static @NonNull Address pbjToBesuAddress(@NonNull final com.mpcq.pbj.runtime.io.buffer.Bytes bytes) {
         return Address.wrap(Bytes.wrap(clampedBytes(bytes, EVM_ADDRESS_LENGTH_AS_INT, EVM_ADDRESS_LENGTH_AS_INT)));
     }
 
@@ -771,7 +771,7 @@ public class ConversionUtils {
      * @return the Besu hash
      * @throws IllegalArgumentException if the bytes are not 32 bytes long
      */
-    public static @NonNull Hash pbjToBesuHash(@NonNull final com.hedera.pbj.runtime.io.buffer.Bytes bytes) {
+    public static @NonNull Hash pbjToBesuHash(@NonNull final com.mpcq.pbj.runtime.io.buffer.Bytes bytes) {
         return Hash.wrap(Bytes32.wrap(clampedBytes(bytes, 32, 32)));
     }
 
@@ -782,7 +782,7 @@ public class ConversionUtils {
      * @return the Tuweni bytes
      * @throws IllegalArgumentException if the bytes are more than 32 bytes long
      */
-    public static @NonNull UInt256 pbjToTuweniUInt256(@NonNull final com.hedera.pbj.runtime.io.buffer.Bytes bytes) {
+    public static @NonNull UInt256 pbjToTuweniUInt256(@NonNull final com.mpcq.pbj.runtime.io.buffer.Bytes bytes) {
         if (bytes.length() == 0) {
             return UInt256.ZERO;
         } else if (bytes.length() == 32) {
@@ -798,13 +798,13 @@ public class ConversionUtils {
      * @param logs the Besu {@link Log}s
      * @return the PBJ bloom
      */
-    public static com.hedera.pbj.runtime.io.buffer.Bytes bloomForAll(@NonNull final List<Log> logs) {
-        return com.hedera.pbj.runtime.io.buffer.Bytes.wrap(
+    public static com.mpcq.pbj.runtime.io.buffer.Bytes bloomForAll(@NonNull final List<Log> logs) {
+        return com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(
                 LogsBloomFilter.builder().insertLogs(logs).build().toArray());
     }
 
     private static byte[] clampedBytes(
-            @NonNull final com.hedera.pbj.runtime.io.buffer.Bytes bytes, final int minLength, final int maxLength) {
+            @NonNull final com.mpcq.pbj.runtime.io.buffer.Bytes bytes, final int minLength, final int maxLength) {
         final var length = Math.toIntExact(requireNonNull(bytes).length());
         if (length < minLength) {
             throw new IllegalArgumentException("Expected at least " + minLength + " bytes, got " + bytes);
@@ -892,13 +892,13 @@ public class ConversionUtils {
     }
 
     /**
-     * Given a Besu {@link Log}, returns its bloom filter as a PBJ {@link com.hedera.pbj.runtime.io.buffer.Bytes}.
+     * Given a Besu {@link Log}, returns its bloom filter as a PBJ {@link com.mpcq.pbj.runtime.io.buffer.Bytes}.
      * @param log the Besu {@link Log}
-     * @return the PBJ {@link com.hedera.pbj.runtime.io.buffer.Bytes} bloom filter
+     * @return the PBJ {@link com.mpcq.pbj.runtime.io.buffer.Bytes} bloom filter
      */
-    public static com.hedera.pbj.runtime.io.buffer.Bytes bloomFor(@NonNull final Log log) {
+    public static com.mpcq.pbj.runtime.io.buffer.Bytes bloomFor(@NonNull final Log log) {
         requireNonNull(log);
-        return com.hedera.pbj.runtime.io.buffer.Bytes.wrap(
+        return com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(
                 LogsBloomFilter.builder().insertLog(log).build().toArray());
     }
 
@@ -922,7 +922,7 @@ public class ConversionUtils {
                     explicit[18],
                     explicit[19]);
         } else {
-            final var evmAddress = extractEvmAddress(com.hedera.pbj.runtime.io.buffer.Bytes.wrap(explicit));
+            final var evmAddress = extractEvmAddress(com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(explicit));
             final var config = nativeOperations.configuration().getConfigData(MPCQConfig.class);
             return evmAddress == null
                     ? MPCQNativeOperations.MISSING_ENTITY_NUMBER
@@ -1095,8 +1095,8 @@ public class ConversionUtils {
         return Tuple.of(
                 false,
                 headlongAddressOf(key.contractIDOrElse(ZERO_CONTRACT_ID)),
-                key.ed25519OrElse(com.hedera.pbj.runtime.io.buffer.Bytes.EMPTY).toByteArray(),
-                key.ecdsaSecp256k1OrElse(com.hedera.pbj.runtime.io.buffer.Bytes.EMPTY)
+                key.ed25519OrElse(com.mpcq.pbj.runtime.io.buffer.Bytes.EMPTY).toByteArray(),
+                key.ecdsaSecp256k1OrElse(com.mpcq.pbj.runtime.io.buffer.Bytes.EMPTY)
                         .toByteArray(),
                 headlongAddressOf(key.delegatableContractIdOrElse(ZERO_CONTRACT_ID)));
     }
@@ -1105,7 +1105,7 @@ public class ConversionUtils {
      * @param contents Ethereum content
      * @return remove the leading 0x from an Ethereum content
      */
-    public static byte[] removeIfAnyLeading0x(com.hedera.pbj.runtime.io.buffer.Bytes contents) {
+    public static byte[] removeIfAnyLeading0x(com.mpcq.pbj.runtime.io.buffer.Bytes contents) {
         final var hexPrefix = new byte[] {(byte) '0', (byte) 'x'};
         final var offset = contents.matchesPrefix(hexPrefix) ? hexPrefix.length : 0L;
         final var len = contents.length() - offset;
@@ -1121,7 +1121,7 @@ public class ConversionUtils {
      */
     public static Log asBesuLog(
             @NonNull final EvmTransactionLog log,
-            @NonNull final List<com.hedera.pbj.runtime.io.buffer.Bytes> paddedTopics) {
+            @NonNull final List<com.mpcq.pbj.runtime.io.buffer.Bytes> paddedTopics) {
         requireNonNull(log);
         requireNonNull(paddedTopics);
         return new Log(

@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation;
+package com.mpcq.services.fees.calculation;
 
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.FEE_DIVISOR_FACTOR;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.getFeeObject;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.FEE_DIVISOR_FACTOR;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.getFeeObject;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.getTinybarsFromTinyCents;
 
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.utils.PricedUsageCalculator;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.hapi.utils.fees.SigValueObj;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.utils.PricedUsageCalculator;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.hapi.utils.fees.SigValueObj;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeData;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils;
+package com.mpcq.services.utils;
 
-import static com.hedera.services.utils.MiscUtils.asUsableFcKey;
-import static com.hedera.services.utils.MiscUtils.functionOf;
-import static com.hedera.services.utils.MiscUtils.perm64;
+import static com.mpcq.services.utils.MiscUtils.asUsableFcKey;
+import static com.mpcq.services.utils.MiscUtils.functionOf;
+import static com.mpcq.services.utils.MiscUtils.perm64;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCreate;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractDelete;

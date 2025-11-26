@@ -2,10 +2,10 @@
 
 package org.hiero.mirror.monitor.subscribe.grpc;
 
-import com.hedera.hashgraph.sdk.Client;
-import com.hedera.hashgraph.sdk.SubscriptionHandle;
-import com.hedera.hashgraph.sdk.TopicMessage;
-import com.hedera.hashgraph.sdk.TopicMessageQuery;
+import com.mpcq.hashgraph.sdk.Client;
+import com.mpcq.hashgraph.sdk.SubscriptionHandle;
+import com.mpcq.hashgraph.sdk.TopicMessage;
+import com.mpcq.hashgraph.sdk.TopicMessageQuery;
 import jakarta.inject.Named;
 import java.security.SecureRandom;
 import java.time.Instant;

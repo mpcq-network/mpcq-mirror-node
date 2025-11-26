@@ -2,12 +2,12 @@
 
 package org.hiero.mirror.monitor.publish.transaction.schedule;
 
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.Key;
-import com.hedera.hashgraph.sdk.PublicKey;
-import com.hedera.hashgraph.sdk.ScheduleCreateTransaction;
-import com.hedera.hashgraph.sdk.TransferTransaction;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.Key;
+import com.mpcq.hashgraph.sdk.PublicKey;
+import com.mpcq.hashgraph.sdk.ScheduleCreateTransaction;
+import com.mpcq.hashgraph.sdk.TransferTransaction;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.CustomLog;

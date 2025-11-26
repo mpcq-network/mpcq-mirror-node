@@ -2,23 +2,23 @@
 
 package org.hiero.mirror.web3.evm.token;
 
-import static com.hedera.services.utils.MiscUtils.asKeyUnchecked;
+import static com.mpcq.services.utils.MiscUtils.asKeyUnchecked;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.entityIdFromEvmAddress;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.evmKey;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmKey;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmNftInfo;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.EvmTokenInfo;
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.TokenKeyType;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.node.app.service.evm.store.tokens.TokenType;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.FcTokenAllowanceId;
-import com.hedera.services.store.models.NftId;
-import com.hedera.services.store.models.Token;
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmKey;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmNftInfo;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.EvmTokenInfo;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.TokenKeyType;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.node.app.service.evm.store.tokens.TokenType;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.FcTokenAllowanceId;
+import com.mpcq.services.store.models.NftId;
+import com.mpcq.services.store.models.Token;
+import com.mpcq.services.utils.EntityNum;
 import jakarta.inject.Named;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

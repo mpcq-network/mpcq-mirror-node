@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.usage.token.meta;
+package com.mpcq.services.fees.usage.token.meta;
 
 /**
  *  Exact copy from hedera-services

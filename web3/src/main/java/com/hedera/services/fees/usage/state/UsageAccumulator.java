@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.usage.state;
+package com.mpcq.services.fees.usage.state;
 
-import static com.hedera.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.*;
+import static com.mpcq.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.*;
 
 import com.google.common.base.MoreObjects;
-import com.hedera.services.fees.pricing.ResourceProvider;
-import com.hedera.services.fees.pricing.UsableResource;
-import com.hedera.services.hapi.fees.usage.BaseTransactionMeta;
-import com.hedera.services.hapi.fees.usage.SigUsage;
+import com.mpcq.services.fees.pricing.ResourceProvider;
+import com.mpcq.services.fees.pricing.UsableResource;
+import com.mpcq.services.hapi.fees.usage.BaseTransactionMeta;
+import com.mpcq.services.hapi.fees.usage.SigUsage;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 

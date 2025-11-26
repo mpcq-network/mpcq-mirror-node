@@ -15,7 +15,7 @@ import static org.hiero.mirror.web3.utils.OpcodeTracerUtil.gasComparator;
 import static org.hiero.mirror.web3.utils.OpcodeTracerUtil.toHumanReadableMessage;
 import static org.mockito.Mockito.doAnswer;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import jakarta.annotation.Resource;
 import java.util.List;
 import java.util.Optional;

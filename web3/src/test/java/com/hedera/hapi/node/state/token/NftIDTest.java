@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.token;
+package com.mpcq.hapi.node.state.token;
 
-import static com.hedera.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
+import static com.mpcq.pbj.runtime.ProtoTestTools.LONG_TESTS_LIST;
 
-import com.hedera.hapi.node.base.NftID;
-import com.hedera.pbj.runtime.test.NoToStringWrapper;
+import com.mpcq.hapi.node.base.NftID;
+import com.mpcq.pbj.runtime.test.NoToStringWrapper;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;

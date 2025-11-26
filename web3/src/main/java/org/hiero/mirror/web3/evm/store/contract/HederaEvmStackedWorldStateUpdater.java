@@ -2,20 +2,20 @@
 
 package org.hiero.mirror.web3.evm.store.contract;
 
-import static com.hedera.services.utils.EntityIdUtils.accountIdFromEvmAddress;
-import static com.hedera.services.utils.EntityIdUtils.asTypedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.accountIdFromEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.asTypedEvmAddress;
 
 import com.google.protobuf.ByteString;
-import com.hedera.node.app.service.evm.accounts.AccountAccessor;
-import com.hedera.node.app.service.evm.contracts.execution.EvmProperties;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmStackedWorldUpdater;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
-import com.hedera.node.app.service.evm.store.contracts.MPCQEvmWorldUpdater;
-import com.hedera.node.app.service.evm.store.models.UpdateTrackingAccount;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.store.models.Id;
+import com.mpcq.node.app.service.evm.accounts.AccountAccessor;
+import com.mpcq.node.app.service.evm.contracts.execution.EvmProperties;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmEntityAccess;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmMutableWorldState;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmStackedWorldUpdater;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmWorldStateTokenAccount;
+import com.mpcq.node.app.service.evm.store.contracts.MPCQEvmWorldUpdater;
+import com.mpcq.node.app.service.evm.store.models.UpdateTrackingAccount;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.store.models.Id;
 import java.util.Collections;
 import org.apache.tuweni.bytes.Bytes;
 import org.hiero.mirror.web3.evm.account.MirrorEvmContractAliases;
@@ -104,7 +104,7 @@ public class MPCQEvmStackedWorldStateUpdater
         final var resolvedAddress = mirrorEvmContractAliases.resolveForEvm(address);
         final var isResolvedAddressZero = Address.ZERO.equals(resolvedAddress);
 
-        final var accountModel = new com.hedera.services.store.models.Account(
+        final var accountModel = new com.mpcq.services.store.models.Account(
                 !isResolvedAddressZero && !address.equals(resolvedAddress)
                         ? ByteString.copyFrom(address.toArray())
                         : ByteString.EMPTY,
@@ -205,7 +205,7 @@ public class MPCQEvmStackedWorldStateUpdater
     }
 
     private MutableAccount createGhostAccount(Address address) {
-        final var ghostAcc = com.hedera.services.store.models.Account.getDummySenderAccount(address)
+        final var ghostAcc = com.mpcq.services.store.models.Account.getDummySenderAccount(address)
                 .setMaxAutoAssociations(1);
         store.updateAccount(ghostAcc);
         return createAccount(address, 0, Wei.ZERO);
@@ -213,19 +213,19 @@ public class MPCQEvmStackedWorldStateUpdater
 
     public boolean contractIsTokenTreasury(final Address addressOrAlias) {
         final var address = mirrorEvmContractAliases.resolveForEvm(addressOrAlias);
-        com.hedera.services.store.models.Account account = store.getAccount(address, OnMissing.THROW);
+        com.mpcq.services.store.models.Account account = store.getAccount(address, OnMissing.THROW);
         return account.getNumTreasuryTitles() > 0;
     }
 
     public boolean contractHasAnyBalance(final Address addressOrAlias) {
         final var address = mirrorEvmContractAliases.resolveForEvm(addressOrAlias);
-        com.hedera.services.store.models.Account account = store.getAccount(address, OnMissing.THROW);
+        com.mpcq.services.store.models.Account account = store.getAccount(address, OnMissing.THROW);
         return account.getNumPositiveBalances() > 0;
     }
 
     public boolean contractOwnsNfts(final Address addressOrAlias) {
         final var address = mirrorEvmContractAliases.resolveForEvm(addressOrAlias);
-        com.hedera.services.store.models.Account account = store.getAccount(address, OnMissing.THROW);
+        com.mpcq.services.store.models.Account account = store.getAccount(address, OnMissing.THROW);
         return account.getOwnedNfts() > 0;
     }
 }

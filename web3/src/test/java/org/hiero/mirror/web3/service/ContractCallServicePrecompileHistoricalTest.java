@@ -20,9 +20,9 @@ import static org.hiero.mirror.web3.utils.ContractCallTestUtil.LEDGER_ID;
 
 import com.google.common.collect.Range;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.services.store.contracts.precompile.codec.KeyValueWrapper.KeyValueType;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.Key;
 import java.math.BigInteger;
 import java.util.ArrayList;

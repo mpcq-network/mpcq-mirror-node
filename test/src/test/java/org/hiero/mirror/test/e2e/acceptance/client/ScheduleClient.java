@@ -2,13 +2,13 @@
 
 package org.hiero.mirror.test.e2e.acceptance.client;
 
-import com.hedera.hashgraph.sdk.KeyList;
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.ScheduleCreateTransaction;
-import com.hedera.hashgraph.sdk.ScheduleDeleteTransaction;
-import com.hedera.hashgraph.sdk.ScheduleId;
-import com.hedera.hashgraph.sdk.ScheduleSignTransaction;
-import com.hedera.hashgraph.sdk.Transaction;
+import com.mpcq.hashgraph.sdk.KeyList;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.ScheduleCreateTransaction;
+import com.mpcq.hashgraph.sdk.ScheduleDeleteTransaction;
+import com.mpcq.hashgraph.sdk.ScheduleId;
+import com.mpcq.hashgraph.sdk.ScheduleSignTransaction;
+import com.mpcq.hashgraph.sdk.Transaction;
 import jakarta.inject.Named;
 import java.time.Instant;
 import java.util.Collection;

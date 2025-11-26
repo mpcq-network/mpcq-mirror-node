@@ -1,26 +1,26 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.node.app.service.evm.store.contracts.precompile.codec;
+package com.mpcq.node.app.service.evm.store.contracts.precompile.codec;
 
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ADDRESS_TUPLE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.BIG_INTEGER_TUPLE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.BOOLEAN_TUPLE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.DECIMALS_TYPE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_FUNGIBLE_TOKEN_INFO_TYPE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_NON_FUNGIBLE_TOKEN_INFO_TYPE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_TOKEN_CUSTOM_FEES_TYPE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_TOKEN_EXPIRY_INFO_TYPE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_TOKEN_INFO_TYPE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_TOKEN_KEY_TYPE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.INT_BOOL_TUPLE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.NOT_SPECIFIED_TYPE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.STRING_TUPLE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.intPairTuple;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.ADDRESS_TUPLE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.BIG_INTEGER_TUPLE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.BOOLEAN_TUPLE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.DECIMALS_TYPE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_FUNGIBLE_TOKEN_INFO_TYPE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_NON_FUNGIBLE_TOKEN_INFO_TYPE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_TOKEN_CUSTOM_FEES_TYPE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_TOKEN_EXPIRY_INFO_TYPE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_TOKEN_INFO_TYPE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.GET_TOKEN_KEY_TYPE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.INT_BOOL_TUPLE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.NOT_SPECIFIED_TYPE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.STRING_TUPLE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.intPairTuple;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.SUCCESS;
 
 import com.esaulpaugh.headlong.abi.Tuple;
 import com.esaulpaugh.headlong.abi.TupleType;
-import com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.FunctionType;
+import com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.FunctionType;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.math.BigInteger;

@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.importer.parser.record.entity;
 
-import static com.hedera.services.stream.proto.ContractAction.CallerCase.CALLING_CONTRACT;
+import static com.mpcq.services.stream.proto.ContractAction.CallerCase.CALLING_CONTRACT;
 import static com.hederahashgraph.api.proto.java.ContractUpdateTransactionBody.StakedIdCase.STAKEDID_NOT_SET;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hiero.mirror.common.domain.entity.EntityType.ACCOUNT;
@@ -24,8 +24,8 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.BytesValue;
 import com.google.protobuf.Int32Value;
 import com.google.protobuf.StringValue;
-import com.hedera.services.stream.proto.ContractBytecode;
-import com.hedera.services.stream.proto.TransactionSidecarRecord;
+import com.mpcq.services.stream.proto.ContractBytecode;
+import com.mpcq.services.stream.proto.TransactionSidecarRecord;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractCallTransactionBody;
 import com.hederahashgraph.api.proto.java.ContractCreateTransactionBody;
@@ -1383,7 +1383,7 @@ class EntityRecordItemListenerContractTest extends AbstractEntityRecordItemListe
         int count = 0;
         var repositoryActions = assertThat(contractActionRepository.findAll());
 
-        var contractActions = new ArrayList<com.hedera.services.stream.proto.ContractAction>();
+        var contractActions = new ArrayList<com.mpcq.services.stream.proto.ContractAction>();
         var sidecarRecords = recordItem.getSidecarRecords();
         for (var sidecarRecord : sidecarRecords) {
             if (sidecarRecord.hasActions()) {
@@ -1556,7 +1556,7 @@ class EntityRecordItemListenerContractTest extends AbstractEntityRecordItemListe
         int count = 0;
         var contractStateChanges = assertThat(contractStateChangeRepository.findAll());
 
-        var sidecarStateChanges = new ArrayList<com.hedera.services.stream.proto.ContractStateChange>();
+        var sidecarStateChanges = new ArrayList<com.mpcq.services.stream.proto.ContractStateChange>();
         var sidecarRecords = recordItem.getSidecarRecords();
         for (var sidecarRecord : sidecarRecords) {
             if (sidecarRecord.hasStateChanges()) {
@@ -1593,7 +1593,7 @@ class EntityRecordItemListenerContractTest extends AbstractEntityRecordItemListe
     }
 
     private void assertContractState(
-            ArrayList<com.hedera.services.stream.proto.ContractStateChange> sidecarStateChanges,
+            ArrayList<com.mpcq.services.stream.proto.ContractStateChange> sidecarStateChanges,
             long consensusTimestamp) {
         int count = 0;
         var contractStates = assertThat(contractStateRepository.findAll());

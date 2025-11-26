@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.models;
+package com.mpcq.services.store.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import com.hedera.services.utils.EntityNum;
+import com.mpcq.services.utils.EntityNum;
 import org.hiero.mirror.common.domain.entity.EntityId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.web3.state.singleton;
 
-import static com.hedera.node.app.throttle.schemas.V0490CongestionThrottleSchema.CONGESTION_LEVEL_STARTS_STATE_ID;
+import static com.mpcq.node.app.throttle.schemas.V0490CongestionThrottleSchema.CONGESTION_LEVEL_STARTS_STATE_ID;
 
-import com.hedera.hapi.node.state.congestion.CongestionLevelStarts;
+import com.mpcq.hapi.node.state.congestion.CongestionLevelStarts;
 import jakarta.inject.Named;
 
 @Named

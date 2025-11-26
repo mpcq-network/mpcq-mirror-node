@@ -2,26 +2,26 @@
 
 package org.hiero.mirror.importer.reader.block;
 
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.BLOCK_FOOTER;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.BLOCK_HEADER;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.BLOCK_PROOF;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.EVENT_HEADER;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.RECORD_FILE;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.ROUND_HEADER;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.SIGNED_TRANSACTION;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.STATE_CHANGES;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.TRACE_DATA;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.TRANSACTION_OUTPUT;
-import static com.hedera.hapi.block.stream.protoc.BlockItem.ItemCase.TRANSACTION_RESULT;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.BLOCK_FOOTER;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.BLOCK_HEADER;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.BLOCK_PROOF;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.EVENT_HEADER;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.RECORD_FILE;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.ROUND_HEADER;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.SIGNED_TRANSACTION;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.STATE_CHANGES;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.TRACE_DATA;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.TRANSACTION_OUTPUT;
+import static com.mpcq.hapi.block.stream.protoc.BlockItem.ItemCase.TRANSACTION_RESULT;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.hapi.block.stream.output.protoc.CreateScheduleOutput;
-import com.hedera.hapi.block.stream.output.protoc.SignScheduleOutput;
-import com.hedera.hapi.block.stream.output.protoc.StateChanges;
-import com.hedera.hapi.block.stream.output.protoc.TransactionOutput;
-import com.hedera.hapi.block.stream.output.protoc.TransactionOutput.TransactionCase;
-import com.hedera.hapi.block.stream.protoc.BlockItem;
-import com.hedera.hapi.block.stream.trace.protoc.TraceData;
+import com.mpcq.hapi.block.stream.output.protoc.CreateScheduleOutput;
+import com.mpcq.hapi.block.stream.output.protoc.SignScheduleOutput;
+import com.mpcq.hapi.block.stream.output.protoc.StateChanges;
+import com.mpcq.hapi.block.stream.output.protoc.TransactionOutput;
+import com.mpcq.hapi.block.stream.output.protoc.TransactionOutput.TransactionCase;
+import com.mpcq.hapi.block.stream.protoc.BlockItem;
+import com.mpcq.hapi.block.stream.trace.protoc.TraceData;
 import com.hederahashgraph.api.proto.java.AtomicBatchTransactionBody;
 import com.hederahashgraph.api.proto.java.BlockHashAlgorithm;
 import com.hederahashgraph.api.proto.java.SignedTransaction;

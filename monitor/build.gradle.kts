@@ -16,7 +16,7 @@ dependencies {
     }
     implementation("com.fasterxml.jackson.core:jackson-databind")
     implementation("com.google.guava:guava")
-    implementation("com.hedera.hashgraph:sdk")
+    implementation("com.mpcq.hashgraph:sdk")
     implementation("io.fabric8:kubernetes-client") {
         exclude("io.fabric8", "kubernetes-httpclient-vertx")
     }

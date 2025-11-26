@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.service;
 
-import static com.hedera.node.app.service.evm.utils.EthSigsUtils.recoverAddressFromPubKey;
+import static com.mpcq.node.app.service.evm.utils.EthSigsUtils.recoverAddressFromPubKey;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.INVALID_SOLIDITY_ADDRESS;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.google.common.collect.Range;
 import com.google.protobuf.ByteString;
-import com.hedera.hapi.node.base.ResponseCodeEnum;
+import com.mpcq.hapi.node.base.ResponseCodeEnum;
 import java.math.BigInteger;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

@@ -2,17 +2,17 @@
 
 package org.hiero.mirror.monitor.publish;
 
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.Client;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.HbarUnit;
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.Query;
-import com.hedera.hashgraph.sdk.Transaction;
-import com.hedera.hashgraph.sdk.TransactionReceiptQuery;
-import com.hedera.hashgraph.sdk.TransactionRecordQuery;
-import com.hedera.hashgraph.sdk.TransactionResponse;
-import com.hedera.hashgraph.sdk.proto.NodeAddressBook;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.Client;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.HbarUnit;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.Query;
+import com.mpcq.hashgraph.sdk.Transaction;
+import com.mpcq.hashgraph.sdk.TransactionReceiptQuery;
+import com.mpcq.hashgraph.sdk.TransactionRecordQuery;
+import com.mpcq.hashgraph.sdk.TransactionResponse;
+import com.mpcq.hashgraph.sdk.proto.NodeAddressBook;
 import jakarta.inject.Named;
 import java.security.SecureRandom;
 import java.time.Instant;
@@ -157,7 +157,7 @@ public class TransactionPublisher implements AutoCloseable {
                 .toByteString();
 
         var client = Client.forNetwork(Map.of());
-        client.setNetworkFromAddressBook(com.hedera.hashgraph.sdk.NodeAddressBook.fromBytes(nodeAddressBook));
+        client.setNetworkFromAddressBook(com.mpcq.hashgraph.sdk.NodeAddressBook.fromBytes(nodeAddressBook));
         client.setNetwork(network);
         client.setNodeMaxBackoff(publishProperties.getNodeMaxBackoff());
         client.setOperator(operatorId, operatorPrivateKey);

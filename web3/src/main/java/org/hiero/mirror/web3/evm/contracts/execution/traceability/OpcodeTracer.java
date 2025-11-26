@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution.traceability;
 
-import com.hedera.node.app.service.mono.contracts.execution.traceability.MPCQOperationTracer;
-import com.hedera.services.stream.proto.ContractActionType;
+import com.mpcq.node.app.service.mono.contracts.execution.traceability.MPCQOperationTracer;
+import com.mpcq.services.stream.proto.ContractActionType;
 import jakarta.inject.Named;
 import java.util.Collections;
 import java.util.List;

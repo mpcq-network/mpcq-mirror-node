@@ -4,7 +4,7 @@ package org.hiero.mirror.web3.service;
 
 import static org.hiero.mirror.web3.evm.exception.ResponseCodeUtil.getStatusOrDefault;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.inject.Named;
 import jakarta.validation.Valid;

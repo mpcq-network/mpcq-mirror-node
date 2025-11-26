@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils.accessors;
+package com.mpcq.services.utils.accessors;
 
-import static com.hedera.services.fees.usage.token.TokenOpsUsageUtils.TOKEN_OPS_USAGE_UTILS;
-import static com.hedera.services.utils.MiscUtils.FUNCTION_EXTRACTOR;
+import static com.mpcq.services.fees.usage.token.TokenOpsUsageUtils.TOKEN_OPS_USAGE_UTILS;
+import static com.mpcq.services.utils.MiscUtils.FUNCTION_EXTRACTOR;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoApproveAllowance;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoCreate;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.CryptoDeleteAllowance;
@@ -22,14 +22,14 @@ import static com.hederahashgraph.api.proto.java.SubType.TOKEN_NON_FUNGIBLE_UNIQ
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.services.hapi.fees.usage.BaseTransactionMeta;
-import com.hedera.services.hapi.fees.usage.SigUsage;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoApproveAllowanceMeta;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoCreateMeta;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoDeleteAllowanceMeta;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoTransferMeta;
-import com.hedera.services.hapi.fees.usage.crypto.CryptoUpdateMeta;
-import com.hedera.services.txns.span.ExpandHandleSpanMapAccessor;
+import com.mpcq.services.hapi.fees.usage.BaseTransactionMeta;
+import com.mpcq.services.hapi.fees.usage.SigUsage;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoApproveAllowanceMeta;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoCreateMeta;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoDeleteAllowanceMeta;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoTransferMeta;
+import com.mpcq.services.hapi.fees.usage.crypto.CryptoUpdateMeta;
+import com.mpcq.services.txns.span.ExpandHandleSpanMapAccessor;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.SignatureMap;

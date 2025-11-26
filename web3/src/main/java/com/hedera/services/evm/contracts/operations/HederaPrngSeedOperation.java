@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.evm.contracts.operations;
+package com.mpcq.services.evm.contracts.operations;
 
 import static org.hyperledger.besu.evm.frame.ExceptionalHaltReason.INSUFFICIENT_GAS;
 
-import com.hedera.services.txns.util.PrngLogic;
+import com.mpcq.services.txns.util.PrngLogic;
 import org.apache.tuweni.bytes.Bytes;
 import org.apache.tuweni.bytes.Bytes32;
 import org.hyperledger.besu.evm.EVM;

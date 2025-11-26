@@ -4,7 +4,7 @@ package org.hiero.mirror.web3.service.utils;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import lombok.RequiredArgsConstructor;

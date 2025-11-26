@@ -2,16 +2,16 @@
 
 package org.hiero.mirror.monitor.publish;
 
-import static com.hedera.hashgraph.sdk.Status.SUCCESS;
+import static com.mpcq.hashgraph.sdk.Status.SUCCESS;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.Client;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.Status;
-import com.hedera.hashgraph.sdk.TransferTransaction;
-import com.hedera.hashgraph.sdk.proto.NodeAddressBook;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.Client;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.Status;
+import com.mpcq.hashgraph.sdk.TransferTransaction;
+import com.mpcq.hashgraph.sdk.proto.NodeAddressBook;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import java.time.Duration;
@@ -157,7 +157,7 @@ public class NodeSupplier {
                 NodeAddressBook.newBuilder().addNodeAddress(nodeAddress).build().toByteString();
 
         var client = Client.forNetwork(Map.of());
-        client.setNetworkFromAddressBook(com.hedera.hashgraph.sdk.NodeAddressBook.fromBytes(nodeAddressBook));
+        client.setNetworkFromAddressBook(com.mpcq.hashgraph.sdk.NodeAddressBook.fromBytes(nodeAddressBook));
         client.setNetwork(network);
         client.setMaxAttempts(validationProperties.getMaxAttempts());
         client.setMaxBackoff(validationProperties.getMaxBackoff());

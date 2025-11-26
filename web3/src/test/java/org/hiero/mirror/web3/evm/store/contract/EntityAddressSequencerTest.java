@@ -4,7 +4,7 @@ package org.hiero.mirror.web3.evm.store.contract;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractID;
 import org.hiero.mirror.common.CommonProperties;

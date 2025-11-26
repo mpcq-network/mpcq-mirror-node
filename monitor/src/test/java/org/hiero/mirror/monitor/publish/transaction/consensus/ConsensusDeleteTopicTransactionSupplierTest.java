@@ -4,7 +4,7 @@ package org.hiero.mirror.monitor.publish.transaction.consensus;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.hedera.hashgraph.sdk.TopicDeleteTransaction;
+import com.mpcq.hashgraph.sdk.TopicDeleteTransaction;
 import org.hiero.mirror.monitor.publish.transaction.AbstractTransactionSupplierTest;
 import org.hiero.mirror.monitor.publish.transaction.TransactionSupplier;
 import org.junit.jupiter.api.Test;

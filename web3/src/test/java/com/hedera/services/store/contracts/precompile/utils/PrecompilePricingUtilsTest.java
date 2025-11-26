@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.utils;
+package com.mpcq.services.store.contracts.precompile.utils;
 
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.sender;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.sender;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -10,14 +10,14 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 
-import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
-import com.hedera.services.fees.BasicHbarCentExchange;
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.fees.calculation.BasicFcfsUsagePrices;
-import com.hedera.services.fees.pricing.AssetsLoader;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.store.contracts.precompile.Precompile;
-import com.hedera.services.utils.accessors.AccessorFactory;
+import com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases;
+import com.mpcq.services.fees.BasicHbarCentExchange;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.fees.calculation.BasicFcfsUsagePrices;
+import com.mpcq.services.fees.pricing.AssetsLoader;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.store.contracts.precompile.Precompile;
+import com.mpcq.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.*;
 import java.io.IOException;
 import java.math.BigDecimal;

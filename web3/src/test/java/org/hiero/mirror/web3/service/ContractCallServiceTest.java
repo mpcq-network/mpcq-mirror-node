@@ -36,9 +36,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.utils.EntityIdUtils;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;

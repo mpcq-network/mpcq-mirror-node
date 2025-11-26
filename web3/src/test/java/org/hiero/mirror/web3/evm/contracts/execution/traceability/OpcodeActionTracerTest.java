@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.web3.evm.contracts.execution.traceability;
 
-import static com.hedera.services.store.contracts.precompile.SyntheticTxnFactory.HTS_PRECOMPILED_CONTRACT_ADDRESS;
-import static com.hedera.services.stream.proto.ContractAction.ResultDataCase.OUTPUT;
-import static com.hedera.services.stream.proto.ContractAction.ResultDataCase.REVERT_REASON;
+import static com.mpcq.services.store.contracts.precompile.SyntheticTxnFactory.HTS_PRECOMPILED_CONTRACT_ADDRESS;
+import static com.mpcq.services.stream.proto.ContractAction.ResultDataCase.OUTPUT;
+import static com.mpcq.services.stream.proto.ContractAction.ResultDataCase.REVERT_REASON;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hiero.mirror.web3.convert.BytesDecoder.getAbiEncodedRevertReason;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.toAddress;
@@ -27,17 +27,17 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.ImmutableSortedMap;
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.state.contract.SlotKey;
-import com.hedera.node.app.service.contract.impl.exec.systemcontracts.MPCQSystemContract;
-import com.hedera.node.app.service.contract.impl.state.EvmFrameState;
-import com.hedera.node.app.service.contract.impl.state.ProxyWorldUpdater;
-import com.hedera.node.app.service.contract.impl.state.RootProxyWorldUpdater;
-import com.hedera.node.app.service.contract.impl.state.StorageAccess;
-import com.hedera.node.app.service.contract.impl.state.StorageAccesses;
-import com.hedera.node.app.service.contract.impl.state.TxStorageUsage;
-import com.hedera.services.stream.proto.CallOperationType;
-import com.hedera.services.stream.proto.ContractActionType;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.state.contract.SlotKey;
+import com.mpcq.node.app.service.contract.impl.exec.systemcontracts.MPCQSystemContract;
+import com.mpcq.node.app.service.contract.impl.state.EvmFrameState;
+import com.mpcq.node.app.service.contract.impl.state.ProxyWorldUpdater;
+import com.mpcq.node.app.service.contract.impl.state.RootProxyWorldUpdater;
+import com.mpcq.node.app.service.contract.impl.state.StorageAccess;
+import com.mpcq.node.app.service.contract.impl.state.StorageAccesses;
+import com.mpcq.node.app.service.contract.impl.state.TxStorageUsage;
+import com.mpcq.services.stream.proto.CallOperationType;
+import com.mpcq.services.stream.proto.ContractActionType;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
@@ -681,8 +681,8 @@ class OpcodeActionTracerTest {
         txStorageUsage = new TxStorageUsage(
                 storageAccesses,
                 Set.of(
-                        new SlotKey(ContractID.DEFAULT, com.hedera.pbj.runtime.io.buffer.Bytes.EMPTY),
-                        new SlotKey(ContractID.DEFAULT, com.hedera.pbj.runtime.io.buffer.Bytes.wrap("1"))));
+                        new SlotKey(ContractID.DEFAULT, com.mpcq.pbj.runtime.io.buffer.Bytes.EMPTY),
+                        new SlotKey(ContractID.DEFAULT, com.mpcq.pbj.runtime.io.buffer.Bytes.wrap("1"))));
         return storage;
     }
 

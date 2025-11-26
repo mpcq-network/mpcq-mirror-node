@@ -5,8 +5,8 @@ package org.hiero.mirror.importer.reader.record;
 import static java.lang.String.format;
 import static org.hiero.mirror.common.util.DomainUtils.createSha384Digest;
 
-import com.hedera.services.stream.proto.HashAlgorithm;
-import com.hedera.services.stream.proto.RecordStreamFile;
+import com.mpcq.services.stream.proto.HashAlgorithm;
+import com.mpcq.services.stream.proto.RecordStreamFile;
 import jakarta.inject.Named;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

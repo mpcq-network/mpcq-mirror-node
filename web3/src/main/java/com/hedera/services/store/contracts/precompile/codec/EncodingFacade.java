@@ -1,22 +1,22 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile.codec;
+package com.mpcq.services.store.contracts.precompile.codec;
 
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.BOOLEAN_TUPLE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.INT_BOOL_TUPLE;
-import static com.hedera.node.app.service.evm.store.contracts.utils.EvmParsingConstants.NOT_SPECIFIED_TYPE;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.FunctionType.HAPI_BURN;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.FunctionType.HAPI_MINT;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.burnReturnType;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.hapiAllowanceOfType;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.intAddressTuple;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.intTuple;
-import static com.hedera.services.hapi.utils.contracts.ParsingConstants.mintReturnType;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.BOOLEAN_TUPLE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.INT_BOOL_TUPLE;
+import static com.mpcq.node.app.service.evm.store.contracts.utils.EvmParsingConstants.NOT_SPECIFIED_TYPE;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.FunctionType.HAPI_BURN;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.FunctionType.HAPI_MINT;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.burnReturnType;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.hapiAllowanceOfType;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.intAddressTuple;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.intTuple;
+import static com.mpcq.services.hapi.utils.contracts.ParsingConstants.mintReturnType;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.SUCCESS;
 
 import com.esaulpaugh.headlong.abi.Tuple;
 import com.esaulpaugh.headlong.abi.TupleType;
-import com.hedera.services.hapi.utils.contracts.ParsingConstants.FunctionType;
+import com.mpcq.services.hapi.utils.contracts.ParsingConstants.FunctionType;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.math.BigInteger;

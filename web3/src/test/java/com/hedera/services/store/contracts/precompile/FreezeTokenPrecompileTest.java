@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.store.contracts.precompile.AbiConstants.ABI_ID_FREEZE;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.*;
-import static com.hedera.services.store.contracts.precompile.impl.FreezeTokenPrecompile.decodeFreeze;
+import static com.mpcq.services.store.contracts.precompile.AbiConstants.ABI_ID_FREEZE;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.*;
+import static com.mpcq.services.store.contracts.precompile.impl.FreezeTokenPrecompile.decodeFreeze;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 import static java.util.function.UnaryOperator.identity;
 import static org.hiero.mirror.web3.common.PrecompileContext.PRECOMPILE_CONTEXT;
@@ -13,18 +13,18 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
 import com.esaulpaugh.headlong.util.Integers;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
-import com.hedera.services.fees.pricing.AssetsLoader;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.store.contracts.precompile.impl.FreezeTokenPrecompile;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.txn.token.FreezeLogic;
-import com.hedera.services.utils.IdUtils;
-import com.hedera.services.utils.accessors.AccessorFactory;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.pricing.AssetsLoader;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.store.contracts.precompile.impl.FreezeTokenPrecompile;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.txn.token.FreezeLogic;
+import com.mpcq.services.utils.IdUtils;
+import com.mpcq.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.*;
 import java.io.IOException;
 import java.math.BigDecimal;

@@ -9,7 +9,7 @@ import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.hapi.block.stream.protoc.BlockItem;
+import com.mpcq.hapi.block.stream.protoc.BlockItem;
 import jakarta.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;

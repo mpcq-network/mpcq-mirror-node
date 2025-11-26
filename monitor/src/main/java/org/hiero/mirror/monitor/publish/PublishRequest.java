@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.monitor.publish;
 
-import com.hedera.hashgraph.sdk.Transaction;
+import com.mpcq.hashgraph.sdk.Transaction;
 import java.time.Instant;
 import lombok.Builder;
 import lombok.Data;

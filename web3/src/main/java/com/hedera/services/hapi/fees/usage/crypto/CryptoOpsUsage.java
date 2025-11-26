@@ -1,25 +1,25 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.hapi.fees.usage.crypto;
+package com.mpcq.services.hapi.fees.usage.crypto;
 
-import static com.hedera.services.fees.usage.token.entities.TokenEntitySizes.TOKEN_ENTITY_SIZES;
-import static com.hedera.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
-import static com.hedera.services.hapi.fees.usage.SingletonUsageProperties.USAGE_PROPERTIES;
-import static com.hedera.services.hapi.fees.usage.crypto.CryptoContextUtils.getChangedCryptoKeys;
-import static com.hedera.services.hapi.fees.usage.crypto.CryptoContextUtils.getChangedTokenKeys;
-import static com.hedera.services.hapi.fees.usage.crypto.CryptoEntitySizes.CRYPTO_ENTITY_SIZES;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.BOOL_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.CRYPTO_ALLOWANCE_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.INT_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.LONG_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.NFT_ALLOWANCE_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.TOKEN_ALLOWANCE_SIZE;
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.getAccountKeyStorageSize;
+import static com.mpcq.services.fees.usage.token.entities.TokenEntitySizes.TOKEN_ENTITY_SIZES;
+import static com.mpcq.services.hapi.fees.usage.SingletonEstimatorUtils.ESTIMATOR_UTILS;
+import static com.mpcq.services.hapi.fees.usage.SingletonUsageProperties.USAGE_PROPERTIES;
+import static com.mpcq.services.hapi.fees.usage.crypto.CryptoContextUtils.getChangedCryptoKeys;
+import static com.mpcq.services.hapi.fees.usage.crypto.CryptoContextUtils.getChangedTokenKeys;
+import static com.mpcq.services.hapi.fees.usage.crypto.CryptoEntitySizes.CRYPTO_ENTITY_SIZES;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.BOOL_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.CRYPTO_ALLOWANCE_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.INT_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.LONG_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.NFT_ALLOWANCE_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.TOKEN_ALLOWANCE_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.getAccountKeyStorageSize;
 
-import com.hedera.services.fees.usage.state.UsageAccumulator;
-import com.hedera.services.hapi.fees.usage.BaseTransactionMeta;
-import com.hedera.services.hapi.fees.usage.SigUsage;
+import com.mpcq.services.fees.usage.state.UsageAccumulator;
+import com.mpcq.services.hapi.fees.usage.BaseTransactionMeta;
+import com.mpcq.services.hapi.fees.usage.SigUsage;
 import java.nio.charset.StandardCharsets;
 
 /**

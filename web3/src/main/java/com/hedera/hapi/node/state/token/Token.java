@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.token;
+package com.mpcq.hapi.node.state.token;
 
 import static java.util.Objects.requireNonNull;
 import static org.hiero.mirror.web3.utils.Suppliers.areSuppliersEqual;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.hapi.node.base.TokenSupplyType;
-import com.hedera.hapi.node.base.TokenType;
-import com.hedera.hapi.node.transaction.CustomFee;
-import com.hedera.pbj.runtime.Codec;
-import com.hedera.pbj.runtime.JsonCodec;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.hapi.node.base.TokenSupplyType;
+import com.mpcq.hapi.node.base.TokenType;
+import com.mpcq.hapi.node.transaction.CustomFee;
+import com.mpcq.pbj.runtime.Codec;
+import com.mpcq.pbj.runtime.JsonCodec;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.util.Collections;
@@ -105,9 +105,9 @@ public record Token(
         @Nonnull Bytes metadata,
         @Nullable Key metadataKey) {
     /** Protobuf codec for reading and writing in protobuf format */
-    public static final Codec<Token> PROTOBUF = new com.hedera.hapi.node.state.token.codec.TokenProtoCodec();
+    public static final Codec<Token> PROTOBUF = new com.mpcq.hapi.node.state.token.codec.TokenProtoCodec();
     /** JSON codec for reading and writing in JSON format */
-    public static final JsonCodec<Token> JSON = new com.hedera.hapi.node.state.token.codec.TokenJsonCodec();
+    public static final JsonCodec<Token> JSON = new com.mpcq.hapi.node.state.token.codec.TokenJsonCodec();
 
     /** Default instance with all fields set to default values */
     public static final Token DEFAULT = newBuilder()

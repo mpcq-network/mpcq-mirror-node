@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.store.accessor;
 
-import static com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases.isMirror;
+import static com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases.isMirror;
 import static org.hiero.mirror.common.util.DomainUtils.EVM_ADDRESS_LENGTH;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.entityIdNumFromEvmAddress;
 import static org.hiero.mirror.web3.evm.utils.EvmTokenUtils.toAddress;

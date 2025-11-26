@@ -1,21 +1,21 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.usage.token;
+package com.mpcq.services.fees.usage.token;
 
-import static com.hedera.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
+import static com.mpcq.services.hapi.utils.fees.FeeBuilder.BASIC_ENTITY_ID_SIZE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.hedera.services.fees.pricing.ResourceProvider;
-import com.hedera.services.fees.pricing.UsableResource;
-import com.hedera.services.fees.usage.state.UsageAccumulator;
-import com.hedera.services.fees.usage.token.meta.TokenPauseMeta;
-import com.hedera.services.fees.usage.token.meta.TokenUnfreezeMeta;
-import com.hedera.services.fees.usage.token.meta.TokenUnpauseMeta;
-import com.hedera.services.fees.usage.token.meta.TokenWipeMeta;
-import com.hedera.services.hapi.fees.usage.BaseTransactionMeta;
-import com.hedera.services.hapi.fees.usage.SigUsage;
-import com.hedera.services.hapi.utils.fees.FeeBuilder;
-import com.hedera.services.utils.IdUtils;
+import com.mpcq.services.fees.pricing.ResourceProvider;
+import com.mpcq.services.fees.pricing.UsableResource;
+import com.mpcq.services.fees.usage.state.UsageAccumulator;
+import com.mpcq.services.fees.usage.token.meta.TokenPauseMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenUnfreezeMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenUnpauseMeta;
+import com.mpcq.services.fees.usage.token.meta.TokenWipeMeta;
+import com.mpcq.services.hapi.fees.usage.BaseTransactionMeta;
+import com.mpcq.services.hapi.fees.usage.SigUsage;
+import com.mpcq.services.hapi.utils.fees.FeeBuilder;
+import com.mpcq.services.utils.IdUtils;
 import com.hederahashgraph.api.proto.java.CustomFee;
 import com.hederahashgraph.api.proto.java.FixedFee;
 import com.hederahashgraph.api.proto.java.FractionalFee;

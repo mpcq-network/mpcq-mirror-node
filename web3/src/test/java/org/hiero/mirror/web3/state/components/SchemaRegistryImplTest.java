@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.state.components;
 
-import static com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema.STAKING_INFOS_KEY;
-import static com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema.STAKING_NETWORK_REWARDS_KEY;
+import static com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema.STAKING_INFOS_KEY;
+import static com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema.STAKING_NETWORK_REWARDS_KEY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.any;
@@ -11,9 +11,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.hedera.node.app.config.ConfigProviderImpl;
-import com.hedera.node.app.service.token.impl.schemas.V0490TokenSchema;
-import com.hedera.pbj.runtime.Codec;
+import com.mpcq.node.app.config.ConfigProviderImpl;
+import com.mpcq.node.app.service.token.impl.schemas.V0490TokenSchema;
+import com.mpcq.pbj.runtime.Codec;
 import com.swirlds.config.api.Configuration;
 import com.swirlds.state.lifecycle.Schema;
 import com.swirlds.state.lifecycle.StateDefinition;

@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.web3.evm.utils;
 
-import static com.hedera.services.utils.EntityIdUtils.asHexedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.asHexedEvmAddress;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 

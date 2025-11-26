@@ -7,7 +7,7 @@ import static org.hiero.mirror.web3.convert.BytesDecoder.maybeDecodeSolidityErro
 import static org.hiero.mirror.web3.evm.exception.ResponseCodeUtil.getStatusOrDefault;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Meter.MeterProvider;

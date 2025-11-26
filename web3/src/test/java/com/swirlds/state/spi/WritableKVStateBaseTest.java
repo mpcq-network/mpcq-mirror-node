@@ -7,9 +7,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.state.token.Account;
-import com.hedera.node.app.service.token.TokenService;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.state.token.Account;
+import com.mpcq.node.app.service.token.TokenService;
 import java.util.Collections;
 import java.util.Map;
 import java.util.NoSuchElementException;

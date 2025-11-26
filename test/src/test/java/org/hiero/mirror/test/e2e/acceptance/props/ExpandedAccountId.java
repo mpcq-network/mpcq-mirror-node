@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.test.e2e.acceptance.props;
 
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.PrivateKey;
-import com.hedera.hashgraph.sdk.PublicKey;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.PublicKey;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 

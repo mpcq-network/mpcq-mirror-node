@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.models;
+package com.mpcq.services.store.models;
 
 import com.google.common.base.MoreObjects;
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.services.state.submerkle.RichInstant;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.services.state.submerkle.RichInstant;
 import java.util.Arrays;
 import java.util.Objects;
 import org.hyperledger.besu.datatypes.Address;

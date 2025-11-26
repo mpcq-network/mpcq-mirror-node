@@ -2,23 +2,23 @@
 
 package org.hiero.mirror.web3.evm.store;
 
-import static com.hedera.services.utils.EntityIdUtils.accountIdFromEvmAddress;
-import static com.hedera.services.utils.EntityIdUtils.asHexedEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.accountIdFromEvmAddress;
+import static com.mpcq.services.utils.EntityIdUtils.asHexedEvmAddress;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-import com.hedera.node.app.service.evm.exceptions.InvalidTransactionException;
-import com.hedera.services.state.submerkle.RichInstant;
-import com.hedera.services.store.models.Account;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.NftId;
-import com.hedera.services.store.models.TokenRelationship;
-import com.hedera.services.store.models.UniqueToken;
-import com.hedera.services.txns.validation.OptionValidator;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.node.app.service.evm.exceptions.InvalidTransactionException;
+import com.mpcq.services.state.submerkle.RichInstant;
+import com.mpcq.services.store.models.Account;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.NftId;
+import com.mpcq.services.store.models.TokenRelationship;
+import com.mpcq.services.store.models.UniqueToken;
+import com.mpcq.services.txns.validation.OptionValidator;
+import com.mpcq.services.utils.EntityIdUtils;
 import java.util.List;
 import java.util.Optional;
 import org.hiero.mirror.common.CommonProperties;
@@ -207,7 +207,7 @@ class StoreImplTest {
 
     @Test
     void updateToken() {
-        final var retrievedToken = new com.hedera.services.store.models.Token(TOKEN_ID);
+        final var retrievedToken = new com.mpcq.services.store.models.Token(TOKEN_ID);
         subject.wrap();
         subject.updateToken(retrievedToken);
         assertEquals(retrievedToken, subject.getToken(TOKEN_ADDRESS, OnMissing.DONT_THROW));
@@ -243,7 +243,7 @@ class StoreImplTest {
     @Test
     void updateTokenRelationship() {
         var tokenRel = new TokenRelationship(
-                new com.hedera.services.store.models.Token(TOKEN_ID), new Account(0L, ACCOUNT_ID, 0L));
+                new com.mpcq.services.store.models.Token(TOKEN_ID), new Account(0L, ACCOUNT_ID, 0L));
         subject.wrap();
         subject.updateTokenRelationship(tokenRel);
         // tokenRel is now persisted in store
@@ -257,7 +257,7 @@ class StoreImplTest {
     @Test
     void deleteTokenRelationship() {
         var tokenRelationship = new TokenRelationship(
-                new com.hedera.services.store.models.Token(TOKEN_ID), new Account(0L, ACCOUNT_ID, 0L));
+                new com.mpcq.services.store.models.Token(TOKEN_ID), new Account(0L, ACCOUNT_ID, 0L));
         subject.wrap();
         subject.updateTokenRelationship(tokenRelationship);
 
@@ -332,7 +332,7 @@ class StoreImplTest {
         when(nft.getSerialNumber()).thenReturn(1L);
         when(nft.getTokenId()).thenReturn(uniqueTokenId.getId());
         final var serials = List.of(nftId.serialNo());
-        final var newToken = new com.hedera.services.store.models.Token(TOKEN_ID);
+        final var newToken = new com.mpcq.services.store.models.Token(TOKEN_ID);
         final var updatedToken = subject.loadUniqueTokens(newToken, serials);
         assertThat(updatedToken.getLoadedUniqueTokens()).hasSize(serials.size());
         assertThat(updatedToken.getLoadedUniqueTokens().get(nftId.serialNo()).getNftId())
@@ -343,7 +343,7 @@ class StoreImplTest {
     void loadUniqueTokensThrowIfMissing() {
         final var nftId = new NftId(0, 0, 6, 1);
         final var serials = List.of(nftId.serialNo());
-        final var newToken = new com.hedera.services.store.models.Token(TOKEN_ID);
+        final var newToken = new com.mpcq.services.store.models.Token(TOKEN_ID);
         assertThatThrownBy(() -> subject.loadUniqueTokens(newToken, serials))
                 .isInstanceOf(InvalidTransactionException.class);
     }

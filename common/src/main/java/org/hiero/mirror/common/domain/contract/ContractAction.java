@@ -2,7 +2,7 @@
 
 package org.hiero.mirror.common.domain.contract;
 
-import static com.hedera.services.stream.proto.ContractAction.ResultDataCase.REVERT_REASON;
+import static com.mpcq.services.stream.proto.ContractAction.ResultDataCase.REVERT_REASON;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;

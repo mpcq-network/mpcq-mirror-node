@@ -1,46 +1,46 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.node.app.service.contract.impl.state;
+package com.mpcq.node.app.service.contract.impl.state;
 
-import static com.hedera.hapi.node.base.ResponseCodeEnum.INVALID_SIGNATURE;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.MAX_CHILD_RECORDS_EXCEEDED;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.OK;
-import static com.hedera.hapi.node.base.ResponseCodeEnum.SUCCESS;
-import static com.hedera.hapi.util.HapiUtils.CONTRACT_ID_COMPARATOR;
-import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.CONTRACT_IS_TREASURY;
-import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.CONTRACT_STILL_OWNS_NFTS;
-import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATION;
-import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INSUFFICIENT_CHILD_RECORDS;
-import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INVALID_ALIAS_KEY;
-import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS;
-import static com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.SELF_DESTRUCT_TO_SELF;
-import static com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations.MISSING_ENTITY_NUMBER;
-import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.asLongZeroAddress;
-import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.isLongZero;
-import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.maybeMissingNumberOf;
-import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.pbjToBesuAddress;
-import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.pbjToTuweniBytes;
-import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.pbjToTuweniUInt256;
-import static com.hedera.node.app.service.contract.impl.utils.ConversionUtils.tuweniToPbjBytes;
-import static com.hedera.node.app.service.token.AliasUtils.extractEvmAddress;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.INVALID_SIGNATURE;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.MAX_CHILD_RECORDS_EXCEEDED;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.OK;
+import static com.mpcq.hapi.node.base.ResponseCodeEnum.SUCCESS;
+import static com.mpcq.hapi.util.HapiUtils.CONTRACT_ID_COMPARATOR;
+import static com.mpcq.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.CONTRACT_IS_TREASURY;
+import static com.mpcq.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.CONTRACT_STILL_OWNS_NFTS;
+import static com.mpcq.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.FAILURE_DURING_LAZY_ACCOUNT_CREATION;
+import static com.mpcq.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INSUFFICIENT_CHILD_RECORDS;
+import static com.mpcq.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INVALID_ALIAS_KEY;
+import static com.mpcq.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.INVALID_SOLIDITY_ADDRESS;
+import static com.mpcq.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason.SELF_DESTRUCT_TO_SELF;
+import static com.mpcq.node.app.service.contract.impl.exec.scope.MPCQNativeOperations.MISSING_ENTITY_NUMBER;
+import static com.mpcq.node.app.service.contract.impl.utils.ConversionUtils.asLongZeroAddress;
+import static com.mpcq.node.app.service.contract.impl.utils.ConversionUtils.isLongZero;
+import static com.mpcq.node.app.service.contract.impl.utils.ConversionUtils.maybeMissingNumberOf;
+import static com.mpcq.node.app.service.contract.impl.utils.ConversionUtils.pbjToBesuAddress;
+import static com.mpcq.node.app.service.contract.impl.utils.ConversionUtils.pbjToTuweniBytes;
+import static com.mpcq.node.app.service.contract.impl.utils.ConversionUtils.pbjToTuweniUInt256;
+import static com.mpcq.node.app.service.contract.impl.utils.ConversionUtils.tuweniToPbjBytes;
+import static com.mpcq.node.app.service.token.AliasUtils.extractEvmAddress;
 import static java.util.Objects.requireNonNull;
 import static org.hiero.mirror.web3.evm.properties.MirrorNodeEvmProperties.ALLOW_LONG_ZERO_ADDRESSES;
 import static org.hyperledger.besu.evm.frame.ExceptionalHaltReason.ILLEGAL_STATE_CHANGE;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.KeyList;
-import com.hedera.hapi.node.state.contract.Bytecode;
-import com.hedera.hapi.node.state.contract.SlotKey;
-import com.hedera.hapi.node.state.contract.SlotValue;
-import com.hedera.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason;
-import com.hedera.node.app.service.contract.impl.exec.scope.ActiveContractVerificationStrategy;
-import com.hedera.node.app.service.contract.impl.exec.scope.ActiveContractVerificationStrategy.UseTopLevelSigs;
-import com.hedera.node.app.service.contract.impl.exec.scope.HandleMPCQNativeOperations;
-import com.hedera.node.app.service.contract.impl.exec.scope.MPCQNativeOperations;
-import com.hedera.node.app.service.contract.impl.utils.RedirectBytecodeUtils;
-import com.hedera.node.app.service.entityid.EntityIdFactory;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.KeyList;
+import com.mpcq.hapi.node.state.contract.Bytecode;
+import com.mpcq.hapi.node.state.contract.SlotKey;
+import com.mpcq.hapi.node.state.contract.SlotValue;
+import com.mpcq.node.app.service.contract.impl.exec.failure.CustomExceptionalHaltReason;
+import com.mpcq.node.app.service.contract.impl.exec.scope.ActiveContractVerificationStrategy;
+import com.mpcq.node.app.service.contract.impl.exec.scope.ActiveContractVerificationStrategy.UseTopLevelSigs;
+import com.mpcq.node.app.service.contract.impl.exec.scope.HandleMPCQNativeOperations;
+import com.mpcq.node.app.service.contract.impl.exec.scope.MPCQNativeOperations;
+import com.mpcq.node.app.service.contract.impl.utils.RedirectBytecodeUtils;
+import com.mpcq.node.app.service.entityid.EntityIdFactory;
 import com.swirlds.state.spi.WritableKVState;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
@@ -114,8 +114,8 @@ public class DispatchingEvmFrameState implements EvmFrameState {
         // Ensure we don't change any prev/next keys until the base commit
         final var slotValue = new SlotValue(
                 tuweniToPbjBytes(requireNonNull(value)),
-                oldSlotValue == null ? com.hedera.pbj.runtime.io.buffer.Bytes.EMPTY : oldSlotValue.previousKey(),
-                oldSlotValue == null ? com.hedera.pbj.runtime.io.buffer.Bytes.EMPTY : oldSlotValue.nextKey());
+                oldSlotValue == null ? com.mpcq.pbj.runtime.io.buffer.Bytes.EMPTY : oldSlotValue.previousKey(),
+                oldSlotValue == null ? com.mpcq.pbj.runtime.io.buffer.Bytes.EMPTY : oldSlotValue.nextKey());
         // We don't call remove() here when the new value is zero, again because we
         // want to preserve the prev/next key information until the base commit; only
         // then will we remove the zeroed out slot from the K/V state
@@ -292,7 +292,7 @@ public class DispatchingEvmFrameState implements EvmFrameState {
     }
 
     @Override
-    public com.hedera.hapi.node.state.token.Account getNativeAccount(final AccountID accountID) {
+    public com.mpcq.hapi.node.state.token.Account getNativeAccount(final AccountID accountID) {
         return validatedAccount(accountID);
     }
 
@@ -592,7 +592,7 @@ public class DispatchingEvmFrameState implements EvmFrameState {
     }
 
     // Workaround to allow long zero addresses (formed by shard/realm/num) to be accepted by the EVM
-    private boolean isNotPriority(final Address address, final com.hedera.hapi.node.state.token.Account account) {
+    private boolean isNotPriority(final Address address, final com.mpcq.hapi.node.state.token.Account account) {
         requireNonNull(account);
 
         final var longZeroAddressPermitted = Boolean.parseBoolean(System.getProperty(ALLOW_LONG_ZERO_ADDRESSES));
@@ -605,7 +605,7 @@ public class DispatchingEvmFrameState implements EvmFrameState {
         }
     }
 
-    private com.hedera.hapi.node.state.token.Account validatedAccount(final AccountID accountID) {
+    private com.mpcq.hapi.node.state.token.Account validatedAccount(final AccountID accountID) {
         final var account = nativeOperations.getAccount(accountID);
         if (account == null) {
             throw new IllegalArgumentException("No account has id " + accountID);
@@ -613,7 +613,7 @@ public class DispatchingEvmFrameState implements EvmFrameState {
         return account;
     }
 
-    private com.hedera.hapi.node.state.token.Account validatedAccount(final ContractID contractID) {
+    private com.mpcq.hapi.node.state.token.Account validatedAccount(final ContractID contractID) {
         final var account = nativeOperations.getAccount(contractID);
         if (account == null) {
             throw new IllegalArgumentException("No account found for contract ID " + contractID);

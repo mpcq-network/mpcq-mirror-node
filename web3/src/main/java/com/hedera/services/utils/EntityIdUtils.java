@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils;
+package com.mpcq.services.utils;
 
 import static org.hiero.mirror.common.util.DomainUtils.fromEvmAddress;
 import static org.hiero.mirror.common.util.DomainUtils.toEvmAddress;
 import static org.hiero.mirror.web3.evm.account.AccountAccessorImpl.EVM_ADDRESS_SIZE;
 
 import com.google.protobuf.ByteString;
-import com.hedera.hapi.node.base.AccountID.AccountOneOfType;
-import com.hedera.pbj.runtime.OneOf;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.store.models.NftId;
+import com.mpcq.hapi.node.base.AccountID.AccountOneOfType;
+import com.mpcq.pbj.runtime.OneOf;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.store.models.NftId;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractID;
 import com.hederahashgraph.api.proto.java.NftID;
@@ -89,23 +89,23 @@ public final class EntityIdUtils {
                 .build();
     }
 
-    public static EntityId toEntityId(final com.hedera.hapi.node.base.AccountID accountID) {
+    public static EntityId toEntityId(final com.mpcq.hapi.node.base.AccountID accountID) {
         return EntityId.of(accountID.shardNum(), accountID.realmNum(), accountID.accountNum());
     }
 
-    public static EntityId toEntityId(final com.hedera.hapi.node.base.ScheduleID scheduleID) {
+    public static EntityId toEntityId(final com.mpcq.hapi.node.base.ScheduleID scheduleID) {
         return EntityId.of(scheduleID.shardNum(), scheduleID.realmNum(), scheduleID.scheduleNum());
     }
 
-    public static EntityId toEntityId(final com.hedera.hapi.node.base.TokenID tokenID) {
+    public static EntityId toEntityId(final com.mpcq.hapi.node.base.TokenID tokenID) {
         return EntityId.of(tokenID.shardNum(), tokenID.realmNum(), tokenID.tokenNum());
     }
 
-    public static EntityId toEntityId(final com.hedera.hapi.node.base.FileID fileID) {
+    public static EntityId toEntityId(final com.mpcq.hapi.node.base.FileID fileID) {
         return EntityId.of(fileID.shardNum(), fileID.realmNum(), fileID.fileNum());
     }
 
-    public static com.hedera.hapi.node.base.AccountID toAccountId(final Long id) {
+    public static com.mpcq.hapi.node.base.AccountID toAccountId(final Long id) {
         if (id == null) {
             return null;
         }
@@ -114,18 +114,18 @@ public final class EntityIdUtils {
         return toAccountId(decodedEntityId);
     }
 
-    public static com.hedera.hapi.node.base.AccountID toAccountId(final long shard, final long realm, final long num) {
+    public static com.mpcq.hapi.node.base.AccountID toAccountId(final long shard, final long realm, final long num) {
         final var decodedEntityId = EntityId.of(shard, realm, num);
 
         return toAccountId(decodedEntityId);
     }
 
-    public static com.hedera.hapi.node.base.AccountID toAccountId(final Entity entity) {
+    public static com.mpcq.hapi.node.base.AccountID toAccountId(final Entity entity) {
         if (entity == null) {
-            return com.hedera.hapi.node.base.AccountID.DEFAULT;
+            return com.mpcq.hapi.node.base.AccountID.DEFAULT;
         }
 
-        com.hedera.hapi.node.base.AccountID accountIdWithAlias = null;
+        com.mpcq.hapi.node.base.AccountID accountIdWithAlias = null;
         if (entity.getEvmAddress() != null && entity.getEvmAddress().length > 0) {
             accountIdWithAlias = toAccountId(entity.getShard(), entity.getRealm(), entity.getEvmAddress());
         } else if (entity.getAlias() != null && entity.getAlias().length > 0) {
@@ -135,65 +135,65 @@ public final class EntityIdUtils {
         return accountIdWithAlias != null ? accountIdWithAlias : toAccountId(entity.toEntityId());
     }
 
-    public static com.hedera.hapi.node.base.AccountID toAccountId(final EntityId entityId) {
+    public static com.mpcq.hapi.node.base.AccountID toAccountId(final EntityId entityId) {
         if (entityId == null) {
             return null;
         }
-        return com.hedera.hapi.node.base.AccountID.newBuilder()
+        return com.mpcq.hapi.node.base.AccountID.newBuilder()
                 .shardNum(entityId.getShard())
                 .realmNum(entityId.getRealm())
                 .accountNum(entityId.getNum())
                 .build();
     }
 
-    public static com.hedera.hapi.node.base.AccountID toAccountId(final Long shard, final Long realm, final Long num) {
-        return new com.hedera.hapi.node.base.AccountID(shard, realm, new OneOf<>(AccountOneOfType.ACCOUNT_NUM, num));
+    public static com.mpcq.hapi.node.base.AccountID toAccountId(final Long shard, final Long realm, final Long num) {
+        return new com.mpcq.hapi.node.base.AccountID(shard, realm, new OneOf<>(AccountOneOfType.ACCOUNT_NUM, num));
     }
 
-    public static com.hedera.hapi.node.base.FileID toFileId(final Long shard, final Long realm, final Long num) {
-        return new com.hedera.hapi.node.base.FileID(shard, realm, num);
+    public static com.mpcq.hapi.node.base.FileID toFileId(final Long shard, final Long realm, final Long num) {
+        return new com.mpcq.hapi.node.base.FileID(shard, realm, num);
     }
 
-    public static com.hedera.hapi.node.base.TokenID toTokenId(final Long entityId) {
+    public static com.mpcq.hapi.node.base.TokenID toTokenId(final Long entityId) {
         final var decodedEntityId = EntityId.of(entityId);
 
         return toTokenId(decodedEntityId);
     }
 
-    public static com.hedera.hapi.node.base.TokenID toTokenId(final EntityId entityId) {
+    public static com.mpcq.hapi.node.base.TokenID toTokenId(final EntityId entityId) {
         if (entityId == null) {
             return null;
         }
 
-        return com.hedera.hapi.node.base.TokenID.newBuilder()
+        return com.mpcq.hapi.node.base.TokenID.newBuilder()
                 .shardNum(entityId.getShard())
                 .realmNum(entityId.getRealm())
                 .tokenNum(entityId.getNum())
                 .build();
     }
 
-    public static com.hedera.hapi.node.base.ContractID toContractID(final Address address) {
+    public static com.mpcq.hapi.node.base.ContractID toContractID(final Address address) {
         var entity = fromEvmAddress(address.toArrayUnsafe());
         return entity == null
                 ? null
-                : com.hedera.hapi.node.base.ContractID.newBuilder()
+                : com.mpcq.hapi.node.base.ContractID.newBuilder()
                         .shardNum(entity.getShard())
                         .realmNum(entity.getRealm())
                         .contractNum(entity.getNum())
                         .build();
     }
 
-    public static Address toAddress(final com.hedera.pbj.runtime.io.buffer.Bytes bytes) {
+    public static Address toAddress(final com.mpcq.pbj.runtime.io.buffer.Bytes bytes) {
         final var evmAddressBytes = bytes.toByteArray();
         return Address.wrap(org.apache.tuweni.bytes.Bytes.wrap(evmAddressBytes));
     }
 
-    private static com.hedera.hapi.node.base.AccountID toAccountId(
+    private static com.mpcq.hapi.node.base.AccountID toAccountId(
             final Long shard, final Long realm, final byte[] alias) {
-        return com.hedera.hapi.node.base.AccountID.newBuilder()
+        return com.mpcq.hapi.node.base.AccountID.newBuilder()
                 .shardNum(shard)
                 .realmNum(realm)
-                .alias(com.hedera.pbj.runtime.io.buffer.Bytes.wrap(alias))
+                .alias(com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(alias))
                 .build();
     }
 
@@ -235,7 +235,7 @@ public final class EntityIdUtils {
         return EntityId.of(id.shard(), id.realm(), id.num());
     }
 
-    public static EntityId entityIdFromContractId(final com.hedera.hapi.node.base.ContractID id) {
+    public static EntityId entityIdFromContractId(final com.mpcq.hapi.node.base.ContractID id) {
         if (id == null || id.contractNum() == null) {
             return null;
         }

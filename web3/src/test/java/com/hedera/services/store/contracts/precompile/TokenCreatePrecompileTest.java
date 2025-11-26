@@ -1,27 +1,27 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.store.contracts.precompile;
+package com.mpcq.services.store.contracts.precompile;
 
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.TEST_CONSENSUS_TIME;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.recipientAddress;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.sender;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.senderAddress;
-import static com.hedera.services.store.contracts.precompile.HTSTestsUtil.timestamp;
-import static com.hedera.services.store.contracts.precompile.TokenCreateWrapper.FixedFeeWrapper.FixedFeePayment.USE_CURRENTLY_CREATED_TOKEN;
-import static com.hedera.services.store.contracts.precompile.TokenCreateWrapper.FixedFeeWrapper.FixedFeePayment.USE_EXISTING_FUNGIBLE_TOKEN;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreate;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateV2;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateV3;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateWithFees;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateWithFeesV2;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateWithFeesV3;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreate;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateV2;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateV3;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateWithFees;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateWithFeesV2;
-import static com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateWithFeesV3;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.TEST_CONSENSUS_TIME;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.contractAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.recipientAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.sender;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.senderAddress;
+import static com.mpcq.services.store.contracts.precompile.HTSTestsUtil.timestamp;
+import static com.mpcq.services.store.contracts.precompile.TokenCreateWrapper.FixedFeeWrapper.FixedFeePayment.USE_CURRENTLY_CREATED_TOKEN;
+import static com.mpcq.services.store.contracts.precompile.TokenCreateWrapper.FixedFeeWrapper.FixedFeePayment.USE_EXISTING_FUNGIBLE_TOKEN;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreate;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateV2;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateV3;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateWithFees;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateWithFeesV2;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeFungibleCreateWithFeesV3;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreate;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateV2;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateV3;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateWithFees;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateWithFeesV2;
+import static com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile.decodeNonFungibleCreateWithFeesV3;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.TokenCreate;
 import static com.hederahashgraph.api.proto.java.ResponseCodeEnum.OK;
 import static java.util.function.UnaryOperator.identity;
@@ -40,28 +40,28 @@ import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
-import com.hedera.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
-import com.hedera.node.app.service.evm.store.tokens.TokenAccessor;
-import com.hedera.services.fees.FeeCalculator;
-import com.hedera.services.fees.HbarCentExchange;
-import com.hedera.services.fees.calculation.UsagePricesProvider;
-import com.hedera.services.fees.pricing.AssetsLoader;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.jproto.JECDSASecp256k1Key;
-import com.hedera.services.jproto.JEd25519Key;
-import com.hedera.services.store.contracts.precompile.codec.EncodingFacade;
-import com.hedera.services.store.contracts.precompile.codec.KeyValueWrapper;
-import com.hedera.services.store.contracts.precompile.codec.TokenCreateResult;
-import com.hedera.services.store.contracts.precompile.codec.TokenKeyWrapper;
-import com.hedera.services.store.contracts.precompile.impl.TokenCreatePrecompile;
-import com.hedera.services.store.contracts.precompile.utils.PrecompilePricingUtils;
-import com.hedera.services.store.models.Id;
-import com.hedera.services.txn.token.CreateLogic;
-import com.hedera.services.txns.token.validators.CreateChecks;
-import com.hedera.services.txns.validation.OptionValidator;
-import com.hedera.services.utils.EntityIdUtils;
-import com.hedera.services.utils.accessors.AccessorFactory;
+import com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.EvmInfrastructureFactory;
+import com.mpcq.node.app.service.evm.store.tokens.TokenAccessor;
+import com.mpcq.services.fees.FeeCalculator;
+import com.mpcq.services.fees.HbarCentExchange;
+import com.mpcq.services.fees.calculation.UsagePricesProvider;
+import com.mpcq.services.fees.pricing.AssetsLoader;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.jproto.JECDSASecp256k1Key;
+import com.mpcq.services.jproto.JEd25519Key;
+import com.mpcq.services.store.contracts.precompile.codec.EncodingFacade;
+import com.mpcq.services.store.contracts.precompile.codec.KeyValueWrapper;
+import com.mpcq.services.store.contracts.precompile.codec.TokenCreateResult;
+import com.mpcq.services.store.contracts.precompile.codec.TokenKeyWrapper;
+import com.mpcq.services.store.contracts.precompile.impl.TokenCreatePrecompile;
+import com.mpcq.services.store.contracts.precompile.utils.PrecompilePricingUtils;
+import com.mpcq.services.store.models.Id;
+import com.mpcq.services.txn.token.CreateLogic;
+import com.mpcq.services.txns.token.validators.CreateChecks;
+import com.mpcq.services.txns.validation.OptionValidator;
+import com.mpcq.services.utils.EntityIdUtils;
+import com.mpcq.services.utils.accessors.AccessorFactory;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import com.hederahashgraph.api.proto.java.SubType;
@@ -186,7 +186,7 @@ class TokenCreatePrecompileTest {
     private Account account;
 
     @Mock
-    com.hedera.services.store.models.Account senderAccount;
+    com.mpcq.services.store.models.Account senderAccount;
 
     @Mock
     private Deque<MessageFrame> stack;

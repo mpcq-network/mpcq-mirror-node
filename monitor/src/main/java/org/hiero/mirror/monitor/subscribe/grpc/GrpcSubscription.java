@@ -2,9 +2,9 @@
 
 package org.hiero.mirror.monitor.subscribe.grpc;
 
-import com.hedera.hashgraph.sdk.TopicId;
-import com.hedera.hashgraph.sdk.TopicMessage;
-import com.hedera.hashgraph.sdk.TopicMessageQuery;
+import com.mpcq.hashgraph.sdk.TopicId;
+import com.mpcq.hashgraph.sdk.TopicMessage;
+import com.mpcq.hashgraph.sdk.TopicMessageQuery;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import java.time.Instant;

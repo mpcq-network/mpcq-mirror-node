@@ -4,11 +4,11 @@ package org.hiero.mirror.web3.state;
 
 import static org.hiero.mirror.common.util.DomainUtils.isLongZeroAddress;
 
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.KeyList;
-import com.hedera.hapi.node.base.Timestamp;
-import com.hedera.pbj.runtime.ParseException;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.KeyList;
+import com.mpcq.hapi.node.base.Timestamp;
+import com.mpcq.pbj.runtime.ParseException;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import java.time.Instant;
 import lombok.experimental.UtilityClass;
 import org.hyperledger.besu.datatypes.Address;

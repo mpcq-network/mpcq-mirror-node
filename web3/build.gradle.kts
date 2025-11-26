@@ -15,7 +15,7 @@ plugins {
 }
 
 repositories {
-    // Temporary repository added for com.hedera.cryptography snapshot dependencies
+    // Temporary repository added for com.mpcq.cryptography snapshot dependencies
     maven { url = uri("https://central.sonatype.com/repository/maven-snapshots") }
 }
 
@@ -23,8 +23,8 @@ dependencies {
     implementation(project(":common"))
     implementation("com.bucket4j:bucket4j-core")
     implementation("com.esaulpaugh:headlong")
-    implementation("com.hedera.hashgraph:app") { exclude(group = "io.netty") }
-    implementation("com.hedera.evm:hedera-evm")
+    implementation("com.mpcq.hashgraph:app") { exclude(group = "io.netty") }
+    implementation("com.mpcq.evm:hedera-evm")
     implementation("io.github.mweirauch:micrometer-jvm-extras")
     implementation("io.micrometer:micrometer-registry-prometheus")
     implementation("jakarta.inject:jakarta.inject-api")

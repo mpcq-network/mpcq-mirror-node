@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.txns.util;
+package com.mpcq.services.txns.util;
 
 import java.util.function.Supplier;
 import org.apache.logging.log4j.LogManager;

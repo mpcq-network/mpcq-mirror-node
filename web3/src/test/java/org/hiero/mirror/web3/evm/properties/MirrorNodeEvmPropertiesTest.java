@@ -13,7 +13,7 @@ import static org.hiero.mirror.web3.evm.config.EvmConfiguration.EVM_VERSION_0_51
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mockStatic;
 
-import com.hedera.hapi.node.base.SemanticVersion;
+import com.mpcq.hapi.node.base.SemanticVersion;
 import java.util.Collections;
 import java.util.Map;
 import java.util.NavigableMap;

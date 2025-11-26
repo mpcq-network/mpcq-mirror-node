@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.file;
+package com.mpcq.hapi.node.state.file;
 
 import static java.util.Objects.requireNonNull;
 import static org.hiero.mirror.web3.utils.Suppliers.areSuppliersEqual;
 
-import com.hedera.hapi.node.base.FileID;
-import com.hedera.hapi.node.base.KeyList;
-import com.hedera.pbj.runtime.Codec;
-import com.hedera.pbj.runtime.JsonCodec;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.FileID;
+import com.mpcq.hapi.node.base.KeyList;
+import com.mpcq.pbj.runtime.Codec;
+import com.mpcq.pbj.runtime.JsonCodec;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.util.function.Consumer;
@@ -38,16 +38,16 @@ public record File(
         boolean deleted,
         long preSystemDeleteExpirationSecond) {
     /** Protobuf codec for reading and writing in protobuf format */
-    public static final Codec<com.hedera.hapi.node.state.file.File> PROTOBUF =
-            new com.hedera.hapi.node.state.file.codec.FileProtoCodec();
+    public static final Codec<com.mpcq.hapi.node.state.file.File> PROTOBUF =
+            new com.mpcq.hapi.node.state.file.codec.FileProtoCodec();
     /** JSON codec for reading and writing in JSON format */
-    public static final JsonCodec<com.hedera.hapi.node.state.file.File> JSON =
-            new com.hedera.hapi.node.state.file.codec.FileJsonCodec();
+    public static final JsonCodec<com.mpcq.hapi.node.state.file.File> JSON =
+            new com.mpcq.hapi.node.state.file.codec.FileJsonCodec();
 
     private static final Supplier<Long> DEFAULT_LONG_SUPPLIER = () -> 0L;
 
     /** Default instance with all fields set to default values */
-    public static final com.hedera.hapi.node.state.file.File DEFAULT =
+    public static final com.mpcq.hapi.node.state.file.File DEFAULT =
             newBuilder().expirationSecond(DEFAULT_LONG_SUPPLIER).build();
     /**
      * Create a pre-populated File.
@@ -130,7 +130,7 @@ public record File(
         if (that == null || this.getClass() != that.getClass()) {
             return false;
         }
-        com.hedera.hapi.node.state.file.File thatObj = (com.hedera.hapi.node.state.file.File) that;
+        com.mpcq.hapi.node.state.file.File thatObj = (com.mpcq.hapi.node.state.file.File) that;
         if (fileId == null && thatObj.fileId != null) {
             return false;
         }
@@ -253,8 +253,8 @@ public record File(
      *
      * @return a pre-populated builder
      */
-    public com.hedera.hapi.node.state.file.File.Builder copyBuilder() {
-        return new com.hedera.hapi.node.state.file.File.Builder(
+    public com.mpcq.hapi.node.state.file.File.Builder copyBuilder() {
+        return new com.mpcq.hapi.node.state.file.File.Builder(
                 fileId, expirationSecondSupplier, keys, contents, memo, deleted, preSystemDeleteExpirationSecond);
     }
 
@@ -263,8 +263,8 @@ public record File(
      *
      * @return a new builder
      */
-    public static com.hedera.hapi.node.state.file.File.Builder newBuilder() {
-        return new com.hedera.hapi.node.state.file.File.Builder();
+    public static com.mpcq.hapi.node.state.file.File.Builder newBuilder() {
+        return new com.mpcq.hapi.node.state.file.File.Builder();
     }
     /**
      * Builder class for easy creation, ideal for clean code where performance is not critical. In critical performance
@@ -326,8 +326,8 @@ public record File(
          *
          * @return new model record with data set
          */
-        public com.hedera.hapi.node.state.file.File build() {
-            return new com.hedera.hapi.node.state.file.File(
+        public com.mpcq.hapi.node.state.file.File build() {
+            return new com.mpcq.hapi.node.state.file.File(
                     fileId, expirationSecondSupplier, keys, contents, memo, deleted, preSystemDeleteExpirationSecond);
         }
 
@@ -337,7 +337,7 @@ public record File(
          * @param fileId value to set
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder fileId(@Nullable FileID fileId) {
+        public com.mpcq.hapi.node.state.file.File.Builder fileId(@Nullable FileID fileId) {
             this.fileId = fileId;
             return this;
         }
@@ -348,7 +348,7 @@ public record File(
          * @param builder A pre-populated builder
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder fileId(FileID.Builder builder) {
+        public com.mpcq.hapi.node.state.file.File.Builder fileId(FileID.Builder builder) {
             this.fileId = builder.build();
             return this;
         }
@@ -359,7 +359,7 @@ public record File(
          * @param expirationSecond value to set
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder expirationSecond(long expirationSecond) {
+        public com.mpcq.hapi.node.state.file.File.Builder expirationSecond(long expirationSecond) {
             this.expirationSecondSupplier = () -> expirationSecond;
             return this;
         }
@@ -370,7 +370,7 @@ public record File(
          * @param expirationSecondSupplier value to set
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder expirationSecond(Supplier<Long> expirationSecondSupplier) {
+        public com.mpcq.hapi.node.state.file.File.Builder expirationSecond(Supplier<Long> expirationSecondSupplier) {
             this.expirationSecondSupplier = expirationSecondSupplier;
             return this;
         }
@@ -381,7 +381,7 @@ public record File(
          * @param keys value to set
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder keys(@Nullable KeyList keys) {
+        public com.mpcq.hapi.node.state.file.File.Builder keys(@Nullable KeyList keys) {
             this.keys = keys;
             return this;
         }
@@ -392,7 +392,7 @@ public record File(
          * @param builder A pre-populated builder
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder keys(KeyList.Builder builder) {
+        public com.mpcq.hapi.node.state.file.File.Builder keys(KeyList.Builder builder) {
             this.keys = builder.build();
             return this;
         }
@@ -403,7 +403,7 @@ public record File(
          * @param contents value to set
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder contents(@Nonnull Bytes contents) {
+        public com.mpcq.hapi.node.state.file.File.Builder contents(@Nonnull Bytes contents) {
             this.contents = contents;
             return this;
         }
@@ -414,7 +414,7 @@ public record File(
          * @param memo value to set
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder memo(@Nonnull String memo) {
+        public com.mpcq.hapi.node.state.file.File.Builder memo(@Nonnull String memo) {
             this.memo = memo;
             return this;
         }
@@ -425,7 +425,7 @@ public record File(
          * @param deleted value to set
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder deleted(boolean deleted) {
+        public com.mpcq.hapi.node.state.file.File.Builder deleted(boolean deleted) {
             this.deleted = deleted;
             return this;
         }
@@ -436,7 +436,7 @@ public record File(
          * @param preSystemDeleteExpirationSecond value to set
          * @return builder to continue building with
          */
-        public com.hedera.hapi.node.state.file.File.Builder preSystemDeleteExpirationSecond(
+        public com.mpcq.hapi.node.state.file.File.Builder preSystemDeleteExpirationSecond(
                 long preSystemDeleteExpirationSecond) {
             this.preSystemDeleteExpirationSecond = preSystemDeleteExpirationSecond;
             return this;

@@ -244,7 +244,7 @@ Expression restrictions include:
   refer to them to see what may be accessed as sub properties etc.
 - Mirror node Spring beans (using `@`) cannot be accessed within an expression.
 - Arbitrary types (mirror node, dependencies, Java) such as `T(java.lang.Runtime)`
-  or `T(com.hiero.mirror.importer.SomeClass)` cannot be accessed within an expression.
+  or `T(com.mpcq.mirror.importer.SomeClass)` cannot be accessed within an expression.
 - No property can be written to.
 - The expression must evaluate to a boolean value.
 - Since expressions may contain Java code, enclosing them within single or double quotes will help prevent errors

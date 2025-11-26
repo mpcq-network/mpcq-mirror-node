@@ -2,28 +2,28 @@
 
 package org.hiero.mirror.web3.service;
 
-import static com.hedera.node.app.hapi.utils.keys.KeyUtils.IMMUTABILITY_SENTINEL_KEY;
-import static com.hedera.services.utils.EntityIdUtils.accountIdFromEvmAddress;
+import static com.mpcq.node.app.hapi.utils.keys.KeyUtils.IMMUTABILITY_SENTINEL_KEY;
+import static com.mpcq.services.utils.EntityIdUtils.accountIdFromEvmAddress;
 import static org.hiero.mirror.web3.convert.BytesDecoder.maybeDecodeSolidityErrorStringToReadableMessage;
 import static org.hiero.mirror.web3.state.Utils.DEFAULT_KEY;
 import static org.hiero.mirror.web3.state.Utils.isMirror;
 import static org.hiero.mirror.web3.validation.HexValidator.HEX_PREFIX;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.ContractID;
-import com.hedera.hapi.node.base.Duration;
-import com.hedera.hapi.node.base.Timestamp;
-import com.hedera.hapi.node.base.TransactionID;
-import com.hedera.hapi.node.contract.ContractCallTransactionBody;
-import com.hedera.hapi.node.contract.ContractCreateTransactionBody;
-import com.hedera.hapi.node.contract.ContractFunctionResult;
-import com.hedera.hapi.node.state.primitives.ProtoBytes;
-import com.hedera.hapi.node.transaction.TransactionBody;
-import com.hedera.hapi.node.transaction.TransactionRecord;
-import com.hedera.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
-import com.hedera.node.app.state.SingleTransactionRecord;
-import com.hedera.node.config.data.EntitiesConfig;
-import com.hedera.services.utils.EntityIdUtils;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.ContractID;
+import com.mpcq.hapi.node.base.Duration;
+import com.mpcq.hapi.node.base.Timestamp;
+import com.mpcq.hapi.node.base.TransactionID;
+import com.mpcq.hapi.node.contract.ContractCallTransactionBody;
+import com.mpcq.hapi.node.contract.ContractCreateTransactionBody;
+import com.mpcq.hapi.node.contract.ContractFunctionResult;
+import com.mpcq.hapi.node.state.primitives.ProtoBytes;
+import com.mpcq.hapi.node.transaction.TransactionBody;
+import com.mpcq.hapi.node.transaction.TransactionRecord;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQEvmTransactionProcessingResult;
+import com.mpcq.node.app.state.SingleTransactionRecord;
+import com.mpcq.node.config.data.EntitiesConfig;
+import com.mpcq.services.utils.EntityIdUtils;
 import com.hederahashgraph.api.proto.java.ResponseCodeEnum;
 import jakarta.inject.Named;
 import java.time.Instant;
@@ -85,7 +85,7 @@ public class TransactionExecutionService {
         final var receipt = executor.execute(transactionBody, Instant.now(), getOperationTracers());
         final var parentTransactionStatus =
                 receipt.getFirst().transactionRecord().receiptOrThrow().status();
-        if (parentTransactionStatus == com.hedera.hapi.node.base.ResponseCodeEnum.SUCCESS) {
+        if (parentTransactionStatus == com.mpcq.hapi.node.base.ResponseCodeEnum.SUCCESS) {
             result = buildSuccessResult(isContractCreate, receipt, params);
         } else {
             result = handleFailedResult(receipt, isContractCreate);
@@ -181,7 +181,7 @@ public class TransactionExecutionService {
             final CallServiceParameters params, final long estimatedGas, final long maxLifetime) {
         return defaultTransactionBodyBuilder(params)
                 .contractCreateInstance(ContractCreateTransactionBody.newBuilder()
-                        .initcode(com.hedera.pbj.runtime.io.buffer.Bytes.wrap(
+                        .initcode(com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(
                                 params.getCallData().toArrayUnsafe()))
                         .gas(estimatedGas)
                         .autoRenewPeriod(new Duration(maxLifetime))
@@ -197,10 +197,10 @@ public class TransactionExecutionService {
                         .contractID(ContractID.newBuilder()
                                 .shardNum(commonProperties.getShard())
                                 .realmNum(commonProperties.getRealm())
-                                .evmAddress(com.hedera.pbj.runtime.io.buffer.Bytes.wrap(
+                                .evmAddress(com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(
                                         params.getReceiver().toArrayUnsafe()))
                                 .build())
-                        .functionParameters(com.hedera.pbj.runtime.io.buffer.Bytes.wrap(
+                        .functionParameters(com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(
                                 params.getCallData().toArrayUnsafe()))
                         .amount(params.getValue()) // tinybars sent to contract
                         .gas(estimatedGas)
@@ -210,7 +210,7 @@ public class TransactionExecutionService {
 
     private ProtoBytes convertAddressToProtoBytes(final Address address) {
         return ProtoBytes.newBuilder()
-                .value(com.hedera.pbj.runtime.io.buffer.Bytes.wrap(address.toArrayUnsafe()))
+                .value(com.mpcq.pbj.runtime.io.buffer.Bytes.wrap(address.toArrayUnsafe()))
                 .build();
     }
 
@@ -285,8 +285,8 @@ public class TransactionExecutionService {
             final var record = iterator.next().transactionRecord();
 
             final var status = record.receiptOrThrow().status();
-            if (status == com.hedera.hapi.node.base.ResponseCodeEnum.SUCCESS
-                    || status == com.hedera.hapi.node.base.ResponseCodeEnum.REVERTED_SUCCESS) {
+            if (status == com.mpcq.hapi.node.base.ResponseCodeEnum.SUCCESS
+                    || status == com.mpcq.hapi.node.base.ResponseCodeEnum.REVERTED_SUCCESS) {
                 continue;
             }
 

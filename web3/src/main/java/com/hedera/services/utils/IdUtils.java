@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils;
+package com.mpcq.services.utils;
 
 import com.google.protobuf.ByteString;
-import com.hedera.services.ledger.BalanceChange;
-import com.hedera.services.store.models.Id;
+import com.mpcq.services.ledger.BalanceChange;
+import com.mpcq.services.store.models.Id;
 import com.hederahashgraph.api.proto.java.AccountAmount;
 import com.hederahashgraph.api.proto.java.AccountID;
 import com.hederahashgraph.api.proto.java.ContractID;

@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation.utils;
+package com.mpcq.services.fees.calculation.utils;
 
-import static com.hedera.services.fees.usage.token.TokenOpsUsageUtils.TOKEN_OPS_USAGE_UTILS;
-import static com.hedera.services.txns.crypto.helpers.AllowanceHelpers.getCryptoAllowancesList;
-import static com.hedera.services.txns.crypto.helpers.AllowanceHelpers.getFungibleTokenAllowancesList;
-import static com.hedera.services.txns.crypto.helpers.AllowanceHelpers.getNftApprovedForAll;
-import static com.hedera.services.utils.MiscUtils.asKeyUnchecked;
+import static com.mpcq.services.fees.usage.token.TokenOpsUsageUtils.TOKEN_OPS_USAGE_UTILS;
+import static com.mpcq.services.txns.crypto.helpers.AllowanceHelpers.getCryptoAllowancesList;
+import static com.mpcq.services.txns.crypto.helpers.AllowanceHelpers.getFungibleTokenAllowancesList;
+import static com.mpcq.services.txns.crypto.helpers.AllowanceHelpers.getNftApprovedForAll;
+import static com.mpcq.services.utils.MiscUtils.asKeyUnchecked;
 import static org.hiero.mirror.common.util.DomainUtils.toEvmAddress;
 
-import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
-import com.hedera.services.fees.usage.token.meta.TokenMintMeta;
-import com.hedera.services.hapi.fees.usage.crypto.ExtantCryptoContext;
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases;
+import com.mpcq.services.fees.usage.token.meta.TokenMintMeta;
+import com.mpcq.services.hapi.fees.usage.crypto.ExtantCryptoContext;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.TransactionBody;
 import java.util.Collections;

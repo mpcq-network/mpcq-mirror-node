@@ -19,9 +19,9 @@ import static org.hiero.mirror.test.e2e.acceptance.steps.ERCContractFeature.Cont
 import static org.hiero.mirror.test.e2e.acceptance.util.TestUtil.asAddress;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.hedera.hashgraph.sdk.NftId;
-import com.hedera.hashgraph.sdk.TokenId;
-import com.hedera.hashgraph.sdk.TransactionReceipt;
+import com.mpcq.hashgraph.sdk.NftId;
+import com.mpcq.hashgraph.sdk.TokenId;
+import com.mpcq.hashgraph.sdk.TransactionReceipt;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

@@ -2,8 +2,8 @@
 
 package org.hiero.mirror.web3.evm.properties;
 
-import com.hedera.node.app.service.contract.impl.hevm.MPCQEvmBlocks;
-import com.hedera.node.app.service.evm.contracts.execution.MPCQBlockValues;
+import com.mpcq.node.app.service.contract.impl.hevm.MPCQEvmBlocks;
+import com.mpcq.node.app.service.evm.contracts.execution.MPCQBlockValues;
 import jakarta.inject.Named;
 import java.time.Instant;
 import java.util.Objects;

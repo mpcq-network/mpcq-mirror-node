@@ -7,9 +7,9 @@ import static org.hiero.mirror.rest.model.TransactionTypes.CRYPTOCREATEACCOUNT;
 import static org.hiero.mirror.rest.model.TransactionTypes.CRYPTOTRANSFER;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.PrivateKey;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;

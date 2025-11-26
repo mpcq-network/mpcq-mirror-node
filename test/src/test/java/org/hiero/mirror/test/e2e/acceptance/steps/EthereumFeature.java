@@ -10,11 +10,11 @@ import static org.hiero.mirror.test.e2e.acceptance.util.TestUtil.HEX_PREFIX;
 import static org.web3j.crypto.transaction.type.TransactionType.EIP1559;
 import static org.web3j.crypto.transaction.type.TransactionType.EIP2930;
 
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.ContractFunctionParameters;
-import com.hedera.hashgraph.sdk.ContractId;
-import com.hedera.hashgraph.sdk.Hbar;
-import com.hedera.hashgraph.sdk.PrivateKey;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.ContractFunctionParameters;
+import com.mpcq.hashgraph.sdk.ContractId;
+import com.mpcq.hashgraph.sdk.Hbar;
+import com.mpcq.hashgraph.sdk.PrivateKey;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

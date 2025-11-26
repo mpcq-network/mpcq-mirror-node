@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.google.common.primitives.Bytes;
 import com.google.common.primitives.Ints;
-import com.hedera.services.stream.proto.HashAlgorithm;
-import com.hedera.services.stream.proto.HashObject;
-import com.hedera.services.stream.proto.RecordStreamFile;
-import com.hedera.services.stream.proto.RecordStreamItem;
+import com.mpcq.services.stream.proto.HashAlgorithm;
+import com.mpcq.services.stream.proto.HashObject;
+import com.mpcq.services.stream.proto.RecordStreamFile;
+import com.mpcq.services.stream.proto.RecordStreamItem;
 import com.hederahashgraph.api.proto.java.CryptoTransferTransactionBody;
 import com.hederahashgraph.api.proto.java.SemanticVersion;
 import com.hederahashgraph.api.proto.java.SignedTransaction;

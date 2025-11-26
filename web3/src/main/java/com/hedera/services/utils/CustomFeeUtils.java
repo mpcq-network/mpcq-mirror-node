@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils;
+package com.mpcq.services.utils;
 
-import com.hedera.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
-import com.hedera.services.txn.token.CreateLogic.FeeType;
+import com.mpcq.node.app.service.evm.store.contracts.precompile.codec.CustomFee;
+import com.mpcq.services.txn.token.CreateLogic.FeeType;
 import org.hyperledger.besu.datatypes.Address;
 
 public class CustomFeeUtils {

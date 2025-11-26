@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.pricing;
+package com.mpcq.services.fees.pricing;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;

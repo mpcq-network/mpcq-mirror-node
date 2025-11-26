@@ -5,13 +5,13 @@ package org.hiero.mirror.monitor.publish;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.platform.commons.util.ReflectionUtils.getDeclaredConstructor;
 
-import com.hedera.hashgraph.sdk.AccountId;
-import com.hedera.hashgraph.sdk.PrecheckStatusException;
-import com.hedera.hashgraph.sdk.ReceiptStatusException;
-import com.hedera.hashgraph.sdk.TopicMessageSubmitTransaction;
-import com.hedera.hashgraph.sdk.TransactionId;
-import com.hedera.hashgraph.sdk.TransactionReceipt;
-import com.hedera.hashgraph.sdk.proto.ResponseCodeEnum;
+import com.mpcq.hashgraph.sdk.AccountId;
+import com.mpcq.hashgraph.sdk.PrecheckStatusException;
+import com.mpcq.hashgraph.sdk.ReceiptStatusException;
+import com.mpcq.hashgraph.sdk.TopicMessageSubmitTransaction;
+import com.mpcq.hashgraph.sdk.TransactionId;
+import com.mpcq.hashgraph.sdk.TransactionReceipt;
+import com.mpcq.hashgraph.sdk.proto.ResponseCodeEnum;
 import io.grpc.Status;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.Meter;
@@ -119,7 +119,7 @@ class PublishMetricsTest {
     @Test
     void onErrorPrecheckStatusException(CapturedOutput logOutput) throws Exception {
         TransactionId transactionId = TransactionId.withValidStart(AccountId.fromString("0.0.3"), Instant.now());
-        com.hedera.hashgraph.sdk.Status status = com.hedera.hashgraph.sdk.Status.SUCCESS;
+        com.mpcq.hashgraph.sdk.Status status = com.mpcq.hashgraph.sdk.Status.SUCCESS;
         Constructor<PrecheckStatusException> constructor = getDeclaredConstructor(PrecheckStatusException.class);
         constructor.setAccessible(true);
         PrecheckStatusException precheckStatusException = constructor.newInstance(status, transactionId);
@@ -248,11 +248,11 @@ class PublishMetricsTest {
     }
 
     @SneakyThrows
-    private com.hedera.hashgraph.sdk.TransactionReceipt receipt(ResponseCodeEnum status) {
-        byte[] receiptBytes = com.hedera.hashgraph.sdk.proto.TransactionReceipt.newBuilder()
+    private com.mpcq.hashgraph.sdk.TransactionReceipt receipt(ResponseCodeEnum status) {
+        byte[] receiptBytes = com.mpcq.hashgraph.sdk.proto.TransactionReceipt.newBuilder()
                 .setStatus(status)
                 .build()
                 .toByteArray();
-        return com.hedera.hashgraph.sdk.TransactionReceipt.fromBytes(receiptBytes);
+        return com.mpcq.hashgraph.sdk.TransactionReceipt.fromBytes(receiptBytes);
     }
 }

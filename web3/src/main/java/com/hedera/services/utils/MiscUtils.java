@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.utils;
+package com.mpcq.services.utils;
 
-import static com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases.EVM_ADDRESS_LEN;
-import static com.hedera.services.jproto.JKey.mapJKey;
-import static com.hedera.services.jproto.JKey.mapKey;
+import static com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases.EVM_ADDRESS_LEN;
+import static com.mpcq.services.jproto.JKey.mapJKey;
+import static com.mpcq.services.jproto.JKey.mapKey;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCall;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractCreate;
 import static com.hederahashgraph.api.proto.java.MPCQFunctionality.ContractDelete;
@@ -36,9 +36,9 @@ import static java.util.Objects.requireNonNull;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.utils.accessors.SignedTxnAccessor;
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.utils.accessors.SignedTxnAccessor;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.MPCQFunctionality;
 import com.hederahashgraph.api.proto.java.Key;
 import com.hederahashgraph.api.proto.java.SignatureMap;

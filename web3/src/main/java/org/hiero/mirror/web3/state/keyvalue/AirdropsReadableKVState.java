@@ -2,13 +2,13 @@
 
 package org.hiero.mirror.web3.state.keyvalue;
 
-import static com.hedera.node.app.service.token.impl.schemas.V0530TokenSchema.AIRDROPS_STATE_ID;
-import static com.hedera.services.utils.EntityIdUtils.toEntityId;
+import static com.mpcq.node.app.service.token.impl.schemas.V0530TokenSchema.AIRDROPS_STATE_ID;
+import static com.mpcq.services.utils.EntityIdUtils.toEntityId;
 
-import com.hedera.hapi.node.base.PendingAirdropId;
-import com.hedera.hapi.node.base.PendingAirdropValue;
-import com.hedera.hapi.node.state.token.AccountPendingAirdrop;
-import com.hedera.node.app.service.token.TokenService;
+import com.mpcq.hapi.node.base.PendingAirdropId;
+import com.mpcq.hapi.node.base.PendingAirdropValue;
+import com.mpcq.hapi.node.state.token.AccountPendingAirdrop;
+import com.mpcq.node.app.service.token.TokenService;
 import jakarta.inject.Named;
 import org.hiero.mirror.web3.common.ContractCallContext;
 import org.hiero.mirror.web3.repository.TokenAirdropRepository;

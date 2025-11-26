@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.fees.calculation.utils;
+package com.mpcq.services.fees.calculation.utils;
 
-import static com.hedera.services.fees.calculation.UsageBasedFeeCalculator.numSimpleKeys;
-import static com.hedera.services.utils.MiscUtils.asFcKeyUnchecked;
+import static com.mpcq.services.fees.calculation.UsageBasedFeeCalculator.numSimpleKeys;
+import static com.mpcq.services.utils.MiscUtils.asFcKeyUnchecked;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -12,13 +12,13 @@ import static org.mockito.ArgumentMatchers.longThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
-import com.hedera.node.app.service.evm.accounts.MPCQEvmContractAliases;
-import com.hedera.services.fees.calc.OverflowCheckingCalc;
-import com.hedera.services.fees.usage.state.UsageAccumulator;
-import com.hedera.services.hapi.fees.usage.SigUsage;
-import com.hedera.services.hapi.utils.fees.FeeObject;
-import com.hedera.services.jproto.JKey;
-import com.hedera.services.utils.accessors.TxnAccessor;
+import com.mpcq.node.app.service.evm.accounts.MPCQEvmContractAliases;
+import com.mpcq.services.fees.calc.OverflowCheckingCalc;
+import com.mpcq.services.fees.usage.state.UsageAccumulator;
+import com.mpcq.services.hapi.fees.usage.SigUsage;
+import com.mpcq.services.hapi.utils.fees.FeeObject;
+import com.mpcq.services.jproto.JKey;
+import com.mpcq.services.utils.accessors.TxnAccessor;
 import com.hederahashgraph.api.proto.java.ExchangeRate;
 import com.hederahashgraph.api.proto.java.FeeComponents;
 import com.hederahashgraph.api.proto.java.FeeData;

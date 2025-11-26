@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.hapi.node.state.token;
+package com.mpcq.hapi.node.state.token;
 
 import static java.util.Objects.requireNonNull;
 
-import com.hedera.hapi.node.base.AccountID;
-import com.hedera.hapi.node.base.Key;
-import com.hedera.hapi.node.base.NftID;
-import com.hedera.hapi.node.base.PendingAirdropId;
-import com.hedera.hapi.node.base.TokenID;
-import com.hedera.pbj.runtime.Codec;
-import com.hedera.pbj.runtime.JsonCodec;
-import com.hedera.pbj.runtime.OneOf;
-import com.hedera.pbj.runtime.io.buffer.Bytes;
+import com.mpcq.hapi.node.base.AccountID;
+import com.mpcq.hapi.node.base.Key;
+import com.mpcq.hapi.node.base.NftID;
+import com.mpcq.hapi.node.base.PendingAirdropId;
+import com.mpcq.hapi.node.base.TokenID;
+import com.mpcq.pbj.runtime.Codec;
+import com.mpcq.pbj.runtime.JsonCodec;
+import com.mpcq.pbj.runtime.OneOf;
+import com.mpcq.pbj.runtime.io.buffer.Bytes;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.util.Collections;
@@ -144,9 +144,9 @@ public record Account(
         long firstHookId,
         long numberLambdaStorageSlots) {
     /** Protobuf codec for reading and writing in protobuf format */
-    public static final Codec<Account> PROTOBUF = new com.hedera.hapi.node.state.token.codec.AccountProtoCodec();
+    public static final Codec<Account> PROTOBUF = new com.mpcq.hapi.node.state.token.codec.AccountProtoCodec();
     /** JSON codec for reading and writing in JSON format */
-    public static final JsonCodec<Account> JSON = new com.hedera.hapi.node.state.token.codec.AccountJsonCodec();
+    public static final JsonCodec<Account> JSON = new com.mpcq.hapi.node.state.token.codec.AccountJsonCodec();
 
     /** Default instance with all fields set to default values */
     public static final Account DEFAULT = newBuilder().build();
@@ -977,7 +977,7 @@ public record Account(
     /**
      * Enum for the type of "staked_id" oneof value
      */
-    public enum StakedIdOneOfType implements com.hedera.pbj.runtime.EnumWithProtoMetadata {
+    public enum StakedIdOneOfType implements com.mpcq.pbj.runtime.EnumWithProtoMetadata {
         /**
          * Enum value for a unset OneOf, to avoid null OneOfs
          */
@@ -1086,7 +1086,7 @@ public record Account(
         private long stakedToMe = 0;
         private long stakePeriodStart = 0;
         private OneOf<Account.StakedIdOneOfType> stakedId =
-                com.hedera.hapi.node.state.token.codec.AccountProtoCodec.STAKED_ID_UNSET;
+                com.mpcq.hapi.node.state.token.codec.AccountProtoCodec.STAKED_ID_UNSET;
         private boolean declineReward = false;
         private boolean receiverSigRequired = false;
 

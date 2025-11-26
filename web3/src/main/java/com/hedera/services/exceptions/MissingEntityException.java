@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
-package com.hedera.services.exceptions;
+package com.mpcq.services.exceptions;
 
-import static com.hedera.services.utils.EntityIdUtils.readableId;
+import static com.mpcq.services.utils.EntityIdUtils.readableId;
 
 import java.io.Serial;
 
